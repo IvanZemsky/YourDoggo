@@ -1,15 +1,20 @@
 import { createRoot } from "react-dom/client";
 import App from "./components/App/App";
 
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
+//import './styles/fonts.scss';
 import "./styles/reset.scss";
 import "./styles/_vars.scss";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-   <BrowserRouter>
-      <App />
-   </BrowserRouter>
+   <Provider store={store}>
+      <HashRouter>
+         <App />
+      </HashRouter>
+   </Provider>
 );

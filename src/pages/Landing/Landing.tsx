@@ -1,10 +1,9 @@
 import styles from './Landing.module.scss'
+import Intro from "./components/Intro/Intro"
 
 const Landing = () => {
   return (
-    <div>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat porro eaque, earum sapiente autem omnis nesciunt odit qui, quidem, ipsa quibusdam hic dolores sequi provident quo nemo optio enim quas.
-    </div>
+    <Intro />
   )
 }
 

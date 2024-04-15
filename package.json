@@ -7,8 +7,9 @@
   "scripts": {
     "start": "webpack serve --env mode=development",
     "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
-    "deploy": "",
+    "build": "webpack --env mode=production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "typecheck": "tsc"
   },
   "keywords": [],

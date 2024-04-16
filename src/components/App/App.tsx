@@ -2,11 +2,11 @@ import styles from "./App.module.scss";
 import { Routes, Route } from "react-router";
 import Layout from "./../Layout/Layout";
 import Landing from "@/pages/Landing/Landing";
-import MainTheme from "@/themes/MainTheme";
+import MainThemeProvider from "@/themes/MainTheme/MainThemeProvider";
 
 const App = () => {
    return (
-      <MainTheme>
+      <MainThemeProvider>
          <div className={styles.app}>
                <Routes>
                   <Route path="/" element={<Layout />}>
@@ -14,7 +14,7 @@ const App = () => {
                   </Route>
                </Routes>
             </div>
-      </MainTheme>
+      </MainThemeProvider>
    );
 };
 

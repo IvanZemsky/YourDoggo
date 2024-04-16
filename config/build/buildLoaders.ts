@@ -7,26 +7,8 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
    const isDev = options.mode === "development";
    const isProd = options.mode === "production";
 
-   const webpLoader = {
-      test: /\.(png|jpe?g)$/i,
-      use: [
-         {
-            loader: "file-loader",
-            options: {
-               name: "images/[name].[hash:base64:8].[ext]", // можно сменить [ext] на webp
-            },
-         },
-         {
-            loader: "webp-loader",
-            options: {
-               quality: 90,
-            },
-         },
-      ],
-   };
-
    const assetLoader = {
-      test: /\.(gif|svg)$/i,
+      test: /\.(png|jpg|jpeg|gif|svg)$/i,
       type: "asset/resource",
    };
 
@@ -72,5 +54,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
       },
    };
 
-   return [webpLoader, assetLoader, scssLoader, fontsLoader, tsLoader];
+   return [assetLoader, scssLoader, fontsLoader, tsLoader];
 }

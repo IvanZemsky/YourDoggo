@@ -13,22 +13,19 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
    };
 
    const cssLoaderWithModules = {
-      loader: "css-loader",
-      options: {
-         modules: {
-            localIdentName: isDev
-               ? "[name]_[local]__[hash:base64:8]"
-               : "[hash:base64:8]",
-         },
-      },
-   };
-
-   const scssLoader = {
-      test: /\.s[ac]ss$/i,
+      test: /\.css$/i,
       use: [
-         isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-         cssLoaderWithModules,
-         "sass-loader",
+         "style-loader",
+         {
+            loader: "css-loader",
+            options: {
+               modules: {
+                  localIdentName: isDev
+                     ? "[name]_[local]__[hash:base64:8]"
+                     : "[hash:base64:8]",
+               },
+            },
+         },
       ],
    };
 
@@ -54,5 +51,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
       },
    };
 
-   return [assetLoader, scssLoader, fontsLoader, tsLoader];
+   return [cssLoaderWithModules, assetLoader, fontsLoader, tsLoader];
 }

@@ -1,14 +1,17 @@
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import { Outlet } from "react-router"
+import { Suspense } from "react"
 
 const Layout = () => {
   return (
     <>
       <Header/>
-      <main>
-         <Outlet/>
-      </main>
+        <Suspense>
+          <main>
+            <Outlet/>
+          </main>
+        </Suspense>
       <Footer/>
     </>
   )

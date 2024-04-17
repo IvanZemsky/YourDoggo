@@ -1,9 +1,13 @@
-import styles from './Landing.module.scss'
+import { Fragment } from "react/jsx-runtime"
+import About from "./components/About/About"
 import Intro from "./components/Intro/Intro"
 
 const Landing = () => {
   return (
-    <Intro />
+    <Fragment>
+      <Intro />
+      <About/>
+    </Fragment>
   )
 }
 

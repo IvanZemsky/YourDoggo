@@ -1,9 +1,15 @@
-import { Box, Button, Container, Link, Typography } from "@mui/material";
-import styles from "./Intro.module.scss";
+import { Box, Button, Container, Typography } from "@mui/material";
+import styles from "./Intro.module.css";
 import { overrideButtons } from "@/themes/MainTheme/MainTheme";
-import YouTubeIcon from "@mui/icons-material/YouTube";
+import FullScreenDialog from '@/components/UI/Modals/FullScreenDialog/FullScreenDialog';
+import { useModal } from "@/components/UI/Modals/useModal";
+import Sections from '@/components/UI/Modals/FullScreenDialog/instances/Sections/Sections';
 
 const Intro = () => {
+   const {isOpened, handleOpen, handleClose} = useModal();
+
+   console.log(1);
+
    return (
       <Box className={styles.intro}>
          <Container
@@ -18,11 +24,16 @@ const Intro = () => {
                   приобретайте товары для питомцев и общайтесь с
                   единомышленниками!
                </Typography>
-               <Button variant="contained" sx={overrideButtons.contained}>
+               <Button variant="contained" sx={overrideButtons.contained} onClick={handleOpen}>
                   Начать!
                </Button>
             </Box>
          </Container>
+
+         <FullScreenDialog isOpened={isOpened}>
+            <Sections handleClose={handleClose} />
+         </FullScreenDialog>
+
       </Box>
    );
 };

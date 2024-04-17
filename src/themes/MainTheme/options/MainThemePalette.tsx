@@ -12,7 +12,7 @@ const MainThemePalette: MainThemePalette = {
    primary: {
       main: "#2196f3",
       dark: "",
-      light: "",
+      light: "#64b5f6",
       contrastText: "#ffffff"
    },
    secondary: {

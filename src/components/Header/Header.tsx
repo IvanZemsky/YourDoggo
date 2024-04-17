@@ -1,5 +1,5 @@
 import { AppBar, Container, Toolbar, Box, Button, IconButton} from "@mui/material"
-import styles from './Header.module.scss'
+import styles from './Header.sx'
 import Logo from "../UI/Logo/Logo"
 import { Link as RouterLink } from 'react-router-dom';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -13,7 +13,7 @@ const Header = () => {
         <Toolbar disableGutters>
           <Logo />
 
-          <Box ml="auto" className={styles.links}>
+          <Box sx={styles.links}>
             <PageLink to="/articles">
               Статьи
             </PageLink>
@@ -22,6 +22,9 @@ const Header = () => {
             </PageLink>
             <PageLink to="/forum">
               Форум
+            </PageLink>
+            <PageLink to="/gallery">
+              Галерея
             </PageLink>
             <IconButton>
               <NotificationsNoneIcon sx={{fill: "#fff"}}/>

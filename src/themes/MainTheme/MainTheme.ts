@@ -7,6 +7,11 @@ export const MainTheme = createTheme({
    typography: {
       fontFamily: "Montserrat",
       h1: {
+         fontSize: 30,
+         fontWeight: 700,
+      },
+      h2: {
+         fontSize: 24,
          fontWeight: 700,
       },
       body1: {

@@ -1,6 +1,6 @@
 .intro {
    height: calc(100vh - 64px);
-   background: url(/src/assets/img/samoyed-1.jpg) left top / cover;
+   background: url('/src/assets/img/samoyed-1.jpg') left top / cover;
    color: #fff;
 }
 

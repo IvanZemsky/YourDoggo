@@ -1,40 +1,34 @@
-import { Box, Button, Container, Typography } from "@mui/material";
-import styles from "./Intro.module.css";
-import { overrideButtons } from "@/themes/MainTheme/MainTheme";
-import FullScreenDialog from '@/components/UI/Modals/FullScreenDialog/FullScreenDialog';
-import { useModal } from "@/components/UI/Modals/useModal";
-import Sections from '@/components/UI/Modals/FullScreenDialog/instances/Sections/Sections';
+import Button from "@/components/UI/Button/Button";
+import styles from "./Intro.module.scss";
+import Wrapper from "@/components/UI/Wrapper/Wrapper";
+
+interface btnProps {
+   text: string;
+}
 
 const Intro = () => {
-   const {isOpened, handleOpen, handleClose} = useModal();
-
    console.log(1);
 
    return (
-      <Box className={styles.intro}>
-         <Container
-            sx={{ height: "100%", display: "flex", alignItems: "center" }}
-         >
-            <Box sx={{ maxWidth: "760px", color: "white" }}>
-               <Typography variant="h1" fontSize={41} mb={2}>
-                  YourDoggo - всё для вашего любимца здесь!
-               </Typography>
-               <Typography variant="body1" mb={2}>
-                  Самое большое сообщество любителей собак. Читайте статьи,
-                  приобретайте товары для питомцев и общайтесь с
-                  единомышленниками!
-               </Typography>
-               <Button variant="contained" sx={overrideButtons.contained} onClick={handleOpen}>
-                  Начать!
-               </Button>
-            </Box>
-         </Container>
-
-         <FullScreenDialog isOpened={isOpened}>
-            <Sections handleClose={handleClose} />
-         </FullScreenDialog>
-
-      </Box>
+      <section className={styles.intro}>
+         <Wrapper>
+            <div className={styles.content}>
+               <div className={styles.info}>
+                  <h1 className={styles.title}>
+                     YourDoggo - всё для вашего любимца здесь!
+                  </h1>
+                  <p>
+                     Самое большое сообщество любителей собак. Читайте статьи,
+                     приобретайте товары для питомцев и общайтесь с
+                     единомышленниками!
+                  </p>
+                  <Button variant="filled" className={styles.startBtn}>
+                     Начать
+                  </Button>
+               </div>
+            </div>
+         </Wrapper>
+      </section>
    );
 };
 

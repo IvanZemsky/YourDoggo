@@ -1,0 +1,28 @@
+.intro {
+   height: calc(100vh - 64px);
+   background: url("/src/assets/img/samoyed-1.jpg") left top / cover;
+   color: #fff;
+}
+
+.content {
+   display: flex;
+   align-items: center;
+   height: 100%;
+}
+
+.info {
+   display: flex;
+   flex-direction: column;
+   gap: 18px;
+   max-width: 760px;
+}
+
+.title {
+   font-size: 41px;
+}
+
+.startBtn{
+   align-self: baseline;
+   padding: 12px 24px;
+   border-radius: 22px;
+}

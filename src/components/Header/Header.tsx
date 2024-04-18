@@ -1,41 +1,29 @@
-import { AppBar, Container, Toolbar, Box, Button, IconButton} from "@mui/material"
-import styles from './Header.sx'
-import Logo from "../UI/Logo/Logo"
-import { Link as RouterLink } from 'react-router-dom';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import PageLink from "../UI/PageLink/PageLink";
-
+import styles from "./Header.module.scss";
+import Logo from "../UI/Logo/Logo";
+import { Link } from "react-router-dom";
+import Wrapper from "../UI/Wrapper/Wrapper";
+import Button from "../UI/Button/Button";
 
 const Header = () => {
-  return (
-    <AppBar position="static">
-      <Container>
-        <Toolbar disableGutters>
-          <Logo />
+   return (
+      <header className={styles.header}>
+         <Wrapper>
+            <div className={styles.content}>
+               <Logo />
 
-          <Box sx={styles.links}>
-            <PageLink to="/articles">
-              Статьи
-            </PageLink>
-            <PageLink to="/shop">
-              Магазин
-            </PageLink>
-            <PageLink to="/forum">
-              Форум
-            </PageLink>
-            <PageLink to="/gallery">
-              Галерея
-            </PageLink>
-            <IconButton>
-              <NotificationsNoneIcon sx={{fill: "#fff"}}/>
-            </IconButton>
-            <Button variant="contained" color="secondary" sx={{ border: '2px solid #fff'}}>Войти</Button>
-          </Box>
+               <nav className={styles.links}>
+                  <Link to="/articles">Статьи</Link>
+                  <Link to="/shop">Магазин</Link>
+                  <Link to="/forum">Форум</Link>
+                  <Link to="/gallery">Галерея</Link>
+                  <Button variant="outlined" color="secondary">
+                     Войти
+                  </Button>
+               </nav>
+            </div>
+         </Wrapper>
+      </header>
+   );
+};
 
-        </Toolbar>
-      </Container>
-    </AppBar>
-  )
-}
-
-export default Header
+export default Header;

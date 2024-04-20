@@ -1,12 +1,20 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./Intro.module.scss";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/store/slices/modalSlice";
+import Modal from "@/components/UI/Modal/Modal";
+import StartModal from "./StartModal/StartModal";
 
 interface btnProps {
    text: string;
 }
 
 const Intro = () => {
+   const dispatch = useDispatch();
+
+   const handleOpenBtnClick = () => dispatch(openModal("startModal"))
+
    console.log(1);
 
    return (
@@ -22,9 +30,10 @@ const Intro = () => {
                      приобретайте товары для питомцев и общайтесь с
                      единомышленниками!
                   </p>
-                  <Button variant="filled" className={styles.startBtn}>
+                  <Button variant="filled" className={styles.startBtn} onClick={handleOpenBtnClick}>
                      Начать
                   </Button>
+                  <StartModal />
                </div>
             </div>
          </Wrapper>

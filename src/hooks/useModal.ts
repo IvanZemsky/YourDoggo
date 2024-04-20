@@ -1,25 +1,23 @@
-import { useState } from "react";
+import { openModal } from "@/store/slices/modalSlice"
+import { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "./redux"
 
-interface IUseModal {
-   isOpened: boolean
-   handleOpen: () => void
-   handleClose: () => void
-}
+export const useModal = (modalContent: string): boolean => {
+   const dispatch = useAppDispatch()
 
-export const useModal: () => IUseModal = () => {
-   const [isOpened, setIsOpened] = useState(false);
+   const opened = useAppSelector((state) => state.modalSlice.opened)
+   const isOpened = opened === modalContent
 
-   const handleOpen = () => {
-      setIsOpened(true);
-   }
+   useEffect(() => {
+      if (opened === modalContent) {
+         dispatch(openModal(modalContent))
+      }
+      if (opened) {
+         document.body.style.overflow = 'hidden'
+      } else {
+         document.body.style.overflow = 'unset'
+      }
+   }, [opened])
 
-   const handleClose = () => {
-      setIsOpened(false);
-   }
-
-   return {
-      isOpened,
-      handleOpen,
-      handleClose
-   }
+   return isOpened;
 }

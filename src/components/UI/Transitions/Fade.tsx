@@ -25,10 +25,13 @@ export function Fade({ in: inProp, children }: PropsWithChildren<FadeProps>) {
   return (
     <Transition nodeRef={nodeRef} in={inProp} timeout={duration}>
       {state => (
-         <div ref={nodeRef} style={{
-            ...defaultStyle,
-            ...transitionStyles[state]
-          }}>
+         <div
+          ref={nodeRef}
+          style={{
+              ...defaultStyle,
+              ...transitionStyles[state],
+            }}
+          >
            {children}
         </div>
       )}

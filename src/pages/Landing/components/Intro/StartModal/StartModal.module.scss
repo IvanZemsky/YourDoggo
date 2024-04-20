@@ -1,0 +1,26 @@
+.startModal{
+   background-color: var(--primaryLight);
+}
+
+.content{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   max-width: 1300px;
+   margin: 0 auto;
+   width: 100%;
+   height: 100%;
+   gap: 30px;
+}
+
+.cards{
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 35px;
+}
+
+.backBtn{
+   align-self: flex-start;
+   background-color: inherit;
+}

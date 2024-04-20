@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react'
+import { ButtonHTMLAttributes, PropsWithChildren, ReactNode, useEffect, useRef } from 'react'
 import styles from './Button.module.scss'
 import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect"
 
@@ -9,7 +9,9 @@ interface ButtonProps {
    className?: string | null
 }
 
-const Button = ({variant, color, icon = null, className = "", children}: PropsWithChildren<ButtonProps>) => {
+type ButtonFullProps = PropsWithChildren<ButtonProps> & ButtonHTMLAttributes<HTMLButtonElement>
+
+const Button = ({variant, color, icon = null, className = "", children, ...props}: ButtonFullProps) => {
    const buttonRef = useRef(null);
    
    let variantStyles;
@@ -42,6 +44,7 @@ const Button = ({variant, color, icon = null, className = "", children}: PropsWi
     <button 
       className={[styles.button, colorStyles, variantStyles, className].join(" ")} 
       ref={buttonRef}
+      {...props}
    >
       {icon}
       {children}

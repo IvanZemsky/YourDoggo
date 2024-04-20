@@ -1,7 +1,8 @@
 import { configureStore, combineSlices } from "@reduxjs/toolkit";
 import articleSlice from "./slices/articleSlice";
+import modalSlice from "./slices/modalSlice";
 
-const rootSlice = combineSlices(articleSlice);
+const rootSlice = combineSlices(articleSlice, modalSlice);
 
 export const store = configureStore({
    reducer: rootSlice

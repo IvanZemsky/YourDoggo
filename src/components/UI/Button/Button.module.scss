@@ -7,7 +7,6 @@
    font-size: inherit;
    font-family: inherit;
    border-radius: 5px;
-   border-width: 2px;
    border-style: solid;
    outline: none;
    background: none;
@@ -16,6 +15,7 @@
       rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
       rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
    transition: 0.15s box-shadow linear;
+   user-select: none;
 }
 
 button:hover{
@@ -38,6 +38,7 @@ button:hover{
 }
 
 .filled{
+   border: none;
    background-color: var(--primaryMain);
    color: var(--primaryText);
 }

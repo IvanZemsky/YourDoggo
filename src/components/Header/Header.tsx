@@ -1,8 +1,8 @@
 import styles from "./Header.module.scss";
 import Logo from "../UI/Logo/Logo";
-import { Link } from "react-router-dom";
 import Wrapper from "../UI/Wrapper/Wrapper";
 import Button from "../UI/Button/Button";
+import PageNavLink from "../UI/PageNavLink/PageNavLink";
 
 const Header = () => {
    return (
@@ -12,10 +12,10 @@ const Header = () => {
                <Logo />
 
                <nav className={styles.links}>
-                  <Link to="/articles">Статьи</Link>
-                  <Link to="/shop">Магазин</Link>
-                  <Link to="/forum">Форум</Link>
-                  <Link to="/gallery">Галерея</Link>
+                  <PageNavLink to="/articles">Статьи</PageNavLink>
+                  <PageNavLink to="/shop">Магазин</PageNavLink>
+                  <PageNavLink to="/forum">Форум</PageNavLink>
+                  <PageNavLink to="/gallery">Галерея</PageNavLink>
                   <Button variant="outlined" color="secondary">
                      Войти
                   </Button>

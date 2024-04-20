@@ -1,0 +1,43 @@
+.effectContainer{
+   position: relative;
+   overflow: hidden;
+
+   --effect-name: ripple;
+   --effect-duration: 1000ms;
+   --effect-top: 0px;
+   --effect-left: 0px;
+   --effect-width: 100px;
+   --effect-height: 100px;
+   --effect-color: #fff;
+}
+
+.effectContainer::before{
+   content: '';
+   position: absolute;
+   opacity: 0.3;
+
+   top: var(--effect-top);
+   left: var(--effect-left);
+   width: var(--effect-width);
+   height: var(--effect-height);
+   background-color: var(--effect-color);
+
+   border-radius: 50%;
+   transform: scale(0);
+   z-index: 5;
+}
+
+.effectContainer.active::before{
+   border-radius: 50%;
+   animation: ripple var(--effect-duration) linear forwards;
+}
+
+@keyframes ripple {
+   0% {
+      transform: scale(0);
+   }
+   100% {
+      transform: scale(6);
+      opacity: 0;
+   }
+}

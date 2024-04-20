@@ -1,14 +1,15 @@
-import { PropsWithChildren, useRef } from 'react'
+import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react'
 import styles from './Button.module.scss'
+import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect"
 
 interface ButtonProps {
    variant: 'outlined' | 'filled' 
    color?: string
-   icon?: any
+   icon?: ReactNode | null
    className?: string | null
 }
 
-const Button = ({variant, color, icon = null, className, children}: PropsWithChildren<ButtonProps>) => {
+const Button = ({variant, color, icon = null, className = "", children}: PropsWithChildren<ButtonProps>) => {
    const buttonRef = useRef(null);
    
    let variantStyles;
@@ -35,15 +36,15 @@ const Button = ({variant, color, icon = null, className, children}: PropsWithChi
          colorStyles = styles.primaryColor
    }
 
+  useRippleEffect(buttonRef)
+
   return (
     <button 
       className={[styles.button, colorStyles, variantStyles, className].join(" ")} 
       ref={buttonRef}
    >
       {icon}
-      <span>
-         {children}
-      </span>
+      {children}
     </button>
   )
 }

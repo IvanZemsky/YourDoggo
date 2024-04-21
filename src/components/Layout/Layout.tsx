@@ -1,9 +1,12 @@
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
-import { Outlet } from "react-router"
+import { Outlet, useLocation } from "react-router"
 import { Suspense } from "react"
 
 const Layout = () => {
+  const location = useLocation();
+  const hideFooter = location.pathname.startsWith('/shop');
+  
   return (
     <>
       <Header/>
@@ -12,7 +15,7 @@ const Layout = () => {
             <Outlet/>
           </main>
         </Suspense>
-      <Footer/>
+      {!hideFooter && <Footer/> }
     </>
   )
 }

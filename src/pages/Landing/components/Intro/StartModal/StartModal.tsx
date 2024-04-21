@@ -25,7 +25,7 @@ const cards = [
    {
       name: "Галерея",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis velit unde ipsam hic quas id molestias ad vel quam minima",
-      link: "/gallerry",
+      link: "/gallery",
    },
 ];
 

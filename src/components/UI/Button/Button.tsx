@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, PropsWithChildren, ReactNode, useEffect, useRef } from 'react'
+import { ButtonHTMLAttributes, PropsWithChildren, ReactNode, useRef } from 'react'
 import styles from './Button.module.scss'
 import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect"
 

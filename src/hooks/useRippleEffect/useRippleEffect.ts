@@ -21,6 +21,11 @@ const onContainerClick = (elementRef: HTMLElement) => (event: MouseEvent): void 
    elementRef.classList.add(styles.active);
 };
 
+// usage:
+// declase ref
+// pass ref to container for ripple effect
+// call useRippleEffect hook
+
 export const useRippleEffect = (containerRef: RefObject<HTMLElement>) => {
    useEffect(() => {
       if (containerRef.current === null) return;

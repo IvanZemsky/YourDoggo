@@ -1,5 +1,5 @@
 import Button from "../Button/Button";
-import PawIcon from "../icons/Paw";
+import PawIcon from "../icons/PawIcon";
 import styles from './Logo.module.scss'
 import { Link } from "react-router-dom";
 

@@ -1,0 +1,21 @@
+.header{
+   position: sticky;
+   top: 0px;
+   left: 0px;
+   padding: 7px 0;
+   background-color: var(--primaryLight);
+   z-index: 400;
+}
+
+.content{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 30px;
+}
+
+.controls{
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}

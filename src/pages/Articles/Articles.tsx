@@ -1,9 +1,14 @@
-import React from 'react'
+import PageHeader from "@/components/PageHeader/PageHeader"
+import styles from './Articles.module.scss'
+import Wrapper from "@/components/UI/Wrapper/Wrapper"
 
 const Articles = () => {
   return (
-    <div>
-      
+    <div className={styles.articles}>
+      <PageHeader></PageHeader>
+      <Wrapper>
+        
+      </Wrapper>
     </div>
   )
 }

@@ -1,0 +1,33 @@
+.searchWrap {
+   display: flex;
+   align-items: center;
+}
+
+.searchInput {
+   height: 38px;
+   padding: 4px 15px;
+   color: var(--thirdText);
+   border-radius: 20px 0 0 20px;
+   font-size: 16px;
+   background-color: var(--thirdMain);
+   box-shadow: var(--shadow);
+   transition: box-shadow 0.15s linear;
+
+   &::placeholder{
+      color: var(--thirdText)
+   }
+}
+
+.searchBtn {
+   padding: 7px;
+   border-radius: 0 20px 20px 0;
+
+   svg {
+      width: 21px;
+      fill: var(--thirdMain);
+   }
+
+   &:hover {
+      box-shadow: var(--shadow)
+   }
+}

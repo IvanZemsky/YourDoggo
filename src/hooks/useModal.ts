@@ -13,10 +13,13 @@ export const useModal = (modalContent: string): boolean => {
          dispatch(openModal(modalContent))
       }
       if (opened) {
-         document.body.style.overflow = 'hidden'
-      } else {
-         document.body.style.overflow = 'unset'
+         document.body.style.overflowY = 'hidden'
       }
+         
+      return () => {
+         document.body.style.overflowY = 'scroll'
+      }
+      
    }, [opened])
 
    return isOpened;

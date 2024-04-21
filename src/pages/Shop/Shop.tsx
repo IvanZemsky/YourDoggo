@@ -1,11 +1,24 @@
-import React from 'react'
+import styles from "./Shop.module.scss";
+import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import ShopFilters from "./components/ShopFilters/ShopFilters";
+import ShopHeader from "./components/ShopHeader/Shopheader";
 
 const Shop = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+   return (
+      <div className="shop">
+         <ShopHeader />
 
-export default Shop
+          <Wrapper>
+            <div className={styles.content}>
+              <ShopFilters />
+              <section className={styles.products}>
+
+              </section>
+            </div>
+          </Wrapper>
+
+      </div>
+   );
+};
+
+export default Shop;

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ReactNode } from "react";
 
 interface ModalSlice {
    opened: string | null

@@ -6,6 +6,7 @@ import { LazyForum as Forum } from "@/pages/Forum/LazyForum";
 import { LazyShop as Shop } from "@/pages/Shop/LazyShop";
 import { LazyGallery as Gallery } from "@/pages/Gallery/LazyGallery";
 import { LazyLanding as Landing } from "@/pages/Landing/LazyLanding";
+import Cart from "@/pages/Cart/Cart";
 
 const App = () => {
    return (
@@ -13,10 +14,12 @@ const App = () => {
          <Routes>
             <Route path="/" element={<Layout />}>
                <Route index element={<Landing />} />
-               <Route path="/articles" element={<Articles />} />
-               <Route path="/shop" element={<Shop />} />
-               <Route path="/forum" element={<Forum />} />
-               <Route path="/gallery" element={<Gallery />} />
+               <Route path="articles" element={<Articles />} />
+               <Route path="shop" element={<Shop />}>
+                  <Route path="cart" element={<Cart />} />
+               </Route>
+               <Route path="forum" element={<Forum />} />
+               <Route path="gallery" element={<Gallery />} />
             </Route>
          </Routes>
       </div>

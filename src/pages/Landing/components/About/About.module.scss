@@ -12,6 +12,7 @@
 
 .desc {
    align-self: center;
+   font-size: 23px;
 
    p:first-of-type {
       margin-bottom: 20px;
@@ -21,6 +22,8 @@
 .paper {
    flex-shrink: 0;
    border-radius: 15px;
+   border: 2px solid var(--thirdMain);
+   box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.2);
    overflow: hidden;
 
    img {

@@ -1,0 +1,13 @@
+.cartBtn{
+   width: 38px;
+   height: 38px;
+   justify-content: center;
+   padding: 0px;
+   border-radius: 20px;
+   background-color: var(--primaryLight);
+
+   svg{
+      width: 19px;
+      fill: var(--thirdMain);
+   }
+}

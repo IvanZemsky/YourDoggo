@@ -2,15 +2,16 @@ import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import { Outlet, useLocation } from "react-router"
 import { Suspense } from "react"
+import Loading from "../Loading/Loading"
 
 const Layout = () => {
   const location = useLocation();
-  const hideFooter = location.pathname.startsWith('/shop');
+  const hideFooter = location.pathname.startsWith('/shop') || location.pathname.startsWith('/gallery');
   
   return (
     <>
       <Header/>
-        <Suspense>
+        <Suspense fallback={<Loading/>}>
           <main>
             <Outlet/>
           </main>

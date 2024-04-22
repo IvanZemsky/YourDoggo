@@ -1,26 +1,36 @@
 .searchWrap {
    display: flex;
    align-items: center;
+   max-width: 400px;
+   width: 100%;
+   box-shadow: var(--shadow);
+   border-radius: 20px;
+   overflow: hidden;
 }
 
 .searchInput {
+   flex-grow: 1;
    height: 38px;
    padding: 4px 15px;
    color: var(--thirdText);
    border-radius: 20px 0 0 20px;
    font-size: 16px;
    background-color: var(--thirdMain);
-   box-shadow: var(--shadow);
    transition: box-shadow 0.15s linear;
 
    &::placeholder{
       color: var(--thirdText)
+   }
+
+   &:focus::placeholder{
+      color: var(--thirdMain);
    }
 }
 
 .searchBtn {
    padding: 7px;
    border-radius: 0 20px 20px 0;
+   box-shadow: none;
 
    svg {
       width: 21px;

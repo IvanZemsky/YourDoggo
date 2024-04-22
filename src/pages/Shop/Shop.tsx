@@ -1,7 +1,7 @@
 import styles from "./Shop.module.scss";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import ShopFilters from "./components/ShopFilters/ShopFilters";
-import ShopHeader from "./components/ShopHeader/Shopheader";
+import ShopHeader from "./components/ShopHeader/ShopHeader";
 
 const Shop = () => {
    return (

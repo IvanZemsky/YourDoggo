@@ -1,0 +1,29 @@
+.auth{
+   height: 100%;
+}
+
+.content{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+}
+
+.form{
+   flex-grow: 1;
+   max-width: 500px;
+   padding: 45px;
+   border-radius: 40px;
+   background-color: var(--primaryLight);
+   box-shadow: var(--shadow);
+}
+
+.input{
+   width: 100%;
+   padding: 11px 15px;
+   margin-bottom: 20px;
+   border-radius: 18px;
+   font-size: 17px;
+   background-color: var(--thirdMain);
+   box-shadow: var(--shadow);
+}

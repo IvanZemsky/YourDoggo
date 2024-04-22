@@ -29,7 +29,7 @@
 
 .effectContainer.active::before{
    border-radius: 50%;
-   animation: ripple var(--effect-duration) linear forwards;
+   animation: ripple var(--effect-duration) linear;
 }
 
 @keyframes ripple {

@@ -12,8 +12,8 @@
 .form{
    flex-grow: 1;
    max-width: 500px;
-   padding: 45px;
-   border-radius: 40px;
+   padding: 20px;
+   border-radius: 15px;
    background-color: var(--primaryLight);
    box-shadow: var(--shadow);
 }
@@ -22,8 +22,19 @@
    width: 100%;
    padding: 11px 15px;
    margin-bottom: 20px;
-   border-radius: 18px;
+   border-radius: 11px;
    font-size: 17px;
    background-color: var(--thirdMain);
    box-shadow: var(--shadow);
+}
+
+.panel{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+
+.signupLink{
+   font-size: 17px;
+   color: var(--thirdMain)
 }

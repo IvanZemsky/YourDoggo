@@ -2,6 +2,7 @@
    position: relative;
    display: inline-flex;
    align-items: center;
+   flex-shrink: 0;
    gap: 5px;
    padding: 10px 18px;
    font-size: inherit;

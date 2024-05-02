@@ -18,14 +18,25 @@
    box-shadow: var(--shadow);
 }
 
+.inputWrap{
+   margin-bottom: 8px;
+}
+
 .input{
    width: 100%;
+   margin-bottom: 6px;
    padding: 11px 15px;
-   margin-bottom: 20px;
    border-radius: 11px;
    font-size: 17px;
    background-color: var(--thirdMain);
    box-shadow: var(--shadow);
+}
+
+.errorMessage{
+   display: block;
+   padding-left: 6px;
+   height: 14px;
+   font-size: 14px;
 }
 
 .panel{

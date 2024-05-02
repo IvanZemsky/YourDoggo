@@ -4,8 +4,13 @@ import Wrapper from "../UI/Wrapper/Wrapper";
 import Button from "../UI/Button/Button";
 import PageNavLink from "../UI/PageNavLink/PageNavLink";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "@/hooks/redux";
+import SigninLink from "./components/SigninLink/SigninLink";
+import ProfileLink from "./components/ProfileLink/ProfileLink";
 
 const Header = () => {
+   const userLogin = useAppSelector(state => state.auth.userLogin)
+
    return (
       <header className={styles.header}>
          <Wrapper>
@@ -18,11 +23,7 @@ const Header = () => {
                   <PageNavLink to="/forum">Форум</PageNavLink>
                   <PageNavLink to="/gallery">Галерея</PageNavLink>
 
-                  <Link to="/signin">
-                     <Button variant="outlined" color="secondary">
-                        Войти
-                     </Button>
-                  </Link>
+                  {userLogin ? <ProfileLink /> : <SigninLink/>}
                   
                </nav>
             </div>

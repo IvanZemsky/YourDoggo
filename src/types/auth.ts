@@ -7,3 +7,7 @@ export interface UserData {
    id: string;
    login: string;
 }
+
+export interface AuthErrorMessage {
+   errorMessage: string | null;
+}

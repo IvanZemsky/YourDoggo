@@ -1,14 +1,9 @@
 import { UserData, UserSigninData } from "@/types/auth";
 import { PayloadAction, createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
-interface ErrorMessage {
-   message: string;
-}
-
 export const fetchLoginUser = createAsyncThunk<UserData, UserSigninData, { rejectValue: string }>(
    "auth/fetchLoginUser", async (loginData, { rejectWithValue }) => {
    try {
-      console.log(JSON.stringify(loginData));
       const response = await fetch("http://localhost:5000/auth/login", {
          method: "POST",
          headers: {
@@ -25,6 +20,10 @@ export const fetchLoginUser = createAsyncThunk<UserData, UserSigninData, { rejec
 
       const userData = await response.json();
       console.log(userData);
+
+      if (userData.hasOwnProperty('errorMessage')) {
+         return rejectWithValue(userData.errorMessage) 
+      }
 
       return userData as UserData;
    } catch (error) {
@@ -46,7 +45,7 @@ interface AuthSlice {
 const initialState = (): AuthSlice => {
    const userLoginString = localStorage.getItem("userLogin");
    const userLogin = userLoginString ? JSON.parse(userLoginString) : null;
-   
+
    return {
       userId: null,
       userLogin: userLogin,
@@ -73,6 +72,7 @@ const authSlice = createSlice({
       builder.addMatcher(isError, (state, action: PayloadAction<string>) => {
          state.status = "rejected";
          state.error = action.payload;
+         console.log('error', state.error)
       });
    },
 });

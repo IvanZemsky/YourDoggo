@@ -5,17 +5,15 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { Link } from "react-router-dom";
 import { fetchLoginUser } from "@/store/slices/authSlice";
+import { useAuth } from "@/hooks/useAuth";
 
 const Signin = () => {
    const [login, setLogin] = useState<string>("");
    const [password, setPassword] = useState<string>("");
 
    const userLogin = useAppSelector(state => state.auth.userLogin)
-   const dispatch = useAppDispatch()
 
-  const handleLoginClick = () => {
-   dispatch(fetchLoginUser({login, password}))
-  };
+   const [handleLoginClick] = useAuth({login, password})
 
    return (
       <div className={styles.auth}>

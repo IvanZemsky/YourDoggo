@@ -1,74 +1,64 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { UserData, UserSigninData } from "@/types/auth";
+import { PayloadAction, createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
-interface A {
-   login: string
-   password: string
+interface ErrorMessage {
+   message: string;
 }
 
-interface userData {
-   id: string;
-   login: string;
-}
+export const fetchLoginUser = createAsyncThunk<UserData, UserSigninData, { rejectValue: string }>(
+   "auth/fetchLoginUser", async (loginData, { rejectWithValue }) => {
+   try {
+      console.log(JSON.stringify(loginData));
+      const response = await fetch("http://localhost:5000/auth/login", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(loginData),
+      });
 
-export const fetchLoginUser = createAsyncThunk(
-   "auth/fetchLoginUser",
-   async (loginData: A, { rejectWithValue }) => {
-      try {
-         console.log(JSON.stringify(loginData),)
-         const response = await fetch("http://localhost:5000/auth/login", {
-            method: "POST",
-            headers: {
-               "Content-Type": "application/json"
-           },
-            body: JSON.stringify(loginData),
-         });
-         
-         if (!response.ok) {
-            console.log(response)
-            throw new Error("Error");
-         }
-
-         console.log(loginData)
-
-         const userData = await response.json();
-         console.log(userData)
-         return userData;
-      } catch (error) {
-         return rejectWithValue(error.message);
+      if (!response.ok) {
+         throw new Error("Error");
       }
+
+      console.log(loginData);
+
+      const userData = await response.json();
+      console.log(userData);
+
+      return userData as UserData;
+   } catch (error) {
+      return rejectWithValue(error.message);
    }
-);
+});
+
+function isError(action: PayloadAction) {
+   return action.type.endsWith('rejected')
+}
 
 interface AuthSlice {
-   isAuthorized: boolean;
    userId: string | null;
    userLogin: string | null;
    status: string | null;
    error: string | null;
 }
 
-const initialState: AuthSlice = {
-   isAuthorized: false,
-   userId: null,
-   userLogin: null,
-   status: null,
-   error: null,
-};
+const initialState = (): AuthSlice => {
+   const userLoginString = localStorage.getItem("userLogin");
+   const userLogin = userLoginString ? JSON.parse(userLoginString) : null;
+   
+   return {
+      userId: null,
+      userLogin: userLogin,
+      status: null,
+      error: null,
+   }
+}
 
 const authSlice = createSlice({
    name: "auth",
    initialState,
    reducers: {
-      signin(state, action) {
-         state.isAuthorized = true;
-         state.userId = action.payload.userId;
-      },
-
-      signout(state) {
-         state.isAuthorized = false;
-      },
-
-      register(state, action) {},
    },
    extraReducers: (builder) => {
       builder.addCase(fetchLoginUser.pending, (state, action) => {
@@ -80,12 +70,12 @@ const authSlice = createSlice({
          state.userId = action.payload.id;
          state.userLogin = action.payload.login;
       });
-      builder.addCase(fetchLoginUser.rejected, (state, action) => {
-         state.status = "loading";
-         state.error = null;
+      builder.addMatcher(isError, (state, action: PayloadAction<string>) => {
+         state.status = "rejected";
+         state.error = action.payload;
       });
    },
 });
 
 export default authSlice;
-export const { signout } = authSlice.actions;
+export const {} = authSlice.actions;

@@ -22,6 +22,7 @@ interface FadeProps {
 
 export function Fade({ in: inProp, children }: PropsWithChildren<FadeProps>) {
   const nodeRef = useRef(null);
+  
   return (
     <Transition nodeRef={nodeRef} in={inProp} timeout={duration}>
       {state => (

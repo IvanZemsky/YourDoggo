@@ -15,10 +15,10 @@ export const useAuth = (userSigninData: UserSigninData): [() => void, string | n
 
    useEffect(() => {
       if (!userLogin) {
-         localStorage.setItem("userLogin", JSON.stringify(null));
+         document.cookie = "userLogin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
          return;
       }
-      localStorage.setItem("userLogin", JSON.stringify(userLogin));
+      document.cookie = `userLogin=${JSON.stringify(userLogin)}; path=/`;
    }, [userLogin]);
 
    return [handleLoginClick, errorMessage];

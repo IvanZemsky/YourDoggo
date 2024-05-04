@@ -9,7 +9,7 @@ export const useModal = (modalContent: string): boolean => {
    const isOpened = opened === modalContent
 
    useEffect(() => {
-      if (opened === modalContent) {
+      if (isOpened) {
          dispatch(openModal(modalContent))
       }
       if (opened) {
@@ -20,7 +20,7 @@ export const useModal = (modalContent: string): boolean => {
          document.body.style.overflowY = 'scroll'
       }
       
-   }, [opened])
+   }, [isOpened])
 
    return isOpened;
 }

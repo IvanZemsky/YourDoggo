@@ -1,0 +1,31 @@
+.footer{
+   padding: 10px 0;
+   color: var(--primaryText);
+   background-color: var(--primaryMain);
+}
+
+.content{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 25px;
+}
+
+.links, .info{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 15px;
+}
+
+.links{
+   margin-left: auto;
+
+   a{
+      color: inherit;
+   }
+}
+
+.info{
+   text-align: right;
+}

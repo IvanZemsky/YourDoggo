@@ -43,8 +43,12 @@ interface AuthSlice {
 }
 
 const initialState = (): AuthSlice => {
-   const userLoginString = localStorage.getItem("userLogin");
-   const userLogin = userLoginString ? JSON.parse(userLoginString) : null;
+   const cookieValue = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('userLogin='))
+      ?.split('=')[1];
+
+   const userLogin = cookieValue ? JSON.parse(cookieValue) : null;
 
    return {
       userId: null,

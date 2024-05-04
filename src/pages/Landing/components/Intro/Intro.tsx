@@ -3,7 +3,6 @@ import styles from "./Intro.module.scss";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/slices/modalSlice";
-import Modal from "@/components/UI/Modal/Modal";
 import StartModal from "./StartModal/StartModal";
 
 interface btnProps {

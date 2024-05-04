@@ -8,7 +8,6 @@ const Logo = () => {
    return (
       <Link
          to="/"
-         color="primary"
       >
          <Button variant="filled" className={styles.logo} icon={<PawIcon/>}>
             YourDoggo

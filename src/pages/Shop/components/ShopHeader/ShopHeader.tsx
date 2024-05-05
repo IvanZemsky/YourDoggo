@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const ShopHeader = () => {
    return (
       <PageHeader>
-         <Link to="/shop/cart">
+         <Link to="cart">
             <Button
                variant="outlined"
                icon={<CartIcon />}

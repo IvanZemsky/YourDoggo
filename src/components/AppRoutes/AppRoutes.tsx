@@ -17,9 +17,8 @@ const AppRoutes = () => {
             <Route path="profile" element={<Profile/>}/>
             <Route index element={<Landing />} />
             <Route path="articles" element={<Articles />} />
-            <Route path="shop" element={<Shop />}>
-               <Route path="cart" element={<Cart />} />
-            </Route>
+            <Route path="shop" element={<Shop />}/>
+            <Route path="shop/cart" element={<Cart />} />
             <Route path="forum" element={<Forum />} />
             <Route path="gallery" element={<Gallery />} />
          </Route>

@@ -4,23 +4,26 @@ import { LazyShop as Shop } from "@/pages/Shop/LazyShop";
 import { LazyGallery as Gallery } from "@/pages/Gallery/LazyGallery";
 import { LazyLanding as Landing } from "@/pages/Landing/LazyLanding";
 import { LazyCart as Cart } from "@/pages/Cart/LazyCart";
-import { LazySignin as Signin} from '@/pages/Signin/LazySignin'
-import { LazyProfile as Profile} from '@/pages/Profile/LazyProfile'
+import { LazySignin as Signin } from "@/pages/Signin/LazySignin";
+import { LazyProfile as Profile } from "@/pages/Profile/LazyProfile";
 import { Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
+import Product from "@/pages/Product/Product";
+import { RoutesEnum } from "@/constants/routes";
 
 const AppRoutes = () => {
    return (
       <Routes>
          <Route path="/" element={<Layout />}>
-            <Route path="/signin" element={<Signin />}/>
-            <Route path="profile" element={<Profile/>}/>
+            <Route path={RoutesEnum.Signin} element={<Signin />} />
+            <Route path={RoutesEnum.Profile} element={<Profile />} />
             <Route index element={<Landing />} />
-            <Route path="articles" element={<Articles />} />
-            <Route path="shop" element={<Shop />}/>
+            <Route path={RoutesEnum.Articles} element={<Articles />} />
+            <Route path={RoutesEnum.Shop} element={<Shop />} />
             <Route path="shop/cart" element={<Cart />} />
-            <Route path="forum" element={<Forum />} />
-            <Route path="gallery" element={<Gallery />} />
+            <Route path="shop/:id" element={<Product />} />
+            <Route path={RoutesEnum.Forum} element={<Forum />} />
+            <Route path={RoutesEnum.Gallery} element={<Gallery />} />
          </Route>
       </Routes>
    );

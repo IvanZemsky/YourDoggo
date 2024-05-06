@@ -1,9 +1,8 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./SelectCategoryBtn.module.scss";
-import { Category } from "@/types/shop";
 
 interface SelectCategoryBtnProps {
-   category: Category;
+   category: string;
 }
 
 const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
@@ -15,7 +14,7 @@ const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
          className={styles.btn}
          onClick={handleSetCategoryClick}
       >
-         {category.value}
+         {category}
       </Button>
    );
 };

@@ -9,6 +9,11 @@ export const productAPI = createApi({
          query: () => ({
             url: '/'
          })
+      }),
+      fetchProductById: builder.query<IProduct[], string>({
+         query: (id) => ({
+            url: `/${id}`
+         })
       })
    })
 })

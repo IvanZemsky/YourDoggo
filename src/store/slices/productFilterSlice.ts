@@ -1,22 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 interface ProductFilterSlice {
    textQuery: string
-   filter: string
+   category: string
 }
 
 const initialState: ProductFilterSlice = {
    textQuery: "",
-   filter: "all"
+   category: "all"
 }
 
 const productFilterSlice = createSlice({
-   name: 'modalSlice',
+   name: 'productFilter',
    initialState,
    reducers: {
-      
+      setCategory(state, action) {
+         state.category = action.payload
+         console.log(current(state))
+      }
    }
 })
 
 export default productFilterSlice
-export const {} = productFilterSlice.actions
+export const {setCategory} = productFilterSlice.actions

@@ -3,8 +3,9 @@ import articleSlice from "./slices/articleSlice";
 import modalSlice from "./slices/modalSlice";
 import authSlice from "./slices/authSlice";
 import { productAPI } from "@/services/ProductService";
+import productFilterSlice from "./slices/productFilterSlice";
 
-const rootSlice = combineSlices(authSlice, articleSlice, modalSlice, productAPI);
+const rootSlice = combineSlices(authSlice, articleSlice, modalSlice, productFilterSlice, productAPI);
 
 export const store = configureStore({
    reducer: rootSlice,

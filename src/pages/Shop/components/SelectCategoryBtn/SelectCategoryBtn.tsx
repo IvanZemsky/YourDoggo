@@ -1,12 +1,22 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./SelectCategoryBtn.module.scss";
+import { useAppDispatch } from "@/hooks/redux";
+import { setCategory } from "@/store/slices/productFilterSlice";
+import { categories } from "@/data/categories";
+import { Category } from "@/types/shop";
 
 interface SelectCategoryBtnProps {
-   category: string;
+   category: Category
 }
 
 const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
-   const handleSetCategoryClick = () => {};
+   const dispatch = useAppDispatch()
+
+   
+
+   const handleSetCategoryClick = () => {
+      dispatch(setCategory(category.name))
+   };
 
    return (
       <Button
@@ -14,7 +24,7 @@ const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
          className={styles.btn}
          onClick={handleSetCategoryClick}
       >
-         {category}
+         {category.value}
       </Button>
    );
 };

@@ -1,21 +1,30 @@
-import { IProduct } from "@/types/API/IProduct"
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { IProduct } from "@/types/API/IProduct";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const productAPI = createApi({
-   reducerPath: 'productAPI',
-   baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:5000/products'}), // to constant!!!
+   reducerPath: "productAPI",
+   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/products" }), // to constant!!!
    endpoints: (builder) => ({
       fetchAllProducts: builder.query<IProduct[], void>({
          query: () => ({
-            url: '/'
-         })
+            url: "/",
+         }),
       }),
       fetchProductById: builder.query<IProduct[], string>({
          query: (id) => ({
-            url: `/${id}`
-         })
-      })
-   })
-})
+            url: `/${id}`,
+         }),
+      }),
+      fetchProductByCategory: builder.query<IProduct[], string>({
+         query: (category) => ({
+            url: `/categories/${category}`,
+         }),
+      }),
+   }),
+});
 
-export const { useFetchAllProductsQuery } = productAPI
+export const {
+   useFetchAllProductsQuery,
+   useFetchProductByIdQuery,
+   useFetchProductByCategoryQuery,
+} = productAPI;

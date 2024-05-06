@@ -6,8 +6,8 @@ const ShopFilters = () => {
    return (
       <div>
          <div className={styles.panel}>
-            {Object.values(categories).map((category) => (
-               <SelectCategoryBtn key={category} category={category} />
+            {categories.map((category) => (
+               <SelectCategoryBtn key={category.name} category={category} />
             ))}
          </div>
       </div>

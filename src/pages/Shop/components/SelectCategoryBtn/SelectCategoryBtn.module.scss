@@ -4,4 +4,10 @@
    color: var(--text);
    padding: 5px;
    border: 2px solid var(--primaryLight);
+   transition: all 0.15s linear;
+}
+
+.current{
+   background-color: var(--primaryLight);
+   color: var(--primaryText);
 }

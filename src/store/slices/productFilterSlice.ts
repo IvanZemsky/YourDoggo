@@ -16,7 +16,6 @@ const productFilterSlice = createSlice({
    reducers: {
       setCategory(state, action) {
          state.category = action.payload
-         console.log(current(state))
       }
    }
 })

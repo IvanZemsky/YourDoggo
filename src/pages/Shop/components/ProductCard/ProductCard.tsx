@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
-import { categories } from "@/data/categories";
 import { findProductCategory } from "@/helpers/findProductCategory";
 
 interface ProductCardProps {

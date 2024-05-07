@@ -1,8 +1,7 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./SelectCategoryBtn.module.scss";
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setCategory } from "@/store/slices/productFilterSlice";
-import { categories } from "@/data/categories";
 import { Category } from "@/types/shop";
 
 interface SelectCategoryBtnProps {
@@ -11,17 +10,20 @@ interface SelectCategoryBtnProps {
 
 const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
    const dispatch = useAppDispatch()
+   const currentCategory = useAppSelector(state => state.productFilter.category)
 
-   
+   const isCurrentCategory = currentCategory == category.name
+   const btnStyles = isCurrentCategory ? [styles.btn, styles.current].join(" ") : styles.btn
 
    const handleSetCategoryClick = () => {
+      window.scrollTo({top: 0})
       dispatch(setCategory(category.name))
    };
 
    return (
       <Button
          variant="outlined"
-         className={styles.btn}
+         className={btnStyles}
          onClick={handleSetCategoryClick}
       >
          {category.value}

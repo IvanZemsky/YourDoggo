@@ -1,16 +1,19 @@
-import { useFetchAllProductsQuery, useFetchProductByCategoryQuery } from "@/services/ProductService";
-import { IProduct } from "@/types/API/IProduct"
+import { useLazyFetchAllProductsQuery, useLazyFetchProductByCategoryQuery } from "@/services/ProductService";
 import { useAppSelector } from "./redux";
+import { useEffect } from "react";
 
 export const useProductFilter = () => {
    const category = useAppSelector(state => state.productFilter.category);
-   let data;
+   const [fetchAllProducts, allProducts] = useLazyFetchAllProductsQuery();
+   const [fetchProductsByCategory, productsByCategory] = useLazyFetchProductByCategoryQuery();
 
-   if (category === 'all') {
-      data = useFetchAllProductsQuery();
-   } else {
-      data = useFetchProductByCategoryQuery(category);
-   }
+   useEffect(() => {
+      if (category === 'all') {
+         fetchAllProducts();
+      } else {
+         fetchProductsByCategory(category);
+      }
+   }, [category]);
 
-   return data;
-}
+   return category === 'all' ? allProducts : productsByCategory;
+};

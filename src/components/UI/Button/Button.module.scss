@@ -37,16 +37,16 @@
    border-color: var(--primaryMain);
 }
 
-.secondaryColor{
-   background-color: var(--secondaryMain);
-   color: var(--secondaryText);
-   border-color: var(--secondaryMain);
-}
-
 .filled{
    border: none;
    background-color: var(--primaryMain);
    color: var(--primaryText);
+}
+
+.secondaryColor{
+   background-color: var(--secondaryMain);
+   color: var(--secondaryText);
+   border-color: var(--secondaryMain);
 }
 
 .outlined{

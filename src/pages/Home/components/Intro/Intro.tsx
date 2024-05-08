@@ -4,33 +4,32 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/slices/modalSlice";
 import StartModal from "./StartModal/StartModal";
-import { useEffect, useState } from "react";
-import { Fade } from "@/components/UI/Transitions/Fade";
+import { useRef } from "react";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const Intro = () => {
    const dispatch = useDispatch();
-   const [isAppeared, setIsAppeared] = useState<boolean>(false)
+   const headerRef = useRef<HTMLHeadingElement>(null)
+   const descRef = useRef<HTMLDivElement>(null)
 
-   useEffect(() => {
-      console.log(2)
-      setIsAppeared(true)
-   }, [])
+   console.log('121212')
 
    const handleOpenBtnClick = () => dispatch(openModal("startModal"))
 
-   console.log(1);
+   useIntersectionObserver(headerRef, styles.visible)
+   useIntersectionObserver(descRef, styles.visible, 300)
 
    return (
       <section className={styles.intro}>
          <Wrapper>
             <div className={styles.content}>
                <div className={styles.info}>
-                  <Fade in={isAppeared}>
-                  <h1 className={styles.title}>
+                  
+                  <h1 ref={headerRef} className={styles.title}>
                      YourDoggo - всё для вашего любимца здесь!
                   </h1>
-                  </Fade>
-                  <p>
+                  
+                  <p ref={descRef} className={styles.desc}>
                      Самое большое сообщество любителей собак. Читайте статьи,
                      приобретайте товары для питомцев и общайтесь с
                      единомышленниками!

@@ -21,6 +21,23 @@
    font-size: 41px;
 }
 
+.title, .desc{
+   opacity: 0;
+}
+
+.visible{
+   animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+   0% {
+      opacity: 0
+   }
+   100%{
+      opacity: 1;
+   }
+}
+
 .startBtn{
    align-self: baseline;
    padding: 12px 24px;

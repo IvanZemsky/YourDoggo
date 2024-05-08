@@ -1,16 +1,24 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Signin.module.scss";
 import Button from "@/components/UI/Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "@/hooks/redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { RoutesEnum } from "@/constants/routes";
 
 const Signin = () => {
    const [login, setLogin] = useState<string>("");
    const [password, setPassword] = useState<string>("");
 
+   const navigate = useNavigate()
    const userLogin = useAppSelector((state) => state.auth.userLogin);
+
+   useEffect(() => {
+      if (userLogin) {
+         navigate('/' + RoutesEnum.Profile)
+      }
+   }, [userLogin])
 
    const [handleLoginClick, errorMessage] = useAuth({ login, password });
 

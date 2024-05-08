@@ -2,7 +2,7 @@ import { Fragment } from "react/jsx-runtime"
 import About from "./components/About/About"
 import Intro from "./components/Intro/Intro"
 
-const Landing = () => {
+const Home = () => {
   return (
     <Fragment>
       <Intro />
@@ -11,4 +11,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Home

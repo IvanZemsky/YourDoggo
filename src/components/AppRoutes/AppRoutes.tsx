@@ -2,7 +2,7 @@ import { LazyArticles as Articles } from "@/pages/Articles/LazyArticles";
 import { LazyForum as Forum } from "@/pages/Forum/LazyForum";
 import { LazyShop as Shop } from "@/pages/Shop/LazyShop";
 import { LazyGallery as Gallery } from "@/pages/Gallery/LazyGallery";
-import { LazyLanding as Landing } from "@/pages/Landing/LazyLanding";
+import { LazyHome as Home } from "@/pages/Home/LazyHome";
 import { LazyCart as Cart } from "@/pages/Cart/LazyCart";
 import { LazySignin as Signin } from "@/pages/Signin/LazySignin";
 import { LazyProfile as Profile } from "@/pages/Profile/LazyProfile";
@@ -14,10 +14,10 @@ import { RoutesEnum } from "@/constants/routes";
 const AppRoutes = () => {
    return (
       <Routes>
-         <Route path="/" element={<Layout />}>
+         <Route path={RoutesEnum.Home} element={<Layout />}>
+            <Route index element={<Home />} />
             <Route path={RoutesEnum.Signin} element={<Signin />} />
             <Route path={RoutesEnum.Profile} element={<Profile />} />
-            <Route index element={<Landing />} />
             <Route path={RoutesEnum.Articles} element={<Articles />} />
             <Route path={RoutesEnum.Shop} element={<Shop />} />
             <Route path="shop/cart" element={<Cart />} />

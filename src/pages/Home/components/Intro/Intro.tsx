@@ -4,13 +4,17 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/slices/modalSlice";
 import StartModal from "./StartModal/StartModal";
-
-interface btnProps {
-   text: string;
-}
+import { useEffect, useState } from "react";
+import { Fade } from "@/components/UI/Transitions/Fade";
 
 const Intro = () => {
    const dispatch = useDispatch();
+   const [isAppeared, setIsAppeared] = useState<boolean>(false)
+
+   useEffect(() => {
+      console.log(2)
+      setIsAppeared(true)
+   }, [])
 
    const handleOpenBtnClick = () => dispatch(openModal("startModal"))
 
@@ -21,9 +25,11 @@ const Intro = () => {
          <Wrapper>
             <div className={styles.content}>
                <div className={styles.info}>
+                  <Fade in={isAppeared}>
                   <h1 className={styles.title}>
                      YourDoggo - всё для вашего любимца здесь!
                   </h1>
+                  </Fade>
                   <p>
                      Самое большое сообщество любителей собак. Читайте статьи,
                      приобретайте товары для питомцев и общайтесь с

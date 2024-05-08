@@ -1,13 +1,6 @@
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { PropsWithChildren, useRef } from 'react';
 
-const duration = 300;
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-}
-
 const transitionStyles: { [key in TransitionStatus]: React.CSSProperties } = {
    entering: { opacity: 1 },
    entered: { opacity: 1 },
@@ -17,11 +10,17 @@ const transitionStyles: { [key in TransitionStatus]: React.CSSProperties } = {
  };
 
 interface FadeProps {
-   in?: boolean
+   in?: boolean,
+   duration?: number
 }
 
-export function Fade({ in: inProp, children }: PropsWithChildren<FadeProps>) {
+export function Fade({ in: inProp, duration = 300 ,children }: PropsWithChildren<FadeProps>) {
   const nodeRef = useRef(null);
+
+  const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0,
+  }
   
   return (
     <Transition nodeRef={nodeRef} in={inProp} timeout={duration}>

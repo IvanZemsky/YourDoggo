@@ -3,5 +3,8 @@ export interface IProduct {
    category: string,
    name: string,
    description: string,
-   price: number
+   price: number,
+   details: {
+      [key: string]: string
+   }
 }

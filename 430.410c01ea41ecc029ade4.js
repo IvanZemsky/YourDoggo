@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpack_react_ts_preset_1=self.webpackChunkwebpack_react_ts_preset_1||[]).push([[430],{430:(e,s,t)=>{t.r(s),t.d(s,{default:()=>n});var c=t(848),a=t(393);const r={},n=function(){return(0,c.jsx)(a.A,{children:(0,c.jsx)("div",{className:r.content})})}}}]);

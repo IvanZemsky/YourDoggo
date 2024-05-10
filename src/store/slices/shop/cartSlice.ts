@@ -15,31 +15,33 @@ const cartSlice = createSlice({
    reducers: {
       addProduct(state, action) {
          const cartProduct = {...action.payload, amount: 1};
+         const id = action.payload._id;
+         const isInArray = state.products.some(product => product._id === id)
+         if (isInArray) {
+            return;
+         }
          state.products.push(cartProduct)
       },
       removeProduct(state, action) {
-         const productId = action.payload._id
+         const productId = action.payload
          const productIndex = state.products.findIndex(product => product._id === productId )
          state.products.splice(productIndex, 1)
       },
       increase(state, action) {
-         const productId = action.payload._id
-         const productIndex = state.products.findIndex(product => product._id === productId )
-         const product = state.products[productIndex]
-         if (product.amount) {
-            product.amount++;
-         }
+         const productId = action.payload
+         const productIndex = state.products.findIndex(product => product._id === productId)
+         state.products[productIndex].amount++;
       },
       decrease(state, action) {
-         const productId = action.payload._id
-         const productIndex = state.products.findIndex(product => product._id === productId )
+         const productId = action.payload
+         const productIndex = state.products.findIndex(product => product._id === productId)
          const product = state.products[productIndex]
-         if (product.amount) {
-            product.amount--;
+         if (product.amount !== 1) {
+            product.amount--
          }
       }
    }
 })
 
 export default cartSlice
-export const {addProduct, removeProduct} = cartSlice.actions
+export const {addProduct, removeProduct, increase, decrease} = cartSlice.actions

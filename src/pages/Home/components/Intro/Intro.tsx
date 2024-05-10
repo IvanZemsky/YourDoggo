@@ -15,8 +15,8 @@ const Intro = () => {
 
    const handleOpenBtnClick = () => dispatch(openModal("startModal"))
 
-   useIntersectionObserver(headerRef, styles.visible)
-   useIntersectionObserver(descRef, styles.visible, 300)
+   useIntersectionObserver(headerRef, styles.visible, 100)
+   useIntersectionObserver(descRef, styles.visible, 400)
 
    return (
       <section className={styles.intro}>

@@ -6,5 +6,5 @@ export interface Category {
 }
 
 export interface ICartProduct extends IProduct {
-   amount?: number
+   amount: number
 }

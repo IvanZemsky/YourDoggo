@@ -1,25 +1,20 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Cart.module.scss";
-import { useAppSelector } from "@/hooks/redux";
-import ProductCard from "../Shop/components/ProductCard/ProductCard";
+import { Link } from "react-router-dom";
+import { RoutesEnum } from "@/constants/routes";
+import CartProductList from './components/CartProductList/CartProductList';
+
+const Shop = RoutesEnum.Shop
 
 const Cart = () => {
-   const cartProducts = useAppSelector((state) => state.cart.products);
-   console.log(cartProducts)
-
    return (
       <Wrapper>
          <div className={styles.content}>
-            {cartProducts.map((product) => (
-               <ProductCard
-                  key={product._id}
-                  id={product._id}
-                  category={product.category}
-                  name={product.name}
-                  description={product.description}
-                  price={product.price}
-               />
-            ))}
+            <header className={styles.header}>
+              <h2 className={styles.title}>Корзина</h2>
+              <Link to={`/${Shop}`} className={styles.headerLink}>Назад в магазин</Link>
+            </header>
+            <CartProductList/>
          </div>
       </Wrapper>
    );

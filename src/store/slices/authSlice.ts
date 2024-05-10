@@ -1,10 +1,11 @@
+import { BASE_URL } from "@/constants/API";
 import { UserData, UserSigninData } from "@/types/auth";
 import { PayloadAction, createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 
 export const fetchLoginUser = createAsyncThunk<UserData, UserSigninData, { rejectValue: string }>(
    "auth/fetchLoginUser", async (loginData, { rejectWithValue }) => {
    try {
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
          method: "POST",
          headers: {
             "Content-Type": "application/json",

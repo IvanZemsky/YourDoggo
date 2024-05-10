@@ -4,10 +4,20 @@ import { useFetchProductByIdQuery } from "@/services/ProductService";
 import { useParams } from "react-router";
 import Loading from "@/components/Loading/Loading";
 import Button from '@/components/UI/Button/Button';
+import { Link } from "react-router-dom";
+import { useCallback } from "react";
+import { useAppDispatch } from "@/hooks/redux";
+import { addProduct } from "@/store/slices/shop/cartSlice";
 
 const Product = () => {
    const { id } = useParams();
    const {data: product, isLoading, isError} = useFetchProductByIdQuery(id as string);
+
+   const dispatch = useAppDispatch()
+
+   const handleAddBtn =() => {
+      dispatch(addProduct(product))
+   }
 
    return (
       <Wrapper>
@@ -24,11 +34,12 @@ const Product = () => {
             <div className="info">
                <h2 className={styles.name}>{product.name}</h2>
                <p className={styles.desc}>{product.description}</p>
+               <Link to="/shop/cart">Корзина</Link>
             </div>
             <div className={styles.order}>
                <p className={styles.price}>{product.price} ₽</p>
                <div className={styles.buttons}>
-                  <Button color="secondary" variant="filled">В корзину</Button>
+                  <Button color="secondary" variant="filled" onClick={handleAddBtn}>В корзину</Button>
                </div>
 
                {/* {"Избранное"} */}

@@ -9,10 +9,9 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const Intro = () => {
    const dispatch = useDispatch();
+   
    const headerRef = useRef<HTMLHeadingElement>(null)
    const descRef = useRef<HTMLDivElement>(null)
-
-   console.log('121212')
 
    const handleOpenBtnClick = () => dispatch(openModal("startModal"))
 

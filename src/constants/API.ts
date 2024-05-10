@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:5000"
+export const BASE_URL = "https://yourdoggo-backend.onrender.com"
 
 export enum APIEndpoints {
    PRODUCTS = '/products',

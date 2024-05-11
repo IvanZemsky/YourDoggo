@@ -3,7 +3,7 @@ import styles from './Button.module.scss'
 import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect"
 
 interface ButtonProps {
-   variant: 'outlined' | 'filled' 
+   variant: 'outlined' | 'filled' | 'none'
    color?: string
    icon?: ReactNode | null
    className?: string | null
@@ -24,6 +24,9 @@ const Button = ({variant, color, icon = null, className = "", children, ...props
          break
       case 'filled':
          variantStyles = styles.filled
+         break
+      case 'none':
+         variantStyles = styles.none
          break
    }
 

@@ -1,5 +1,5 @@
 .content{
-   padding: 25px 0;
+   padding: 15px 0 25px 0;
 }
 
 .header{
@@ -15,6 +15,6 @@
 
 .products{
    display: grid;
-   grid-template-columns: 1fr 275px;
+   grid-template-columns: 1fr 350px;
    gap: 20px;
 }

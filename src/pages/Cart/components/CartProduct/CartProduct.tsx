@@ -52,7 +52,7 @@ const CartProduct = memo((props: CartProductProps) => {
             </Button>
             <p className={styles.totalPrice}>{totalPrice} ₽</p>
             <Button
-               variant="filled"
+               variant="none"
                icon={<TrashIcon />}
                className={styles.removeBtn}
                onClick={handleRemove}

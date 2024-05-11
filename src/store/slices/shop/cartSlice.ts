@@ -16,8 +16,8 @@ const cartSlice = createSlice({
       addProduct(state, action) {
          const cartProduct = {...action.payload, amount: 1};
          const id = action.payload._id;
-         const isInArray = state.products.some(product => product._id === id)
-         if (isInArray) {
+         const isInCart = state.products.some(product => product._id === id)
+         if (isInCart) {
             return;
          }
          state.products.push(cartProduct)

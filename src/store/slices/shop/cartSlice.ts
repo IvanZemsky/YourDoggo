@@ -22,16 +22,19 @@ const cartSlice = createSlice({
          }
          state.products.push(cartProduct)
       },
+      
       removeProduct(state, action) {
          const productId = action.payload
          const productIndex = state.products.findIndex(product => product._id === productId )
          state.products.splice(productIndex, 1)
       },
+
       increase(state, action) {
          const productId = action.payload
          const productIndex = state.products.findIndex(product => product._id === productId)
          state.products[productIndex].amount++;
       },
+
       decrease(state, action) {
          const productId = action.payload
          const productIndex = state.products.findIndex(product => product._id === productId)

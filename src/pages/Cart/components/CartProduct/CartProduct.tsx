@@ -1,8 +1,9 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./CartProduct.module.scss";
 import { useAppDispatch } from "@/hooks/redux";
-import { decrease, increase } from "@/store/slices/shop/cartSlice";
-import { memo } from "react";
+import { decrease, increase, removeProduct } from "@/store/slices/shop/cartSlice";
+import { memo, useCallback } from "react";
+import TrashIcon from "@/components/UI/icons/TrashIcon";
 
 interface CartProductProps {
    id: string;
@@ -12,18 +13,22 @@ interface CartProductProps {
 }
 
 const CartProduct = memo((props: CartProductProps) => {
-   const {id, name, price, amount} = props;
-   const dispatch = useAppDispatch()
+   const { id, name, price, amount } = props;
+   const dispatch = useAppDispatch();
 
-   const handleIncrease = () => {
-      dispatch(increase(id))
-   }
+   const handleIncrease = useCallback(() => {
+      dispatch(increase(id));
+   }, [])
 
-   const handleDecrease = () => {
-      dispatch(decrease(id))
-   }
+   const handleDecrease = useCallback(() => {
+      dispatch(decrease(id));
+   }, [])
 
-   const totalPrice = price * amount
+   const handleRemove = useCallback(() => {
+      dispatch(removeProduct(id))
+   }, [])
+
+   const totalPrice = price * amount;
 
    return (
       <div className={styles.card}>
@@ -34,20 +39,24 @@ const CartProduct = memo((props: CartProductProps) => {
             />
          </div>
          <div className={styles.info}>
-            <p className={styles.name}>
-               {name}
-            </p>
-            <p className={styles.price}>
-               {price} ₽
-            </p>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.price}>{price} ₽</p>
          </div>
          <div className={styles.controls}>
-            <Button variant="filled" onClick={handleDecrease}>-</Button>
+            <Button variant="filled" className={styles.amountBtn} onClick={handleDecrease}>
+               -
+            </Button>
             <p className={styles.amount}>{amount}</p>
-            <Button variant="filled" onClick={handleIncrease}>+</Button>
-            <p className={styles.totalPrice}>
-               {totalPrice} ₽
-            </p>
+            <Button variant="filled" className={styles.amountBtn} onClick={handleIncrease}>
+               +
+            </Button>
+            <p className={styles.totalPrice}>{totalPrice} ₽</p>
+            <Button
+               variant="filled"
+               icon={<TrashIcon />}
+               className={styles.removeBtn}
+               onClick={handleRemove}
+            />
          </div>
       </div>
    );

@@ -12,3 +12,9 @@
 .headerLink{
    color: var(--text);
 }
+
+.products{
+   display: grid;
+   grid-template-columns: 1fr 275px;
+   gap: 20px;
+}

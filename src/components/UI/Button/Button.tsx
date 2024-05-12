@@ -3,7 +3,7 @@ import styles from './Button.module.scss'
 import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect"
 
 interface ButtonProps {
-   variant: 'outlined' | 'filled' | 'none'
+   variant?: 'outlined' | 'filled' | 'none'
    color?: string
    icon?: ReactNode | null
    className?: string | null
@@ -11,7 +11,7 @@ interface ButtonProps {
 
 type ButtonFullProps = PropsWithChildren<ButtonProps> & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({variant, color, icon = null, className = "", children, ...props}: ButtonFullProps) => {
+const Button = ({variant = "filled", color = "primary", icon = null, className = "", children, ...props}: ButtonFullProps) => {
    const buttonRef = useRef(null);
    
    let variantStyles;
@@ -37,8 +37,6 @@ const Button = ({variant, color, icon = null, className = "", children, ...props
       case 'secondary':
          colorStyles = styles.secondaryColor
          break
-      default:
-         colorStyles = styles.primaryColor
    }
 
   useRippleEffect(buttonRef)

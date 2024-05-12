@@ -1,6 +1,23 @@
-export const BASE_URL = "https://yourdoggo-backend.onrender.com"
+export const BASE_URL = "https://yourdoggo-backend.onrender.com";
 
 export enum APIEndpoints {
-   PRODUCTS = '/products',
-   CATEGORIES = '/categories',
+   PRODUCTS = "/products",
+   CATEGORIES = "/categories",
 }
+
+export const parametersRu: {[key: string]: string} = {
+   flavor: "Вкус",
+   weight: "Вес",
+   life_stage: "Этап жизни",
+   breed_size: "Размер породы",
+   type: "Тип",
+   ingredients: "Ингредиенты",
+   material: "Материал",
+   size: "Размер",
+   color: "Цвет",
+   toy_type: "Тип",
+   recommended_breed: "Для пород(ы)",
+   special_feature: "Особенности",
+   features: "Особенности",
+   adjustable: "Регулируемый"
+};

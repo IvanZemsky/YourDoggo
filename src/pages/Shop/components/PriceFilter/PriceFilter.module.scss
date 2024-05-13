@@ -1,0 +1,26 @@
+.label{
+   margin-bottom: 5px;
+   font-size: 15px;
+}
+
+.inputWrap{
+   display: flex;
+   border: 2px solid var(--primaryLight);
+   border-radius: 5px;
+   box-shadow: var(--shadow);
+
+   input{
+      display: block;
+      width: 50%;
+      padding: 7px 10px;
+      font-size: 15px;
+
+      &:first-child{
+         border-right: 2px solid  var(--primaryLight);
+      }
+
+      &::placeholder{
+         color: var(--thirdText);
+      }
+   }
+}

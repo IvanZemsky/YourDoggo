@@ -2,10 +2,13 @@
    position: sticky;
    top: 45px;
    left: 0;
+   padding: 15px 0 15px 3px;
+   font-size: 16px;
+}
+
+.categories{
    display: flex;
    flex-direction: column;
    gap: 7px;
-   max-height: fit-content;
-   padding: 15px 0 15px 3px;
-   font-size: 16px;
+   margin-bottom: 12px;
 }

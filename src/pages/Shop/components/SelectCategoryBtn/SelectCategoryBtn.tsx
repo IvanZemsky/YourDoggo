@@ -13,11 +13,13 @@ const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
    const currentCategory = useAppSelector(state => state.productFilter.category)
 
    const isCurrentCategory = currentCategory == category.name
-   const btnStyles = isCurrentCategory ? [styles.btn, styles.current].join(" ") : styles.btn
+   const isNotCategory = category.name === 'all' && currentCategory === ''
+   const btnStyles = isCurrentCategory || isNotCategory ? [styles.btn, styles.current].join(" ") : styles.btn
 
    const handleSetCategoryClick = () => {
       window.scrollTo({top: 0})
-      dispatch(setCategory(category.name))
+      const categoryToSet = category.name === 'all' ? '' : category.name
+      dispatch(setCategory(categoryToSet))
    };
 
    return (

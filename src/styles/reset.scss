@@ -6,21 +6,26 @@
 
 body {
    font-size: 20px;
-   font-family: 'Montserrat';
+   font-family: "Montserrat";
    font-weight: 400;
    font-style: normal;
    overflow-y: scroll;
 }
 
-ul, ol, li{
+ul,
+ol,
+li {
    list-style: none;
 }
 
-a, a:visited, a:active{
+a,
+a:visited,
+a:active {
    text-decoration: none;
 }
 
-input, textarea{
+input,
+textarea {
    display: flex;
    outline: none;
    background: none;
@@ -29,9 +34,15 @@ input, textarea{
    font-family: inherit;
    font-size: inherit;
    color: inherit;
+
+   &::-webkit-outer-spin-button,
+   &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+   }
 }
 
-button{
+button {
    cursor: pointer;
 }
 
@@ -40,22 +51,24 @@ h1 {
    font-weight: 700;
 }
 
-h3, h4, h5, h6{
+h3,
+h4,
+h5,
+h6 {
    font-size: inherit;
-   font-weight: inherit
+   font-weight: inherit;
 }
 
-hr{
+hr {
    display: block;
-   border: none
+   border: none;
 }
 
-img{
+img {
    max-width: 100%;
    height: auto;
 }
 
-table{
+table {
    border-collapse: collapse;
 }
-

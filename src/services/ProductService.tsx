@@ -4,13 +4,20 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const {PRODUCTS, CATEGORIES} = APIEndpoints
 
+interface FetchFilter {
+   textQuery: string
+   category: string
+   minPrice: string
+   maxPrice: string
+}
+
 export const productAPI = createApi({
    reducerPath: "productAPI",
    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}${PRODUCTS}` }), // to constant!!!
    endpoints: (builder) => ({
-      fetchAllProducts: builder.query<IProduct[], void>({
-         query: () => ({
-            url: "/",
+      fetchAll: builder.query<IProduct[], FetchFilter>({
+         query: ({textQuery, category, minPrice, maxPrice}) => ({
+            url: `/?search=${textQuery}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
          }),
       }),
       fetchProductById: builder.query<IProduct, string>({
@@ -18,22 +25,15 @@ export const productAPI = createApi({
             url: `/${id}`,
          }),
       }),
-      fetchProductByCategory: builder.query<IProduct[], string>({
-         query: (category) => ({
-            url: `${CATEGORIES}/${category}`,
-         }),
-      }),
    }),
 });
 
 export const {
-   useFetchAllProductsQuery,
+   useFetchAllQuery,
    useFetchProductByIdQuery,
-   useFetchProductByCategoryQuery,
 } = productAPI;
 
 export const {
-   useLazyFetchAllProductsQuery,
+   useLazyFetchAllQuery,
    useLazyFetchProductByIdQuery,
-   useLazyFetchProductByCategoryQuery,
 } = productAPI;

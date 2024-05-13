@@ -14,17 +14,12 @@ const Product = () => {
    const { id } = useParams();
    const {data: product, isLoading, isError} = useFetchProductByIdQuery(id as string);
 
-   console.log(product)
-
    const dispatch = useAppDispatch();
 
    const parameters: string[][] = useMemo(
       () => product ? Object.entries(product.details).map(([key, value]) => [parametersRu[key] || key, value]) : [],
       [product]
    );
-
-   console.log(parameters)
-
 
    const cartProducts = useAppSelector((state) => state.cart.products);
    const isInCart = cartProducts.some((product) => product._id === id);

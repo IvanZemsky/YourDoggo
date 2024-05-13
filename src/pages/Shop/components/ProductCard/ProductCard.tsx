@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import { findProductCategory } from "@/helpers/findProductCategory";
+import { memo } from "react";
 
 interface ProductCardProps {
    id: string;
@@ -10,7 +11,7 @@ interface ProductCardProps {
    price: number;
 }
 
-const ProductCard = ({ id, name, category, description, price }: ProductCardProps) => {
+const ProductCard = memo(({ id, name, category, description, price }: ProductCardProps) => {
    const categoryValue = findProductCategory(category)
 
    return (
@@ -31,6 +32,6 @@ const ProductCard = ({ id, name, category, description, price }: ProductCardProp
          </div>
       </Link>
    );
-};
+});
 
 export default ProductCard;

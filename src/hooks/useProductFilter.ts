@@ -1,19 +1,23 @@
-import { useLazyFetchAllProductsQuery, useLazyFetchProductByCategoryQuery } from "@/services/ProductService";
+import { useLazyFetchAllQuery} from "@/services/ProductService";
 import { useAppSelector } from "./redux";
 import { useEffect } from "react";
 
 export const useProductFilter = () => {
    const category = useAppSelector(state => state.productFilter.category);
-   const [fetchAllProducts, allProducts] = useLazyFetchAllProductsQuery();
-   const [fetchProductsByCategory, productsByCategory] = useLazyFetchProductByCategoryQuery();
+   const textQuery = useAppSelector(state => state.productFilter.textQuery);
+   const minPrice = useAppSelector(state => state.productFilter.minPrice);
+   const maxPrice = useAppSelector(state => state.productFilter.maxPrice);
+
+   const [fetchAll, productsData] = useLazyFetchAllQuery()
+
+   const filter = () => {
+      fetchAll({textQuery, category, minPrice, maxPrice})
+   }
 
    useEffect(() => {
-      if (category === 'all') {
-         fetchAllProducts();
-      } else {
-         fetchProductsByCategory(category);
-      }
-   }, [category]);
+      filter()
+   }, [category])
 
-   return category === 'all' ? allProducts : productsByCategory;
+   return [filter, productsData] as const
+
 };

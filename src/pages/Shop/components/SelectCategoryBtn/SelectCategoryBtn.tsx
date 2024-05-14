@@ -1,7 +1,7 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./SelectCategoryBtn.module.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { setCategory } from "@/store/slices/shop/productFilterSlice";
+import { setCategory, setTextQuery } from "@/store/slices/shop/productFilterSlice";
 import { Category } from "@/types/shop";
 
 interface SelectCategoryBtnProps {
@@ -19,6 +19,7 @@ const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
    const handleSetCategoryClick = () => {
       window.scrollTo({top: 0})
       const categoryToSet = category.name === 'all' ? '' : category.name
+      dispatch(setTextQuery(""))
       dispatch(setCategory(categoryToSet))
    };
 

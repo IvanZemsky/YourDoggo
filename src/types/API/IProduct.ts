@@ -4,6 +4,7 @@ export interface IProduct {
    name: string,
    description: string,
    price: number,
+   img: string,
    details: {
       [key: string]: string
    }

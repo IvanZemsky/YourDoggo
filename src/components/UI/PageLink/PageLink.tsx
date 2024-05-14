@@ -1,32 +1,26 @@
-import {
-   ButtonHTMLAttributes,
-   PropsWithChildren,
-   ReactNode,
-   useRef,
-} from "react";
-import styles from "./Button.module.scss";
-import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect";
+import {AnchorHTMLAttributes, PropsWithChildren, ReactNode } from "react";
+import styles from "./PageLink.module.scss";
+import { Link } from "react-router-dom";
 
-interface ButtonProps {
+interface PageLinkProps {
+   to: string;
    variant?: "outlined" | "filled" | "none";
    color?: string;
    icon?: ReactNode | null;
    className?: string | null;
 }
 
-type ButtonFullProps = PropsWithChildren<ButtonProps> &
-   ButtonHTMLAttributes<HTMLButtonElement>;
+type PageLinkFullProps = PropsWithChildren<PageLinkProps> & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const Button = ({
+const PageLink = ({
    variant = "filled",
    color = "primary",
    icon = null,
    className = "",
    children,
+   to,
    ...props
-}: ButtonFullProps) => {
-   const buttonRef = useRef(null);
-
+}: PageLinkFullProps) => {
    let variantStyles;
    let colorStyles;
 
@@ -51,20 +45,16 @@ const Button = ({
          break;
    }
 
-   useRippleEffect(buttonRef);
-
    return (
-      <button
-         className={[styles.button, colorStyles, variantStyles, className].join(
-            " "
-         )}
-         ref={buttonRef}
+      <Link
+         to={to}
+         className={[styles.link, colorStyles, variantStyles, className].join(" ")}
          {...props}
       >
          {icon && <span className={styles.icon}>{icon}</span>}
          {children}
-      </button>
+      </Link>
    );
 };
 
-export default Button;
+export default PageLink;

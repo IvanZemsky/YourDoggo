@@ -18,7 +18,7 @@ const ProductList = ({data: products, isLoading, isError}: ProductListProps) => 
 
    return (
       <section className={styles.products}>
-         {products &&
+         {products?.length ? 
             products.map((product) => (
                <ProductCard
                   key={product._id}
@@ -27,8 +27,9 @@ const ProductList = ({data: products, isLoading, isError}: ProductListProps) => 
                   name={product.name}
                   description={product.description}
                   price={product.price}
+                  img={product.img}
                />
-            ))}
+            )) : (<p>Ничего не найдено</p>)}
       </section>
    );
 };

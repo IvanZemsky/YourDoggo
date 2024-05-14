@@ -14,10 +14,17 @@
    }
 
    td {
-      padding: 10px 3px;
+      vertical-align: top;
+      padding-top: 10px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--thirdDark);
 
+      &:first-child {
+         padding-right: 7px;
+      }
+
       &:last-child{
+         padding-left: 7px;
          text-align: right;
       }
    }

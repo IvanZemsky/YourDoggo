@@ -1,0 +1,95 @@
+.cardDiscount{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+
+.discount{
+   width: fit-content;
+   padding: 8px;
+   font-size: 27px;
+   font-weight: 700;
+   background-color: var(--secondaryMain);
+   color: var(--secondaryText);
+   border-radius: 17px;
+}
+
+.cardDiscountLabel{
+   font-weight: 500;
+   font-size: 16px;
+}
+
+.price{
+   padding-left: 5px;
+   font-size: 24px;
+   font-weight: 700;
+}
+
+.info{
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   padding: 0 25px 25px 25px;
+   border-radius: 20px;
+   box-shadow: 0 20px 12px -16px rgba(0,30,85,.1), 0 8px 24px 18px rgba(0,30,85,.05);
+   font-size: 18px;
+}
+
+.addBtn, .cartLink{
+   width: 280px;
+   justify-content: center;
+}
+
+.favouriteBtn{
+   justify-content: center;
+   width: 43px;
+   height: 43px;
+   padding: 0px;
+
+   svg:nth-of-type(1){
+      width: 30px;
+      height: auto;
+      stroke-width: 3px;
+      fill: none;
+
+      path{
+         stroke: var(--thirdMain);
+      }
+   }
+
+   &.inFavourites {
+      svg:nth-of-type(1){
+         fill: var(--secondaryMain);
+      }
+   }
+}
+
+.buttons{
+   display: flex;
+   gap: 10px;
+}
+
+.cartLink{
+   svg {
+      width: 22px;
+      margin-left: 10px;
+      fill: var(--primaryText);
+   }
+}
+
+.deliveryInfo{
+   padding: 25px;
+}
+
+.deliveryTitle{
+   margin-bottom: 10px;
+   font-weight: 600;
+}
+
+.setDataLink{
+   color: var(--thirdText);
+
+   &:hover{
+      text-decoration: underline;
+   }
+}

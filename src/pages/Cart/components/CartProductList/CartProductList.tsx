@@ -14,6 +14,7 @@ const CartProductList = () => {
                name={product.name}
                price={product.price}
                amount={product.amount}
+               img={product.img}
             />
          )) : 'Здесь пока ничего нет'}
       </div>

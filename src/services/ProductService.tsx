@@ -25,15 +25,22 @@ export const productAPI = createApi({
             url: `/${id}`,
          }),
       }),
+      fetchProductsByCategory: builder.query<IProduct[], string>({
+         query: (category) => ({
+            url: `${CATEGORIES}/${category}`,
+         }),
+      }),
    }),
 });
 
 export const {
    useFetchAllQuery,
    useFetchProductByIdQuery,
+   useFetchProductsByCategoryQuery,
 } = productAPI;
 
 export const {
    useLazyFetchAllQuery,
    useLazyFetchProductByIdQuery,
+   useLazyFetchProductsByCategoryQuery,
 } = productAPI;

@@ -4,6 +4,7 @@ import Button from "@/components/UI/Button/Button";
 
 const CartOrder = () => {
    const cartProducts = useAppSelector((state) => state.cart.products);
+   console.log(cartProducts)
 
    const totalPrice = cartProducts.reduce((sum, product) => {
       return sum + product.amount * product.price;

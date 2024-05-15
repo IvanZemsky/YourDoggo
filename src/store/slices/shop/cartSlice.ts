@@ -5,8 +5,12 @@ interface CartSlice {
    products: ICartProduct[]
 }
 
-const initialState: CartSlice = {
-   products: []
+const initialState = (): CartSlice => {
+   const products = JSON.parse(localStorage.getItem("cart") || "[]")
+   console.log(products)
+   return {
+      products
+   }
 }
 
 const cartSlice = createSlice({

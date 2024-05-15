@@ -1,5 +1,6 @@
 .auth{
    height: 100%;
+   background-color: var(--primaryLight);
 }
 
 .content{
@@ -14,7 +15,7 @@
    max-width: 500px;
    padding: 20px;
    border-radius: 15px;
-   background-color: var(--primaryLight);
+   background-color: var(--thirdMain);
    box-shadow: var(--shadow);
 }
 
@@ -29,6 +30,7 @@
    border-radius: 11px;
    font-size: 17px;
    background-color: var(--thirdMain);
+   border: 2px solid var(--primaryLight);
    box-shadow: var(--shadow);
 }
 
@@ -36,6 +38,7 @@
    display: block;
    padding-left: 6px;
    height: 14px;
+   color: var(--red);
    font-size: 14px;
 }
 

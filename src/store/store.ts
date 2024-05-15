@@ -7,13 +7,14 @@ import productFilterSlice from "./slices/shop/productFilterSlice";
 import cartSlice from "./slices/shop/cartSlice";
 import favouritesSlice from "./slices/shop/favouritesSlice";
 import { favouritesMiddleware } from "./middleware/favouritesMiddleware";
+import { cartMiddleware } from "./middleware/cartMiddleware";
 
 const rootSlice = combineSlices(authSlice, articleSlice, modalSlice, favouritesSlice, cartSlice, productFilterSlice, productAPI);
 
 export const store = configureStore({
    reducer: rootSlice,
    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(productAPI.middleware, favouritesMiddleware)
+      getDefaultMiddleware().concat(productAPI.middleware, favouritesMiddleware, cartMiddleware)
 })
 
 export type RootState = ReturnType<typeof rootSlice>

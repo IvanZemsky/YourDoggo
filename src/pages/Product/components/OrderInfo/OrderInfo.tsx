@@ -31,7 +31,8 @@ const AddToCartInfo = ({ product }: AddToCartInfoProps) => {
       dispatch(toggleFavourites(product._id));
    };
 
-   const cardDiscount = product.price * 0.89;
+   let cardDiscount = product.price * 0.89;
+   cardDiscount = Number.isInteger(cardDiscount) ? cardDiscount : +cardDiscount.toFixed(1)
 
    const isInFavourites = favourites.includes(product._id);
 

@@ -1,7 +1,17 @@
-.content{
+.content {
+   min-height: 100%;
+}
+
+.product {
    display: grid;
    grid-template-columns: 345px 1fr 1fr;
    gap: 25px;
-   height: 100%;
    padding: 25px 0;
+}
+
+.similarProducts {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   gap: 21px;
+   padding: 15px 0;
 }

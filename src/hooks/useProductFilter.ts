@@ -1,4 +1,4 @@
-import { useLazyFetchAllQuery} from "@/services/ProductService";
+import { useLazyFetchAllQuery} from "@/services/YourDoggoService";
 import { useAppSelector } from "./redux";
 import { useEffect } from "react";
 

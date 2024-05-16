@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./redux";
-import { fetchLoginUser } from "@/store/slices/authSlice";
-import { AuthErrorMessage, UserSigninData } from "@/types/auth";
+import { fetchLoginUser } from "@/services/fetchLoginUser";
+import { AuthErrorMessage, UserLoginData } from "@/types/auth";
+import { useLazyFetchUserLoginDataQuery } from "@/services/YourDoggoService";
 
-export const useAuth = (userSigninData: UserSigninData): [() => void, string | null] => {
+
+export const useAuth = (userSigninData: UserLoginData): [() => void, string | null] => {
    const dispatch = useAppDispatch();
 
    const userLogin = useAppSelector((state) => state.auth.userLogin);

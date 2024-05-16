@@ -3,7 +3,7 @@ import styles from "./Product.module.scss";
 import {
    useFetchProductByIdQuery,
    useLazyFetchProductsByCategoryQuery,
-} from "@/services/ProductService";
+} from "@/services/YourDoggoService";
 import { useParams } from "react-router";
 import Loading from "@/components/Loading/Loading";
 import ProductInfo from "./components/ProductInfo/ProductInfo";
@@ -12,14 +12,19 @@ import OrderInfo from "./components/OrderInfo/OrderInfo";
 import ProductImg from "./components/ProductImg/ProductImg";
 import { useEffect, useMemo } from "react";
 import ProductCard from "../Shop/components/ProductCard/ProductCard";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const Product = () => {
    const { id } = useParams();
+
    const {
       data: product,
       isLoading: isProductLoading,
       isError: isProductError,
    } = useFetchProductByIdQuery(id as string);
+
+   useScrollToTop([product], 'smooth')
+
    const [
       fetchSimilarProducts,
       {
@@ -44,6 +49,7 @@ const Product = () => {
       if (product) {
          fetchSimilarProducts(product.category);
       }
+      window.scrollTo({top: 0, behavior: 'smooth'})
    }, [product]);
 
    if (isProductLoading) return <Loading />;

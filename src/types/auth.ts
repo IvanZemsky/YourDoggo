@@ -1,9 +1,9 @@
-export interface UserSigninData {
+export interface UserLoginData {
    login: string
    password: string
 }
 
-export interface UserData {
+export interface IUserData {
    id: string;
    login: string;
 }

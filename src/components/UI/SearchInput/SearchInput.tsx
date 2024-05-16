@@ -1,4 +1,4 @@
-import { useFetchAllQuery } from "@/services/ProductService";
+import { useFetchAllQuery } from "@/services/YourDoggoService";
 import Button from "../Button/Button";
 import SearchIcon from "../icons/SearchIcon";
 import styles from "./SearchInput.module.scss";

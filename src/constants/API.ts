@@ -1,6 +1,8 @@
 export const BASE_URL = "https://yourdoggo-backend.onrender.com";
 
 export enum APIEndpoints {
+   AUTH = "/auth",
+   LOGIN = "/login",
    PRODUCTS = "/products",
    CATEGORIES = "/categories",
 }

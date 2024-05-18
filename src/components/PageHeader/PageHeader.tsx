@@ -4,16 +4,15 @@ import SearchInput from './../UI/SearchInput/SearchInput';
 import Wrapper from "../UI/Wrapper/Wrapper";
 
 interface PageHeaderProps {
-  handleInputChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  handleSearch?: () => void
+  input: ReactNode
 }
 
-const PageHeader = ({handleSearch, handleInputChange, children}: PropsWithChildren<PageHeaderProps>) => {
+const PageHeader = ({input, children}: PropsWithChildren<PageHeaderProps>) => {
   return (
     <header className={styles.header}>
       <Wrapper>
          <div className={styles.content}>
-            <SearchInput handleSearch={handleSearch} handleInputChange={handleInputChange}/>
+            {input}
             <div className={styles.controls}>
                {children}
             </div>

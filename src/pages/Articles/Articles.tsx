@@ -5,7 +5,7 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper"
 const Articles = () => {
   return (
     <div className={styles.articles}>
-      <PageHeader></PageHeader>
+      {/* <PageHeader></PageHeader> */}
       <Wrapper>
         
       </Wrapper>

@@ -7,10 +7,11 @@ import { ChangeEvent, memo } from "react";
 
 interface SearchInputProps {
    handleInputChange?: (event: ChangeEvent<HTMLInputElement>) => void
-   handleSearch?: () => void
+   handleSearch?: () => void,
+   value: string
 }
 
-const SearchInput = memo(({handleSearch, handleInputChange}: SearchInputProps) => {
+const SearchInput = memo(({handleSearch, handleInputChange, value}: SearchInputProps) => {
 
    return (
       <div className={styles.searchWrap}>
@@ -18,6 +19,7 @@ const SearchInput = memo(({handleSearch, handleInputChange}: SearchInputProps) =
             type="text"
             className={styles.searchInput}
             onChange={handleInputChange}
+            value={value}
             placeholder="Поиск"
          />
          <Button

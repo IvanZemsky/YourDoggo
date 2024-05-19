@@ -3,8 +3,9 @@
    top: 0px;
    left: 0px;
    padding: 7px 0;
-   background-color: var(--primaryLight);
    z-index: 400;
+   background-color: var(--primaryLight);
+   color: var(--primaryText);
 }
 
 .content{
@@ -19,3 +20,5 @@
    align-items: center;
    gap: 20px;
 }
+
+

@@ -9,3 +9,10 @@ export interface IProduct {
       [key: string]: string
    }
 }
+
+export interface FetchFilter {
+   textQuery: string
+   category: string
+   minPrice: string
+   maxPrice: string
+}

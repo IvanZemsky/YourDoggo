@@ -3,9 +3,11 @@ import Button from "@/components/UI/Button/Button";
 import CartIcon from "@/components/UI/icons/CartIcon";
 import styles from "./ShopHeader.module.scss";
 import { Link } from "react-router-dom";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useCallback } from "react";
+import { useProductFilter } from "@/hooks/useProductFilter";
+import { setTextQuery } from "@/store/slices/shop/productFilterSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import SearchInput from "@/components/UI/SearchInput/SearchInput";
-import { useAppSelector } from "@/hooks/redux";
 
 interface ShopHeaderProps {
    handleInputChange?: (event: ChangeEvent<HTMLInputElement>) => void;

@@ -6,7 +6,7 @@ import Loading from "../Loading/Loading"
 
 const Layout = () => {
   const location = useLocation();
-  //const hideFooter = location.pathname.startsWith('/shop') || location.pathname.startsWith('/gallery');
+  const hideFooter = location.pathname.startsWith('/gallery');
   
   return (
     <>
@@ -16,7 +16,7 @@ const Layout = () => {
             <Outlet/>
           </main>
         </Suspense>
-      <Footer/>
+      {!hideFooter && <Footer/>}
     </>
   )
 }

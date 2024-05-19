@@ -27,7 +27,7 @@ const Shop = () => {
    };
 
    return (
-      <div className="shop">
+      <div className={styles.shop}>
          <ShopHeader handleSearch={handleSearch} handleInputChange={handleInputChange}/>
          <Wrapper>
             <div className={styles.content}>

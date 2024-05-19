@@ -1,4 +1,4 @@
-import { useLazyFetchAllQuery} from "@/services/YourDoggoService";
+import { useLazyFetchAllProductsQuery} from "@/services/YourDoggoService";
 import { useAppSelector } from "./redux";
 import { useEffect } from "react";
 
@@ -8,7 +8,7 @@ export const useProductFilter = () => {
    const minPrice = useAppSelector(state => state.productFilter.minPrice);
    const maxPrice = useAppSelector(state => state.productFilter.maxPrice);
 
-   const [fetchAll, productsData] = useLazyFetchAllQuery()
+   const [fetchAll, productsData] = useLazyFetchAllProductsQuery()
 
    const filter = () => {
       fetchAll({textQuery, category, minPrice, maxPrice})

@@ -1,0 +1,39 @@
+.content{
+   position: relative;
+   display: flex;
+   max-height: 570px;
+   cursor: pointer;
+   
+   img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+   }
+
+   &::after{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 56px -28px inset;
+      z-index: 45;
+   }
+
+}
+
+.info{
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   padding: 10px;
+   z-index: 50;
+}
+
+.title{
+   font-size: 16px;
+   color: #eaeaea;
+   font-weight: 500;
+}

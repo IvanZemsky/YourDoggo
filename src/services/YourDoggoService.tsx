@@ -1,22 +1,16 @@
 import { APIEndpoints, BASE_URL } from "@/constants/API";
-import { IProduct } from "@/types/API/IProduct";
+import { IGalleryImg } from "@/types/API/IGalleryImg";
+import { FetchFilter, IProduct } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const {AUTH, LOGIN, PRODUCTS, CATEGORIES} = APIEndpoints
-
-interface FetchFilter {
-   textQuery: string
-   category: string
-   minPrice: string
-   maxPrice: string
-}
+const {AUTH, LOGIN, PRODUCTS, CATEGORIES, GALLERY} = APIEndpoints
 
 export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
    endpoints: (builder) => ({
-      fetchAll: builder.query<IProduct[], FetchFilter>({
+      fetchAllProducts: builder.query<IProduct[], FetchFilter>({
          query: ({textQuery, category, minPrice, maxPrice}) => ({
             url: `${PRODUCTS}/?search=${textQuery}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
          }),
@@ -45,21 +39,28 @@ export const YourDoggoAPI = createApi({
             body: loginData
          }),
       }),
+      fetchAllGalleryImages: builder.query<IGalleryImg[], void>({
+         query: () => ({
+            url: `${GALLERY}`
+         })
+      })
    }),
 });
 
 export const {
-   useFetchAllQuery,
+   useFetchAllProductsQuery,
    useFetchProductByIdQuery,
    useFetchProductsByCategoryQuery,
    useFetchByIdsQuery,
    useFetchUserLoginDataQuery,
+   useFetchAllGalleryImagesQuery
 } = YourDoggoAPI;
 
 export const {
-   useLazyFetchAllQuery,
+   useLazyFetchAllProductsQuery,
    useLazyFetchProductByIdQuery,
    useLazyFetchProductsByCategoryQuery,
    useLazyFetchByIdsQuery,
    useLazyFetchUserLoginDataQuery,
+   useLazyFetchAllGalleryImagesQuery
 } = YourDoggoAPI;

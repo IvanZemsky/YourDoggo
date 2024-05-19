@@ -23,7 +23,7 @@ const Product = () => {
       isError: isProductError,
    } = useFetchProductByIdQuery(id as string);
 
-   useScrollToTop([product], 'smooth')
+   useScrollToTop([product], "smooth");
 
    const [
       fetchSimilarProducts,
@@ -49,7 +49,6 @@ const Product = () => {
       if (product) {
          fetchSimilarProducts(product.category);
       }
-      window.scrollTo({top: 0, behavior: 'smooth'})
    }, [product]);
 
    if (isProductLoading) return <Loading />;
@@ -71,19 +70,22 @@ const Product = () => {
                <div className={styles.similar}>
                   <h2 className={styles.similarTitle}>Похожее</h2>
                   <div className={styles.similarProducts}>
-                     {isSimilarLoading && <Loading/>}
+                     {isSimilarLoading && <Loading />}
                      {similarProducts &&
-                        similarProducts.map((product) => (
-                           <ProductCard
-                              key={product._id}
-                              id={product._id}
-                              category={product.category}
-                              name={product.name}
-                              description={product.description}
-                              price={product.price}
-                              img={product.img}
-                           />
-                        ))}
+                        similarProducts.map(
+                           (product) =>
+                              product._id !== id && (
+                                 <ProductCard
+                                    key={product._id}
+                                    id={product._id}
+                                    category={product.category}
+                                    name={product.name}
+                                    description={product.description}
+                                    price={product.price}
+                                    img={product.img}
+                                 />
+                              )
+                        )}
                   </div>
                </div>
             </div>

@@ -1,28 +1,16 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Gallery.module.scss";
-import PageHeader from "@/components/PageHeader/PageHeader";
-import SearchInput from "@/components/UI/SearchInput/SearchInput";
+import ImagesList from './components/ImagesList/ImagesList';
+import GalleryHeader from './components/GalleryHeader/GalleryHeader';
 
 const Gallery = () => {
-   const handleSearch = () => {};
-
-   const handleInputChange = () => {};
+  
 
    return (
-      <div className="gallery">
-         <PageHeader
-            input={
-               <SearchInput
-                  handleSearch={handleSearch}
-                  handleInputChange={handleInputChange}
-                  value={"34"}
-               />
-            }
-         >
-            Ваши фото
-         </PageHeader>
+      <div className={styles.content}>
+         <GalleryHeader />
          <Wrapper>
-            <div className={styles.content}></div>
+            <ImagesList/>
          </Wrapper>
       </div>
    );

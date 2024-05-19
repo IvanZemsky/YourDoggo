@@ -4,6 +4,7 @@ import { useProductFilter } from "@/hooks/useProductFilter";
 import Loading from "@/components/Loading/Loading";
 import { useEffect } from "react";
 import { IProduct } from "@/types/API/IProduct";
+import ProductsSkeleton from "../ProductsSkeleton/ProductsSkeleton";
 
 interface ProductListProps {
    data: IProduct[] | undefined
@@ -13,7 +14,7 @@ interface ProductListProps {
 
 const ProductList = ({data: products, isLoading, isError}: ProductListProps) => {
 
-   if (isLoading) return <Loading />;
+   if (isLoading) return <ProductsSkeleton limit={12} />;
    if (isError) return <p>Ошибка :(</p>;
 
    return (

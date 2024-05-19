@@ -1,0 +1,26 @@
+.skeleton{
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   gap: 21px;
+   padding: 15px 0;
+}
+
+.skeletonBlock {
+   aspect-ratio: 1 / 1.2745;
+   border-radius: 15px;
+   border: 1px solid #e6e7eb;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   background: linear-gradient(45deg, rgba(230,231,235,1) 16%, rgba(255,255,255,1) 50%, rgba(230,231,235,1) 84%);
+   background-size: 100% 300%; 
+   background-position: center bottom;
+   animation: moving 2s linear infinite;
+
+   @keyframes moving {
+      0% {
+         background-position: center -100%;
+      }
+      100% {
+         background-position: center 200%;
+      }
+   }
+}

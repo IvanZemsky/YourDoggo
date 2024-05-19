@@ -15,7 +15,7 @@ interface FadeProps {
 }
 
 export function Fade({ in: inProp, duration = 300 ,children }: PropsWithChildren<FadeProps>) {
-  const nodeRef = useRef(null);
+  const nodeRef = useRef<HTMLDivElement | null>(null);
 
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,

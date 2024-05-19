@@ -8,19 +8,19 @@ export const useModal = (modalContent: string): boolean => {
    const opened = useAppSelector((state) => state.modalSlice.opened)
    const isOpened = opened === modalContent
 
+   const preventScroll = () => {
+      scrollTo({top: 0})
+   }
+
    useEffect(() => {
       if (isOpened) {
          dispatch(openModal(modalContent))
+         window.addEventListener("scroll", preventScroll)
       }
-      if (opened) {
-         document.body.style.overflowY = 'hidden'
-      }
+
+      return () => window.removeEventListener("scroll", preventScroll)
          
-      return () => {
-         document.body.style.overflowY = 'scroll'
-      }
-      
-   }, [isOpened])
+   }, [dispatch, isOpened, modalContent])
 
    return isOpened;
 }

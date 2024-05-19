@@ -13,6 +13,7 @@ import ProductImg from "./components/ProductImg/ProductImg";
 import { useEffect, useMemo } from "react";
 import ProductCard from "../Shop/components/ProductCard/ProductCard";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
+import ProductsSkeleton from "../Shop/components/ProductsSkeleton/ProductsSkeleton";
 
 const Product = () => {
    const { id } = useParams();
@@ -69,11 +70,11 @@ const Product = () => {
                </div>
                <div className={styles.similar}>
                   <h2 className={styles.similarTitle}>Похожее</h2>
-                  <div className={styles.similarProducts}>
-                     {isSimilarLoading && <Loading />}
-                     {similarProducts &&
-                        similarProducts.map(
-                           (product) =>
+                  {isSimilarLoading && <ProductsSkeleton limit={10} />}
+                  {similarProducts && (
+                     <div className={styles.similarProducts}>
+                        {similarProducts.map((product) => {
+                           return (
                               product._id !== id && (
                                  <ProductCard
                                     key={product._id}
@@ -85,8 +86,10 @@ const Product = () => {
                                     img={product.img}
                                  />
                               )
-                        )}
-                  </div>
+                           );
+                        })}
+                     </div>
+                  )}
                </div>
             </div>
          )}

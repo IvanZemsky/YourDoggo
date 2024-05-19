@@ -28,5 +28,5 @@ export const useIntersectionObserver = (ref: RefObject<HTMLDivElement>, style: s
       return () => {
          observer.disconnect();
       };
-   }, [ref]);
+   }, [ref.current]);
 }

@@ -17,10 +17,7 @@ export const fetchLoginUser = createAsyncThunk<IUserData, UserLoginData, { rejec
          throw new Error("Error");
       }
 
-      console.log(loginData);
-
       const userData = await response.json();
-      console.log(userData);
 
       if (userData.hasOwnProperty('errorMessage')) {
          return rejectWithValue(userData.errorMessage) 

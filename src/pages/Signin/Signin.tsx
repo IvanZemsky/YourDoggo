@@ -12,17 +12,17 @@ const Signin = () => {
    const [password, setPassword] = useState<string>("");
 
    const navigate = useNavigate()
-   const userLogin = useAppSelector((state) => state.auth.userLogin);
+   const userId= useAppSelector((state) => state.auth.userId);
 
    useEffect(() => {
-      if (userLogin) {
-         navigate('/' + RoutesEnum.Profile)
+      if (userId) {
+         navigate(`/${RoutesEnum.Profile}`)
       }
-   }, [userLogin])
+   }, [userId])
 
    const [handleLoginClick, errorMessage] = useAuth({ login, password });
 
-   return (
+   if (!userId) return (
       <div className={styles.auth}>
          <Wrapper>
             <div className={styles.content}>

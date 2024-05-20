@@ -19,10 +19,20 @@
    font-size: 16px;
 }
 
+.priceWrap{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+
 .price{
    padding-left: 5px;
    font-size: 24px;
    font-weight: 700;
+}
+
+.priceWithoutCard{
+   font-size: 16px;
 }
 
 .info{

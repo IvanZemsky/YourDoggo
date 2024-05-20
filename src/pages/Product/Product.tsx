@@ -1,19 +1,15 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Product.module.scss";
-import {
-   useFetchProductByIdQuery,
-   useLazyFetchProductsByCategoryQuery,
-} from "@/services/YourDoggoService";
+import { useFetchProductByIdQuery } from "@/services/YourDoggoService";
 import { useParams } from "react-router";
 import Loading from "@/components/Loading/Loading";
 import ProductInfo from "./components/ProductInfo/ProductInfo";
 import { parametersRu } from "@/constants/API";
 import OrderInfo from "./components/OrderInfo/OrderInfo";
 import ProductImg from "./components/ProductImg/ProductImg";
-import { useEffect, useMemo } from "react";
-import ProductCard from "../Shop/components/ProductCard/ProductCard";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
-import ProductsSkeleton from "../Shop/components/ProductsSkeleton/ProductsSkeleton";
+import Similar from './components/Similar/Similar';
+import { useMemo } from "react";
 
 const Product = () => {
    const { id } = useParams();
@@ -26,15 +22,6 @@ const Product = () => {
 
    useScrollToTop([product], "smooth");
 
-   const [
-      fetchSimilarProducts,
-      {
-         data: similarProducts,
-         isLoading: isSimilarLoading,
-         isError: isSimilarError,
-      },
-   ] = useLazyFetchProductsByCategoryQuery();
-
    const parameters: string[][] = useMemo(
       () =>
          product
@@ -45,12 +32,6 @@ const Product = () => {
             : [],
       [product]
    );
-
-   useEffect(() => {
-      if (product) {
-         fetchSimilarProducts(product.category);
-      }
-   }, [product]);
 
    if (isProductLoading) return <Loading />;
    if (isProductError) return <p>Ошибка :(</p>;
@@ -68,29 +49,7 @@ const Product = () => {
                   />
                   <OrderInfo product={product} />
                </div>
-               <div className={styles.similar}>
-                  <h2 className={styles.similarTitle}>Похожее</h2>
-                  {isSimilarLoading && <ProductsSkeleton limit={10} />}
-                  {similarProducts && (
-                     <div className={styles.similarProducts}>
-                        {similarProducts.map((product) => {
-                           return (
-                              product._id !== id && (
-                                 <ProductCard
-                                    key={product._id}
-                                    id={product._id}
-                                    category={product.category}
-                                    name={product.name}
-                                    description={product.description}
-                                    price={product.price}
-                                    img={product.img}
-                                 />
-                              )
-                           );
-                        })}
-                     </div>
-                  )}
-               </div>
+               <Similar id={product._id} productCategory={product.category}/>
             </div>
          )}
       </Wrapper>

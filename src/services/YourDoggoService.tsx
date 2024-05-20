@@ -3,8 +3,9 @@ import { IGalleryImg } from "@/types/API/IGalleryImg";
 import { FetchFilter, IProduct } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IUser } from './../types/API/IUser';
 
-const {AUTH, LOGIN, PRODUCTS, CATEGORIES, GALLERY} = APIEndpoints
+const {AUTH, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY} = APIEndpoints
 
 export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
@@ -43,7 +44,12 @@ export const YourDoggoAPI = createApi({
          query: () => ({
             url: `${GALLERY}`
          })
-      })
+      }),
+      fetchUserById: builder.query<IUser, string>({
+         query: (id) => ({
+            url: `${USERS}/${id}`
+         })
+      }) 
    }),
 });
 
@@ -53,7 +59,8 @@ export const {
    useFetchProductsByCategoryQuery,
    useFetchByIdsQuery,
    useFetchUserLoginDataQuery,
-   useFetchAllGalleryImagesQuery
+   useFetchAllGalleryImagesQuery,
+   useFetchUserByIdQuery,
 } = YourDoggoAPI;
 
 export const {
@@ -62,5 +69,6 @@ export const {
    useLazyFetchProductsByCategoryQuery,
    useLazyFetchByIdsQuery,
    useLazyFetchUserLoginDataQuery,
-   useLazyFetchAllGalleryImagesQuery
+   useLazyFetchAllGalleryImagesQuery,
+   useLazyFetchUserByIdQuery,
 } = YourDoggoAPI;

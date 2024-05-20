@@ -1,7 +1,5 @@
-import { BASE_URL } from "@/constants/API";
 import { fetchLoginUser } from "@/services/fetchLoginUser";
-import { IUserData, UserLoginData } from "@/types/auth";
-import { PayloadAction, createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
 
 
 function isError(action: PayloadAction) {
@@ -16,16 +14,12 @@ interface AuthSlice {
 }
 
 const initialState = (): AuthSlice => {
-   const cookieValue = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('userLogin='))
-      ?.split('=')[1];
-
-   const userLogin = cookieValue ? JSON.parse(cookieValue) : null;
+   const userLogin = localStorage.getItem("userLogin") || null
+   const userId = localStorage.getItem("userId") || null
 
    return {
-      userId: null,
-      userLogin: userLogin,
+      userId,
+      userLogin,
       status: null,
       error: null,
    }

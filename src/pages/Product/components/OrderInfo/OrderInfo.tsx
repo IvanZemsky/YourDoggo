@@ -49,7 +49,10 @@ const AddToCartInfo = ({ product }: AddToCartInfoProps) => {
                   <p className={styles.discount}>{cardDiscount} ₽</p>
                   <p className={styles.cardDiscountLabel}>С картой YoDoggo</p>
                </div>
-               <p className={styles.price}>{product.price} ₽</p>
+               <div className={styles.priceWrap}>
+                  <p className={styles.price}>{product.price} ₽</p>
+                  <p className={styles.priceWithoutCard}>(Без карты)</p>
+               </div>
                <div className={styles.buttons}>
                   {isInCart ? (
                      <PageLink to="/shop/cart" className={styles.cartLink}>

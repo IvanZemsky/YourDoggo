@@ -1,14 +1,13 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./redux";
 import { fetchLoginUser } from "@/services/fetchLoginUser";
-import { AuthErrorMessage, UserLoginData } from "@/types/auth";
-import { useLazyFetchUserLoginDataQuery } from "@/services/YourDoggoService";
-
+import {  UserLoginData } from "@/types/auth";
 
 export const useAuth = (userSigninData: UserLoginData): [() => void, string | null] => {
    const dispatch = useAppDispatch();
 
    const userLogin = useAppSelector((state) => state.auth.userLogin);
+   const userId = useAppSelector(state => state.auth.userId)
    const errorMessage = useAppSelector(state => state.auth.error)
 
    const handleLoginClick = () => {
@@ -16,12 +15,9 @@ export const useAuth = (userSigninData: UserLoginData): [() => void, string | nu
    };
 
    useEffect(() => {
-      if (!userLogin) {
-         document.cookie = "userLogin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-         return;
-      }
-      document.cookie = `userLogin=${JSON.stringify(userLogin)}; path=/`;
-   }, [userLogin]);
+      localStorage.setItem("userLogin", userLogin as string);
+      localStorage.setItem("userId", userId as string);
+   }, [userId]);
 
    return [handleLoginClick, errorMessage];
 };

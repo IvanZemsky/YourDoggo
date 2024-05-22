@@ -10,7 +10,7 @@ export interface IProduct {
    }
 }
 
-export interface FetchFilter {
+export interface FetchProductFilter {
    textQuery: string
    category: string
    minPrice: string

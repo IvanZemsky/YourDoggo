@@ -4,7 +4,7 @@ import Image from "../Image/Image";
 import Loading from "@/components/Loading/Loading";
 
 const ImagesList = () => {
-   const { data: images, isLoading, isError } = useFetchAllGalleryImagesQuery();
+   const { data: images, isLoading, isError } = useFetchAllGalleryImagesQuery({userLogin: true});
 
    if (isError) {
       return <p>Ошибка</p>;
@@ -26,6 +26,7 @@ const ImagesList = () => {
                   tags={images.tags}
                   img={images.imgLink}
                   datetime={images.datetime}
+                  login={images.login}
                />
             ))
          ) : (

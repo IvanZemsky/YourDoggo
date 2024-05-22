@@ -4,5 +4,8 @@ export interface IUser {
    name: string
    surname: string
    postOfficeAddress: string
+   email: string
+   phone: string
+   registrationDate: string
    hasCard: boolean
 }

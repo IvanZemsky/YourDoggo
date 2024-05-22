@@ -1,6 +1,6 @@
 import { APIEndpoints, BASE_URL } from "@/constants/API";
-import { IGalleryImg } from "@/types/API/IGalleryImg";
-import { FetchFilter, IProduct } from "@/types/API/IProduct";
+import { FetchGalleryFilter, IGalleryImg } from "@/types/API/IGalleryImg";
+import { FetchProductFilter, IProduct } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from './../types/API/IUser';
@@ -11,7 +11,7 @@ export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
    endpoints: (builder) => ({
-      fetchAllProducts: builder.query<IProduct[], FetchFilter>({
+      fetchAllProducts: builder.query<IProduct[], FetchProductFilter>({
          query: ({textQuery, category, minPrice, maxPrice}) => ({
             url: `${PRODUCTS}/?search=${textQuery}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
          }),
@@ -40,14 +40,26 @@ export const YourDoggoAPI = createApi({
             body: loginData
          }),
       }),
-      fetchAllGalleryImages: builder.query<IGalleryImg[], void>({
-         query: () => ({
-            url: `${GALLERY}`
+      fetchAllGalleryImages: builder.query<IGalleryImg[], FetchGalleryFilter>({
+         query: ({limit, userLogin}) => ({
+            url: `${GALLERY}`,
+            params: {
+               limit,
+               userLogin,
+            }
+         })
+      }),
+      fetchGalleryImagesByUserId: builder.query<IGalleryImg[], FetchGalleryFilter>({
+         query: ({id, limit}) => ({
+            url: `${GALLERY}/users/${id}`,
+            params: {
+               limit,
+            }
          })
       }),
       fetchUserById: builder.query<IUser, string>({
          query: (id) => ({
-            url: `${USERS}/${id}`
+            url: `${USERS}/${id}`,
          })
       }) 
    }),
@@ -60,6 +72,7 @@ export const {
    useFetchByIdsQuery,
    useFetchUserLoginDataQuery,
    useFetchAllGalleryImagesQuery,
+   useFetchGalleryImagesByUserIdQuery,
    useFetchUserByIdQuery,
 } = YourDoggoAPI;
 
@@ -70,5 +83,6 @@ export const {
    useLazyFetchByIdsQuery,
    useLazyFetchUserLoginDataQuery,
    useLazyFetchAllGalleryImagesQuery,
+   useLazyFetchGalleryImagesByUserIdQuery,
    useLazyFetchUserByIdQuery,
 } = YourDoggoAPI;

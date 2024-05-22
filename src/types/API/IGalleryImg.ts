@@ -5,4 +5,11 @@ export interface IGalleryImg {
    tags: string[]
    userId: string
    datetime: string
+   login?: string
+}
+
+export interface FetchGalleryFilter {
+   id?: string
+   userLogin?: boolean,
+   limit?: number
 }

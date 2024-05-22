@@ -7,7 +7,9 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { useFetchUserByIdQuery } from "@/services/YourDoggoService";
 import Loading from "@/components/Loading/Loading";
 import UserIcon from "@/components/UI/icons/UserIcon";
-import DoggoCard from './components/DoggoCard/DoggoCard';
+import DoggoCard from "./components/DoggoCard/DoggoCard";
+import Personal from "./components/Personal/Personal";
+import UserGallery from './components/UserGallery/UserGallery';
 
 const Profile = () => {
    const navigate = useNavigate();
@@ -27,7 +29,7 @@ const Profile = () => {
       data: user,
       isLoading,
       isError,
-   } = useFetchUserByIdQuery(userId as string);
+   } = useFetchUserByIdQuery(userId);
 
    if (isLoading) {
       return <Loading />;
@@ -42,21 +44,22 @@ const Profile = () => {
          <Wrapper>
             <div className={styles.content}>
                <div className={styles.mainInfo}>
-                  <div className={styles.userInfo}>
-                     <div className={styles.logoWrap}>
-                        <div className={styles.logo}>
-                           <UserIcon />
+                  <div className={styles.userInfoWrap}>
+                     <div className={styles.userInfo}>
+                        <div className={styles.logoWrap}>
+                           <div className={styles.logo}>
+                              <UserIcon />
+                           </div>
                         </div>
-                        <p className={styles.login}>@{user.login}</p>
+                        <Personal user={user} />
                      </div>
-                     <div className={styles.userPersonalData}>
-                        <p className={styles.name}>
-                           {user.name} {user.surname}
-                        </p>
-                     </div>
+                     <p className={styles.login}>@{user.login}</p>
                   </div>
-                  <DoggoCard hasCard={user.hasCard}/>
+                  <DoggoCard hasCard={user.hasCard} />
                </div>
+
+               <UserGallery userId={userId}/>
+
             </div>
          </Wrapper>
       )

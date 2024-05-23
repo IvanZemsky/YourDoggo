@@ -13,7 +13,7 @@ const Intro = () => {
    const headerRef = useRef<HTMLHeadingElement>(null)
    const descRef = useRef<HTMLDivElement>(null)
 
-   const handleOpenBtnClick = () => dispatch(openModal("startModal"))
+   const handleOpenBtnClick = () => dispatch(openModal("startModal")) // TO CONSTANT
 
    useIntersectionObserver(headerRef, styles.visible, 100)
    useIntersectionObserver(descRef, styles.visible, 400)

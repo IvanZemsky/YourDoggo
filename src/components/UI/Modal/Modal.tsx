@@ -6,13 +6,11 @@ import { useModal } from "@/hooks/useModal";
 
 interface ModalProps {
    modalContent: string
-   className: string
+   className?: string
 }
 
 const Modal = ({modalContent, className, children}: PropsWithChildren<ModalProps>) => {
-
    const isOpened = useModal(modalContent)
-   console.log(isOpened)
 
    if(!isOpened) return null;
 

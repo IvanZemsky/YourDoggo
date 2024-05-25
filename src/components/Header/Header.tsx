@@ -8,8 +8,16 @@ import { useAppSelector } from "@/hooks/redux";
 import SigninLink from "./components/SigninLink/SigninLink";
 import ProfileLink from "./components/ProfileLink/ProfileLink";
 
+import { RoutesEnum } from "@/constants/routes";
+import Menu from "../UI/Menu/Menu";
+import { useMediaQuery } from "react-responsive";
+
+const { Articles, Shop, Gallery, Forum } = RoutesEnum;
+
 const Header = () => {
-   const userLogin = useAppSelector(state => state.auth.userLogin)
+   const userLogin = useAppSelector((state) => state.auth.userLogin);
+
+   const isOpen = useMediaQuery({ maxWidth: 655 });
 
    return (
       <header className={styles.header}>
@@ -18,13 +26,14 @@ const Header = () => {
                <Logo />
 
                <nav className={styles.links}>
-                  <PageNavLink to="/articles">Статьи</PageNavLink>
-                  <PageNavLink to="/shop">Магазин</PageNavLink>
-                  <PageNavLink to="/forum">Форум</PageNavLink>
-                  <PageNavLink to="/gallery">Галерея</PageNavLink>
+                  <Menu isOpen={isOpen} burgerColor="secondary" variant="outlined">
+                     <PageNavLink to={Articles}>Статьи</PageNavLink>
+                     <PageNavLink to={Shop}>Магазин</PageNavLink>
+                     <PageNavLink to={Forum}>Форум</PageNavLink>
+                     <PageNavLink to={Gallery}>Галерея</PageNavLink>
 
-                  {userLogin ? <ProfileLink /> : <SigninLink/>}
-                  
+                     {userLogin ? <ProfileLink /> : <SigninLink />}
+                  </Menu>
                </nav>
             </div>
          </Wrapper>

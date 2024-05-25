@@ -23,13 +23,15 @@ export function Fade({ in: inProp, duration = 300 ,children }: PropsWithChildren
   }
   
   return (
-    <Transition nodeRef={nodeRef} in={inProp} timeout={duration}>
+    <Transition nodeRef={nodeRef} in={inProp} timeout={duration} mountOnEnter={true} unmountOnExit={true}>
       {state => (
          <div
           ref={nodeRef}
           style={{
               ...defaultStyle,
               ...transitionStyles[state],
+              position: 'relative',
+              zIndex: 700
             }}
           >
            {children}

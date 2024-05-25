@@ -21,34 +21,11 @@ const PageLink = ({
    to,
    ...props
 }: PageLinkFullProps) => {
-   let variantStyles;
-   let colorStyles;
-
-   switch (variant) {
-      case "outlined":
-         variantStyles = styles.outlined;
-         break;
-      case "filled":
-         variantStyles = styles.filled;
-         break;
-      case "none":
-         variantStyles = styles.none;
-         break;
-   }
-
-   switch (color) {
-      case "primary":
-         colorStyles = styles.primaryColor;
-         break;
-      case "secondary":
-         colorStyles = styles.secondaryColor;
-         break;
-   }
 
    return (
       <Link
          to={to}
-         className={[styles.link, colorStyles, variantStyles, className].join(" ")}
+         className={[styles.link, styles[color], styles[variant], className].join(" ")}
          {...props}
       >
          {icon && <span className={styles.icon}>{icon}</span>}

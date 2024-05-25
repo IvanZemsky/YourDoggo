@@ -25,15 +25,15 @@
          rgba(0, 0, 0, 0.12) 0px 3px 5px 0px;
    }
 
+   svg{
+      display: block;
+      width: 20px;
+      height: auto;
+   }
+
 }
 
-.icon svg{
-   display: block;
-   width: 20px;
-   height: 20px;
-}
-
-.primaryColor{
+.primary{
    background-color: var(--primaryMain);
    color: var(--primaryText);
    border-color: var(--primaryMain);
@@ -45,7 +45,7 @@
    color: var(--primaryText);
 }
 
-.secondaryColor{
+.secondary{
    background-color: var(--secondaryMain);
    color: var(--secondaryText);
    border-color: var(--secondaryMain);

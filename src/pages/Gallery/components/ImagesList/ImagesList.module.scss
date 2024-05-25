@@ -6,3 +6,9 @@
    border-radius: 7px;
    overflow: hidden;
 }
+
+@media screen and (max-width: 700px) {
+   .content{
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+   }
+}

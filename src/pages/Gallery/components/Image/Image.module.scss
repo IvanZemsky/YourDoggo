@@ -85,3 +85,18 @@
    text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
    color: var(--primaryText);
 }
+
+@media screen and (max-width: 700px) {
+   .user{
+      font-size: 12px;
+   }
+   .title{
+      font-size: 13px;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   .content{
+      max-height: 100%;
+   }
+}

@@ -8,3 +8,9 @@
    display: flex;
    align-items: center;
 }
+
+@mixin flex-spb-y {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}

@@ -27,41 +27,17 @@ const Button = ({
 }: ButtonFullProps) => {
    const buttonRef = useRef(null);
 
-   let variantStyles;
-   let colorStyles;
-
-   switch (variant) {
-      case "outlined":
-         variantStyles = styles.outlined;
-         break;
-      case "filled":
-         variantStyles = styles.filled;
-         break;
-      case "none":
-         variantStyles = styles.none;
-         break;
-   }
-
-   switch (color) {
-      case "primary":
-         colorStyles = styles.primaryColor;
-         break;
-      case "secondary":
-         colorStyles = styles.secondaryColor;
-         break;
-   }
-
    useRippleEffect(buttonRef);
 
    return (
       <button
-         className={[styles.button, colorStyles, variantStyles, className].join(
+         className={[styles.button, styles[color], styles[variant], className].join(
             " "
          )}
          ref={buttonRef}
          {...props}
       >
-         {icon && <span className={styles.icon}>{icon}</span>}
+         {icon}
          {children}
       </button>
    );

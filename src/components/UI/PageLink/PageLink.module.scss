@@ -31,19 +31,13 @@
    height: 20px;
 }
 
-.primaryColor{
-   background-color: var(--primaryMain);
-   color: var(--primaryText);
-   border-color: var(--primaryMain);
-}
-
 .filled{
    border: none;
    background-color: var(--primaryMain);
    color: var(--primaryText);
 }
 
-.secondaryColor{
+.secondary{
    background-color: var(--secondaryMain);
    color: var(--secondaryText);
    border-color: var(--secondaryMain);
@@ -59,4 +53,10 @@
    border: none;
    background-color: inherit;
    color: var(--primaryText);
+}
+
+.primary{
+   background-color: var(--primaryMain);
+   color: var(--primaryText);
+   border-color: var(--primaryMain);
 }

@@ -1,0 +1,73 @@
+@import "/src/styles/mixins.scss";
+
+.content {
+   position: relative;
+}
+
+.menuItems {
+   position: relative;
+   @include flex-center-x;
+   justify-content: space-between;
+   gap: 15px;
+}
+
+.menuItem {
+   font-size: 17px;
+   padding: 7px 9px;
+   border-radius: 15px;
+
+   svg {
+      width: 14px;
+      height: auto;
+      fill: var(--primaryText);
+   }
+}
+
+.burger {
+   display: none;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 33px;
+   height: 33px;
+   padding: 6px;
+
+   &.primary{
+      background-color: var(--primaryMain);
+   }
+
+   &.secondary{
+      background-color: var(--secondaryMain);
+   }
+}
+
+.burgerLine {
+   width: 100%;
+   height: 2px;
+   background-color: var(--thirdMain);
+}
+
+.menuItemsOpened {
+   position: absolute;
+   top: 40px;
+   right: 0;
+   width: 120px;
+   display: flex;
+   flex-direction: column;
+   gap: 0;
+   z-index: 700;
+
+   & > * {
+      width: 100%;
+      padding: 5px;
+      font-size: 14px;
+      border-radius: 0;
+      background-color: var(--primaryLight);
+
+      svg {
+         display: none;
+      }
+   }
+}
+.burgerOpened {
+   display: flex;
+}

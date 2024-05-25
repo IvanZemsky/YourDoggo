@@ -1,12 +1,14 @@
-import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "./redux"
+import { WheelEvent, useEffect } from "react"
+import { useAppSelector } from "./redux"
 
 export const useModal = (modalContent: string): boolean => {
    const opened = useAppSelector((state) => state.modalSlice.opened)
    const isOpened = opened === modalContent
 
+   const currentYScroll = window.scrollY
+
    const preventScroll = () => {
-      scrollTo({top: 0})
+      scrollTo({top: currentYScroll})
    }
 
    useEffect(() => {

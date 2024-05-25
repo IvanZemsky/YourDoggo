@@ -1,0 +1,126 @@
+.imageModal{
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   padding-top: 25px;
+   font-size: 17px;
+   background-color: rgba(0,0,0,0.4);
+   opacity: 0;
+   overflow: hidden;
+   animation: fadeIn 0.15s linear forwards;
+
+   @keyframes fadeIn {
+      0% {
+         opacity: 0;
+      }
+      100% {
+         opacity: 1;
+      }
+   }
+}
+
+.content { // по центру!!!!!!
+   display: flex;
+   justify-content: center;
+   max-height: 100%;
+   min-height: 100%;
+   overflow-y: auto;
+}
+
+.imageInfo {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   padding: 0 20px 20px 20px;
+   background-color: var(--thirdMain);
+   color: var(--thirdText);
+}
+
+.header, .headerBtns{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+
+.header{
+   position: sticky;
+   top: 0;
+   left: 0;
+   padding-top: 20px;
+   margin-bottom: 15px;
+   background-color: var(--thirdMain);
+   z-index: 505;
+}
+
+.user{
+   font-size: 16px;
+   color: var(--primaryMain);
+
+   &:hover{
+      text-decoration: underline;
+   }
+}
+
+.headerBtns{
+   margin-left: auto;
+}
+
+.likeBtn{
+   padding: 5px;
+
+   svg{
+      width: 29px;
+      height: auto;
+      fill: var(--thirdMain);
+      stroke: var(--primaryLight);
+   }
+}
+
+.closeBtn{
+   padding: 10px;
+
+   svg{
+      width: 20px;
+      height: auto;
+      fill: var(--thirdText);
+   }
+}
+
+.imgWrap{
+   height: 600px;
+   margin-bottom: 25px;
+   text-align: center;
+
+   img{
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+   }
+}
+
+.titleWrap{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 9px;
+   font-size: 17px;
+}
+
+.title{
+   font-size: 18px;
+   font-weight: 500;
+}
+
+.tags{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 7px;
+}
+
+.tag{
+   padding: 4px 6px;
+   background-color: var(--thirdDark);
+   color: var(--thirdText);
+   font-size: 14px;
+}

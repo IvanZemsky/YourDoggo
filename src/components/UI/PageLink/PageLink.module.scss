@@ -31,12 +31,6 @@
    height: 20px;
 }
 
-.none{
-   border: none;
-   background-color: inherit;
-   color: var(--primaryText);
-}
-
 .primaryColor{
    background-color: var(--primaryMain);
    color: var(--primaryText);
@@ -59,4 +53,10 @@
    color: var(--primaryText);
    border: 2px solid var(--primaryText);
    background-color: none;
+}
+
+.none{
+   border: none;
+   background-color: inherit;
+   color: var(--primaryText);
 }

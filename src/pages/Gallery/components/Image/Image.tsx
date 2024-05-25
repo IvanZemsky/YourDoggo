@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { MouseEvent } from "react";
 import { useAppDispatch } from "@/hooks/redux";
 import { openModal } from "@/store/slices/modalSlice";
-import ImageInfo from './../../ImageInfo/ImageInfo';
+import ImageInfo from '../../../../components/Modals/ImageInfo/ImageInfo';
 
 interface ImageProps {
    id: string;
@@ -18,7 +18,9 @@ interface ImageProps {
    login: string | undefined;
 }
 
-const Image = ({ id, user, title, tags, img, datetime, login }: ImageProps) => {
+const Image = (props: ImageProps) => {
+   const { id, title, img, datetime, login } = props
+
    const dispatch = useAppDispatch();
 
    const modalContent = `imageModal${id}`
@@ -41,7 +43,7 @@ const Image = ({ id, user, title, tags, img, datetime, login }: ImageProps) => {
             <Button variant="none" className={styles.likeBtn} onClick={handleLikeClick}>
                <HeartIcon />
             </Button>
-            <ImageInfo id={id} title={title}/>
+            <ImageInfo {...props}/>
          </div>
 
          <img src={img} alt={title} />

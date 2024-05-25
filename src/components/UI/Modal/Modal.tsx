@@ -1,7 +1,7 @@
 import styles from "./Modal.module.scss";
 import { Fade } from "./../Transitions/Fade";
 import { createPortal } from "react-dom";
-import { PropsWithChildren, useEffect } from "react";
+import { HTMLAttributes, PropsWithChildren, useEffect } from "react";
 import { useModal } from "@/hooks/useModal";
 
 interface ModalProps {
@@ -9,14 +9,16 @@ interface ModalProps {
    className?: string
 }
 
-const Modal = ({modalContent, className, children}: PropsWithChildren<ModalProps>) => {
+type ModalType = PropsWithChildren<ModalProps> & HTMLAttributes<HTMLDivElement>
+
+const Modal = ({modalContent, className, children, ...attributes}: ModalType) => {
    const isOpened = useModal(modalContent)
 
    if(!isOpened) return null;
 
    return createPortal(
       <Fade in={isOpened} >
-         <div className={[styles.modal, className].join(" ")}>
+         <div className={[styles.modal, className].join(" ")} {...attributes}>
             {children}
          </div>
       </Fade>,

@@ -5,7 +5,6 @@ import GalleryHeader from './components/GalleryHeader/GalleryHeader';
 
 const Gallery = () => {
   
-
    return (
       <div className={styles.content}>
          <GalleryHeader />

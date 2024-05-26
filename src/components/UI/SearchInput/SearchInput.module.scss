@@ -9,7 +9,8 @@
 }
 
 .searchInput {
-   flex-grow: 1;
+   width: 100%;
+   flex-shrink: 1;
    height: 38px;
    padding: 4px 15px;
    color: var(--thirdText);

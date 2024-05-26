@@ -21,3 +21,9 @@
       fill: var(--primaryText);
    }
 }
+
+@media screen and (max-width: 950px) {
+   .link{
+      border-radius: 0;
+   }
+}

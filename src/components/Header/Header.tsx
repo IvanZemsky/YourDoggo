@@ -31,9 +31,8 @@ const Header = () => {
                      <PageNavLink to={Shop}>Магазин</PageNavLink>
                      <PageNavLink to={Forum}>Форум</PageNavLink>
                      <PageNavLink to={Gallery}>Галерея</PageNavLink>
-
-                     {userLogin ? <ProfileLink /> : <SigninLink />}
                   </Menu>
+                  {userLogin ? <ProfileLink /> : <SigninLink />}
                </nav>
             </div>
          </Wrapper>

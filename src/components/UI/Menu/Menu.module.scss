@@ -46,24 +46,37 @@
    background-color: var(--thirdMain);
 }
 
-.menuItemsOpened {
+.menuItems.menuItemsOpened {
    position: absolute;
    top: 40px;
    right: 0;
-   width: 120px;
    display: flex;
    flex-direction: column;
+   min-width: 120px;
    gap: 0;
+   background-color: var(--thirdMain);
+   color: var(--thirdText);
+   border-radius: 4px;
+   overflow: hidden;
+   border: 1px solid var(--thirdDark);
+   box-shadow: var(--shadow);
    z-index: 700;
 
    & > * {
+      display: flex;
       width: 100%;
-      padding: 5px;
-      font-size: 14px;
+      padding: 10px 8px;
+      font-size: 16px;
       border-radius: 0;
-      background-color: var(--primaryLight);
+      color: inherit;
+      background-color: inherit;
+      text-wrap: nowrap;
 
       svg {
+         display: none;
+      }
+
+      &::after, &::before{
          display: none;
       }
    }

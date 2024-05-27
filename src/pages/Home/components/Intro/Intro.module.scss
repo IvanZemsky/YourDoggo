@@ -14,11 +14,17 @@
    display: flex;
    flex-direction: column;
    gap: 18px;
-   max-width: 760px;
+   max-width: 860px;
 }
 
 .title {
-   font-size: 41px;
+   margin-bottom: 11px;
+   font-size: 59px;
+}
+
+.desc{
+   margin-bottom: 15px;
+   font-size: 29px;
 }
 
 .title, .desc{
@@ -42,4 +48,5 @@
    align-self: baseline;
    padding: 12px 24px;
    border-radius: 22px;
+   font-size: 30px;
 }

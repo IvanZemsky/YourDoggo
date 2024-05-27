@@ -2,9 +2,10 @@ import { useFetchAllGalleryImagesQuery } from "@/services/YourDoggoService";
 import styles from "./ImagesList.module.scss";
 import Image from "../Image/Image";
 import Loading from "@/components/Loading/Loading";
+import { useGalleryFilter } from "@/hooks/useGalleryFilter";
 
 const ImagesList = () => {
-   const { data: images, isLoading, isError } = useFetchAllGalleryImagesQuery({userLogin: true});
+   const { data: images, isLoading, isError } = useGalleryFilter()
 
    if (isError) {
       return <p>Ошибка</p>;

@@ -1,16 +1,25 @@
+import { useAppDispatch } from "@/hooks/redux";
 import Button from "../Button/Button";
 import SearchIcon from "../icons/SearchIcon";
 import styles from "./SearchInput.module.scss";
-import { categories } from "@/data/categories";
-import { ChangeEvent, memo } from "react";
+import { ChangeEvent, memo, useState } from "react";
 
 interface SearchInputProps {
-   handleInputChange?: (event: ChangeEvent<HTMLInputElement>) => void
-   handleSearch?: () => void,
-   value: string
+   dispatchFunc: (arg: any) => { type: string, payload: any }
 }
 
-const SearchInput = memo(({handleSearch, handleInputChange, value}: SearchInputProps) => {
+const SearchInput = memo(({dispatchFunc}: SearchInputProps) => {
+   const dispatch = useAppDispatch()
+
+   const [searchValue, setSearchValue] = useState<string>("");
+
+   const handleSearch = () => {
+      dispatch(dispatchFunc(searchValue))
+   };
+
+   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(event.target.value);
+   };
 
    return (
       <div className={styles.searchWrap}>
@@ -18,7 +27,7 @@ const SearchInput = memo(({handleSearch, handleInputChange, value}: SearchInputP
             type="text"
             className={styles.searchInput}
             onChange={handleInputChange}
-            value={value}
+            value={searchValue}
             placeholder="Поиск"
          />
          <Button

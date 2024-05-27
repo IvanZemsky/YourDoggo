@@ -1,18 +1,11 @@
 import styles from "./ProductList.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
 import { useProductFilter } from "@/hooks/useProductFilter";
-import Loading from "@/components/Loading/Loading";
-import { useEffect } from "react";
-import { IProduct } from "@/types/API/IProduct";
 import ProductsSkeleton from "../ProductsSkeleton/ProductsSkeleton";
 
-interface ProductListProps {
-   data: IProduct[] | undefined
-   isError: boolean
-   isLoading: boolean
-}
+const ProductList = () => {
+   const {data: products, isLoading, isError} = useProductFilter()
 
-const ProductList = ({data: products, isLoading, isError}: ProductListProps) => {
 
    if (isLoading) return <ProductsSkeleton limit={12} />;
    if (isError) return <p>Ошибка :(</p>;

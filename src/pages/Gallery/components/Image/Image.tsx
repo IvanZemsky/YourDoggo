@@ -16,10 +16,11 @@ interface ImageProps {
    img: string;
    datetime: any;
    login: string | undefined;
+   hasModal?: boolean
 }
 
 const Image = (props: ImageProps) => {
-   const { id, title, img, datetime, login } = props
+   const { id, title, img, datetime, login, hasModal = true } = props
 
    const dispatch = useAppDispatch();
 
@@ -37,7 +38,7 @@ const Image = (props: ImageProps) => {
    }, [])
 
    return (
-      <div className={styles.content} onClick={handleImageClick}>
+      <div className={styles.content} onClick={hasModal ? handleImageClick : undefined}>
          <div className={styles.topPanel}>
             {login && <p className={styles.user}>@{login}</p>}
             <Button variant="none" className={styles.likeBtn} onClick={handleLikeClick}>

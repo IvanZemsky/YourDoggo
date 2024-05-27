@@ -8,6 +8,7 @@ import cartSlice from "./slices/shop/cartSlice";
 import favouritesSlice from "./slices/shop/favouritesSlice";
 import { favouritesMiddleware } from "./middleware/favouritesMiddleware";
 import { cartMiddleware } from "./middleware/cartMiddleware";
+import galleryFilterSlice from "./slices/gallery/galleryFilterSlice";
 
 const rootSlice = combineSlices(
    authSlice,
@@ -16,6 +17,7 @@ const rootSlice = combineSlices(
    favouritesSlice,
    cartSlice,
    productFilterSlice,
+   galleryFilterSlice,
    YourDoggoAPI
 );
 

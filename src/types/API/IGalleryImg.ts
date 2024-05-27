@@ -10,6 +10,7 @@ export interface IGalleryImg {
 
 export interface FetchGalleryFilter {
    id?: string
-   userLogin?: boolean,
+   userLogin?: boolean
    limit?: number
+   textQuery?: string
 }

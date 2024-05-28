@@ -3,13 +3,14 @@ import { useAppDispatch } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./ImageInfo.module.scss";
 import { MouseEvent, useCallback } from "react";
-import { IGalleryImg } from "@/types/API/IGalleryImg";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { Link } from "react-router-dom";
 import HeartIcon from "@/components/UI/icons/HeartIcon";
 import Button from "@/components/UI/Button/Button";
 import CrossIcon from "@/components/UI/icons/CrossIcon";
 import { formatDate } from "@/helpers/formatDate";
+import { RoutesEnum } from "@/constants/routes";
+import Tags from "./components/Tags";
 
 interface ImageInfoProps {
    id: string;
@@ -21,7 +22,17 @@ interface ImageInfoProps {
    login: string | undefined;
 }
 
-const ImageInfo = ({ id, title, tags, img, datetime, login }: ImageInfoProps) => {
+const { User } = RoutesEnum;
+
+const ImageInfo = ({
+   id,
+   title,
+   tags,
+   user: userId,
+   img,
+   datetime,
+   login,
+}: ImageInfoProps) => {
    const dispatch = useAppDispatch();
 
    const modalContent = `imageModal${id}`;
@@ -53,7 +64,7 @@ const ImageInfo = ({ id, title, tags, img, datetime, login }: ImageInfoProps) =>
             <div className={styles.content} onClick={handleContentClick}>
                <div className={styles.imageInfo}>
                   <header className={styles.header}>
-                     <Link to="" className={styles.user}>
+                     <Link to={`/${User}/${userId}`} className={styles.user}>
                         @ {login}
                      </Link>
                      <div className={styles.headerBtns}>
@@ -81,15 +92,8 @@ const ImageInfo = ({ id, title, tags, img, datetime, login }: ImageInfoProps) =>
                         </p>
                      </div>
 
-                     {tags.length ? (
-                        <div className={styles.tags}>
-                           {tags.map((tag, index) => (
-                              <Button variant="filled" className={styles.tag} key={index}>
-                                 {tag}
-                              </Button>
-                           ))}
-                        </div>
-                     ): null}
+                     <Tags tags={tags} />
+                     
                   </div>
                </div>
             </div>

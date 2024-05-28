@@ -1,0 +1,12 @@
+.tags{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 7px;
+}
+
+.tag{
+   padding: 4px 6px;
+   background-color: var(--thirdDark);
+   color: var(--thirdText);
+   font-size: 14px;
+}

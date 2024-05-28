@@ -2,16 +2,21 @@ import { useAppDispatch } from "@/hooks/redux";
 import Button from "../Button/Button";
 import SearchIcon from "../icons/SearchIcon";
 import styles from "./SearchInput.module.scss";
-import { ChangeEvent, memo, useState } from "react";
+import { ChangeEvent, memo, useEffect, useState } from "react";
 
 interface SearchInputProps {
    dispatchFunc: (arg: any) => { type: string, payload: any }
+   defaultValue?: string
 }
 
-const SearchInput = memo(({dispatchFunc}: SearchInputProps) => {
+const SearchInput = memo(({dispatchFunc, defaultValue = ""}: SearchInputProps) => {
    const dispatch = useAppDispatch()
 
-   const [searchValue, setSearchValue] = useState<string>("");
+   const [searchValue, setSearchValue] = useState<string>(defaultValue);
+
+   useEffect(() => {
+      setSearchValue(defaultValue)
+   }, [defaultValue])
 
    const handleSearch = () => {
       dispatch(dispatchFunc(searchValue))

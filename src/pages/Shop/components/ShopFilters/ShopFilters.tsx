@@ -3,10 +3,16 @@ import SelectCategoryBtn from "../SelectCategoryBtn/SelectCategoryBtn";
 import { categories } from "@/data/categories";
 import PriceFilter from './../PriceFilter/PriceFilter';
 import { memo } from "react";
+import { useAppSelector } from "@/hooks/redux";
+import { selectStyles } from "@/helpers/selectStyles";
 
 const ShopFilters = memo(() => {
+
+   const isFiltersOpened = useAppSelector(state => state.shopSlice.isFiltersOpened)
+   const panelStyles = selectStyles(isFiltersOpened, styles.panelWrap, styles.opened)
+
    return (
-      <div>
+      <div className={panelStyles}>
          <div className={styles.panel}>
             <div className={styles.categories}>
                {categories.map((category) => (

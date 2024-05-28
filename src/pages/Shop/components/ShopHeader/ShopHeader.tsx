@@ -5,27 +5,38 @@ import styles from "./ShopHeader.module.scss";
 import { Link } from "react-router-dom";
 import { setTextQuery } from "@/store/slices/shop/productFilterSlice";
 import SearchInput from "@/components/UI/SearchInput/SearchInput";
+import PageLink from "@/components/UI/PageLink/PageLink";
 
-interface ShopHeaderProps {
-}
+import { RoutesEnum } from "@/constants/routes";
+import { useAppDispatch } from "@/hooks/redux";
+import { toggleFilters } from "@/store/slices/shop/shopSlice";
+
+const { Cart } = RoutesEnum;
+
+interface ShopHeaderProps {}
 
 const ShopHeader = ({}: ShopHeaderProps) => {
+   const dispatch = useAppDispatch();
+
+   const handeToggleFilters = () => {
+      dispatch(toggleFilters());
+   };
 
    return (
-      <PageHeader
-         input={
-            <SearchInput
-               dispatchFunc={setTextQuery}
-            />
-         }
-      >
-         <Link to="cart">
-            <Button
-               variant="outlined"
-               icon={<CartIcon />}
-               className={styles.cartBtn}
-            />
-         </Link>
+      <PageHeader input={<SearchInput dispatchFunc={setTextQuery} />}>
+         <Button
+            variant="outlined"
+            className={styles.filtersBtn}
+            onClick={handeToggleFilters}
+         >
+            Фильтры
+         </Button>
+         <PageLink
+            to={`${Cart}`}
+            variant="outlined"
+            icon={<CartIcon />}
+            className={styles.cartBtn}
+         />
       </PageHeader>
    );
 };

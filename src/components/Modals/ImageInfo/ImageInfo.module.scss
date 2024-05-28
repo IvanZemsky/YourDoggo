@@ -20,8 +20,9 @@
    }
 }
 
-.content { // по центру!!!!!!
+.content {
    display: flex;
+   align-items: center;
    justify-content: center;
    max-height: 100%;
    min-height: 100%;
@@ -112,17 +113,4 @@
 .title{
    font-size: 18px;
    font-weight: 500;
-}
-
-.tags{
-   display: flex;
-   flex-wrap: wrap;
-   gap: 7px;
-}
-
-.tag{
-   padding: 4px 6px;
-   background-color: var(--thirdDark);
-   color: var(--thirdText);
-   font-size: 14px;
 }

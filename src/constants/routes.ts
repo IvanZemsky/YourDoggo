@@ -6,5 +6,6 @@ export enum RoutesEnum{
    Signin = 'signin',
    Profile = 'profile',
    Forum = 'forum',
-   Gallery = 'gallery'
+   Gallery = 'gallery',
+   User = 'user',
 }

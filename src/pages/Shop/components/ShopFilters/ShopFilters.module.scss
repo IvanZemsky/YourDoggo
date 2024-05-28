@@ -1,9 +1,14 @@
+.panelWrap{
+   background-color: var(--thirdMain);
+}
+
 .panel{
    position: sticky;
    top: 45px;
    left: 0;
    padding: 15px 0 15px 3px;
    font-size: 16px;
+   z-index: 10;
 }
 
 .categories{
@@ -11,4 +16,21 @@
    flex-direction: column;
    gap: 7px;
    margin-bottom: 12px;
+}
+
+@media screen and (max-width: 800px) {
+   .panelWrap{
+      position: absolute;
+      top: 0;
+      left: -4px;
+      height: 100%;
+      padding: 0 10px;
+      transform: translateX(-114%);
+      transition: transform 0.15s linear;
+      z-index: 450;
+
+      &.opened{
+         transform: translateX(0);
+      }
+   }
 }

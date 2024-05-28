@@ -28,7 +28,7 @@ const PageLink = ({
          className={[styles.link, styles[color], styles[variant], className].join(" ")}
          {...props}
       >
-         {icon && <span className={styles.icon}>{icon}</span>}
+         {icon}
          {children}
       </Link>
    );

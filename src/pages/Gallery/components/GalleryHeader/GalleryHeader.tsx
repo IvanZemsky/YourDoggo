@@ -4,7 +4,6 @@ import styles from "./GalleryHeader.module.scss";
 import Button from "./../../../../components/UI/Button/Button";
 import PlusIcon from "@/components/UI/icons/PlusIcon";
 import { Link } from "react-router-dom";
-import PageLink from "@/components/UI/PageLink/PageLink";
 import Menu from "@/components/UI/Menu/Menu";
 import { useMediaQuery } from "react-responsive";
 import { setTextQuery } from "@/store/slices/gallery/galleryFilterSlice";

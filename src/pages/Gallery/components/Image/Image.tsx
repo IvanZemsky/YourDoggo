@@ -6,7 +6,9 @@ import { useCallback } from "react";
 import { MouseEvent } from "react";
 import { useAppDispatch } from "@/hooks/redux";
 import { openModal } from "@/store/slices/modalSlice";
-import ImageInfo from '../../../../components/Modals/ImageInfo/ImageInfo';
+import ImageInfo from "../../../../components/Modals/ImageInfo/ImageInfo";
+import { RoutesEnum } from "@/constants/routes";
+import { Link } from "react-router-dom";
 
 interface ImageProps {
    id: string;
@@ -16,35 +18,53 @@ interface ImageProps {
    img: string;
    datetime: any;
    login: string | undefined;
-   hasModal?: boolean
+   hasModal?: boolean;
 }
 
+const { User } = RoutesEnum;
+
 const Image = (props: ImageProps) => {
-   const { id, title, img, datetime, login, hasModal = true } = props
+   const { id, title, img, datetime, user: userId, login, hasModal = true } = props;
 
    const dispatch = useAppDispatch();
 
-   const modalContent = `imageModal${id}`
+   const modalContent = `imageModal${id}`;
 
    const date = formatDate(datetime);
 
-   const handleLikeClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-      event.stopPropagation()
-      // logic
-   }, [])
+   const handleLikeClick = useCallback(
+      (event: MouseEvent<HTMLButtonElement>) => {
+         event.stopPropagation();
+         // logic
+      },
+      []
+   );
 
-   const handleImageClick = useCallback(() => {
-      dispatch(openModal(modalContent))
-   }, [])
+   const handleImageClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
+      if (!(event.target instanceof HTMLAnchorElement)) {
+         dispatch(openModal(modalContent));
+      }
+   }, []);
 
    return (
-      <div className={styles.content} onClick={hasModal ? handleImageClick : undefined}>
+      <div
+         className={styles.content}
+         onClick={hasModal ? handleImageClick : undefined}
+      >
          <div className={styles.topPanel}>
-            {login && <p className={styles.user}>@{login}</p>}
-            <Button variant="none" className={styles.likeBtn} onClick={handleLikeClick}>
+            {login && (
+               <Link to={`/${User}/${userId}`} className={styles.user}>
+                  @{login}
+               </Link>
+            )}
+            <Button
+               variant="none"
+               className={styles.likeBtn}
+               onClick={handleLikeClick}
+            >
                <HeartIcon />
             </Button>
-            <ImageInfo {...props}/>
+            <ImageInfo {...props} />
          </div>
 
          <img src={img} alt={title} />

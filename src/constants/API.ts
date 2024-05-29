@@ -6,7 +6,8 @@ export enum APIEndpoints {
    LOGIN = "/login",
    PRODUCTS = "/products",
    CATEGORIES = "/categories",
-   GALLERY = "/gallery"
+   GALLERY = "/gallery",
+   LIKES = "/likes"
 }
 
 export const parametersRu: {[key: string]: string} = {

@@ -14,8 +14,11 @@ interface AuthSlice {
 }
 
 const initialState = (): AuthSlice => {
-   const userLogin = localStorage.getItem("userLogin") || null
-   const userId = localStorage.getItem("userId") || null
+   let userLogin = localStorage.getItem("userLogin")
+   let userId = localStorage.getItem("userId")
+
+   userLogin = userLogin === "null" ? null : userLogin
+   userId = userId === "null" ? null : userId
 
    return {
       userId,

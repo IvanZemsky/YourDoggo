@@ -18,16 +18,18 @@ const ImagesList = () => {
    return (
       <div className={styles.content}>
          {images?.length ? (
-            images.map((images) => (
+            images.map((image) => (
                <Image
-                  key={images._id}
-                  id={images._id}
-                  user={images.userId}
-                  title={images.title}
-                  tags={images.tags}
-                  img={images.imgLink}
-                  datetime={images.datetime}
-                  login={images.login}
+                  key={image._id}
+                  id={image._id}
+                  user={image.userId}
+                  title={image.title}
+                  tags={image.tags}
+                  img={image.imgLink}
+                  datetime={image.datetime}
+                  login={image.login}
+                  isLiked={image.isLiked}
+                  likes={image.likes}
                />
             ))
          ) : (

@@ -1,4 +1,4 @@
-import { WheelEvent, useEffect } from "react"
+import { useEffect } from "react"
 import { useAppSelector } from "./redux"
 
 export const useModal = (modalContent: string): boolean => {

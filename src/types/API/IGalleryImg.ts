@@ -6,11 +6,14 @@ export interface IGalleryImg {
    userId: string
    datetime: string
    login?: string
+   isLiked: boolean
+   likes: number
 }
 
 export interface FetchGalleryFilter {
    id?: string
    userLogin?: boolean
+   userId?: string | null
    limit?: number
    textQuery?: string
 }

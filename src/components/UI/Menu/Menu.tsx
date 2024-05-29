@@ -1,8 +1,9 @@
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
-import { Fade } from "../Transitions/Fade";
+import { Fade } from "../Transitions/Fade/Fade";
 import styles from "./Menu.module.scss";
 import { selectStyles } from "@/helpers/selectStyles";
+import { useEventListener } from "@/hooks/useEventListener";
 
 interface MenuProps {
    isOpen: boolean;
@@ -19,6 +20,21 @@ const Menu = ({
    const [isMenuOpened, setIsMenuOpened] = useState(!isOpen);
    const burgerRef = useRef<HTMLDivElement>(null);
 
+   useEventListener("mousedown", (event: MouseEvent) => {
+      const isNotBurgerClick = burgerRef.current && !burgerRef.current.contains(event.target as Node);
+      if (isNotBurgerClick && isOpen) {
+         setIsMenuOpened(false);
+      }
+   });
+
+   useEffect(() => {
+      setIsMenuOpened(!isOpen);
+   }, [isOpen]);
+
+   const handleOpen = () => {
+      setIsMenuOpened((prev) => !prev);
+   };
+
    const menuItemsStyles = selectStyles(
       isOpen,
       styles.menuItems,
@@ -29,29 +45,6 @@ const Menu = ({
       styles.burger,
       styles.burgerOpened
    );
-
-   const handleClickOutside = (event: MouseEvent) => {
-      const isNotBurgerClick = burgerRef.current && !burgerRef.current.contains(event.target as Node)
-      if (isNotBurgerClick && isOpen) {
-         setIsMenuOpened(false);
-      }
-   };
-
-   useEffect(() => {
-      document.addEventListener("mousedown", handleClickOutside);
-
-      return () => {
-         document.removeEventListener("mousedown", handleClickOutside);
-      };
-   }, []);
-
-   useEffect(() => {
-      setIsMenuOpened(!isOpen);
-   }, [isOpen]);
-
-   const handleOpen = () => {
-      setIsMenuOpened((prev) => !prev);
-   };
 
    return (
       <div className={styles.content}>

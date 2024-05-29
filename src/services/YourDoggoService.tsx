@@ -4,8 +4,9 @@ import { FetchProductFilter, IProduct } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "./../types/API/IUser";
+import { FetchLike, ILike } from "@/types/API/ILike";
 
-const { AUTH, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY } = APIEndpoints;
+const { AUTH, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES } = APIEndpoints;
 
 export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
@@ -47,13 +48,13 @@ export const YourDoggoAPI = createApi({
          }),
       }),
       fetchAllGalleryImages: builder.query<IGalleryImg[], FetchGalleryFilter>({
-         query: ({ limit, userLogin, textQuery }) => ({
+         query: ({ limit, userLogin, userId, textQuery }) => ({
             url: `${GALLERY}/?sortByDate=true`,
             params: {
                limit,
                userLogin,
+               userId : userId || "",
                search: textQuery,
-
             },
          }),
       }),
@@ -75,6 +76,13 @@ export const YourDoggoAPI = createApi({
             url: `${USERS}/${id}`,
          }),
       }),
+      toggleLike: builder.mutation<ILike, FetchLike>({
+         query: (body) => ({
+           url: `${GALLERY}${LIKES}`,
+           method: "POST",
+           body,
+         }),
+       }),
    }),
 });
 
@@ -88,6 +96,7 @@ export const {
    useFetchGalleryImagesByUserIdQuery,
    useFetchGalleryImageByIdQuery,
    useFetchUserByIdQuery,
+   useToggleLikeMutation,
 } = YourDoggoAPI;
 
 export const {

@@ -9,7 +9,8 @@ import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect"
 
 interface ButtonProps {
    variant?: "outlined" | "filled" | "none";
-   color?: string;
+   color?: string
+   shadow?: boolean;
    icon?: ReactNode | null;
    className?: string | null;
 }
@@ -20,6 +21,7 @@ type ButtonFullProps = PropsWithChildren<ButtonProps> &
 const Button = ({
    variant = "filled",
    color = "primary",
+   shadow = true,
    icon = null,
    className = "",
    children,
@@ -31,9 +33,13 @@ const Button = ({
 
    return (
       <button
-         className={[styles.button, styles[color], styles[variant], className].join(
-            " "
-         )}
+         className={[
+            styles.button,
+            styles[color],
+            styles[variant],
+            shadow && styles["shadow"],
+            className,
+         ].join(" ")}
          ref={buttonRef}
          {...props}
       >

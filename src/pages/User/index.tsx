@@ -6,21 +6,20 @@ import { useAppSelector } from "@/hooks/redux";
 import { useFetchUserByIdQuery } from "@/services/YourDoggoService";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import DoggoCard from "../Profile/components/DoggoCard/DoggoCard";
-import Personal from "../Profile/components/Personal/Personal";
-import UserGallery from "../Profile/components/UserGallery/UserGallery";
-import styles from './User.module.scss'
+import Personal from "./components/Personal/Personal";
+import UserGallery from "./components/UserGallery/UserGallery";
+import styles from "./User.module.scss";
 
-const {Profile} = RoutesEnum
+const { Profile } = RoutesEnum;
 
 const User = () => {
    const navigate = useNavigate();
    const authUserId = useAppSelector((state) => state.auth.userId);
-   const {userId} = useParams()
+   const { userId } = useParams();
 
    useEffect(() => {
       if (userId === authUserId) {
-         navigate(`/${Profile}`)
+         navigate(`/${Profile}`);
       }
    }, [userId]);
 
@@ -54,15 +53,13 @@ const User = () => {
                      </div>
                      <p className={styles.login}>@{user.login}</p>
                   </div>
-                  <DoggoCard hasCard={user.hasCard} />
                </div>
 
-               <UserGallery userId={userId}/>
-
+               <UserGallery userId={userId} />
             </div>
          </Wrapper>
       )
    );
-}
+};
 
-export default User
+export default User;

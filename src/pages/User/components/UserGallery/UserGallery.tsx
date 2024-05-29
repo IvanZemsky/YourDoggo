@@ -1,9 +1,8 @@
 import { useFetchGalleryImagesByUserIdQuery } from "@/services/YourDoggoService";
 import styles from "./UserGallery.module.scss";
 import Loading from "@/components/Loading/Loading";
-import Button from "@/components/UI/Button/Button";
 import PageLink from "@/components/UI/PageLink/PageLink";
-import ArrowIcon from "@/components/UI/icons/ArrowIcon";
+import ArrowIcon  from '@/components/UI/icons/ArrowIcon';
 
 interface UserGalleryProps {
    userId: string;
@@ -29,8 +28,7 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
          <div className={styles.communityInfo}>
             <section className={styles.gallery}>
                <header className={styles.header}>
-                  <h2 className={styles.sectionTitle}>Ваша галерея</h2>
-                  <Button variant="none" shadow={false}>Понравившиеся</Button>
+                  <h2 className={styles.sectionTitle}>Галерея</h2>
                </header>
                <div className={styles.galleryBlock}>
                   {images.map((image) => (

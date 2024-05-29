@@ -72,10 +72,22 @@
    padding: 3px 6px;
    border-radius: 0 0 5px 5px;
 
+   &.liked{
+      svg{
+         fill: var(--secondaryMain)
+      }
+   }
+
    svg{
       width: 25px;
       height: auto;
+      transition: fill 0.15s linear;
       fill: var(--secondaryText);
+      
+      path{
+         stroke: var(--secondaryText);
+         stroke-width: 14;
+      }
    }
 }
 

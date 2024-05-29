@@ -21,3 +21,11 @@
       fill: var(--primaryText);
    }
 }
+
+.filterBtn,
+.filterBtn:hover {
+
+   &::before {
+      content: none;
+   }
+}

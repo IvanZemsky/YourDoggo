@@ -5,12 +5,14 @@ import styles from "./ImageInfo.module.scss";
 import { MouseEvent, useCallback } from "react";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { Link } from "react-router-dom";
-import HeartIcon from "@/components/UI/icons/HeartIcon";
 import Button from "@/components/UI/Button/Button";
 import CrossIcon from "@/components/UI/icons/CrossIcon";
 import { formatDate } from "@/helpers/formatDate";
 import { RoutesEnum } from "@/constants/routes";
 import Tags from "./components/Tags";
+import LikeBtn from './../LikeBtn/LikeBtn';
+import { useToggleLikeMutation } from "@/services/YourDoggoService";
+import { useLikeToggle } from "@/hooks/useLikeToggle";
 
 interface ImageInfoProps {
    id: string;
@@ -19,21 +21,17 @@ interface ImageInfoProps {
    tags: string[];
    img: string;
    datetime: any;
+   isLiked: boolean
+   likes: number
    login: string | undefined;
 }
 
 const { User } = RoutesEnum;
 
-const ImageInfo = ({
-   id,
-   title,
-   tags,
-   user: userId,
-   img,
-   datetime,
-   login,
-}: ImageInfoProps) => {
+const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes, isLiked}: ImageInfoProps) => {
    const dispatch = useAppDispatch();
+
+   const {like} = useLikeToggle(isLiked)
 
    const modalContent = `imageModal${id}`;
 
@@ -47,12 +45,9 @@ const ImageInfo = ({
       []
    );
 
-   const handleContentClick = useCallback(
-      (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
-         event.stopPropagation();
-      },
-      []
-   );
+   const handleContentClick = (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
+      event.stopPropagation();
+   };
 
    return (
       <Modal
@@ -68,10 +63,14 @@ const ImageInfo = ({
                         @ {login}
                      </Link>
                      <div className={styles.headerBtns}>
-                        <Button
-                           variant="none"
-                           icon={<HeartIcon />}
-                           className={styles.likeBtn}
+                        <p className={styles.likes}>
+                           {like?.likes || likes}
+                        </p>
+                        <LikeBtn 
+                           imgId={id} 
+                           isLiked={isLiked} 
+                           likedStyles={styles.liked} 
+                           unlikedStyles={styles.likeBtn} 
                         />
                         <Button
                            variant="none"

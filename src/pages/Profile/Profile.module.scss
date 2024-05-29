@@ -1,6 +1,6 @@
 .content{
    display: grid;
-   grid-template-columns: 500px 1fr;
+   grid-template-columns: 375px 1fr;
    gap: 35px;
    padding: 25px 0;
 }
@@ -42,5 +42,7 @@
 }
 
 .login{
+   padding-left: 21px;
+   font-size: 15px;
    font-weight: 500;
 }

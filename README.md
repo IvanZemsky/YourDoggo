@@ -7,11 +7,12 @@
 ### Стек технологий:
 + React (TypeScript)
 + Redux Toolkit, RTK Query
-+ react-responsive
 + SCSS (SCSS modules)
 + Express
 + MongoDB (Mongoose)
 + Webpack
++ react-responsive
++ react-transition-group
 
 ### Сторонние ресурсы:
 + [Render](https://render.com/) - для хостинга бекенда

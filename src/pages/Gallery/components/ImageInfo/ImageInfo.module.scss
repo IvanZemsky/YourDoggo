@@ -79,7 +79,10 @@
       width: 29px;
       height: auto;
       fill: var(--thirdMain);
-      transition: fill 0.15s linear;
+      
+      path{
+         transition: fill 0.15s linear;
+      }
       
 
       path{

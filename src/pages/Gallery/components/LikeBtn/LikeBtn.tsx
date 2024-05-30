@@ -2,8 +2,7 @@ import Button from "@/components/UI/Button/Button";
 import HeartIcon from "@/components/UI/icons/HeartIcon";
 import { ButtonHTMLAttributes, MouseEvent } from "react";
 import { useAppSelector } from "@/hooks/redux";
-import { useToggleLikeMutation } from "@/services/YourDoggoService";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { selectStyles } from "@/helpers/selectStyles";
 import { useLikeToggle } from "@/hooks/useLikeToggle";
 
@@ -17,10 +16,11 @@ interface LikeBtnProps {
 type LikeBtnType = LikeBtnProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const LikeBtn = ({isLiked, imgId, className, unlikedStyles, likedStyles, ...attributes}: LikeBtnType) => {
-   const {toggleLike, liked} = useLikeToggle(isLiked)
+   const {toggleLike, liked} = useLikeToggle(imgId, isLiked)
    const currentUserId = useAppSelector(state => state.auth.userId)
 
    const handleLikeClick = useCallback(
+      
       async (event: MouseEvent<HTMLButtonElement>) => {
          event.stopPropagation();
          if (!currentUserId) return;

@@ -16,4 +16,5 @@ export interface FetchGalleryFilter {
    userId?: string | null
    limit?: number
    textQuery?: string
+   liked?: boolean
 }

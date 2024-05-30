@@ -1,32 +1,36 @@
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { useAppDispatch } from "@/hooks/redux";
 import styles from "./PriceFilter.module.scss";
-import {
-   setMaxPrice,
-   setMinPrice,
-} from "@/store/slices/shop/productFilterSlice";
-import { ChangeEvent } from "react";
+import { setMinMaxPrice } from "@/store/slices/shop/productFilterSlice";
+import { ChangeEvent, FormEvent, useState } from "react";
+import Button from "@/components/UI/Button/Button";
 
 const PriceFilter = () => {
-   const minPrice = useAppSelector((state) => state.productFilter.minPrice);
-   const maxPrice = useAppSelector((state) => state.productFilter.maxPrice);
+   const [form, setForm] = useState({
+      minPrice: "",
+      maxPrice: ""
+   })
    
    const dispatch = useAppDispatch();
 
    const handleMinPrice = (event: ChangeEvent<HTMLInputElement>) => {
-      dispatch(setMinPrice(event.target.value));
+      setForm({...form, minPrice: event.target.value})
    };
 
    const handleMaxPrice = (event: ChangeEvent<HTMLInputElement>) => {
-      dispatch(setMaxPrice(event.target.value));
+      setForm({...form, maxPrice: event.target.value})
    };
+
+   const handleSumbit = (event: FormEvent<HTMLFormElement>) => {
+      dispatch(setMinMaxPrice(form))
+   }
 
    return (
       <div>
          <p className={styles.label}>Цена</p>
-         <form className={styles.inputWrap}>
+         <form className={styles.inputWrap} onSubmit={handleSumbit}>
             <input
                type="number"
-               value={minPrice}
+               value={form.minPrice}
                placeholder="От..."
                min={0}
                max={100000}
@@ -34,12 +38,15 @@ const PriceFilter = () => {
             />
             <input
                type="number"
-               value={maxPrice}
+               value={form.maxPrice}
                placeholder="До..."
                min={0}
                max={100000}
                onChange={handleMaxPrice}
             />
+            <Button type="submit" shadow={false} className={styles.submitBtn}>
+               +
+            </Button>
          </form>
       </div>
    );

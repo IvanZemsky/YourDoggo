@@ -11,23 +11,28 @@
    border-style: solid;
    outline: none;
    background: none;
-   box-shadow:
-      rgba(0, 0, 0, 0.2) 0px 3px 1px -1px,
-      rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
-      rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
    transition: 0.12s box-shadow linear;
    user-select: none;
-   
+
+   svg{
+      display: block;
+      width: 20px;
+      height: auto;
+   }
+
+}
+
+.shadow{
+   box-shadow:
+   rgba(0, 0, 0, 0.2) 0px 3px 1px -1px,
+   rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+   rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+
    &:hover{
       box-shadow:
          rgba(0, 0, 0, 0.2) 0px 2px 3px -1px,
          rgba(0, 0, 0, 0.14) 0px 4px 3px 0px,
          rgba(0, 0, 0, 0.12) 0px 3px 5px 0px;
-   }
-
-   svg{
-      width: 20px;
-      height: auto;
    }
 }
 
@@ -58,5 +63,6 @@
 .none{
    border: none;
    background-color: inherit;
-   color: var(--primaryText);
+   color: inherit;
+   padding: 0;
 }

@@ -5,6 +5,7 @@
 }
 
 .cartBtn{
+   display: flex;
    width: 38px;
    height: 38px;
    justify-content: center;
@@ -13,6 +14,7 @@
 
    svg{
       width: 19px;
+      height: auto;
       fill: var(--thirdMain);
    }
 }

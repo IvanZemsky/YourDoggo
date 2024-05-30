@@ -24,14 +24,12 @@ const productFilterSlice = createSlice({
       setCategory(state, action) {
          state.category = action.payload
       },
-      setMinPrice(state, action) {
-         state.minPrice = action.payload
-      },
-      setMaxPrice(state, action) {
-         state.maxPrice = action.payload
+      setMinMaxPrice(state, action) {
+         state.minPrice = action.payload.minPrice
+         state.maxPrice = action.payload.maxPrice
       },
    }
 })
 
 export default productFilterSlice
-export const {setTextQuery, setCategory, setMinPrice, setMaxPrice} = productFilterSlice.actions
+export const {setTextQuery, setCategory, setMinMaxPrice} = productFilterSlice.actions

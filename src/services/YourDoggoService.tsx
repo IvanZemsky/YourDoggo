@@ -48,14 +48,19 @@ export const YourDoggoAPI = createApi({
          }),
       }),
       fetchAllGalleryImages: builder.query<IGalleryImg[], FetchGalleryFilter>({
-         query: ({ limit, userLogin, userId, textQuery }) => ({
+         query: ({ limit, userLogin, userId, textQuery, liked }) => ({
+            
             url: `${GALLERY}/?sortByDate=true`,
+            method: "POST",
             params: {
                limit,
                userLogin,
-               userId : userId || "",
                search: textQuery,
+               liked: liked || "",
             },
+            body: {
+               authUserId : userId || "",
+            }
          }),
       }),
       fetchGalleryImagesByUserId: builder.query<IGalleryImg[], FetchGalleryFilter>({

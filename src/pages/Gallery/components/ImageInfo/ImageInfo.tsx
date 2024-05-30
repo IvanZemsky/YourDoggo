@@ -31,7 +31,7 @@ const { User } = RoutesEnum;
 const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes, isLiked}: ImageInfoProps) => {
    const dispatch = useAppDispatch();
 
-   const {like} = useLikeToggle(isLiked)
+   const {like} = useLikeToggle(id, isLiked)
 
    const modalContent = `imageModal${id}`;
 

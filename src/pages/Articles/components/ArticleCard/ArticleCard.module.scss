@@ -1,0 +1,62 @@
+@import '/src/styles/mixins.scss';
+
+.content {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   border-radius: 15px;
+   overflow: hidden;
+   border: 1px solid var(--thirdDark);
+   color: var(--thirdText);
+}
+
+.imgWrap {
+   @include flex-center-xy;
+   aspect-ratio: 1.3 / 1;
+   min-height: 200px;
+   overflow: hidden;
+
+   img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+}
+
+.info {
+   margin-top: auto;
+   padding: 15px 20px;
+}
+
+.title{
+   margin-bottom: 10px;
+   font-size: 17px;
+   font-weight: 600;
+}
+
+.panel{
+   @include flex-spb-y;
+   gap: 15px;
+}
+
+.published{
+   font-size: 15px;
+}
+
+.likeBtn{
+
+   svg {
+      width: 28px;
+      path{
+         stroke: var(--secondaryMain);
+         fill: var(--secondaryText);
+         transition: fill 0.15s linear;
+      }
+   }
+
+   &.liked{
+      svg path {
+         fill: var(--secondaryMain);
+      }
+   }
+}

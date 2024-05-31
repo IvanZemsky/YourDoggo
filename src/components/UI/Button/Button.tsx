@@ -15,7 +15,7 @@ interface ButtonProps {
    className?: string | null;
 }
 
-type ButtonFullProps = PropsWithChildren<ButtonProps> &
+export type ButtonFullProps = PropsWithChildren<ButtonProps> &
    ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({

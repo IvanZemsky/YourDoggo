@@ -46,7 +46,11 @@
 }
 
 .addBtn, .cartLink{
+   align-items: center;
    width: 280px;
+   padding: 10px 18px;
+   font-size: 18px;
+   border-radius: 7px;
    justify-content: center;
 }
 
@@ -80,8 +84,12 @@
 }
 
 .cartLink{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+
    svg {
-      width: 22px;
+      width: 18px;
       margin-left: 10px;
       fill: var(--primaryText);
    }

@@ -4,9 +4,10 @@ import { FetchProductFilter, IProduct } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "./../types/API/IUser";
-import { FetchLike, ILike } from "@/types/API/ILike";
+import { ILike, FetchLike } from "@/types/API/ILike";
+import { FetchArticleFilter, IArticle } from "@/types/API/IArticle";
 
-const { AUTH, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES } = APIEndpoints;
+const { AUTH, ARTICLES, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES } = APIEndpoints;
 
 export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
@@ -28,7 +29,7 @@ export const YourDoggoAPI = createApi({
             url: `${PRODUCTS}/${id}`,
          }),
       }),
-      fetchByIds: builder.query<IProduct[], string[]>({
+      fetchProductsByIds: builder.query<IProduct[], string[]>({
          query: (ids) => ({
             url: `${PRODUCTS}`,
             method: "POST",
@@ -49,7 +50,6 @@ export const YourDoggoAPI = createApi({
       }),
       fetchAllGalleryImages: builder.query<IGalleryImg[], FetchGalleryFilter>({
          query: ({ limit, userLogin, userId, textQuery, liked }) => ({
-            
             url: `${GALLERY}/?sortByDate=true`,
             method: "POST",
             params: {
@@ -82,12 +82,31 @@ export const YourDoggoAPI = createApi({
          }),
       }),
       toggleLike: builder.mutation<ILike, FetchLike>({
-         query: (body) => ({
-           url: `${GALLERY}${LIKES}`,
+         query: ({userId, likedItemId, endpoint}) => ({
+           url: `${endpoint}${LIKES}`,
            method: "POST",
-           body,
+           body: {
+               userId,
+               ...(endpoint === ARTICLES && { articleId: likedItemId }),
+               ...(endpoint === GALLERY && { galleryimgId: likedItemId })
+           }
          }),
        }),
+       fetchAllArticles: builder.query<IArticle[], FetchArticleFilter>({
+         query: ({ limit, userLogin, userId, textQuery, liked }) => ({
+            url: `${ARTICLES}/?sortByDate=true`,
+            method: "POST",
+            params: {
+               limit,
+               userLogin,
+               search: textQuery,
+               liked: liked || "",
+            },
+            body: {
+               authUserId : userId || "",
+            }
+         }),
+      }),
    }),
 });
 
@@ -95,23 +114,25 @@ export const {
    useFetchAllProductsQuery,
    useFetchProductByIdQuery,
    useFetchProductsByCategoryQuery,
-   useFetchByIdsQuery,
+   useFetchProductsByIdsQuery,
    useFetchUserLoginDataQuery,
    useFetchAllGalleryImagesQuery,
    useFetchGalleryImagesByUserIdQuery,
    useFetchGalleryImageByIdQuery,
    useFetchUserByIdQuery,
    useToggleLikeMutation,
+   useFetchAllArticlesQuery,
 } = YourDoggoAPI;
 
 export const {
    useLazyFetchAllProductsQuery,
    useLazyFetchProductByIdQuery,
    useLazyFetchProductsByCategoryQuery,
-   useLazyFetchByIdsQuery,
+   useLazyFetchProductsByIdsQuery,
    useLazyFetchUserLoginDataQuery,
    useLazyFetchAllGalleryImagesQuery,
    useLazyFetchGalleryImagesByUserIdQuery,
    useLazyFetchGalleryImageByIdQuery,
    useLazyFetchUserByIdQuery,
+   useLazyFetchAllArticlesQuery
 } = YourDoggoAPI;

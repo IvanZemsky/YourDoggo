@@ -7,7 +7,7 @@ interface PersonalProps {
 }
 
 const Personal = ({ user }: PersonalProps) => {
-   const date = formatDate(user.registrationDate);
+   const date = formatDate(user.registrationDate, "text");
 
    return (
       <div className={styles.userPersonalData}>

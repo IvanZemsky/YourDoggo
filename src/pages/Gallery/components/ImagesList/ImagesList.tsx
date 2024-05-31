@@ -1,4 +1,3 @@
-import { useFetchAllGalleryImagesQuery } from "@/services/YourDoggoService";
 import styles from "./ImagesList.module.scss";
 import Image from "../Image/Image";
 import Loading from "@/components/Loading/Loading";
@@ -22,14 +21,7 @@ const ImagesList = () => {
                <Image
                   key={image._id}
                   id={image._id}
-                  user={image.userId}
-                  title={image.title}
-                  tags={image.tags}
-                  img={image.imgLink}
-                  datetime={image.datetime}
-                  login={image.login}
-                  isLiked={image.isLiked}
-                  likes={image.likes}
+                  {...image}
                />
             ))
          ) : (

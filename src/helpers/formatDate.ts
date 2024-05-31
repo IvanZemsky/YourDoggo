@@ -3,11 +3,17 @@ const months = [
    "июля", "августа", "сентября", "октября", "ноября", "декабря"
  ];
 
-export const formatDate = (dateString: string): string => {
+export const formatDate = (dateString: string, type: "text" | "date"): string => {
    const date = new Date(dateString);
    const day = date.getDate();
-   const month = months[date.getMonth()];
+   const monthNumber = date.getMonth();
    const year = date.getFullYear();
  
-   return `${day} ${month}, ${year}`;
+   switch (type) {
+    case "text":
+      return `${day} ${months[monthNumber]}, ${year}`;
+    case "date":
+      return `${day}.${monthNumber > 10 ? `0${monthNumber}` : monthNumber}.${year}`
+   }
+   
  }

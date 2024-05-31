@@ -7,30 +7,26 @@ import { openModal } from "@/store/slices/modalSlice";
 import ImageInfo from "../ImageInfo/ImageInfo";
 import { RoutesEnum } from "@/constants/routes";
 import { Link } from "react-router-dom";
-import LikeBtn from "../LikeBtn/LikeBtn";
+import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
+import { APIEndpoints } from "@/constants/API";
+import { IGalleryImg } from "@/types/API/IGalleryImg";
 
-interface ImageProps {
+const {GALLERY} = APIEndpoints
+
+interface ImageProps extends Omit<IGalleryImg, "_id"> {
    id: string;
-   user: string;
-   title: string;
-   tags: string[];
-   img: string;
-   datetime: any;
-   login: string | undefined;
-   likes: number;
-   isLiked: boolean;
    hasModal?: boolean;
 }
 
 const { User } = RoutesEnum;
 
 const Image = (props: ImageProps) => {
-   const { id, title, img, datetime, user: userId, login, isLiked, hasModal = true } = props;
+   const { id, title, imgLink, datetime, userId, login, isLiked, hasModal = true } = props;
    const dispatch = useAppDispatch();
 
    const modalContent = `imageModal${id}`;
 
-   const date = formatDate(datetime);
+   const date = formatDate(datetime, "text");
 
    const handleImageClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
       if (!(event.target instanceof HTMLAnchorElement)) {
@@ -50,7 +46,8 @@ const Image = (props: ImageProps) => {
                </Link>
             )}
             <LikeBtn
-               imgId={id}
+               likedItemId={id}
+               endpoint={GALLERY}
                isLiked={isLiked}
                likedStyles={styles.liked}
                unlikedStyles={styles.likeBtn}
@@ -59,7 +56,7 @@ const Image = (props: ImageProps) => {
             <ImageInfo {...props} />
          </div>
 
-         <img src={img} alt={title} />
+         <img src={imgLink} alt={title} />
          <div className={styles.info}>
             <div className={styles.date}>{date}</div>
             <p className={styles.title}>{title}</p>

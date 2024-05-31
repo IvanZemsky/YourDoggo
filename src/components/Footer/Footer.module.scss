@@ -1,3 +1,5 @@
+@import '/src/styles/mixins.scss';
+
 .footer{
    padding: 10px 0;
    color: var(--primaryText);
@@ -5,17 +7,18 @@
 }
 
 .content{
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+   @include flex-spb-y;
    gap: 25px;
 }
 
 .links, .info{
-   display: flex;
-   align-items: center;
+   @include flex-center-x;
    gap: 10px;
    font-size: 15px;
+}
+
+.links{
+   flex-wrap: wrap;
 }
 
 .links{

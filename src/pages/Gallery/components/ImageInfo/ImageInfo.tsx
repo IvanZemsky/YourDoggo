@@ -1,5 +1,5 @@
 import Modal from "@/components/UI/Modal/Modal";
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./ImageInfo.module.scss";
 import { MouseEvent, useCallback } from "react";
@@ -10,32 +10,35 @@ import CrossIcon from "@/components/UI/icons/CrossIcon";
 import { formatDate } from "@/helpers/formatDate";
 import { RoutesEnum } from "@/constants/routes";
 import Tags from "./components/Tags";
-import LikeBtn from './../LikeBtn/LikeBtn';
-import { useToggleLikeMutation } from "@/services/YourDoggoService";
-import { useLikeToggle } from "@/hooks/useLikeToggle";
+import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
+import { APIEndpoints } from "@/constants/API";
+import { IGalleryImg } from "@/types/API/IGalleryImg";
+import LikeCounter from "../../../../components/UI/LikeCounter/LikeCounter";
 
-interface ImageInfoProps {
+const { GALLERY } = APIEndpoints;
+
+interface ImageInfoProps extends Omit<IGalleryImg, "_id"> {
    id: string;
-   user: string;
-   title: string;
-   tags: string[];
-   img: string;
-   datetime: any;
-   isLiked: boolean
-   likes: number
-   login: string | undefined;
 }
 
 const { User } = RoutesEnum;
 
-const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes, isLiked}: ImageInfoProps) => {
+const ImageInfo = ({
+   id,
+   title,
+   tags,
+   userId,
+   imgLink,
+   datetime,
+   login,
+   likes,
+   isLiked,
+}: ImageInfoProps) => {
    const dispatch = useAppDispatch();
-
-   const {like} = useLikeToggle(id, isLiked)
 
    const modalContent = `imageModal${id}`;
 
-   const date = formatDate(datetime).split(",").join("");
+   const date = formatDate(datetime, "text").split(",").join("");
 
    const handleCloseClick = useCallback(
       (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
@@ -45,7 +48,9 @@ const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes,
       []
    );
 
-   const handleContentClick = (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
+   const handleContentClick = (
+      event: MouseEvent<HTMLDivElement | HTMLButtonElement>
+   ) => {
       event.stopPropagation();
    };
 
@@ -63,14 +68,18 @@ const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes,
                         @ {login}
                      </Link>
                      <div className={styles.headerBtns}>
-                        <p className={styles.likes}>
-                           {like?.likes || likes}
-                        </p>
-                        <LikeBtn 
-                           imgId={id} 
-                           isLiked={isLiked} 
-                           likedStyles={styles.liked} 
-                           unlikedStyles={styles.likeBtn} 
+                        <LikeCounter
+                           className={styles.likes}
+                           id={id}
+                           likes={likes}
+                           isLiked={isLiked}
+                        />
+                        <LikeBtn
+                           likedItemId={id}
+                           isLiked={isLiked}
+                           endpoint={GALLERY}
+                           likedStyles={styles.liked}
+                           unlikedStyles={styles.likeBtn}
                         />
                         <Button
                            variant="none"
@@ -81,7 +90,7 @@ const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes,
                      </div>
                   </header>
                   <div className={styles.imgWrap}>
-                     <img src={img} alt="Изображение" />
+                     <img src={imgLink} alt="Изображение" />
                   </div>
                   <div className={styles.desc}>
                      <div className={styles.titleWrap}>
@@ -92,7 +101,6 @@ const ImageInfo = ({ id, title, tags, user: userId, img, datetime, login, likes,
                      </div>
 
                      <Tags tags={tags} />
-                     
                   </div>
                </div>
             </div>

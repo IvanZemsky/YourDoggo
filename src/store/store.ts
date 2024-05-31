@@ -1,5 +1,4 @@
 import { configureStore, combineSlices } from "@reduxjs/toolkit";
-import articleSlice from "./slices/articleSlice";
 import modalSlice from "./slices/modalSlice";
 import authSlice from "./slices/authSlice";
 import { YourDoggoAPI } from "@/services/YourDoggoService";
@@ -10,15 +9,16 @@ import { favouritesMiddleware } from "./middleware/favouritesMiddleware";
 import { cartMiddleware } from "./middleware/cartMiddleware";
 import galleryFilterSlice from "./slices/gallery/galleryFilterSlice";
 import shopSlice from "./slices/shop/shopSlice";
+import articleFilterSlice from "./slices/articles/articleFilterSlice";
 
 const rootSlice = combineSlices(
    authSlice,
-   articleSlice,
    modalSlice,
    favouritesSlice,
    cartSlice,
    productFilterSlice,
    galleryFilterSlice,
+   articleFilterSlice,
    shopSlice,
    YourDoggoAPI
 );

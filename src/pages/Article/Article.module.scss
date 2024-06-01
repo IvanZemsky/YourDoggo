@@ -1,0 +1,75 @@
+@import '/src/styles/mixins.scss';
+
+.wrapper{
+   max-width: 900px;
+}
+
+.content{
+   padding: 25px 0;
+}
+
+.header{
+   margin-bottom: 20px;
+}
+
+.titleWrap{
+   @include flex-spb-y;
+   gap: 20px;
+}
+
+.title{
+   font-size: 27px;
+}
+
+.userLink{
+   color: var(--primaryMain);
+
+   &:hover{
+      text-decoration: underline;
+   }
+}
+
+.published{
+   font-size: 17px;
+}
+
+.text{
+   margin-bottom: 20px;
+   line-height: 1.2;
+   font-size: 19px;
+   white-space: pre-line;
+
+   h2{
+      font-size: inherit;
+      line-height: 1.2;
+   }
+}
+
+.likes{
+   @include flex-center-x;
+   gap: 15px;
+}
+
+.likeBtn{
+   padding: 5px;
+
+   svg {
+      width: 28px;
+      path{
+         stroke: var(--secondaryMain);
+         fill: var(--secondaryText);
+         transition: fill 0.15s linear;
+      }
+   }
+
+   &.liked{
+      svg path {
+         fill: var(--secondaryMain);
+      }
+   }
+}
+
+.likeCounter{
+   font-weight: 500;
+   color: var(--secondaryMain);
+}

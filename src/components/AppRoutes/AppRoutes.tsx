@@ -1,4 +1,4 @@
-import {Home, Signin, Articles, User, Product, Profile, Forum, Gallery, Shop, Cart} from '@/pages/LazyExports'
+import {Home, Signin, Articles, User, Product, Profile, Forum, Gallery, Shop, Cart, Article} from '@/pages/LazyExports'
 import { Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
 import { RoutesEnum } from "@/constants/routes";
@@ -11,6 +11,7 @@ const AppRoutes = () => {
             <Route path={RoutesEnum.Signin} element={<Signin />} />
             <Route path={RoutesEnum.Profile} element={<Profile />} />
             <Route path={RoutesEnum.Articles} element={<Articles />} />
+            <Route path={RoutesEnum.Articles + "/:id"} element={<Article />} />
             <Route path={RoutesEnum.Shop} element={<Shop />} />
             <Route
                path={RoutesEnum.Shop + "/" + RoutesEnum.Cart}

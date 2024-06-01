@@ -73,7 +73,7 @@ const ImageInfo = ({
                            id={id}
                            likes={likes}
                            isLiked={isLiked}
-                        />
+                           endpoint={GALLERY}                        />
                         <LikeBtn
                            likedItemId={id}
                            isLiked={isLiked}

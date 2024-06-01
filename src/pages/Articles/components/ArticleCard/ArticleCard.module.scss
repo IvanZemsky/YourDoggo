@@ -1,13 +1,36 @@
 @import '/src/styles/mixins.scss';
 
-.content {
+.content{
    display: flex;
    flex-direction: column;
+   gap: 10px;
    height: 100%;
+}
+
+.userLink{
+   font-weight: 500;
+   color: inherit;
+   font-size: 17px;
+}
+
+.cardLink{
+   display: flex;
+   flex-grow: 1;
+}
+
+.card {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
    border-radius: 15px;
    overflow: hidden;
    border: 1px solid var(--thirdDark);
    color: var(--thirdText);
+   transition: background-color 0.15s linear;
+
+   &:hover{
+      background-color: #eeeeee;
+   }
 }
 
 .imgWrap {
@@ -24,8 +47,10 @@
 }
 
 .info {
-   margin-top: auto;
-   padding: 15px 20px;
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   padding: 15px 18px;
 }
 
 .title{
@@ -37,6 +62,7 @@
 .panel{
    @include flex-spb-y;
    gap: 15px;
+   margin-top: auto;
 }
 
 .published{

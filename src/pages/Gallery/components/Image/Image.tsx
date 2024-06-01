@@ -5,11 +5,11 @@ import { MouseEvent } from "react";
 import { useAppDispatch} from "@/hooks/redux";
 import { openModal } from "@/store/slices/modalSlice";
 import ImageInfo from "../ImageInfo/ImageInfo";
-import { RoutesEnum } from "@/constants/routes";
 import { Link } from "react-router-dom";
 import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
+import { useUserLink } from "@/hooks/useUserLink";
 
 const {GALLERY} = APIEndpoints
 
@@ -18,14 +18,12 @@ interface ImageProps extends Omit<IGalleryImg, "_id"> {
    hasModal?: boolean;
 }
 
-const { User } = RoutesEnum;
-
 const Image = (props: ImageProps) => {
    const { id, title, imgLink, datetime, userId, login, isLiked, hasModal = true } = props;
    const dispatch = useAppDispatch();
 
    const modalContent = `imageModal${id}`;
-
+   const userLink = useUserLink(userId)
    const date = formatDate(datetime, "text");
 
    const handleImageClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
@@ -41,7 +39,7 @@ const Image = (props: ImageProps) => {
       >
          <div className={styles.topPanel}>
             {login && (
-               <Link to={`/${User}/${userId}`} className={styles.user}>
+               <Link to={userLink} className={styles.user}>
                   @{login}
                </Link>
             )}

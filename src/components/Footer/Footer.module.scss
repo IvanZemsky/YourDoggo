@@ -36,3 +36,12 @@
 .info{
    text-align: right;
 }
+
+@media screen and (max-width: 515px) {
+   .content{
+      flex-wrap: wrap;
+   }
+   .links{
+      margin-left: 0;
+   }
+}

@@ -1,11 +1,18 @@
 import { HTMLAttributes, PropsWithChildren } from "react";
 import styles from "./Wrapper.module.scss";
 
-type WrapperType = PropsWithChildren & HTMLAttributes<HTMLDivElement>;
+interface WrapperProps {
+   additionalStyles?: string
+}
 
-const Wrapper = ({ children, ...attributes }: WrapperType) => {
+type WrapperType = PropsWithChildren<WrapperProps> & HTMLAttributes<HTMLDivElement>;
+
+const Wrapper = ({ children, additionalStyles, ...attributes }: WrapperType) => {
    return (
-      <div className={styles.wrapper} {...attributes}>
+      <div
+         className={[styles.wrapper, additionalStyles].join(" ")}
+         {...attributes}
+      >
          {children}
       </div>
    );

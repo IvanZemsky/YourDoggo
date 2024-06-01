@@ -107,6 +107,18 @@ export const YourDoggoAPI = createApi({
             }
          }),
       }),
+      fetchArticleById: builder.query<IArticle, FetchArticleFilter>({
+         query: ({id, userLogin, userId}) => ({
+            url: `${ARTICLES}/${id}`,
+            method: "POST",
+            params: {
+               userLogin,
+            },
+            body: {
+               authUserId : userId || "",
+            }
+         }),
+      }),
    }),
 });
 
@@ -122,6 +134,7 @@ export const {
    useFetchUserByIdQuery,
    useToggleLikeMutation,
    useFetchAllArticlesQuery,
+   useFetchArticleByIdQuery,
 } = YourDoggoAPI;
 
 export const {
@@ -134,5 +147,6 @@ export const {
    useLazyFetchGalleryImagesByUserIdQuery,
    useLazyFetchGalleryImageByIdQuery,
    useLazyFetchUserByIdQuery,
-   useLazyFetchAllArticlesQuery
+   useLazyFetchAllArticlesQuery,
+   useLazyFetchArticleByIdQuery,
 } = YourDoggoAPI;

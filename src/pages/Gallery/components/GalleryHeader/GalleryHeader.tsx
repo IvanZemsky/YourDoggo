@@ -7,6 +7,10 @@ import Menu from "@/components/UI/Menu/Menu";
 import { useMediaQuery } from "react-responsive";
 import { setTextQuery, setLiked } from "@/store/slices/gallery/galleryFilterSlice";
 import { useAppDispatch } from "@/hooks/redux";
+import { RoutesEnum } from "@/constants/routes";
+import PageLink from "@/components/UI/PageLink/PageLink";
+
+const {Gallery, Create} = RoutesEnum
 
 const GalleryHeader = () => {
    const dispatch = useAppDispatch();
@@ -30,9 +34,9 @@ const GalleryHeader = () => {
             <Button variant="none" shadow={false} className={styles.filterBtn}>
                Ваша галерея
             </Button>
-            <Button icon={<PlusIcon />} className={styles.btn}>
+            <PageLink to={`/${Gallery}/${Create}`} icon={<PlusIcon />} className={styles.btn}>
                Добавить
-            </Button>
+            </PageLink>
          </Menu>
       </PageHeader>
    );

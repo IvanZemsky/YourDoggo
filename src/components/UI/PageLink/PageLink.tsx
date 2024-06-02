@@ -28,7 +28,7 @@ const PageLink = ({
       <Link
          to={to}
          className={[
-            styles.button,
+            styles.link,
             styles[color],
             styles[variant],
             shadow && styles["shadow"],

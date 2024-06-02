@@ -50,7 +50,7 @@ const Article = () => {
                   <div className={styles.titleWrap}>
                      <h1 className={styles.title}>{article.title}</h1>
                      <Link to={userLink} className={styles.userLink}>
-                        @YellowDog
+                        @{article.login}
                      </Link>
                   </div>
                   <time
@@ -61,6 +61,13 @@ const Article = () => {
                   </time>
                </header>
                <p className={styles.text} ref={textRef}></p>
+               {article.tags.length ? (
+                  <div className={styles.tags}>
+                     {article.tags.map((tag) => (
+                        <p>{tag}</p>
+                     ))}
+                  </div>
+               ) : null}
                <div className={styles.likes}>
                   <LikeBtn
                      likedItemId={id as string}

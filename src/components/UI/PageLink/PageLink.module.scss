@@ -4,10 +4,8 @@
    align-items: center;
    flex-shrink: 0;
    gap: 5px;
-   padding: 10px 18px;
    font-size: inherit;
    font-family: inherit;
-   border-radius: 5px;
    border-style: solid;
    outline: none;
    background: none;
@@ -16,7 +14,6 @@
 
    svg{
       display: block;
-      width: 20px;
       height: auto;
    }
 
@@ -57,7 +54,6 @@
 .outlined{
    color: var(--primaryText);
    border: 2px solid var(--primaryText);
-   background-color: none;
 }
 
 .none{

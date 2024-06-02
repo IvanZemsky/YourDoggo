@@ -41,7 +41,7 @@
    gap: 15px;
    padding: 0 25px 25px 25px;
    border-radius: 20px;
-   box-shadow: 0 20px 12px -16px rgba(0,30,85,.1), 0 8px 24px 18px rgba(0,30,85,.05);
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
    font-size: 18px;
 }
 
@@ -109,5 +109,27 @@
 
    &:hover{
       text-decoration: underline;
+   }
+}
+
+@media screen and (max-width: 680px) {
+   .content{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+   }
+   .info, .deliveryInfo{
+      padding: 0 0 15px 0;
+   }
+}
+
+@media screen and (max-width: 435px) {
+   .deliveryInfo, .deliveryTitle{
+      font-size: 20px;
+   }
+   .addBtn, .cartLink {
+      width: auto;
+      flex-grow: 1;
+      font-size: 15px;
    }
 }

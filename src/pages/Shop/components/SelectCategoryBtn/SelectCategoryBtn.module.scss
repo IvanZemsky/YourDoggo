@@ -2,9 +2,18 @@
    font-size: 14px;
    background-color: var(--primaryText);
    color: var(--text);
-   padding: 5px;
    border: 2px solid var(--primaryLight);
-   transition: all 0.15s linear;
+   border-radius: 7px;
+
+   box-shadow: var(--shadow);
+
+   &:hover{
+      box-shadow: var(--shadowHover);
+   }
+}
+
+.btnText{
+   padding: 5px;
 }
 
 .current{

@@ -7,6 +7,10 @@ import Menu from "@/components/UI/Menu/Menu";
 import { useMediaQuery } from "react-responsive";
 import { setTextQuery } from "@/store/slices/articles/articleFilterSlice";
 import { useAppDispatch } from "@/hooks/redux";
+import PageLink from "@/components/UI/PageLink/PageLink";
+import { RoutesEnum } from "@/constants/routes";
+
+const { Articles, Create } = RoutesEnum;
 
 const ArticleHeader = () => {
    const dispatch = useAppDispatch();
@@ -16,11 +20,18 @@ const ArticleHeader = () => {
       <PageHeader input={<SearchInput dispatchFunc={setTextQuery} />}>
          <Menu isOpen={isBurger}>
             <Button variant="none" shadow={false} className={styles.filterBtn}>
+               Понравшиеся
+            </Button>
+            <Button variant="none" shadow={false} className={styles.filterBtn}>
                Ваши статьи
             </Button>
-            <Button icon={<PlusIcon />} className={styles.addBtn}>
+            <PageLink
+               to={`/${Articles}/${Create}`}
+               icon={<PlusIcon />}
+               className={styles.addBtn}
+            >
                Написать статью
-            </Button>
+            </PageLink>
          </Menu>
       </PageHeader>
    );

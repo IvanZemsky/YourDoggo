@@ -3,6 +3,7 @@ import styles from "./PriceFilter.module.scss";
 import { setMinMaxPrice } from "@/store/slices/shop/productFilterSlice";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "@/components/UI/Button/Button";
+import ArrowIcon from './../../../../components/UI/icons/ArrowIcon';
 
 const PriceFilter = () => {
    const [form, setForm] = useState({
@@ -21,6 +22,7 @@ const PriceFilter = () => {
    };
 
    const handleSumbit = (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
       dispatch(setMinMaxPrice(form))
    }
 
@@ -45,7 +47,7 @@ const PriceFilter = () => {
                onChange={handleMaxPrice}
             />
             <Button type="submit" shadow={false} className={styles.submitBtn}>
-               +
+               <ArrowIcon />
             </Button>
          </form>
       </div>

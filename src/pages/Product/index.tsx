@@ -8,7 +8,7 @@ import { parametersRu } from "@/constants/API";
 import OrderInfo from "./components/OrderInfo/OrderInfo";
 import ProductImg from "./components/ProductImg/ProductImg";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
-import Similar from './components/Similar/Similar';
+import Similar from "./components/Similar/Similar";
 import { useMemo } from "react";
 
 const Product = () => {
@@ -41,15 +41,17 @@ const Product = () => {
          {product && (
             <div className={styles.content}>
                <div className={styles.product}>
-                  <ProductImg img={product.img} />
-                  <ProductInfo
-                     name={product.name}
-                     description={product.description}
-                     parameters={parameters}
-                  />
+                  <div className={styles.info}>
+                     <ProductImg img={product.img} />
+                     <ProductInfo
+                        name={product.name}
+                        description={product.description}
+                        parameters={parameters}
+                     />
+                  </div>
                   <OrderInfo product={product} />
                </div>
-               <Similar id={product._id} productCategory={product.category}/>
+               <Similar id={product._id} productCategory={product.category} />
             </div>
          )}
       </Wrapper>

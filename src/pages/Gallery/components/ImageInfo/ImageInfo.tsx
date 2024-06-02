@@ -2,18 +2,19 @@ import Modal from "@/components/UI/Modal/Modal";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./ImageInfo.module.scss";
-import { MouseEvent, useCallback } from "react";
+import { MouseEvent, MouseEventHandler, useCallback } from "react";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { Link } from "react-router-dom";
 import Button from "@/components/UI/Button/Button";
 import CrossIcon from "@/components/UI/icons/CrossIcon";
 import { formatDate } from "@/helpers/formatDate";
 import { RoutesEnum } from "@/constants/routes";
-import Tags from "./components/Tags";
+import Tags from "../../../../components/UI/Tags/Tags";
 import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
 import LikeCounter from "../../../../components/UI/LikeCounter/LikeCounter";
+import { setTextQuery } from "@/store/slices/gallery/galleryFilterSlice";
 
 const { GALLERY } = APIEndpoints;
 
@@ -48,10 +49,13 @@ const ImageInfo = ({
       []
    );
 
-   const handleContentClick = (
-      event: MouseEvent<HTMLDivElement | HTMLButtonElement>
-   ) => {
-      event.stopPropagation();
+   const handleTagClick = (tag: string) =>(event: MouseEvent<HTMLButtonElement>)  => {
+      dispatch(closeModal())
+      dispatch(setTextQuery(tag));
+   };
+
+   const handleContentClick = (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
+      event.stopPropagation(); 
    };
 
    return (
@@ -73,7 +77,7 @@ const ImageInfo = ({
                            id={id}
                            likes={likes}
                            isLiked={isLiked}
-                           endpoint={GALLERY}                        />
+                           endpoint={GALLERY}/>
                         <LikeBtn
                            likedItemId={id}
                            isLiked={isLiked}
@@ -100,7 +104,7 @@ const ImageInfo = ({
                         </p>
                      </div>
 
-                     <Tags tags={tags} />
+                     <Tags tags={tags} handleTagClick={handleTagClick} />
                   </div>
                </div>
             </div>

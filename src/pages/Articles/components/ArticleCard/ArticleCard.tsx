@@ -20,18 +20,12 @@ const ArticleCard = (props: ArticleCardProps) => {
    const userLink = useUserLink(userId)
    const date = formatDate(datetime, "date");
 
-   const handleCardClick = (event: MouseEvent<HTMLAnchorElement>) => {
-      if (event.target instanceof HTMLButtonElement ) {
-         event.preventDefault()
-      }
-   };
-
    return (
       <div className={styles.content}>
          <Link to={userLink} className={styles.userLink}>
             @{login}
          </Link>
-         <Link to={`/${Articles}/${id}`} className={styles.cardLink} onClick={handleCardClick}>
+         <Link to={`/${Articles}/${id}`} className={styles.cardLink}>
             <div className={styles.card}>
                <div className={styles.imgWrap}>
                   <img src={imgLink} alt="Превью" />
@@ -47,7 +41,7 @@ const ArticleCard = (props: ArticleCardProps) => {
                         endpoint={APIEndpoints.ARTICLES}
                         shadow={false}
                      />
-                     <time className={styles.published}>{date}</time>
+                     <time className={styles.published} dateTime={datetime}>{date}</time>
                   </div>
                </div>
             </div>

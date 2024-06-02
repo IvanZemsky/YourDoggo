@@ -37,6 +37,7 @@ const LikeBtn = ({
    const handleLikeClick = useCallback(
       async (event: MouseEvent<HTMLButtonElement>) => {
          event.stopPropagation();
+         event.preventDefault()
          if (!currentUserId) return;
          await toggleLike();
       },

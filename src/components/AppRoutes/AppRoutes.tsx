@@ -1,7 +1,21 @@
-import {Home, Signin, Articles, User, Product, Profile, Forum, Gallery, Shop, Cart, Article} from '@/pages/LazyExports'
+import {
+   Home,
+   Signin,
+   Articles,
+   User,
+   Product,
+   Profile,
+   Forum,
+   Gallery,
+   Shop,
+   Cart,
+   Article,
+   CreateImage,
+} from "@/pages/LazyExports";
 import { Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
 import { RoutesEnum } from "@/constants/routes";
+import CreateArticle from "@/pages/CreateArticle";
 
 const AppRoutes = () => {
    return (
@@ -11,6 +25,10 @@ const AppRoutes = () => {
             <Route path={RoutesEnum.Signin} element={<Signin />} />
             <Route path={RoutesEnum.Profile} element={<Profile />} />
             <Route path={RoutesEnum.Articles} element={<Articles />} />
+            <Route
+               path={RoutesEnum.Articles + "/" + RoutesEnum.Create}
+               element={<CreateArticle />}
+            />
             <Route path={RoutesEnum.Articles + "/:id"} element={<Article />} />
             <Route path={RoutesEnum.Shop} element={<Shop />} />
             <Route
@@ -20,7 +38,11 @@ const AppRoutes = () => {
             <Route path={RoutesEnum.Shop + "/:id"} element={<Product />} />
             <Route path={RoutesEnum.Forum} element={<Forum />} />
             <Route path={RoutesEnum.Gallery} element={<Gallery />} />
-            <Route path={RoutesEnum.User + "/:userId"} element={<User/>}/>
+            <Route
+               path={RoutesEnum.Gallery + "/" + RoutesEnum.Create}
+               element={<CreateImage />}
+            />
+            <Route path={RoutesEnum.User + "/:userId"} element={<User />} />
          </Route>
       </Routes>
    );

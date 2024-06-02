@@ -33,6 +33,7 @@ const Button = ({
 
    return (
       <button
+         type="button"
          className={[
             styles.button,
             styles[color],

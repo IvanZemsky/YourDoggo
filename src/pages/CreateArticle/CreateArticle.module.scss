@@ -1,0 +1,56 @@
+.wrapper{
+   max-width: 900px;
+}
+
+.content{
+   min-height: 100%;
+   padding: 25px 0;
+}
+
+.title{
+   margin-bottom: 20px;
+}
+
+.input{
+   width: 100%;
+   padding: 15px 10px;
+   margin-bottom: 20px;
+}
+
+.textWrap{
+   margin-bottom: 20px;
+   color: var(--thirdText);
+   border-radius: 15px 15px 0 15px;
+   border: 2px solid var(--primaryMain);
+   background-color: var(--thirdMain);
+   font-size: 18px;
+}
+
+.panel{
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   padding: 7px 14px;
+   overflow: hidden;
+   border-bottom: 2px solid var(--primaryMain);
+
+   button{
+      padding: 7px 14px;
+      font-size: 17px;
+   }
+}
+
+.text{
+   height: 700px;
+   overflow-y: scroll;
+   padding: 7px 14px;
+   &:focus{
+      border: none;
+      background: none;
+      outline: none;
+   }
+}
+
+.publish{
+   font-size: 18px;
+}

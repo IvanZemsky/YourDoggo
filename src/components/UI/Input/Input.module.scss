@@ -1,0 +1,13 @@
+.input{
+   display: flex;
+   align-items: center;
+   color: var(--thirdText);
+   border-radius: 15px;
+   border: 2px solid var(--primaryMain);
+   background-color: var(--thirdMain);
+   font-size: 18px;
+
+   &::placeholder{
+      color: #a3a3a3;
+   }
+}

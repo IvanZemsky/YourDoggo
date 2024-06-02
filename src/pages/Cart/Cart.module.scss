@@ -18,3 +18,10 @@
    grid-template-columns: 1fr 350px;
    gap: 20px;
 }
+
+@media screen and (max-width: 1160px) {
+   .products{
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+   }
+}

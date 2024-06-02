@@ -1,3 +1,5 @@
+@import '/src/styles/mixins.scss';
+
 .card{
    display: flex;
    padding: 7px 15px 7px 10px;
@@ -6,8 +8,8 @@
 }
 
 .imgWrap{
-   width: 100%;
-   max-width: 150px;
+   width: 15%;
+   min-width: 70px;
    margin-right: 25px;
    aspect-ratio: 1 / 1;
    border-radius: 15px;
@@ -25,19 +27,32 @@
    flex-direction: column;
    justify-content: center;
    gap: 10px;
-   max-width: 650px;
+   max-width: 235px;
+   width: 100%;
+   margin-right: 19px;
 }
 
 .name{
-   font-size: 23px;
+   font-size: 20px;
    font-weight: 600;
 }
 
 .controls{
-   display: flex;
-   align-items: center;
+   @include flex-center-x;
    gap: 15px;
    margin-left: auto;
+}
+
+.controlsContent{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+}
+
+.buttons{
+   @include flex-center-x;
+   gap: 15px;
 }
 
 .amountBtn{
@@ -55,7 +70,7 @@
 }
 
 .totalPrice{
-   min-width: 175px;
+   min-width: 120px;
    text-align: right;
    font-size: 23px;
    font-weight: 500;
@@ -69,5 +84,53 @@
       width: 35px;
       height: auto;
       fill: var(--red);
+   }
+}
+
+@media screen and (max-width: 796px) {
+   .amount{
+      font-size: 16px;
+   }
+   .controlsContent{
+      flex-direction: column;
+   }
+   .amountBtn{
+      width: 33px;
+      height: 33px;
+   }
+   .totalPrice{
+      align-self: flex-end;
+      font-size: 18px;
+   }
+   .removeBtn{
+      margin-top: 5px;
+      align-self: flex-start;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .imgWrap{
+      width: 10%;
+   }
+   .buttons{
+      flex-direction: column;
+      gap: 7px;
+   }
+   .name{
+      font-size: 15px;
+      max-width: 150px;
+   }
+   .controlsContent{
+      flex-direction: row-reverse;
+   }
+   .totalPrice{
+      min-width: 80px;
+      align-self: center;
+   }
+   .removeBtn{
+      width: 33px;
+      height: 33px;
+      margin-top: 0;
+      align-self: flex-start;
    }
 }

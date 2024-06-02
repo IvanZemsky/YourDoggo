@@ -8,6 +8,7 @@ const About = () => {
          <Wrapper>
             <div className={styles.info}>
                <div className={styles.desc}>
+                  <h2 className={styles.title}>О нас</h2>
                   <p>
                      Мы предоставляем пользователям-владельцам собак или
                      желающим приобрести питомца возможность общаться, писать и

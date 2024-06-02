@@ -1,6 +1,15 @@
 .addBtn{
+   padding: 10px 15px;
+   border-radius: 12px;
+
    svg{
       width: 15px;
       fill: var(--primaryText);
+   }
+}
+
+.filterBtn{
+   &::before {
+      content: none;
    }
 }

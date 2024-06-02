@@ -1,8 +1,8 @@
-import Button from "@/components/UI/Button/Button";
 import styles from "./SelectCategoryBtn.module.scss";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import { useAppDispatch } from "@/hooks/redux";
 import { setCategory, setTextQuery } from "@/store/slices/shop/productFilterSlice";
 import { Category } from "@/types/shop";
+import RadioBtn from "@/components/UI/RadioBtn/RadioBtn";
 
 interface SelectCategoryBtnProps {
    category: Category
@@ -10,11 +10,8 @@ interface SelectCategoryBtnProps {
 
 const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
    const dispatch = useAppDispatch()
-   const currentCategory = useAppSelector(state => state.productFilter.category)
 
-   const isCurrentCategory = currentCategory == category.name
-   const isNotCategory = category.name === 'all' && currentCategory === ''
-   const btnStyles = isCurrentCategory || isNotCategory ? [styles.btn, styles.current].join(" ") : styles.btn
+   const defaultChecked = category.name === 'all'
 
    const handleSetCategoryClick = () => {
       window.scrollTo({top: 0})
@@ -24,13 +21,16 @@ const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
    };
 
    return (
-      <Button
-         variant="outlined"
-         className={btnStyles}
+      <RadioBtn
+         className={styles.btn}
+         textStyle={styles.btnText}
          onClick={handleSetCategoryClick}
-      >
-         {category.value}
-      </Button>
+         text={category.value}
+         value={category.name}
+         id={category.name}
+         name="category"
+         defaultChecked={defaultChecked}
+      />
    );
 };
 

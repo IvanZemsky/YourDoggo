@@ -4,7 +4,26 @@
 
 .product {
    display: grid;
-   grid-template-columns: 345px 1fr 1fr;
+   grid-template-columns: 2fr 1fr;
    gap: 25px;
    padding: 25px 0;
+}
+
+.info{
+   display: grid;
+   grid-template-columns: minmax(300px, 1fr) 1fr;
+   gap: 25px;
+}
+
+@media screen and (max-width: 1100px) {
+   .product{
+      grid-template-columns: 1fr;
+   }
+}
+
+@media screen and (max-width: 680px) {
+   .info{
+      grid-template-columns: 1fr;
+      
+   }
 }

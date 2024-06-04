@@ -10,11 +10,18 @@ export interface IGalleryImg {
    likes: number
 }
 
+export interface IGalleryImgTotal {
+   data: IGalleryImg[],
+   totalCount: number
+}
+
 export interface FetchGalleryFilter {
    id?: string
    userLogin?: boolean
    userId?: string | null
-   limit?: number
+   limit: number
    textQuery?: string
    liked?: boolean
+   page?: number
+   prevPage? : number
 }

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { openModal } from "@/store/slices/modalSlice";
 import StartModal from "./StartModal/StartModal";
 import { useRef } from "react";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useSetStylesObserver } from "@/hooks/useSetStylesObserver";
 
 const Intro = () => {
    const dispatch = useDispatch();
@@ -15,8 +15,8 @@ const Intro = () => {
 
    const handleOpenBtnClick = () => dispatch(openModal("startModal")) // TO CONSTANT
 
-   useIntersectionObserver(headerRef, styles.visible, 100)
-   useIntersectionObserver(descRef, styles.visible, 400)
+   useSetStylesObserver(headerRef, styles.visible, 100)
+   useSetStylesObserver(descRef, styles.visible, 400)
 
    return (
       <section className={styles.intro}>

@@ -5,13 +5,17 @@ interface GalleryFilterSlice {
    userLogin: boolean
    textQuery: string
    liked: boolean
+   page: number
+   prevPage: number
 }
 
 const initialState: GalleryFilterSlice = {
    textQuery: "",
    limit: 0,
    userLogin: true,
-   liked: false
+   liked: false,
+   page: 1,
+   prevPage: 1
 }
 
 const galleryFilterSlice = createSlice({
@@ -23,8 +27,11 @@ const galleryFilterSlice = createSlice({
       },
       setLiked(state) {
          state.liked = !state.liked
+      },
+      setPage(state, action) {
+         state.page = action.payload
       }
 }})
 
 export default galleryFilterSlice
-export const {setTextQuery, setLiked} = galleryFilterSlice.actions
+export const {setTextQuery, setLiked, setPage} = galleryFilterSlice.actions

@@ -6,5 +6,7 @@ export const useGalleryFilter = () => {
    const userId = useAppSelector(state => state.auth.userId)
    const data = useFetchAllGalleryImagesQuery({...filters, userId});
 
+   console.log(data.data)
+
    return data
 };

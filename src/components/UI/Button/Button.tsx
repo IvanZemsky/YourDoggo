@@ -2,6 +2,7 @@ import {
    ButtonHTMLAttributes,
    PropsWithChildren,
    ReactNode,
+   RefAttributes,
    useRef,
 } from "react";
 import styles from "./Button.module.scss";
@@ -16,7 +17,7 @@ interface ButtonProps {
 }
 
 export type ButtonFullProps = PropsWithChildren<ButtonProps> &
-   ButtonHTMLAttributes<HTMLButtonElement>;
+   ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({
    variant = "filled",

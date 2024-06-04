@@ -1,4 +1,10 @@
 .content{
+   display: flex;
+   flex-direction: column;
+   min-height: 100%;
+}
+
+.images{
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
    flex-grow: 1;
@@ -8,7 +14,7 @@
 }
 
 @media screen and (max-width: 700px) {
-   .content{
+   .images{
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
    }
 }

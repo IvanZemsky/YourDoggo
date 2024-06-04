@@ -17,13 +17,15 @@ const ImagesList = () => {
    return (
       <div className={styles.content}>
          {images?.length ? (
-            images.map((image) => (
+            <div className={styles.images}>
+               {images.map((image) => (
                <Image
                   key={image._id}
                   id={image._id}
                   {...image}
                />
-            ))
+            ))}
+            </div>
          ) : (
             <p>Ничего не найдено</p>
          )}

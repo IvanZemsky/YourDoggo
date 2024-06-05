@@ -1,28 +1,49 @@
 import { APIEndpoints, BASE_URL } from "@/constants/API";
 import { FetchGalleryFilter, IGalleryImg } from "@/types/API/IGalleryImg";
-import { FetchProductFilter, IProduct } from "@/types/API/IProduct";
+import { FetchProductFilter, IProduct, IProductData } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { FetchBaseQueryMeta, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "./../types/API/IUser";
 import { ILike, FetchLike } from "@/types/API/ILike";
-import { FetchArticleFilter, IArticle } from "@/types/API/IArticle";
+import { CreateArticleData, FetchArticleFilter, IArticle } from "@/types/API/IArticle";
+import compareObjects from "@/helpers/compareObjects";
 
-const { AUTH, ARTICLES, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES } = APIEndpoints;
+const { AUTH, ARTICLES, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES, CREATE } = APIEndpoints;
 
 export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
    endpoints: (builder) => ({
-      fetchAllProducts: builder.query<IProduct[], FetchProductFilter>({
-         query: ({ textQuery, category, minPrice, maxPrice }) => ({
+      fetchAllProducts: builder.query<IProductData, FetchProductFilter>({
+         query: ({ page, limit, textQuery, category, minPrice, maxPrice }) => ({
             url: `${PRODUCTS}`,
             params: {
                search: textQuery,
                category,
                minPrice,
                maxPrice,
+               page,
+               limit,
             },
          }),
+         transformResponse: (response: unknown, meta: FetchBaseQueryMeta | undefined) => {
+            const totalCountHeader = meta?.response?.headers?.get("X-Total-Count")
+            const totalCount = totalCountHeader ? +totalCountHeader : 1
+            return {
+               data: response as IProduct[],
+               totalCount,
+            }
+         },
+         serializeQueryArgs: ({ endpointName, queryArgs }) => {
+            const { page, ...filters } = queryArgs;
+            return { queryArgs };
+          },
+          forceRefetch({ currentArg, previousArg }) {
+            if (!currentArg || !previousArg) return true;
+            const { page: currentPage, ...currentFilters } = currentArg;
+            const { page: previousPage, ...previousFilters } = previousArg;
+            return compareObjects(currentFilters, previousFilters);
+          },
       }),
       fetchProductById: builder.query<IProduct, string>({
          query: (id) => ({
@@ -119,6 +140,13 @@ export const YourDoggoAPI = createApi({
             }
          }),
       }),
+      createArticle: builder.mutation<IArticle, CreateArticleData>({
+         query: (args) => ({
+            url: `${ARTICLES}${CREATE}`,
+            method: "POST",
+            body: args
+         })
+      })
    }),
 });
 
@@ -135,6 +163,7 @@ export const {
    useToggleLikeMutation,
    useFetchAllArticlesQuery,
    useFetchArticleByIdQuery,
+   useCreateArticleMutation
 } = YourDoggoAPI;
 
 export const {

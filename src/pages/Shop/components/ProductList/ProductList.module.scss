@@ -1,6 +1,25 @@
+.content{
+   display: flex;
+   flex-direction: column;
+   min-width: 100%;
+   padding: 15px 0;
+}
+
 .products{
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
    gap: 21px;
-   padding: 15px 0;
+   margin-bottom: 15px;
+}
+
+.pages{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   margin-top: auto;
+
+   button{
+      font-weight: 500;
+      border-radius: 11px;
+   }
 }

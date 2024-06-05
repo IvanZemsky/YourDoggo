@@ -10,9 +10,16 @@ export interface IProduct {
    }
 }
 
+export interface IProductData {
+   data: IProduct[]
+   totalCount: number
+}
+
 export interface FetchProductFilter {
    textQuery: string
    category: string
    minPrice: string
    maxPrice: string
+   page?: number
+   limit?: number
 }

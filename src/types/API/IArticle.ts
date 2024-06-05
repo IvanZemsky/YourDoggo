@@ -19,3 +19,5 @@ export interface FetchArticleFilter {
    textQuery?: string
    liked?: boolean
 }
+
+export interface CreateArticleData extends Omit<IArticle, '_id' | 'datetime' | 'likes' | 'isLiked' | 'login'> {}

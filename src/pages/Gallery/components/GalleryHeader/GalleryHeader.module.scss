@@ -29,3 +29,17 @@
       content: none;
    }
 }
+
+.check {
+   label{
+      padding: 6px 10px;
+      border-radius: 12px;
+      transition: 0.15s all linear;
+   }
+
+   & > input:checked + label{
+      box-shadow: var(--shadow);
+      background-color: var(--primaryMain);
+      color: var(--primaryText);
+   }
+}

@@ -137,3 +137,9 @@
    font-size: 15px;
 }
 
+.tags{
+   @include flex-center-x;
+   flex-wrap: wrap;
+   gap: 7px;
+}
+

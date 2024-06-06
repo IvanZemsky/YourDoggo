@@ -18,10 +18,12 @@ export interface IGalleryImgTotal {
 export interface FetchGalleryFilter {
    id?: string
    userLogin?: boolean
-   userId?: string | null
-   limit: number
+   userId?: string
+   authUserId?: string | null
+   limit?: number
    textQuery?: string
    liked?: boolean
    page?: number
    prevPage? : number
+   isByUser?: boolean
 }

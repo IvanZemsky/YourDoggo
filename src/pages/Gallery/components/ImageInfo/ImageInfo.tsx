@@ -49,13 +49,16 @@ const ImageInfo = ({
       []
    );
 
-   const handleTagClick = (tag: string) =>(event: MouseEvent<HTMLButtonElement>)  => {
-      dispatch(closeModal())
-      dispatch(setTextQuery(tag));
-   };
+   const handleTagClick =
+      (tag: string) => (event: MouseEvent<HTMLButtonElement>) => {
+         dispatch(closeModal());
+         dispatch(setTextQuery(tag));
+      };
 
-   const handleContentClick = (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
-      event.stopPropagation(); 
+   const handleContentClick = (
+      event: MouseEvent<HTMLDivElement | HTMLButtonElement>
+   ) => {
+      event.stopPropagation();
    };
 
    return (
@@ -77,7 +80,8 @@ const ImageInfo = ({
                            id={id}
                            likes={likes}
                            isLiked={isLiked}
-                           endpoint={GALLERY}/>
+                           endpoint={GALLERY}
+                        />
                         <LikeBtn
                            likedItemId={id}
                            isLiked={isLiked}
@@ -104,7 +108,11 @@ const ImageInfo = ({
                         </p>
                      </div>
 
-                     <Tags tags={tags} handleTagClick={handleTagClick} />
+                     {!!tags.length && (
+                        <div className={styles.tags}>
+                           <Tags tags={tags} handleTagClick={handleTagClick} />
+                        </div>
+                     )}
                   </div>
                </div>
             </div>

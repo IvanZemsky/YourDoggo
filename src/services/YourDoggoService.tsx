@@ -70,26 +70,20 @@ export const YourDoggoAPI = createApi({
          }),
       }),
       fetchAllGalleryImages: builder.query<IGalleryImg[], FetchGalleryFilter>({
-         query: ({ limit, userLogin, userId, textQuery, liked }) => ({
-            url: `${GALLERY}/?sortByDate=true`,
+         query: ({ limit, userLogin, userId, authUserId, textQuery, liked }) => ({
+            url: `${GALLERY}`,
             method: "POST",
             params: {
+               sortByDate: true,
                limit,
                userLogin,
                search: textQuery,
                liked: liked || "",
+               userId,
             },
             body: {
-               authUserId : userId || "",
+               authUserId
             }
-         }),
-      }),
-      fetchGalleryImagesByUserId: builder.query<IGalleryImg[], FetchGalleryFilter>({
-         query: ({ id, limit }) => ({
-            url: `${GALLERY}/users/${id}`,
-            params: {
-               limit,
-            },
          }),
       }),
       fetchGalleryImageById: builder.query<IGalleryImg, string>({
@@ -157,7 +151,6 @@ export const {
    useFetchProductsByIdsQuery,
    useFetchUserLoginDataQuery,
    useFetchAllGalleryImagesQuery,
-   useFetchGalleryImagesByUserIdQuery,
    useFetchGalleryImageByIdQuery,
    useFetchUserByIdQuery,
    useToggleLikeMutation,
@@ -173,7 +166,6 @@ export const {
    useLazyFetchProductsByIdsQuery,
    useLazyFetchUserLoginDataQuery,
    useLazyFetchAllGalleryImagesQuery,
-   useLazyFetchGalleryImagesByUserIdQuery,
    useLazyFetchGalleryImageByIdQuery,
    useLazyFetchUserByIdQuery,
    useLazyFetchAllArticlesQuery,

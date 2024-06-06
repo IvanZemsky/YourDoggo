@@ -1,3 +1,5 @@
+@import '/src/styles/mixins.scss';
+
 .wrapper{
    max-width: 900px;
 }
@@ -7,18 +9,16 @@
    padding: 25px 0;
 }
 
-.title{
+.title, .input, .textWrap, .tagsWrap{
    margin-bottom: 20px;
 }
 
 .input{
    width: 100%;
    padding: 15px 10px;
-   margin-bottom: 20px;
 }
 
 .textWrap{
-   margin-bottom: 20px;
    color: var(--thirdText);
    border-radius: 15px 15px 0 15px;
    border: 2px solid var(--primaryMain);
@@ -27,8 +27,7 @@
 }
 
 .panel{
-   display: flex;
-   align-items: center;
+   @include flex-center-x;
    gap: 5px;
    padding: 7px 14px;
    overflow: hidden;
@@ -51,6 +50,34 @@
    }
 }
 
+.tagsWrap {
+   @include flex-center-x;
+   flex-wrap: wrap;
+   gap: 15px;
+   padding: 10px 15px;
+   border: 2px solid var(--primaryMain);
+   border-radius: 10px;
+
+   input{
+      width: 80px;
+      border: 1px solid var(--primaryLight);
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-size: 16px;
+   }
+}
+
+.tags{
+   @include flex-center-x;
+   flex-wrap: wrap;
+   gap: 15px;
+}
+
 .publish{
    font-size: 18px;
+}
+
+.error{
+   font-size: 16px;
+   color: var(--red);
 }

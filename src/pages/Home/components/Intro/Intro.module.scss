@@ -50,3 +50,26 @@
    border-radius: 22px;
    font-size: 30px;
 }
+
+@media screen and (max-width: 700px) {
+   .title{
+      font-size: 30px;
+   }
+   .desc{
+      font-size: 21px;
+   }
+   .title, .desc{
+      text-align: center;
+   }
+
+   .startBtn{
+      margin: 0 auto;
+   }
+}
+
+@media screen and (max-width: 375px) {
+   .title{
+      font-size: 25px;
+   }
+}
+

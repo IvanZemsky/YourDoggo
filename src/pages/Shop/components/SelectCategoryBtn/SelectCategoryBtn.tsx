@@ -1,5 +1,5 @@
 import styles from "./SelectCategoryBtn.module.scss";
-import { useAppDispatch } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setCategory, setTextQuery } from "@/store/slices/shop/productFilterSlice";
 import { Category } from "@/types/shop";
 import RadioBtn from "@/components/UI/RadioBtn/RadioBtn";
@@ -11,7 +11,8 @@ interface SelectCategoryBtnProps {
 const SelectCategoryBtn = ({ category }: SelectCategoryBtnProps) => {
    const dispatch = useAppDispatch()
 
-   const defaultChecked = category.name === 'all'
+   const currentCategory = useAppSelector(state => state.productFilter.category)
+   const defaultChecked = currentCategory === category.name || category.name === "all"
 
    const handleSetCategoryClick = () => {
       window.scrollTo({top: 0})

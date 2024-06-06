@@ -1,9 +1,13 @@
-import { useFetchGalleryImagesByUserIdQuery } from "@/services/YourDoggoService";
+import { useFetchAllGalleryImagesQuery, } from "@/services/YourDoggoService";
 import styles from "./UserGallery.module.scss";
 import Loading from "@/components/Loading/Loading";
-import Button from "@/components/UI/Button/Button";
 import PageLink from "@/components/UI/PageLink/PageLink";
 import ArrowIcon from "@/components/UI/icons/ArrowIcon";
+import { RoutesEnum } from "@/constants/routes";
+import { useAppDispatch } from "@/hooks/redux";
+import { setLiked, setUserId } from "@/store/slices/gallery/galleryFilterSlice";
+
+const {Gallery} = RoutesEnum
 
 interface UserGalleryProps {
    userId: string;
@@ -14,7 +18,21 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
       data: images,
       isLoading,
       isError,
-   } = useFetchGalleryImagesByUserIdQuery({ id: userId, limit: 4 });
+   } = useFetchAllGalleryImagesQuery({ id: userId, limit: 4, userId  });
+
+   console.log(images)
+
+   const dispatch = useAppDispatch();
+
+   const handleLikedClick = () => {
+      dispatch(setUserId(""))
+      dispatch(setLiked(true));
+   };
+
+   const handleAllClick = () => {
+      dispatch(setLiked(false));
+      dispatch(setUserId(userId))
+   }
 
    if (isLoading) {
       return <Loading />;
@@ -30,7 +48,9 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
             <section className={styles.gallery}>
                <header className={styles.header}>
                   <h2 className={styles.sectionTitle}>Ваша галерея</h2>
-                  <Button variant="none" shadow={false}>Понравившиеся</Button>
+                  <PageLink variant="none" shadow={false} to={`/${Gallery}`} onClick={handleLikedClick}>
+                     Понравившиеся
+                  </PageLink>
                </header>
                <div className={styles.galleryBlock}>
                   {images.map((image) => (
@@ -38,7 +58,7 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
                         <img src={image.imgLink} alt="Изображение" />
                      </div>
                   ))}
-                  <PageLink to="" className={styles.allBtn}>
+                  <PageLink to={`/${Gallery}`} className={styles.allBtn} onClick={handleAllClick}>
                      Все
                      <ArrowIcon />
                   </PageLink>

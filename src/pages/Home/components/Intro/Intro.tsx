@@ -3,7 +3,7 @@ import styles from "./Intro.module.scss";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/store/slices/modalSlice";
-import StartModal from "./StartModal/StartModal";
+import StartModal from "../StartModal/StartModal";
 import { useRef } from "react";
 import { useSetStylesObserver } from "@/hooks/useSetStylesObserver";
 

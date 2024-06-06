@@ -23,6 +23,7 @@
 }
 
 .paper {
+   align-self: flex-end;
    aspect-ratio: 1 / 1.1;
    flex-shrink: 0;
    border-radius: 15px 15px 0 0;
@@ -46,4 +47,39 @@
    padding: 9px 15px;
    font-size: 20px;
    border-width: 3px;
+}
+
+@media screen and (max-width: 1205px) {
+   .desc{
+      padding-bottom: 25px;
+      font-size: 20px;
+   }
+}
+
+@media screen and (max-width: 890px) {
+   .container{
+      padding-top: 50px;
+   }
+   .info{
+      grid-template-columns: 1fr;
+   }
+   .desc{
+      padding-bottom: 0;
+   }
+   .paper{
+      align-self: auto;
+      aspect-ratio: auto;
+      max-width: 500px;
+
+      img{
+         width: 100%;
+         height: 100%;
+      }
+   }
+}
+
+@media screen and (max-width: 445px) {
+   .title{
+      font-size: 22px;
+   }
 }

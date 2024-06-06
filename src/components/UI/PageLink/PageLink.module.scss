@@ -52,13 +52,17 @@
 }
 
 .outlined{
-   color: var(--primaryText);
    border: 2px solid var(--primaryText);
+   color: var(--primaryText);
 }
 
 .none{
+   padding: 0;
    border: none;
    background-color: inherit;
-   color: inherit;
-   padding: 0;
+   color: var(--primaryMain);
+
+   &:hover{
+      text-decoration: underline;
+   }
 }

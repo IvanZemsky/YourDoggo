@@ -11,6 +11,7 @@ import LikeCounter from "@/components/UI/LikeCounter/LikeCounter";
 import { APIEndpoints } from "@/constants/API";
 import { useAppSelector } from "@/hooks/redux";
 import { useEffect, useRef } from "react";
+import Tags from "@/components/UI/Tags/Tags";
 
 const { ARTICLES } = APIEndpoints;
 
@@ -61,13 +62,13 @@ const Article = () => {
                   </time>
                </header>
                <p className={styles.text} ref={textRef}></p>
-               {article.tags.length ? (
+
+               {!!article.tags.length && (
                   <div className={styles.tags}>
-                     {article.tags.map((tag) => (
-                        <p>{tag}</p>
-                     ))}
+                     <Tags tags={article.tags} />
                   </div>
-               ) : null}
+               )}
+
                <div className={styles.likes}>
                   <LikeBtn
                      likedItemId={id as string}

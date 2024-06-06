@@ -7,12 +7,14 @@ import Button from "@/components/UI/Button/Button";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/shop/productFilterSlice";
 import { scrollToTop } from "@/helpers/scrollToTop";
+import PageBtns from "./../PageBtns/PageBtns";
 
 const ProductList = () => {
    const dispatch = useAppDispatch();
 
    const { data, isLoading, isFetching, isError } = useProductFilter();
 
+   const page = useAppSelector((state) => state.productFilter.page);
    const products = data?.data;
    const totalCount = data?.totalCount;
 
@@ -22,14 +24,9 @@ const ProductList = () => {
    const handlePageClick = (page: number) => {
       return () => {
          dispatch(setPage(page));
-         scrollToTop()
-      }
+         scrollToTop();
+      };
    };
-
-   const pages: number[] = [];
-   for (let i = 1; i < pageAmount + 1; i++) {
-      pages.push(i);
-   }
 
    if (isLoading || isFetching) return <ProductsSkeleton limit={12} />;
    if (isError) return <p>Ошибка :(</p>;
@@ -52,11 +49,12 @@ const ProductList = () => {
                   ))}
                </div>
                <div className={styles.pages}>
-                  {pages.map((page) => (
-                     <Button key={page} onClick={handlePageClick(page)}>
-                        {page}
-                     </Button>
-                  ))}
+                  <PageBtns
+                     pageAmount={pageAmount}
+                     currentPage={page}
+                     handleClick={handlePageClick}
+                     activeStyle={styles.active}
+                  />
                </div>
             </Fragment>
          ) : (

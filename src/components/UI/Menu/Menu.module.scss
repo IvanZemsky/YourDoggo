@@ -62,7 +62,7 @@
    box-shadow: var(--shadow);
    z-index: 700;
 
-   & > * {
+   & > *{
       display: flex;
       width: 100%;
       padding: 10px 8px;
@@ -79,6 +79,10 @@
 
       &::after, &::before{
          display: none;
+      }
+
+      label{
+         padding: 0;
       }
    }
 }

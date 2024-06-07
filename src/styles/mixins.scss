@@ -14,3 +14,16 @@
    align-items: center;
    justify-content: space-between;
 }
+
+@mixin hoverEffect($selector) {
+   @media (hover: hover) {
+     #{$selector}:hover {
+       @content;
+     }
+   }
+   @media (hover: none) {
+     #{$selector}:active {
+      @content;
+     }
+   }
+ }

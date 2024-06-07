@@ -1,24 +1,37 @@
-@import '/src/styles/mixins.scss';
+@import "/src/styles/mixins.scss";
 
-.wrapper{
+.wrapper {
    max-width: 900px;
 }
 
-.content{
+.content {
    min-height: 100%;
    padding: 25px 0;
 }
 
-.title, .input, .textWrap, .tagsWrap{
+.title, .textWrap,
+.tagsWrap{
    margin-bottom: 20px;
 }
 
-.input{
+.input {
+   margin-bottom: 7px;
+}
+
+.error {
+   min-height: 19px;
+   margin-bottom: 7px;
+   padding-left: 5px;
+   font-size: 16px;
+   color: var(--red);
+}
+
+.input {
    width: 100%;
    padding: 15px 10px;
 }
 
-.textWrap{
+.textWrap {
    color: var(--thirdText);
    border-radius: 15px 15px 0 15px;
    border: 2px solid var(--primaryMain);
@@ -26,24 +39,24 @@
    font-size: 18px;
 }
 
-.panel{
+.panel {
    @include flex-center-x;
    gap: 5px;
    padding: 7px 14px;
    overflow: hidden;
    border-bottom: 2px solid var(--primaryMain);
 
-   button{
+   button {
       padding: 7px 14px;
       font-size: 17px;
    }
 }
 
-.text{
+.text {
    height: 700px;
    overflow-y: scroll;
    padding: 7px 14px;
-   &:focus{
+   &:focus {
       border: none;
       background: none;
       outline: none;
@@ -58,7 +71,7 @@
    border: 2px solid var(--primaryMain);
    border-radius: 10px;
 
-   input{
+   input {
       width: 80px;
       border: 1px solid var(--primaryLight);
       border-radius: 5px;
@@ -67,17 +80,12 @@
    }
 }
 
-.tags{
+.tags {
    @include flex-center-x;
    flex-wrap: wrap;
    gap: 15px;
 }
 
-.publish{
+.publish {
    font-size: 18px;
-}
-
-.error{
-   font-size: 16px;
-   color: var(--red);
 }

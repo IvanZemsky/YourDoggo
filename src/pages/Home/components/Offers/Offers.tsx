@@ -1,6 +1,5 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Offers.module.scss";
-import PageLink from "@/components/UI/PageLink/PageLink";
 import { RoutesEnum } from "@/constants/routes";
 import { OfferCard } from "./OfferCard/OfferCard";
 

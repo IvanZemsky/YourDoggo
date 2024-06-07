@@ -6,15 +6,14 @@ import Menu from "@/components/UI/Menu/Menu";
 import { useMediaQuery } from "react-responsive";
 import {
    setTextQuery,
-   setLiked,
    toggleLiked,
-   setUserId,
    toggleUserId,
 } from "@/store/slices/gallery/galleryFilterSlice";
 import { useAppDispatch } from "@/hooks/redux";
 import { RoutesEnum } from "@/constants/routes";
 import PageLink from "@/components/UI/PageLink/PageLink";
 import CheckBtn from "@/components/UI/CheckBtn/CheckBtn";
+import { Fragment } from "react/jsx-runtime";
 
 const { Gallery, Create } = RoutesEnum;
 
@@ -37,20 +36,24 @@ const GalleryHeader = ({ userId }: GalleryHeaderProps) => {
    return (
       <PageHeader input={<SearchInput dispatchFunc={setTextQuery} />}>
          <Menu isOpen={isBurger}>
-            <CheckBtn
-               className={styles.check}
-               text="Понравишиеся"
-               handleClick={handleLikedClick}
-               name="filters"
-               id="liked"
-            />
-            <CheckBtn
-               className={styles.check}
-               text="Ваша галерея"
-               handleClick={handleYourGalleryClick}
-               name="filters"
-               id="your-gallery"
-            />
+            {!!userId && (
+               <Fragment>
+                  <CheckBtn
+                     className={styles.check}
+                     text="Понравишиеся"
+                     handleClick={handleLikedClick}
+                     name="filters"
+                     id="liked"
+                  />
+                  <CheckBtn
+                     className={styles.check}
+                     text="Ваша галерея"
+                     handleClick={handleYourGalleryClick}
+                     name="filters"
+                     id="your-gallery"
+                  />
+               </Fragment>
+            )}
             <PageLink
                to={`/${Gallery}/${Create}`}
                icon={<PlusIcon />}

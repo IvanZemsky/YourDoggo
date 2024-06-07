@@ -4,13 +4,13 @@ import Loading from "@/components/Loading/Loading";
 import { useGalleryFilter } from "@/hooks/useGalleryFilter";
 
 const ImagesList = () => {
-   const { data: images, isLoading, isError } = useGalleryFilter()
+   const { data: images, isLoading, isFetching, isError } = useGalleryFilter()
 
    if (isError) {
       return <p>Ошибка</p>;
    }
 
-   if (isLoading) {
+   if (isLoading || isFetching) {
       return <Loading />;
    }
 

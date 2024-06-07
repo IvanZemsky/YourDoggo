@@ -1,12 +1,11 @@
 .auth{
    height: 100%;
-   background-color: var(--thirdMain);
+   background: url(/src/assets/img/pamela-lima-fAtcMXFuz1E-unsplash.jpg) no-repeat center / cover;
 }
 
 .content{
    display: flex;
    align-items: center;
-   justify-content: center;
    height: 100%;
 }
 
@@ -51,5 +50,9 @@
 
 .signupLink{
    font-size: 17px;
-   color: var(--thirdMain)
+   color: var(--thirdText);
+
+   &:hover{
+      text-decoration: underline;
+   }
 }

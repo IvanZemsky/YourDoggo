@@ -1,6 +1,8 @@
 @import '/src/styles/mixins.scss';
 
 .wrapper{
+   border-radius: 20px;
+   background-color: var(--thirdMain);
    max-width: 900px;
 }
 
@@ -20,7 +22,7 @@
 }
 
 .title{
-   font-size: 27px;
+   font-size: 31px;
 }
 
 .userLink{
@@ -42,6 +44,10 @@
    line-height: 1.4;
    font-size: 19px;
    white-space: pre-line;
+
+   b {
+      font-size: 24px;
+   }
 }
 
 .likes{
@@ -80,15 +86,21 @@
    margin-bottom: 15px;
 }
 
+@media screen and (max-width: 650px) {
+   .title{
+      font-size: 21px;
+   }
+}
+
 @media screen and (max-width: 500px) {
    .titleWrap{
       flex-direction: column;
       gap: 5px;
    }
-   .title{
-      font-size: 21px;
-   }
    .text{
       font-size: 17px;
+      b {
+         font-size: 20px;
+      }
    }
 }

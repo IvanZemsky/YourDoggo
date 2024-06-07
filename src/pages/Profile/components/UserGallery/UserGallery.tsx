@@ -17,6 +17,7 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
    const {
       data: images,
       isLoading,
+      isFetching,
       isError,
    } = useFetchAllGalleryImagesQuery({ id: userId, limit: 4, userId  });
 
@@ -34,7 +35,7 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
       dispatch(setUserId(userId))
    }
 
-   if (isLoading) {
+   if (isLoading || isFetching) {
       return <Loading />;
    }
 

@@ -1,6 +1,6 @@
 import styles from "./Image.module.scss";
 import { formatDate } from "@/helpers/formatDate";
-import { useCallback} from "react";
+import { useCallback, useEffect, useState} from "react";
 import { MouseEvent } from "react";
 import { useAppDispatch} from "@/hooks/redux";
 import { openModal } from "@/store/slices/modalSlice";
@@ -10,6 +10,7 @@ import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
 import { useUserLink } from "@/hooks/useUserLink";
+import { useImageLoad } from "@/hooks/useImageLoad";
 
 const {GALLERY} = APIEndpoints
 
@@ -21,6 +22,8 @@ interface ImageProps extends Omit<IGalleryImg, "_id"> {
 const Image = (props: ImageProps) => {
    const { id, title, imgLink, datetime, userId, login, isLiked, hasModal = true } = props;
    const dispatch = useAppDispatch();
+
+  // const size = useImageLoad(imgLink) // ПЕРЕДЕЛАТЬ
 
    const modalContent = `imageModal${id}`;
    const userLink = useUserLink(userId)

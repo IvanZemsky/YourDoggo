@@ -3,13 +3,15 @@ import styles from "./CreateArticle.module.scss";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import { setBoldText } from "@/helpers/handlers/setBoldText";
-import { ChangeEvent, Fragment, useEffect, useRef, useState } from "react";
+import { ChangeEvent, Fragment, useRef, useState } from "react";
 import { MouseEvent } from "react";
 import { useCreateArticleMutation } from "@/services/YourDoggoService";
 import { useAppSelector } from "@/hooks/redux";
-import { useNavigate } from "react-router";
 import { RoutesEnum } from "@/constants/routes";
 import CreatorTag from "@/components/UI/CreatorTag/CreatorTag";
+import { useRedirect } from "@/hooks/useRedirect";
+import { FieldValues, useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 const { Signin, Articles } = RoutesEnum;
 
@@ -25,44 +27,28 @@ const validate = (values: string[]): boolean => {
 };
 
 const CreateArticle = () => {
-   const navigate = useNavigate();
-
-   const [form, setForm] = useState({
-      title: "",
-      imgLink: "",
-   });
-
-   const [tag, setTag] = useState("");
-   const [tags, setTags] = useState<string[]>([]);
+   const [tags, setTags] = useState<string[]>([]); // ПРОСТО ОБЪЕКТ
    const [isValid, setIsValid] = useState(true);
 
-   const userId = useAppSelector((state) => state.auth.userId);
-   console.log(userId)
+   const navigate = useNavigate()
 
-   useEffect(() => {
-      if (!userId) {
-         navigate(`/${Signin}`);
-      }
-   }, [userId])
+   const {
+      register,
+      handleSubmit,
+      formState: { errors, isSubmitting },
+      getValues
+   } = useForm();
+
+   const userId = useAppSelector((state) => state.auth.userId);
+
+   useRedirect(!!userId, `/${Signin}`);
 
    const [create] = useCreateArticleMutation();
 
-   const handleTitle = (event: ChangeEvent<HTMLInputElement>) => {
-      setForm({ ...form, title: event.target.value });
-   };
-
-   const handleImgLink = (event: ChangeEvent<HTMLInputElement>) => {
-      setForm({ ...form, imgLink: event.target.value });
-   };
-
-   const handleTag = (event: ChangeEvent<HTMLInputElement>) => {
-      setTag(event.target.value);
-   };
-
    const handleTagInputBlur = () => {
+      const tag = getValues('tag')
       if (!tag.trim().length) return;
       setTags([...tags, tag]);
-      setTag("");
    };
 
    const handleTagRemove = (btnTeg: string) => {
@@ -71,32 +57,36 @@ const CreateArticle = () => {
 
    const textRef = useRef<HTMLDivElement>(null);
 
-   const handleSendClick = async (event: MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
+   // const handleSendClick = async (event: MouseEvent<HTMLButtonElement>) => {
+   //    event.preventDefault();
 
-      const titleContent = form.title;
-      const imgLinkContent = form.imgLink;
-      const contentText = textRef.current!.innerText;
+   //    const titleContent = form.title;
+   //    const imgLinkContent = form.imgLink;
+   //    const contentText = textRef.current!.innerText;
 
-      let isValid = false;
+   //    let isValid = false;
 
-      isValid = validate([titleContent, imgLinkContent, contentText]);
+   //    isValid = validate([titleContent, imgLinkContent, contentText]);
 
-      if (isValid) {
-         setIsValid(true);
-         const newArticle = await create({
-            userId: userId as string,
-            ...form,
-            tags,
-            text: contentText,
-         });
-         if ('data' in newArticle) {
-            navigate(`/${Articles}/${newArticle.data._id}`)
-         }
-      } else {
-         setIsValid(false);
-      }
-   };
+   //    if (isValid) {
+   //       setIsValid(true);
+   //       const newArticle = await create({
+   //          userId: userId as string,
+   //          ...form,
+   //          tags,
+   //          text: contentText,
+   //       });
+   //       if ("data" in newArticle) {
+   //          navigate(`/${Articles}/${newArticle.data._id}`);
+   //       }
+   //    } else {
+   //       setIsValid(false);
+   //    }
+   // };
+
+   const onSubmit = (data: FieldValues) => {
+      console.log('отправка')
+   }
 
    const handleBoldClick = setBoldText;
 
@@ -104,19 +94,30 @@ const CreateArticle = () => {
       <Wrapper additionalStyles={styles.wrapper}>
          <section className={styles.content}>
             <h1 className={styles.title}>Создание статьи</h1>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                <Input
                   placeholder="Название статьи"
                   className={styles.input}
-                  value={form.title}
-                  onChange={handleTitle}
+                  {...register('title', {
+                     required: "Заголовок должен быть не менее 10 не более 70 символов",
+                     minLength: 10,
+                     maxLength: 70,
+                  })}
                />
+               <p className={styles.error}>
+                  {errors.title && `${errors.title.message}`}
+               </p>
                <Input
                   placeholder="Картинка превью (ссылка)"
                   className={styles.input}
-                  value={form.imgLink}
-                  onChange={handleImgLink}
+                  {...register('imgLink', {
+                     required: "Это поле не должно быть пустым",
+                     minLength: 1,
+                  })}
                />
+               <p className={styles.error}>
+                  {errors.imgLink && `${errors.imgLink.message}`}
+               </p>
 
                <div className={styles.textWrap}>
                   <div className={styles.panel}>
@@ -143,8 +144,11 @@ const CreateArticle = () => {
                   )}
                   <input
                      type="text"
-                     value={tag}
-                     onChange={handleTag}
+                     {...register('tag', {
+                        required: "Это поле не должно быть пустым",
+                        minLength: 3,
+                        maxLength: 25,
+                     })}
                      onBlur={handleTagInputBlur}
                      placeholder="Тег"
                   />
@@ -153,14 +157,9 @@ const CreateArticle = () => {
                <Button
                   type="submit"
                   className={styles.publish}
-                  onClick={handleSendClick}
                >
                   Опубликовать
                </Button>
-               <p className={styles.error}>
-                  {!isValid &&
-                     "Поля не должны быть пустыми или содержать html-теги!"}
-               </p>
             </form>
          </section>
       </Wrapper>

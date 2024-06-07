@@ -3,6 +3,11 @@ import styles from "./UserGallery.module.scss";
 import Loading from "@/components/Loading/Loading";
 import PageLink from "@/components/UI/PageLink/PageLink";
 import ArrowIcon  from '@/components/UI/icons/ArrowIcon';
+import { useAppDispatch } from "@/hooks/redux";
+import { setUserId, setLiked } from "@/store/slices/gallery/galleryFilterSlice";
+import { RoutesEnum } from "@/constants/routes";
+
+const {Gallery} = RoutesEnum
 
 interface UserGalleryProps {
    userId: string;
@@ -12,10 +17,20 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
    const {
       data: images,
       isLoading,
+      isFetching,
       isError,
-   } = useFetchAllGalleryImagesQuery({ id: userId, limit: 4, userId });
+   } = useFetchAllGalleryImagesQuery({ id: userId, limit: 4, userId  });
 
-   if (isLoading) {
+   console.log(images)
+
+   const dispatch = useAppDispatch();
+
+   const handleAllClick = () => {
+      dispatch(setLiked(false));
+      dispatch(setUserId(userId))
+   }
+
+   if (isLoading || isFetching) {
       return <Loading />;
    }
 
@@ -36,7 +51,7 @@ const UserGallery = ({ userId }: UserGalleryProps) => {
                         <img src={image.imgLink} alt="Изображение" />
                      </div>
                   ))}
-                  <PageLink to="" className={styles.allBtn}>
+                  <PageLink to={`/${Gallery}`} className={styles.allBtn} onClick={handleAllClick}>
                      Все
                      <ArrowIcon />
                   </PageLink>

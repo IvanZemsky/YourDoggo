@@ -3,92 +3,77 @@ import styles from "./CreateArticle.module.scss";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
 import { setBoldText } from "@/helpers/handlers/setBoldText";
-import { ChangeEvent, Fragment, useRef, useState } from "react";
-import { MouseEvent } from "react";
+import { ChangeEvent,  useEffect, } from "react";
 import { useCreateArticleMutation } from "@/services/YourDoggoService";
 import { useAppSelector } from "@/hooks/redux";
 import { RoutesEnum } from "@/constants/routes";
-import CreatorTag from "@/components/UI/CreatorTag/CreatorTag";
 import { useRedirect } from "@/hooks/useRedirect";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import ItemInput from "./../../components/UI/ItemInput/ItemInput";
+import { textWithoutForbiddenHTML } from "@/constants/regexp";
 
 const { Signin, Articles } = RoutesEnum;
 
-const containsDisallowedTags = (input: string) => {
-   const regex = /<\/?(?!b\b|img\b)[a-z][a-z0-9]*\b[^>]*>/gi;
-   return !regex.test(input);
-};
-
-const validate = (values: string[]): boolean => {
-   return values.reduce((result, item) => {
-      return result && containsDisallowedTags(item) && !!item.trim().length;
-   }, true);
-};
+const handleBoldClick = setBoldText;
 
 const CreateArticle = () => {
-   const [tags, setTags] = useState<string[]>([]); // ПРОСТО ОБЪЕКТ
-   const [isValid, setIsValid] = useState(true);
-
-   const navigate = useNavigate()
+   const navigate = useNavigate();
 
    const {
       register,
       handleSubmit,
+      setValue,
       formState: { errors, isSubmitting },
-      getValues
+      getValues,
    } = useForm();
+   
+   const [create] = useCreateArticleMutation();
 
    const userId = useAppSelector((state) => state.auth.userId);
 
+   let tagList: string[] = [];
+
+   const setTagList = (items: string[]) => {
+      tagList = [...items];
+   };
+
+   useEffect(() => {
+      register("text", {
+         required: "Текст статьи не должен быть пустым или содержать HTML-теги!",
+         minLength: {
+            value: 300,
+            message: "Текст статьи должен быть не менее 300 символов"
+         },
+         pattern: {
+            value: textWithoutForbiddenHTML,
+            message: "Текст статьи не должен быть пустым или содержать HTML-теги!",
+         },
+      });
+   }, []);
+
    useRedirect(!!userId, `/${Signin}`);
 
-   const [create] = useCreateArticleMutation();
-
-   const handleTagInputBlur = () => {
-      const tag = getValues('tag')
-      if (!tag.trim().length) return;
-      setTags([...tags, tag]);
+   const handleTextChange = (event: ChangeEvent<HTMLDivElement>) => {
+      setValue("text", event.target.innerHTML.trim());
    };
 
-   const handleTagRemove = (btnTeg: string) => {
-      return () => setTags(tags.filter((tag) => tag !== btnTeg));
+   const onSubmit = async (formData: FieldValues) => {
+      const title = getValues("title");
+      const imgLink = getValues("imgLink");
+      const text = getValues("text");
+
+      const newArticle = await create({
+         userId: userId as string,
+         title,
+         imgLink,
+         tags: tagList,
+         text,
+      });
+      if ('data' in newArticle) {
+         navigate(`/${Articles}/${newArticle.data._id}`);
+     }
    };
-
-   const textRef = useRef<HTMLDivElement>(null);
-
-   // const handleSendClick = async (event: MouseEvent<HTMLButtonElement>) => {
-   //    event.preventDefault();
-
-   //    const titleContent = form.title;
-   //    const imgLinkContent = form.imgLink;
-   //    const contentText = textRef.current!.innerText;
-
-   //    let isValid = false;
-
-   //    isValid = validate([titleContent, imgLinkContent, contentText]);
-
-   //    if (isValid) {
-   //       setIsValid(true);
-   //       const newArticle = await create({
-   //          userId: userId as string,
-   //          ...form,
-   //          tags,
-   //          text: contentText,
-   //       });
-   //       if ("data" in newArticle) {
-   //          navigate(`/${Articles}/${newArticle.data._id}`);
-   //       }
-   //    } else {
-   //       setIsValid(false);
-   //    }
-   // };
-
-   const onSubmit = (data: FieldValues) => {
-      console.log('отправка')
-   }
-
-   const handleBoldClick = setBoldText;
 
    return (
       <Wrapper additionalStyles={styles.wrapper}>
@@ -98,10 +83,19 @@ const CreateArticle = () => {
                <Input
                   placeholder="Название статьи"
                   className={styles.input}
-                  {...register('title', {
-                     required: "Заголовок должен быть не менее 10 не более 70 символов",
-                     minLength: 10,
-                     maxLength: 70,
+                  {...register("title", {
+                     required:
+                        "Заголовок должен быть не менее 10 не более 70 символов",
+                     minLength: {
+                        value: 10,
+                        message:
+                           "Заголовок должен быть не менее 10 не более 70 символов",
+                     },
+                     maxLength: {
+                        value: 70,
+                        message:
+                           "Заголовок должен быть не менее 10 не более 70 символов",
+                     },
                   })}
                />
                <p className={styles.error}>
@@ -110,7 +104,7 @@ const CreateArticle = () => {
                <Input
                   placeholder="Картинка превью (ссылка)"
                   className={styles.input}
-                  {...register('imgLink', {
+                  {...register("imgLink", {
                      required: "Это поле не должно быть пустым",
                      minLength: 1,
                   })}
@@ -125,38 +119,21 @@ const CreateArticle = () => {
                   </div>
                   <div
                      className={styles.text}
-                     ref={textRef}
+                     onInput={handleTextChange}
                      contentEditable
                   ></div>
                </div>
 
-               <div className={styles.tagsWrap}>
-                  {!!tags.length && (
-                     <Fragment>
-                        {tags.map((tag, index) => (
-                           <CreatorTag
-                              key={tag + index}
-                              tag={tag}
-                              handleRemove={handleTagRemove(tag)}
-                           />
-                        ))}
-                     </Fragment>
-                  )}
-                  <input
-                     type="text"
-                     {...register('tag', {
-                        required: "Это поле не должно быть пустым",
-                        minLength: 3,
-                        maxLength: 25,
-                     })}
-                     onBlur={handleTagInputBlur}
-                     placeholder="Тег"
-                  />
-               </div>
+               <p className={styles.error}>
+                  {errors.text && `${errors.text.message}`}
+               </p>
+
+               <ItemInput setTagList={setTagList} />
 
                <Button
                   type="submit"
                   className={styles.publish}
+                  disabled={isSubmitting}
                >
                   Опубликовать
                </Button>

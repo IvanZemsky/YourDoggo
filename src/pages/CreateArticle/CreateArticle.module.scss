@@ -63,29 +63,6 @@
    }
 }
 
-.tagsWrap {
-   @include flex-center-x;
-   flex-wrap: wrap;
-   gap: 15px;
-   padding: 10px 15px;
-   border: 2px solid var(--primaryMain);
-   border-radius: 10px;
-
-   input {
-      width: 80px;
-      border: 1px solid var(--primaryLight);
-      border-radius: 5px;
-      padding: 4px 8px;
-      font-size: 16px;
-   }
-}
-
-.tags {
-   @include flex-center-x;
-   flex-wrap: wrap;
-   gap: 15px;
-}
-
 .publish {
    font-size: 18px;
 }

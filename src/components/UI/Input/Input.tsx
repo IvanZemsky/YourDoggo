@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+import { InputHTMLAttributes, Ref, forwardRef } from "react";
 import styles from "./Input.module.scss";
 
 interface InputProps {
@@ -16,6 +16,7 @@ const Input = forwardRef(({ className = "", ...attributes }: InputType, ref) => 
          type="text"
          className={style}
          {...attributes}
+         ref={ref as Ref<HTMLInputElement>}
       />
    );
 });

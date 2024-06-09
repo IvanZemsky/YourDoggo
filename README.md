@@ -11,6 +11,7 @@
 + Express
 + MongoDB (Mongoose)
 + Webpack
++ react-hook-form
 + react-responsive
 + react-transition-group
 

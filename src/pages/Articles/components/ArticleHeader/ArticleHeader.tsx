@@ -13,14 +13,13 @@ import { RoutesEnum } from "@/constants/routes";
 const { Articles, Create } = RoutesEnum;
 
 const ArticleHeader = () => {
-   const dispatch = useAppDispatch();
    const isBurger = useMediaQuery({ maxWidth: 950 });
 
    return (
       <PageHeader input={<SearchInput dispatchFunc={setTextQuery} />}>
          <Menu isOpen={isBurger}>
             <Button variant="none" shadow={false} className={styles.filterBtn}>
-               Понравшиеся
+               Понравившиеся
             </Button>
             <Button variant="none" shadow={false} className={styles.filterBtn}>
                Ваши статьи

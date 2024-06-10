@@ -5,11 +5,11 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
 interface ItemInputProps {
-   tagList?: string[]
-   setTagList: (items: string[]) => void
+   itemList?: string[]
+   setItemList: (items: string[]) => void
 }
 
-const ItemInput = ({setTagList}: ItemInputProps) => {
+const ItemInput = ({setItemList}: ItemInputProps) => {
    const { register, getValues, resetField } = useForm();
    const [tags, setTags] = useState<string[]>([]); // ПРОСТО ОБЪЕКТ
 
@@ -27,7 +27,7 @@ const ItemInput = ({setTagList}: ItemInputProps) => {
    };
 
    useEffect(() => {
-      setTagList(tags)
+      setItemList(tags)
    }, [tags])
 
    return (

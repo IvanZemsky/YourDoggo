@@ -31,38 +31,6 @@
    padding: 15px 10px;
 }
 
-.textWrap {
-   color: var(--thirdText);
-   border-radius: 15px 15px 0 15px;
-   border: 2px solid var(--primaryMain);
-   background-color: var(--thirdMain);
-   font-size: 18px;
-}
-
-.panel {
-   @include flex-center-x;
-   gap: 5px;
-   padding: 7px 14px;
-   overflow: hidden;
-   border-bottom: 2px solid var(--primaryMain);
-
-   button {
-      padding: 7px 14px;
-      font-size: 17px;
-   }
-}
-
-.text {
-   height: 700px;
-   overflow-y: scroll;
-   padding: 7px 14px;
-   &:focus {
-      border: none;
-      background: none;
-      outline: none;
-   }
-}
-
 .publish {
    font-size: 18px;
 }

@@ -40,37 +40,39 @@ const CartProduct = memo((props: CartProductProps) => {
          <div className={styles.imgWrap}>
             <img src={img} alt="Изображение товара" />
          </div>
-         <div className={styles.info}>
-            <p className={styles.name}>{name}</p>
-            <p className={styles.price}>{price} ₽</p>
-         </div>
-         <div className={styles.controls}>
-            <div className={styles.controlsContent}>
-               <div className={styles.buttons}>
-                  <Button
-                     variant="filled"
-                     className={styles.amountBtn}
-                     onClick={handleDecrease}
-                  >
-                     -
-                  </Button>
-                  <p className={styles.amount}>{amount}</p>
-                  <Button
-                     variant="filled"
-                     className={styles.amountBtn}
-                     onClick={handleIncrease}
-                  >
-                     +
-                  </Button>
-               </div>
-               <p className={styles.totalPrice}>{totalPrice} ₽</p>
+         <div className={styles.content}>
+            <div className={styles.info}>
+               <p className={styles.name}>{name}</p>
+               <p className={styles.price}>{price} ₽</p>
             </div>
-            <Button
-               variant="none"
-               icon={<TrashIcon />}
-               className={styles.removeBtn}
-               onClick={handleRemove}
-            />
+            <div className={styles.controls}>
+               <div className={styles.controlsContent}>
+                  <div className={styles.buttons}>
+                     <Button
+                        variant="filled"
+                        className={styles.amountBtn}
+                        onClick={handleDecrease}
+                     >
+                        -
+                     </Button>
+                     <p className={styles.amount}>{amount}</p>
+                     <Button
+                        variant="filled"
+                        className={styles.amountBtn}
+                        onClick={handleIncrease}
+                     >
+                        +
+                     </Button>
+                  </div>
+                  <p className={styles.totalPrice}>{totalPrice} ₽</p>
+               </div>
+               <Button
+                  variant="none"
+                  icon={<TrashIcon />}
+                  className={styles.removeBtn}
+                  onClick={handleRemove}
+               />
+            </div>
          </div>
       </div>
    );

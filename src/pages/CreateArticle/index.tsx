@@ -2,8 +2,6 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./CreateArticle.module.scss";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
-import { setBoldText } from "@/helpers/handlers/setBoldText";
-import { ChangeEvent,  useEffect, } from "react";
 import { useCreateArticleMutation } from "@/services/YourDoggoService";
 import { useAppSelector } from "@/hooks/redux";
 import { RoutesEnum } from "@/constants/routes";
@@ -11,11 +9,11 @@ import { useRedirect } from "@/hooks/useRedirect";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import ItemInput from "./../../components/UI/ItemInput/ItemInput";
-import { textWithoutForbiddenHTML } from "@/constants/regexp";
+import Content from "./components/Content/Content";
+import { useRef } from "react";
+import { parseContentHTML } from "./helpers/parseContentHTML";
 
 const { Signin, Articles } = RoutesEnum;
-
-const handleBoldClick = setBoldText;
 
 const CreateArticle = () => {
    const navigate = useNavigate();
@@ -23,14 +21,14 @@ const CreateArticle = () => {
    const {
       register,
       handleSubmit,
-      setValue,
       formState: { errors, isSubmitting },
       getValues,
    } = useForm();
-   
-   const [create] = useCreateArticleMutation();
 
+   const [create] = useCreateArticleMutation();
    const userId = useAppSelector((state) => state.auth.userId);
+
+   const contentRef = useRef<HTMLDivElement>(null)
 
    let tagList: string[] = [];
 
@@ -38,30 +36,12 @@ const CreateArticle = () => {
       tagList = [...items];
    };
 
-   useEffect(() => {
-      register("text", {
-         required: "Текст статьи не должен быть пустым или содержать HTML-теги!",
-         minLength: {
-            value: 300,
-            message: "Текст статьи должен быть не менее 300 символов"
-         },
-         pattern: {
-            value: textWithoutForbiddenHTML,
-            message: "Текст статьи не должен быть пустым или содержать HTML-теги!",
-         },
-      });
-   }, []);
-
    useRedirect(!!userId, `/${Signin}`);
-
-   const handleTextChange = (event: ChangeEvent<HTMLDivElement>) => {
-      setValue("text", event.target.innerHTML.trim());
-   };
 
    const onSubmit = async (formData: FieldValues) => {
       const title = getValues("title");
       const imgLink = getValues("imgLink");
-      const text = getValues("text");
+      const text = parseContentHTML(contentRef)
 
       const newArticle = await create({
          userId: userId as string,
@@ -70,9 +50,9 @@ const CreateArticle = () => {
          tags: tagList,
          text,
       });
-      if ('data' in newArticle) {
+      if ("data" in newArticle) {
          navigate(`/${Articles}/${newArticle.data._id}`);
-     }
+      }
    };
 
    return (
@@ -112,23 +92,14 @@ const CreateArticle = () => {
                <p className={styles.error}>
                   {errors.imgLink && `${errors.imgLink.message}`}
                </p>
-
-               <div className={styles.textWrap}>
-                  <div className={styles.panel}>
-                     <Button onClick={handleBoldClick}>B</Button>
-                  </div>
-                  <div
-                     className={styles.text}
-                     onInput={handleTextChange}
-                     contentEditable
-                  ></div>
-               </div>
-
+               
+               <Content ref={contentRef}/>
+               
                <p className={styles.error}>
                   {errors.text && `${errors.text.message}`}
                </p>
 
-               <ItemInput setTagList={setTagList} />
+               <ItemInput setItemList={setTagList} />
 
                <Button
                   type="submit"

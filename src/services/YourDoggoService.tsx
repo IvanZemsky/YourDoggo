@@ -1,5 +1,5 @@
 import { APIEndpoints, BASE_URL } from "@/constants/API";
-import { FetchGalleryFilter, IGalleryImg } from "@/types/API/IGalleryImg";
+import { CreateGalleryIMGData, FetchGalleryFilter, IGalleryImg } from "@/types/API/IGalleryImg";
 import { FetchProductFilter, IProduct, IProductData } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
 import { FetchBaseQueryMeta, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
@@ -91,6 +91,13 @@ export const YourDoggoAPI = createApi({
             url: `${GALLERY}/${id}`,
          }),
       }),
+      createGalleryImg: builder.mutation<IGalleryImg, CreateGalleryIMGData>({
+         query: (args) => ({
+            url: `${GALLERY}${CREATE}`,
+            method: "POST",
+            body: args
+         })
+      }),
       fetchUserById: builder.query<IUser, string>({
          query: (id) => ({
             url: `${USERS}/${id}`,
@@ -140,7 +147,7 @@ export const YourDoggoAPI = createApi({
             method: "POST",
             body: args
          })
-      })
+      }),
    }),
 });
 
@@ -156,7 +163,8 @@ export const {
    useToggleLikeMutation,
    useFetchAllArticlesQuery,
    useFetchArticleByIdQuery,
-   useCreateArticleMutation
+   useCreateArticleMutation,
+   useCreateGalleryImgMutation,
 } = YourDoggoAPI;
 
 export const {

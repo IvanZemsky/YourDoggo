@@ -1,11 +1,92 @@
-import styles from './CreateImage.module.scss'
+import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import styles from "./CreateImage.module.scss";
+import { useCreateGalleryImgMutation } from "@/services/YourDoggoService";
+import Input from "@/components/UI/Input/Input";
+import ItemInput from "./../../components/UI/ItemInput/ItemInput";
+import Button from "@/components/UI/Button/Button";
+import { useAppSelector } from "@/hooks/redux";
+import { useRedirect } from "@/hooks/useRedirect";
+import { FieldValues, useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import Signin from "../Signin";
+import { RoutesEnum } from "@/constants/routes";
+
+const { Gallery } = RoutesEnum;
 
 const index = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+   const [create] = useCreateGalleryImgMutation();
 
-export default index
+   const navigate = useNavigate();
+
+   const {
+      register,
+      handleSubmit,
+      formState: { errors, isSubmitting },
+      getValues,
+   } = useForm();
+
+   const userId = useAppSelector((state) => state.auth.userId);
+
+   useRedirect(!!userId, `/${Signin}`);
+
+   let tagList: string[] = [];
+
+   const setTagList = (items: string[]) => {
+      tagList = [...items];
+   };
+
+   const onSubmit = async (formData: FieldValues) => {
+      const title = getValues("title");
+      const imgLink = getValues("imgLink");
+
+      const newGalleryImg = await create({
+         userId: userId as string,
+         title,
+         imgLink,
+         tags: tagList,
+      });
+      if ("data" in newGalleryImg) {
+         navigate(`/${Gallery}`);
+      }
+   };
+
+   return (
+      <Wrapper additionalStyles={styles.wrapper}>
+         <section className={styles.content}>
+            <h1 className={styles.title}>Добавление изображения</h1>
+            <form onSubmit={handleSubmit(onSubmit)}>
+               <Input
+                  className={styles.input}
+                  placeholder="Заголовок"
+                  {...register("title", {
+                     maxLength: {
+                        value: 45,
+                        message: "Заголовок должен быть не более 45 символов",
+                     },
+                  })}
+               />
+               <p className={styles.error}>
+                  {errors.title && `${errors.title.message}`}
+               </p>
+               <Input
+                  className={styles.input}
+                  placeholder="Изображение (ссылка)"
+                  {...register("imgLink", {
+                     required: "Это поле не должно быть пустым",
+                     minLength: 1,
+                  })}
+               />
+               <p className={styles.error}>
+                  {errors.imgLink && `${errors.imgLink.message}`}
+               </p>
+               <ItemInput setItemList={setTagList} />
+               <Button type="submit" disabled={isSubmitting}>
+                  Опубликовать
+               </Button>
+            </form>
+         </section>
+      </Wrapper>
+   );
+};
+
+export default index;

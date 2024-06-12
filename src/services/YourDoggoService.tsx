@@ -5,7 +5,7 @@ import { IUserData, UserLoginData } from "@/types/auth";
 import { FetchBaseQueryMeta, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "./../types/API/IUser";
 import { ILike, FetchLike } from "@/types/API/ILike";
-import { CreateArticleData, FetchArticleFilter, IArticle } from "@/types/API/IArticle";
+import { CreateArticleData, FetchArticleFilter, IArticle, IArticleTotal } from "@/types/API/IArticle";
 import compareObjects from "@/helpers/compareObjects";
 
 const { AUTH, ARTICLES, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES, CREATE } = APIEndpoints;
@@ -114,30 +114,50 @@ export const YourDoggoAPI = createApi({
            }
          }),
        }),
-       fetchAllArticles: builder.query<IArticle[], FetchArticleFilter>({
-         query: ({ limit, userLogin, userId, textQuery, liked }) => ({
+       fetchAllArticles: builder.query<IArticleTotal, FetchArticleFilter>({
+         query: ({ limit, page, userLogin, userId, authUserId, textQuery, liked }) => ({
             url: `${ARTICLES}/?sortByDate=true`,
             method: "POST",
             params: {
                limit,
+               page,
                userLogin,
                search: textQuery,
                liked: liked || "",
+               userId,
             },
             body: {
-               authUserId : userId || "",
+               authUserId : authUserId || "",
             }
          }),
+         transformResponse: (response: unknown, meta: FetchBaseQueryMeta | undefined) => {
+            const totalCountHeader = meta?.response?.headers?.get("X-Total-Count")
+            const totalCount = totalCountHeader ? +totalCountHeader : 1
+            return {
+               data: response as IArticle[],
+               totalCount,
+            }
+         },
+         serializeQueryArgs: ({ endpointName, queryArgs }) => {
+            const { page, ...filters } = queryArgs;
+            return { queryArgs };
+          },
+          forceRefetch({ currentArg, previousArg }) {
+            if (!currentArg || !previousArg) return true;
+            const { page: currentPage, ...currentFilters } = currentArg;
+            const { page: previousPage, ...previousFilters } = previousArg;
+            return compareObjects(currentFilters, previousFilters);
+          },
       }),
       fetchArticleById: builder.query<IArticle, FetchArticleFilter>({
-         query: ({id, userLogin, userId}) => ({
+         query: ({id, userLogin, authUserId}) => ({
             url: `${ARTICLES}/${id}`,
             method: "POST",
             params: {
                userLogin,
             },
             body: {
-               authUserId : userId || "",
+               authUserId : authUserId || "",
             }
          }),
       }),

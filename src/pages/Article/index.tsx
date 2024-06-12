@@ -21,8 +21,9 @@ const Article = () => {
    const {
       data: article,
       isLoading,
+      isFetching,
       isError,
-   } = useFetchArticleByIdQuery({ id, userId: currentUserId, userLogin: true });
+   } = useFetchArticleByIdQuery({ id, authUserId: currentUserId, userLogin: true });
 
    const textRef = useRef<HTMLParagraphElement>(null);
 
@@ -35,7 +36,7 @@ const Article = () => {
    const userLink = useUserLink(article?.userId);
    let date = article ? formatDate(article.datetime, "text") : "";
 
-   if (isLoading) {
+   if (isLoading || isFetching) {
       return <Loading />;
    }
 

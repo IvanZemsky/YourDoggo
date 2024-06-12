@@ -3,7 +3,6 @@ import ProductCard from "../ProductCard/ProductCard";
 import { useProductFilter } from "@/hooks/useProductFilter";
 import ProductsSkeleton from "../ProductsSkeleton/ProductsSkeleton";
 import { Fragment } from "react/jsx-runtime";
-import Button from "@/components/UI/Button/Button";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/shop/productFilterSlice";
 import { scrollToTop } from "@/helpers/scrollToTop";

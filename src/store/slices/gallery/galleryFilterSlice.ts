@@ -1,5 +1,5 @@
 import { FetchGalleryFilter } from "@/types/API/IGalleryImg";
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface GalleryFilterSlice extends FetchGalleryFilter {}
 
@@ -22,7 +22,6 @@ const galleryFilterSlice = createSlice({
       },
       toggleLiked(state) {
          state.liked = !state.liked
-         console.log('toggleLiked')
       },
       setLiked(state, action) {
          state.liked = action.payload
@@ -35,7 +34,6 @@ const galleryFilterSlice = createSlice({
       },
       toggleUserId(state, action) {
          state.userId = state.userId ? "" : action.payload
-         console.log('toggleUser')
       }
 }})
 

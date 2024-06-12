@@ -25,7 +25,6 @@ export interface FetchGalleryFilter {
    liked?: boolean
    page?: number
    prevPage? : number
-   isByUser?: boolean
 }
 
 export interface CreateGalleryIMGData extends Omit<IGalleryImg, '_id' | 'datetime' | 'likes' | 'isLiked' | 'login'> {}

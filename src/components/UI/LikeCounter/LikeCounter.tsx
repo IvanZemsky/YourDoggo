@@ -20,7 +20,9 @@ const LikeCounter = ({ id, likes, isLiked, endpoint, className }: LikeCounterPro
       endpoint,
    );
 
-   return <p className={className}>{like?.likes || likes}</p>;
+   const updatedLikes = like ? like.likes : likes
+
+   return <p className={className}>{updatedLikes}</p>;
 };
 
 export default LikeCounter;

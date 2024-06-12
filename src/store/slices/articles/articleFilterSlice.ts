@@ -1,17 +1,24 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { FetchArticleFilter } from "@/types/API/IArticle";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface ArticleFilterSlice {
-   limit: number
+   userId: string,
    userLogin: boolean
+   limit: number
    textQuery: string
    liked: boolean
+   page: number
+   prevPage : number
 }
 
-const initialState: ArticleFilterSlice = {
+const initialState: FetchArticleFilter = {
    textQuery: "",
-   limit: 0,
+   limit: 10,
    userLogin: true,
-   liked: false
+   liked: false,
+   page: 1,
+   prevPage: 1,
+   userId: "",
 }
 
 const articleFilterSlice = createSlice({
@@ -21,10 +28,22 @@ const articleFilterSlice = createSlice({
       setTextQuery(state, action) {
          state.textQuery = action.payload
       },
-      setLiked(state) {
+      toggleLiked(state) {
          state.liked = !state.liked
+      },
+      setLiked(state, action) {
+         state.liked = action.payload
+      },
+      setPage(state, action) {
+         state.page = action.payload
+      },
+      setUserId(state, action) {
+         state.userId = action.payload
+      },
+      toggleUserId(state, action) {
+         state.userId = state.userId ? "" : action.payload
       }
 }})
 
 export default articleFilterSlice
-export const {setTextQuery, setLiked} = articleFilterSlice.actions
+export const {setTextQuery, toggleLiked, setLiked, setPage, setUserId, toggleUserId} = articleFilterSlice.actions

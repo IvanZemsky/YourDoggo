@@ -1,0 +1,45 @@
+@import "/src/styles/mixins.scss";
+
+.content {
+   position: relative;
+}
+
+.links {
+   @include flex-center-x;
+   justify-content: space-between;
+   gap: 15px;
+}
+
+.btn {
+   font-size: 17px;
+   padding: 7px 9px;
+   border-radius: 15px;
+
+   & > svg {
+      width: 14px;
+      height: auto;
+      fill: var(--primaryText);
+   }
+}
+
+.filterBtn,
+.filterBtn:hover {
+
+   &::before {
+      content: none;
+   }
+}
+
+.check {
+   label{
+      padding: 6px 10px;
+      border-radius: 12px;
+      transition: 0.15s all linear;
+   }
+
+   & > input:checked + label{
+      box-shadow: var(--shadow);
+      background-color: var(--primaryMain);
+      color: var(--primaryText);
+   }
+}

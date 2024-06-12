@@ -3,8 +3,9 @@ import { useAppSelector } from "./redux";
 
 export const useArticleFilter = () => {
    const filters = useAppSelector(state => state.articleFilter)
-   const userId = useAppSelector(state => state.auth.userId)
-   const data = useFetchAllArticlesQuery({...filters, userId});
+   const authUserId = useAppSelector(state => state.auth.userId)
+
+   const data = useFetchAllArticlesQuery({...filters, authUserId});
 
    return data
 };

@@ -15,13 +15,13 @@ interface UserGalleryProps {
 
 const UserGallery = ({ userId }: UserGalleryProps) => {
    const {
-      data: images,
+      data,
       isLoading,
       isFetching,
       isError,
    } = useFetchAllGalleryImagesQuery({ id: userId, limit: 4, userId  });
 
-   console.log(images)
+   const images = data?.data
 
    const dispatch = useAppDispatch();
 

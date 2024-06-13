@@ -8,9 +8,18 @@
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
    flex-grow: 1;
-   margin: 25px 0;
+   margin-top: 25px;
    border-radius: 7px;
    overflow: hidden;
+}
+
+.trigger{
+   height: 25px;
+   background-color: transparent;
+}
+
+.loader{
+   padding: 25px 0;
 }
 
 @media screen and (max-width: 700px) {

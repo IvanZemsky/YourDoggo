@@ -1,14 +1,24 @@
 import { APIEndpoints, BASE_URL } from "@/constants/API";
-import { CreateGalleryIMGData, FetchGalleryFilter, IGalleryImg } from "@/types/API/IGalleryImg";
-import { FetchProductFilter, IProduct, IProductData } from "@/types/API/IProduct";
+import {  CreateGalleryIMGData,  FetchGalleryFilter,  IGalleryImg,  IGalleryImgTotal } from "@/types/API/IGalleryImg";
+import {  FetchProductFilter,  IProduct,  IProductData } from "@/types/API/IProduct";
 import { IUserData, UserLoginData } from "@/types/auth";
-import { FetchBaseQueryMeta, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {  FetchBaseQueryMeta,  createApi,  fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "./../types/API/IUser";
 import { ILike, FetchLike } from "@/types/API/ILike";
-import { CreateArticleData, FetchArticleFilter, IArticle, IArticleTotal } from "@/types/API/IArticle";
+import {  CreateArticleData,  FetchArticleFilter,  IArticle,  IArticleTotal } from "@/types/API/IArticle";
 import compareObjects from "@/helpers/compareObjects";
 
-const { AUTH, ARTICLES, USERS, LOGIN, PRODUCTS, CATEGORIES, GALLERY, LIKES, CREATE } = APIEndpoints;
+const {
+   AUTH,
+   ARTICLES,
+   USERS,
+   LOGIN,
+   PRODUCTS,
+   CATEGORIES,
+   GALLERY,
+   LIKES,
+   CREATE,
+} = APIEndpoints;
 
 export const YourDoggoAPI = createApi({
    reducerPath: "productAPI",
@@ -26,24 +36,28 @@ export const YourDoggoAPI = createApi({
                limit,
             },
          }),
-         transformResponse: (response: unknown, meta: FetchBaseQueryMeta | undefined) => {
-            const totalCountHeader = meta?.response?.headers?.get("X-Total-Count")
-            const totalCount = totalCountHeader ? +totalCountHeader : 1
+         transformResponse: (
+            response: unknown,
+            meta: FetchBaseQueryMeta | undefined
+         ) => {
+            const totalCountHeader =
+               meta?.response?.headers?.get("X-Total-Count");
+            const totalCount = totalCountHeader ? +totalCountHeader : 1;
             return {
                data: response as IProduct[],
                totalCount,
-            }
+            };
          },
          serializeQueryArgs: ({ endpointName, queryArgs }) => {
             const { page, ...filters } = queryArgs;
             return { queryArgs };
-          },
-          forceRefetch({ currentArg, previousArg }) {
+         },
+         forceRefetch({ currentArg, previousArg }) {
             if (!currentArg || !previousArg) return true;
             const { page: currentPage, ...currentFilters } = currentArg;
             const { page: previousPage, ...previousFilters } = previousArg;
             return compareObjects(currentFilters, previousFilters);
-          },
+         },
       }),
       fetchProductById: builder.query<IProduct, string>({
          query: (id) => ({
@@ -69,22 +83,52 @@ export const YourDoggoAPI = createApi({
             body: loginData,
          }),
       }),
-      fetchAllGalleryImages: builder.query<IGalleryImg[], FetchGalleryFilter>({
-         query: ({ limit, userLogin, userId, authUserId, textQuery, liked }) => ({
+      fetchAllGalleryImages: builder.query<IGalleryImgTotal, FetchGalleryFilter>({
+         query: ({  limit,  page,  userLogin,  userId,  authUserId,  textQuery,  liked }) => ({
             url: `${GALLERY}`,
             method: "POST",
             params: {
                sortByDate: true,
                limit,
+               page,
                userLogin,
                search: textQuery,
                liked: liked || "",
                userId,
             },
             body: {
-               authUserId
-            }
+               authUserId,
+            },
          }),
+         transformResponse: (
+            response: unknown,
+            meta: FetchBaseQueryMeta | undefined
+         ) => {
+            const totalCountHeader =
+               meta?.response?.headers?.get("X-Total-Count");
+            const totalCount = totalCountHeader ? +totalCountHeader : 1;
+            return {
+               data: response as IGalleryImg[],
+               totalCount,
+            };
+         },
+         serializeQueryArgs: ({ endpointName, queryArgs }) => {
+            const { page, ...filters } = queryArgs;
+            return JSON.stringify(filters) + endpointName;
+         },
+         merge: (currentCache, newItems, {arg, requestId}) => {
+            if (arg.page === 1) {
+               currentCache.data = newItems.data;
+            } else if (requestId) {
+               currentCache.data.push(...newItems.data);
+            }
+         },
+         forceRefetch({ currentArg, previousArg }) {
+            if (!currentArg || !previousArg) return true;
+            const { page: currentPage, ...currentFilters } = currentArg;
+            const { page: previousPage, ...previousFilters } = previousArg;
+            return compareObjects(currentFilters, previousFilters) && currentPage !== previousPage;
+         },
       }),
       fetchGalleryImageById: builder.query<IGalleryImg, string>({
          query: (id) => ({
@@ -95,8 +139,8 @@ export const YourDoggoAPI = createApi({
          query: (args) => ({
             url: `${GALLERY}${CREATE}`,
             method: "POST",
-            body: args
-         })
+            body: args,
+         }),
       }),
       fetchUserById: builder.query<IUser, string>({
          query: (id) => ({
@@ -104,18 +148,26 @@ export const YourDoggoAPI = createApi({
          }),
       }),
       toggleLike: builder.mutation<ILike, FetchLike>({
-         query: ({userId, likedItemId, endpoint}) => ({
-           url: `${endpoint}${LIKES}`,
-           method: "POST",
-           body: {
+         query: ({ userId, likedItemId, endpoint }) => ({
+            url: `${endpoint}${LIKES}`,
+            method: "POST",
+            body: {
                userId,
                ...(endpoint === ARTICLES && { articleId: likedItemId }),
-               ...(endpoint === GALLERY && { galleryimgId: likedItemId })
-           }
+               ...(endpoint === GALLERY && { galleryimgId: likedItemId }),
+            },
          }),
-       }),
-       fetchAllArticles: builder.query<IArticleTotal, FetchArticleFilter>({
-         query: ({ limit, page, userLogin, userId, authUserId, textQuery, liked }) => ({
+      }),
+      fetchAllArticles: builder.query<IArticleTotal, FetchArticleFilter>({
+         query: ({
+            limit,
+            page,
+            userLogin,
+            userId,
+            authUserId,
+            textQuery,
+            liked,
+         }) => ({
             url: `${ARTICLES}/?sortByDate=true`,
             method: "POST",
             params: {
@@ -127,46 +179,50 @@ export const YourDoggoAPI = createApi({
                userId,
             },
             body: {
-               authUserId : authUserId || "",
-            }
+               authUserId: authUserId || "",
+            },
          }),
-         transformResponse: (response: unknown, meta: FetchBaseQueryMeta | undefined) => {
-            const totalCountHeader = meta?.response?.headers?.get("X-Total-Count")
-            const totalCount = totalCountHeader ? +totalCountHeader : 1
+         transformResponse: (
+            response: unknown,
+            meta: FetchBaseQueryMeta | undefined
+         ) => {
+            const totalCountHeader =
+               meta?.response?.headers?.get("X-Total-Count");
+            const totalCount = totalCountHeader ? +totalCountHeader : 1;
             return {
                data: response as IArticle[],
                totalCount,
-            }
+            };
          },
          serializeQueryArgs: ({ endpointName, queryArgs }) => {
             const { page, ...filters } = queryArgs;
             return { queryArgs };
-          },
-          forceRefetch({ currentArg, previousArg }) {
+         },
+         forceRefetch({ currentArg, previousArg }) {
             if (!currentArg || !previousArg) return true;
             const { page: currentPage, ...currentFilters } = currentArg;
             const { page: previousPage, ...previousFilters } = previousArg;
             return compareObjects(currentFilters, previousFilters);
-          },
+         },
       }),
       fetchArticleById: builder.query<IArticle, FetchArticleFilter>({
-         query: ({id, userLogin, authUserId}) => ({
+         query: ({ id, userLogin, authUserId }) => ({
             url: `${ARTICLES}/${id}`,
             method: "POST",
             params: {
                userLogin,
             },
             body: {
-               authUserId : authUserId || "",
-            }
+               authUserId: authUserId || "",
+            },
          }),
       }),
       createArticle: builder.mutation<IArticle, CreateArticleData>({
          query: (args) => ({
             url: `${ARTICLES}${CREATE}`,
             method: "POST",
-            body: args
-         })
+            body: args,
+         }),
       }),
    }),
 });

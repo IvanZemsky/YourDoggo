@@ -10,7 +10,6 @@ import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
 import { useUserLink } from "@/hooks/useUserLink";
-import { useImageLoad } from "@/hooks/useImageLoad";
 
 const {GALLERY} = APIEndpoints
 
@@ -23,11 +22,15 @@ const Image = (props: ImageProps) => {
    const { id, title, imgLink, datetime, userId, login, isLiked, hasModal = true } = props;
    const dispatch = useAppDispatch();
 
-  // const size = useImageLoad(imgLink) // ПЕРЕДЕЛАТЬ
+   const [style, setStyle] = useState("")
 
    const modalContent = `imageModal${id}`;
    const userLink = useUserLink(userId)
    const date = formatDate(datetime, "text");
+
+   const handleImageLoad = () => {
+      setStyle(styles.imageLoaded)
+   }
 
    const handleImageClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
       if (!(event.target instanceof HTMLAnchorElement)) {
@@ -57,7 +60,7 @@ const Image = (props: ImageProps) => {
             <ImageInfo {...props} />
          </div>
 
-         <img src={imgLink} alt={title} />
+         <img src={imgLink} alt={title} className={style} onLoad={handleImageLoad}/>
          <div className={styles.info}>
             <div className={styles.date}>{date}</div>
             <p className={styles.title}>{title}</p>

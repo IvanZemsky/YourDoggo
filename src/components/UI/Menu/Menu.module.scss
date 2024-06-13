@@ -65,7 +65,7 @@
    & > *{
       display: flex;
       width: 100%;
-      padding: 10px 8px;
+      padding: 10px 11px;
       font-size: 19px;
       border-radius: 0;
       color: inherit;
@@ -82,7 +82,12 @@
       }
 
       label{
-         padding: 0;
+         border-radius: 0;
+         padding: 8px 9px;
+      }
+
+      &:has(label){
+         padding: 2px;
       }
    }
 }

@@ -1,11 +1,11 @@
 import { RefObject, useEffect } from "react";
 
 export const useIntersectionObserver = (
-   callback: () => void,
-   ref: RefObject<HTMLElement>
+   ref: RefObject<HTMLElement>,
+   callback: () => void
 ) => {
    const options: IntersectionObserverInit = {
-      threshold: 0.1,
+      threshold: 0.5,
    };
 
    const observer = new IntersectionObserver(
@@ -22,12 +22,11 @@ export const useIntersectionObserver = (
 
    useEffect(() => {
       if (ref.current) {
-         console.log(ref.current)
          observer.observe(ref.current);
       }
 
       return () => {
          observer.disconnect();
       };
-   }, [ref]);
+   }, [ref, callback]);
 };

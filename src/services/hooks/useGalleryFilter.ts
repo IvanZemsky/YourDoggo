@@ -1,5 +1,5 @@
 import { useFetchAllGalleryImagesQuery,} from "@/services/YourDoggoService";
-import { useAppSelector } from "./redux";
+import { useAppSelector } from "../../hooks/redux";
 
 export const useGalleryFilter = () => {
    const filters = useAppSelector(state => state.galleryFilter)

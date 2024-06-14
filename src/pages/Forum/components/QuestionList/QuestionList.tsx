@@ -1,7 +1,6 @@
 import { useArticleFilter } from "@/services/hooks/useArticleFilter";
 import styles from "./ArticleList.module.scss";
 import Loading from "@/components/Loading/Loading";
-import ArticleCard from "../ArticleCard/ArticleCard";
 import { Fragment } from "react";
 import PageBtns from "@/pages/Shop/components/PageBtns/PageBtns";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
@@ -11,7 +10,7 @@ import { scrollToTop } from "@/helpers/scrollToTop";
 const ArticleList = () => {
    const { data, isLoading, isFetching, isError } = useArticleFilter();
 
-   const articles = data?.data;
+   const questions = data?.data;
    const totalCount = data?.totalCount;
 
    const page = useAppSelector((state) => state.articleFilter.page)!;
@@ -38,16 +37,16 @@ const ArticleList = () => {
 
    return (
       <div className={styles.content}>
-         {articles?.length ? (
+         {questions?.length ? (
             <Fragment>
-               <div className={styles.articles}>
-                  {articles.map((article) => (
+               <div className={styles.questions}>
+                  {/* {articles.map((article) => (
                      <ArticleCard
                         key={article._id}
                         id={article._id}
                         {...article}                   
                      />
-                  ))}
+                  ))} */}
                </div>
                <div className={styles.pages}>
                   <PageBtns

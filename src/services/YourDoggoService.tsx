@@ -21,7 +21,7 @@ const {
 } = APIEndpoints;
 
 export const YourDoggoAPI = createApi({
-   reducerPath: "productAPI",
+   reducerPath: "YourDoggoAPI",
    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
    endpoints: (builder) => ({
       fetchAllProducts: builder.query<IProductData, FetchProductFilter>({
@@ -223,6 +223,41 @@ export const YourDoggoAPI = createApi({
             method: "POST",
             body: args,
          }),
+      }),
+      fetchAllForumMessages: builder.query<IProductData, FetchProductFilter>({
+         query: ({ page, limit, textQuery, category, minPrice, maxPrice }) => ({
+            url: `${PRODUCTS}`,
+            params: {
+               search: textQuery,
+               category,
+               minPrice,
+               maxPrice,
+               page,
+               limit,
+            },
+         }),
+         transformResponse: (
+            response: unknown,
+            meta: FetchBaseQueryMeta | undefined
+         ) => {
+            const totalCountHeader =
+               meta?.response?.headers?.get("X-Total-Count");
+            const totalCount = totalCountHeader ? +totalCountHeader : 1;
+            return {
+               data: response as IProduct[],
+               totalCount,
+            };
+         },
+         serializeQueryArgs: ({ endpointName, queryArgs }) => {
+            const { page, ...filters } = queryArgs;
+            return { queryArgs };
+         },
+         forceRefetch({ currentArg, previousArg }) {
+            if (!currentArg || !previousArg) return true;
+            const { page: currentPage, ...currentFilters } = currentArg;
+            const { page: previousPage, ...previousFilters } = previousArg;
+            return compareObjects(currentFilters, previousFilters);
+         },
       }),
    }),
 });

@@ -1,6 +1,6 @@
 import styles from "./ProductList.module.scss";
 import ProductCard from "../ProductCard/ProductCard";
-import { useProductFilter } from "@/hooks/useProductFilter";
+import { useProductFilter } from "@/services/hooks/useProductFilter";
 import ProductsSkeleton from "../ProductsSkeleton/ProductsSkeleton";
 import { Fragment } from "react/jsx-runtime";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";

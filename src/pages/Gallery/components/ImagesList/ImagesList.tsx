@@ -1,7 +1,7 @@
 import styles from "./ImagesList.module.scss";
 import Image from "../Image/Image";
 import Loading from "@/components/Loading/Loading";
-import { useGalleryFilter } from "@/hooks/useGalleryFilter";
+import { useGalleryFilter } from "@/services/hooks/useGalleryFilter";
 import { Fragment, useRef } from "react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { setPage } from "@/store/slices/gallery/galleryFilterSlice";

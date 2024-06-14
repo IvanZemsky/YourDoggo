@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/hooks/redux";
-import { useLikeToggle } from "@/hooks/useLikeToggle";
+import { useLikeToggle } from "@/services/hooks/useLikeToggle";
 import { LikeEndpoints } from "@/types/API/ILike";
 
 interface LikeCounterProps {

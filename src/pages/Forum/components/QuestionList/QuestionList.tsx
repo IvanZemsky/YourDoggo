@@ -1,23 +1,24 @@
-import { useArticleFilter } from "@/services/hooks/useArticleFilter";
-import styles from "./ArticleList.module.scss";
+import styles from "./QuestionList.module.scss";
 import Loading from "@/components/Loading/Loading";
 import { Fragment } from "react";
-import PageBtns from "@/pages/Shop/components/PageBtns/PageBtns";
+import PageBtns from "@/components/UI/PageBtns/PageBtns";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { setPage } from "@/store/slices/articles/articleFilterSlice";
+import { setPage } from "@/store/slices/forum/forumFilter";
 import { scrollToTop } from "@/helpers/scrollToTop";
+import QuestionCard from "../QuestionCard/QuestionCard";
+import { useForumFilter } from "@/services/hooks/useForumFilter";
 
 const ArticleList = () => {
-   const { data, isLoading, isFetching, isError } = useArticleFilter();
+   const { data, isLoading, isFetching, isError } = useForumFilter();
 
    const questions = data?.data;
    const totalCount = data?.totalCount;
 
-   const page = useAppSelector((state) => state.articleFilter.page)!;
+   const page = useAppSelector((state) => state.forumFilter.page) || 1;
 
    const dispatch = useAppDispatch()
 
-   const limit = useAppSelector((state) => state.articleFilter.limit) || 10;
+   const limit = useAppSelector((state) => state.forumFilter.limit) || 9;
    const pageAmount = totalCount ? Math.ceil(totalCount / limit) : 1;
 
    const handlePageClick = (page: number) => {
@@ -40,20 +41,19 @@ const ArticleList = () => {
          {questions?.length ? (
             <Fragment>
                <div className={styles.questions}>
-                  {/* {articles.map((article) => (
-                     <ArticleCard
-                        key={article._id}
-                        id={article._id}
-                        {...article}                   
+                  {questions.map((question) => (
+                     <QuestionCard
+                        key={question._id}
+                        id={question._id}
+                        {...question}                     
                      />
-                  ))} */}
+                  ))}
                </div>
                <div className={styles.pages}>
                   <PageBtns
                      pageAmount={pageAmount}
                      currentPage={page}
                      handleClick={handlePageClick}
-                     activeStyle={styles.active}
                   />
                </div>
             </Fragment>

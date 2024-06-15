@@ -6,7 +6,7 @@ import { Fragment } from "react/jsx-runtime";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/shop/productFilterSlice";
 import { scrollToTop } from "@/helpers/scrollToTop";
-import PageBtns from "./../PageBtns/PageBtns";
+import PageBtns from "../../../../components/UI/PageBtns/PageBtns";
 
 const ProductList = () => {
    const dispatch = useAppDispatch();
@@ -52,7 +52,6 @@ const ProductList = () => {
                      pageAmount={pageAmount}
                      currentPage={page}
                      handleClick={handlePageClick}
-                     activeStyle={styles.active}
                   />
                </div>
             </Fragment>

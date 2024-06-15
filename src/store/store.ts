@@ -5,11 +5,12 @@ import { YourDoggoAPI } from "@/services/YourDoggoService";
 import productFilterSlice from "./slices/shop/productFilterSlice";
 import cartSlice from "./slices/shop/cartSlice";
 import favouritesSlice from "./slices/shop/favouritesSlice";
-import { favouritesMiddleware } from "./middleware/favouritesMiddleware";
-import { cartMiddleware } from "./middleware/cartMiddleware";
+import { favouritesMiddleware } from "./middlewares/favouritesMiddleware";
+import { cartMiddleware } from "./middlewares/cartMiddleware";
 import galleryFilterSlice from "./slices/gallery/galleryFilterSlice";
 import shopSlice from "./slices/shop/shopSlice";
 import articleFilterSlice from "./slices/articles/articleFilterSlice";
+import forumFilterSlice from "./slices/forum/forumFilter";
 
 const rootSlice = combineSlices(
    authSlice,
@@ -19,6 +20,7 @@ const rootSlice = combineSlices(
    productFilterSlice,
    galleryFilterSlice,
    articleFilterSlice,
+   forumFilterSlice,
    shopSlice,
    YourDoggoAPI
 );

@@ -1,6 +1,5 @@
-import { ChangeEvent, PropsWithChildren, ReactNode } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 import styles from './PageHeader.module.scss'
-import SearchInput from './../UI/SearchInput/SearchInput';
 import Wrapper from "../UI/Wrapper/Wrapper";
 
 interface PageHeaderProps {

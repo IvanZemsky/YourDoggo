@@ -1,0 +1,52 @@
+@import '/src/styles/mixins.scss';
+
+.card{
+   display: flex;
+   flex-direction: column;
+   gap: 11px;
+   padding: 20px;
+   border-radius: 15px;
+   border: 2px solid var(--thirdDark);
+
+   & > a.link{
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 10px 15px;
+      border-radius: 6px;
+      background-color: transparent;
+      border: 1px solid var(--primaryMain);
+      color: var(--primaryMain);
+      transition: 0.15s linear;
+
+      &:hover{
+         background-color:var(--primaryMain);
+         color: var(--primaryText);
+      }
+   }
+}
+
+.title{
+   font-size: 19px;
+   font-weight: 500;
+}
+
+.info{
+   @include flex-center-x;
+   flex-wrap: wrap;
+   gap: 17px;
+   font-size: 17px;
+
+   time{
+      white-space: nowrap;
+   }
+}
+
+@media screen and (max-width: 415px) {
+   .title{
+      font-size: 17px;
+   }
+   .link{
+      width: 100%;
+      justify-content: center;
+   }
+}

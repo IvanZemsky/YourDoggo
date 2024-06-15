@@ -7,10 +7,12 @@ import { IUser } from "./../types/API/IUser";
 import { ILike, FetchLike } from "@/types/API/ILike";
 import {  CreateArticleData,  FetchArticleFilter,  IArticle,  IArticleTotal } from "@/types/API/IArticle";
 import compareObjects from "@/helpers/compareObjects";
+import { FetchForumMessageFilter, IForumMessage, IForumMessageTotal } from "@/types/API/IForumMessage";
 
 const {
    AUTH,
    ARTICLES,
+   FORUM,
    USERS,
    LOGIN,
    PRODUCTS,
@@ -224,16 +226,14 @@ export const YourDoggoAPI = createApi({
             body: args,
          }),
       }),
-      fetchAllForumMessages: builder.query<IProductData, FetchProductFilter>({
-         query: ({ page, limit, textQuery, category, minPrice, maxPrice }) => ({
-            url: `${PRODUCTS}`,
+      fetchAllForumMessages: builder.query<IForumMessageTotal, FetchForumMessageFilter>({
+         query: ({ page, limit, textQuery,}) => ({
+            url: `${FORUM}`,
             params: {
                search: textQuery,
-               category,
-               minPrice,
-               maxPrice,
                page,
                limit,
+               userLogin: true,
             },
          }),
          transformResponse: (
@@ -244,7 +244,7 @@ export const YourDoggoAPI = createApi({
                meta?.response?.headers?.get("X-Total-Count");
             const totalCount = totalCountHeader ? +totalCountHeader : 1;
             return {
-               data: response as IProduct[],
+               data: response as IForumMessage[],
                totalCount,
             };
          },
@@ -258,6 +258,11 @@ export const YourDoggoAPI = createApi({
             const { page: previousPage, ...previousFilters } = previousArg;
             return compareObjects(currentFilters, previousFilters);
          },
+      }),
+      fetchForumMessageById: builder.query<IForumMessage, string>({
+         query: (id) => ({
+            url: `${FORUM}/${id}`,
+         }),
       }),
    }),
 });
@@ -276,6 +281,8 @@ export const {
    useFetchArticleByIdQuery,
    useCreateArticleMutation,
    useCreateGalleryImgMutation,
+   useFetchAllForumMessagesQuery,
+   useFetchForumMessageByIdQuery,
 } = YourDoggoAPI;
 
 export const {
@@ -289,4 +296,6 @@ export const {
    useLazyFetchUserByIdQuery,
    useLazyFetchAllArticlesQuery,
    useLazyFetchArticleByIdQuery,
+   useLazyFetchAllForumMessagesQuery,
+   useLazyFetchForumMessageByIdQuery,
 } = YourDoggoAPI;

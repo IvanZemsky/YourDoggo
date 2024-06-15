@@ -4,6 +4,7 @@ export enum APIEndpoints {
    AUTH = "/auth",
    ARTICLES = "/articles",
    USERS = "/users",
+   FORUM = "/forum",
    LOGIN = "/login",
    PRODUCTS = "/products",
    CATEGORIES = "/categories",

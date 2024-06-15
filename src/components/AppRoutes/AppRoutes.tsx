@@ -11,6 +11,7 @@ import {
    Cart,
    Article,
    CreateImage,
+   Question,
 } from "@/pages/LazyExports";
 import { Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
@@ -37,6 +38,7 @@ const AppRoutes = () => {
             />
             <Route path={RoutesEnum.Shop + "/:id"} element={<Product />} />
             <Route path={RoutesEnum.Forum} element={<Forum />} />
+            <Route path={RoutesEnum.Forum + "/:id"} element={<Question />} />
             <Route path={RoutesEnum.Gallery} element={<Gallery />} />
             <Route
                path={RoutesEnum.Gallery + "/" + RoutesEnum.Create}

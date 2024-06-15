@@ -1,11 +1,17 @@
-import React from 'react'
+import styles from "./Forum.module.scss";
+import QuestionList from "./components/QuestionList/QuestionList";
+import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import QuestionHeader from "./components/QuestionHeader/QuestionHeader";
 
 const Forum = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+   return (
+      <div className={styles.content}>
+         <QuestionHeader />
+         <Wrapper>
+            <QuestionList />
+         </Wrapper>
+      </div>
+   );
+};
 
-export default Forum
+export default Forum;

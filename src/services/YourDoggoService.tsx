@@ -262,6 +262,9 @@ export const YourDoggoAPI = createApi({
       fetchForumMessageById: builder.query<IForumMessage, string>({
          query: (id) => ({
             url: `${FORUM}/${id}`,
+            params: {
+               userLogin: true,
+            }
          }),
       }),
    }),

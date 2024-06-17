@@ -4,13 +4,52 @@
 
 .header{
    display: flex;
-   align-items: flex-end;
+   align-items: flex-start;
    justify-content: space-between;
    gap: 15px;
    margin-bottom: 10px;
+
+   a{
+      margin-top: 10px;
+   }
 }
 
 .published{
    display: block;
    margin-bottom: 10px;
+}
+
+.desc{
+   margin-bottom: 10px;
+}
+
+.comment{
+   width: 100%;
+   max-width: 575px;
+   min-height: 150px;
+   padding: 15px;
+   margin-bottom: 10px;
+   border: 1px solid var(--thirdDark);
+   resize: none;
+   overflow: hidden;
+}
+
+@media screen and (max-width: 550px) {
+   h1{
+      font-size: 20px;
+   }
+   .published, .desc, .comment{
+      font-size: 18px;
+   }
+}
+
+@media screen and (max-width: 440px) {
+   .header{
+      flex-direction: column;
+      gap: 10px;
+
+      a{
+         margin-top: 0;
+      }
+   }
 }

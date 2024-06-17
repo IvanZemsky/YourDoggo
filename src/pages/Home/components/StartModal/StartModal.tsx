@@ -9,22 +9,22 @@ import Button from "@/components/UI/Button/Button";
 const cards = [
    {
       name: "Статьи",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis velit unde ipsam hic quas id molestias ad vel quam minima",
+      desc: "Читайте и пишите статьи, узнавайте новое о питомцах, делитесь опытом и впечатлениями",
       link: "/articles",
    },
    {
       name: "Магазин",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis velit unde ipsam hic quas id molestias ad vel quam minima",
+      desc: "Приобретайте товары для питомцев. От корма до товаров по уходу, оцените качество нашей продукции",
       link: "/shop",
    },
    {
       name: "Форум",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis velit unde ipsam hic quas id molestias ad vel quam minima",
+      desc: "Общайтесь с другими владельцами собак, создавайте и обсуждайте темы, находите решения проблем совместными усилиями",
       link: "/forum",
    },
    {
       name: "Галерея",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis velit unde ipsam hic quas id molestias ad vel quam minima",
+      desc: "Делитесь фотографиями своих домашних любимцев, оценивайте творчество пользователей и ищите вдохновение",
       link: "/gallery",
    },
 ];
@@ -40,20 +40,26 @@ const StartModal = () => {
       <Modal modalContent={modalContent} className={styles.startModal}>
          <Wrapper>
             <div className={styles.content}>
-               <div className={styles.cards}>
-                  {cards.map((card) => (
-                     <StartModalCard
-                        key={card.name}
-                        link={card.link}
-                        name={card.name}
-                        desc={card.desc}
-                        onClick={handleCloseClick}
-                     />
-                  ))}
+               <div className={styles.contentWrap}>
+                  <div className={styles.cards}>
+                     {cards.map((card) => (
+                        <StartModalCard
+                           key={card.name}
+                           link={card.link}
+                           name={card.name}
+                           desc={card.desc}
+                           onClick={handleCloseClick}
+                        />
+                     ))}
+                  </div>
+                  <Button
+                     className={styles.backBtn}
+                     onClick={handleCloseClick}
+                     variant="outlined"
+                  >
+                     Назад
+                  </Button>
                </div>
-               <Button className={styles.backBtn} onClick={handleCloseClick} variant="outlined">
-                  Назад
-               </Button >
             </div>
          </Wrapper>
       </Modal>

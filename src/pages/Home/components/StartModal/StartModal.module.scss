@@ -1,5 +1,5 @@
 .startModal{
-   background-color: var(--primaryLight);
+   background-color: var(--thirdMain);
    top: 0;
    left: 0;
    width: 100%;
@@ -9,22 +9,41 @@
 .content{
    display: flex;
    align-items: center;
-   justify-content: center;
    flex-direction: column;
    gap: 30px;
    max-width: 1300px;
    margin: 0 auto;
+   padding: 15px 0;
    width: 100%;
    height: 100%;
+}
+
+.contentWrap{
+   margin: auto 0;
 }
 
 .cards{
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    gap: 35px;
+   margin-bottom: 30px;
 }
 
 .backBtn{
+   margin-left: 7px;
    align-self: flex-start;
-   background-color: inherit;
+}
+
+@media screen and (max-width: 1175px) {
+   .cards{
+      grid-template-rows: repeat(2, auto);
+      grid-template-columns: repeat(2, minmax(auto, 1fr));
+   }
+}
+
+@media screen and (max-width: 575px) {
+   .cards{
+      grid-template-rows: repeat(4, auto);
+      grid-template-columns: 1fr;
+   }
 }

@@ -6,6 +6,7 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import PageLink from "@/components/UI/PageLink/PageLink";
 import { RoutesEnum } from "@/constants/routes";
 import { formatDate } from "@/helpers/formatDate";
+import Button from "@/components/UI/Button/Button";
 
 const { User } = RoutesEnum;
 
@@ -47,6 +48,15 @@ const Question = () => {
                   Опубликовано {date}
                </time>
                <p className={styles.desc}>{message.description}</p>
+               <form>
+                  <textarea
+                     name="comment"
+                     className={styles.comment}
+                     id="comment"
+                     placeholder="Комментарий"
+                  ></textarea>
+                  <Button>Отправить</Button>
+               </form>
             </div>
          </Wrapper>
       )

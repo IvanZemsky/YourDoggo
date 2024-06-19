@@ -1,0 +1,16 @@
+.comment{
+   width: 100%;
+   max-width: 575px;
+   min-height: 150px;
+   padding: 15px;
+   margin-bottom: 10px;
+   border: 1px solid var(--thirdDark);
+   resize: none;
+   overflow: hidden;
+}
+
+@media screen and (max-width: 550px) {
+   .comment{
+      font-size: 18px;
+   }
+}

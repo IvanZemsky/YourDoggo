@@ -8,6 +8,7 @@ import { ILike, FetchLike } from "@/types/API/ILike";
 import {  CreateArticleData,  FetchArticleFilter,  IArticle,  IArticleTotal } from "@/types/API/IArticle";
 import compareObjects from "@/helpers/compareObjects";
 import { FetchForumMessageFilter, IForumMessage, IForumMessageTotal } from "@/types/API/IForumMessage";
+import { CreateForumCommenteData, FetchForumCommentFilter, IForumComment, IForumCommentTotal } from "@/types/API/IForumComment";
 
 const {
    AUTH,
@@ -20,6 +21,7 @@ const {
    GALLERY,
    LIKES,
    CREATE,
+   COMMENTS
 } = APIEndpoints;
 
 export const YourDoggoAPI = createApi({
@@ -267,6 +269,52 @@ export const YourDoggoAPI = createApi({
             }
          }),
       }),
+      fetchForumCommentsByMessage: builder.query<IForumCommentTotal, FetchForumCommentFilter>({
+         query: ({ id }) => ({
+            url: `${FORUM}/${id}${COMMENTS}`,
+            params: {
+               limit: 10,
+               page: 1,
+               userLogin: true,
+            },
+         }),
+         transformResponse: (
+            response: unknown,
+            meta: FetchBaseQueryMeta | undefined
+         ) => {
+            const totalCountHeader =
+               meta?.response?.headers?.get("X-Total-Count");
+            const totalCount = totalCountHeader ? +totalCountHeader : 1;
+            return {
+               data: response as IForumComment[],
+               totalCount,
+            };
+         },
+         serializeQueryArgs: ({ endpointName, queryArgs }) => {
+            const { page, ...filters } = queryArgs;
+            return JSON.stringify(filters) + endpointName;
+         },
+         merge: (currentCache, newItems, {arg, requestId}) => {
+            if (arg.page === 1) {
+               currentCache.data = newItems.data;
+            } else if (requestId) {
+               currentCache.data.push(...newItems.data);
+            }
+         },
+         forceRefetch({ currentArg, previousArg }) {
+            if (!currentArg || !previousArg) return true;
+            const { page: currentPage, ...currentFilters } = currentArg;
+            const { page: previousPage, ...previousFilters } = previousArg;
+            return compareObjects(currentFilters, previousFilters) && currentPage !== previousPage;
+         },
+      }),
+      createForumMessage: builder.mutation<IForumMessage, CreateForumCommenteData>({
+         query: (args) => ({
+            url: `${FORUM}${COMMENTS}${CREATE}`,
+            method: "POST",
+            body: args,
+         }),
+      }),
    }),
 });
 
@@ -286,6 +334,8 @@ export const {
    useCreateGalleryImgMutation,
    useFetchAllForumMessagesQuery,
    useFetchForumMessageByIdQuery,
+   useFetchForumCommentsByMessageQuery,
+   useCreateForumMessageMutation,
 } = YourDoggoAPI;
 
 export const {
@@ -301,4 +351,5 @@ export const {
    useLazyFetchArticleByIdQuery,
    useLazyFetchAllForumMessagesQuery,
    useLazyFetchForumMessageByIdQuery,
+   useLazyFetchForumCommentsByMessageQuery,
 } = YourDoggoAPI;

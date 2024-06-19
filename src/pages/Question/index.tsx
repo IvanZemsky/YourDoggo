@@ -3,10 +3,9 @@ import styles from "./Question.module.scss";
 import { useFetchForumMessageByIdQuery } from "@/services/YourDoggoService";
 import Loading from "@/components/Loading/Loading";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
-import PageLink from "@/components/UI/PageLink/PageLink";
 import { RoutesEnum } from "@/constants/routes";
-import { formatDate } from "@/helpers/formatDate";
-import Button from "@/components/UI/Button/Button";
+import QuestionContent from './components/QuestionContent/QuestionContent';
+import CommentList from './components/CommentsList/CommentList';
 
 const { User } = RoutesEnum;
 
@@ -20,8 +19,6 @@ const Question = () => {
       isError,
    } = useFetchForumMessageByIdQuery(id as string);
 
-   const date = message ? formatDate(message.datetime, "text") : null;
-
    if (isLoading || isFetching) {
       return <Loading />;
    }
@@ -34,29 +31,8 @@ const Question = () => {
       message && (
          <Wrapper>
             <div className={styles.content}>
-               <header className={styles.header}>
-                  <h1 className={styles.title}>{message.title}</h1>
-                  <PageLink
-                     to={`/${User}/${message.userId}`}
-                     variant="none"
-                     shadow={false}
-                  >
-                     {message.login}
-                  </PageLink>
-               </header>
-               <time dateTime={message.datetime} className={styles.published}>
-                  Опубликовано {date}
-               </time>
-               <p className={styles.desc}>{message.description}</p>
-               <form>
-                  <textarea
-                     name="comment"
-                     className={styles.comment}
-                     id="comment"
-                     placeholder="Комментарий"
-                  ></textarea>
-                  <Button>Отправить</Button>
-               </form>
+               <QuestionContent id={message._id} {...message}/>
+               <CommentList id={message._id} />
             </div>
          </Wrapper>
       )

@@ -7,7 +7,7 @@ import { IUser } from "./../types/API/IUser";
 import { ILike, FetchLike } from "@/types/API/ILike";
 import {  CreateArticleData,  FetchArticleFilter,  IArticle,  IArticleTotal } from "@/types/API/IArticle";
 import compareObjects from "@/helpers/compareObjects";
-import { FetchForumMessageFilter, IForumMessage, IForumMessageTotal } from "@/types/API/IForumMessage";
+import { CreateForumMessageData, FetchForumMessageFilter, IForumMessage, IForumMessageTotal } from "@/types/API/IForumMessage";
 import { CreateForumCommenteData, FetchForumCommentFilter, IForumComment, IForumCommentTotal } from "@/types/API/IForumComment";
 
 const {
@@ -27,6 +27,7 @@ const {
 export const YourDoggoAPI = createApi({
    reducerPath: "YourDoggoAPI",
    baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
+   tagTypes: ['GalleryImg', 'Article', 'ForumMessage', 'ForumComment'],
    endpoints: (builder) => ({
       fetchAllProducts: builder.query<IProductData, FetchProductFilter>({
          query: ({ page, limit, textQuery, category, minPrice, maxPrice }) => ({
@@ -232,6 +233,7 @@ export const YourDoggoAPI = createApi({
          query: ({ page, limit, textQuery,}) => ({
             url: `${FORUM}`,
             params: {
+               sortByDate: true,
                search: textQuery,
                page,
                limit,
@@ -242,8 +244,7 @@ export const YourDoggoAPI = createApi({
             response: unknown,
             meta: FetchBaseQueryMeta | undefined
          ) => {
-            const totalCountHeader =
-               meta?.response?.headers?.get("X-Total-Count");
+            const totalCountHeader = meta?.response?.headers?.get("X-Total-Count");
             const totalCount = totalCountHeader ? +totalCountHeader : 1;
             return {
                data: response as IForumMessage[],
@@ -270,9 +271,11 @@ export const YourDoggoAPI = createApi({
          }),
       }),
       fetchForumCommentsByMessage: builder.query<IForumCommentTotal, FetchForumCommentFilter>({
+         providesTags: ["ForumComment"],
          query: ({ id }) => ({
             url: `${FORUM}/${id}${COMMENTS}`,
             params: {
+               sortByDate: true,
                limit: 10,
                page: 1,
                userLogin: true,
@@ -308,7 +311,15 @@ export const YourDoggoAPI = createApi({
             return compareObjects(currentFilters, previousFilters) && currentPage !== previousPage;
          },
       }),
-      createForumMessage: builder.mutation<IForumMessage, CreateForumCommenteData>({
+      createForumMessage: builder.mutation<IForumMessage, CreateForumMessageData>({
+         query: (args) => ({
+            url: `${FORUM}${CREATE}`,
+            method: "POST",
+            body: args,
+         }),
+      }),
+      createForumComment: builder.mutation<IForumComment, CreateForumCommenteData>({
+         invalidatesTags: ["ForumComment"],
          query: (args) => ({
             url: `${FORUM}${COMMENTS}${CREATE}`,
             method: "POST",
@@ -336,6 +347,7 @@ export const {
    useFetchForumMessageByIdQuery,
    useFetchForumCommentsByMessageQuery,
    useCreateForumMessageMutation,
+   useCreateForumCommentMutation,
 } = YourDoggoAPI;
 
 export const {

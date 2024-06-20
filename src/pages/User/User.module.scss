@@ -12,7 +12,7 @@
 .userInfoWrap{
    padding-bottom: 25px;
    margin-bottom: 20px;
-   box-shadow: 0 20px 12px -16px rgba(0, 30, 85, 0.1), 0 8px 24px 18px rgba(0, 30, 85, 0.05);
+   box-shadow: var(--bottomShadow);
 }
 
 .userInfo{

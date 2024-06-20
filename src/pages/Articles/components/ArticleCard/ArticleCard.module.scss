@@ -8,9 +8,14 @@
 }
 
 .userLink{
+   width: fit-content;
    font-weight: 500;
    color: inherit;
    font-size: 17px;
+
+   &:hover{
+      text-decoration: underline;
+   }
 }
 
 .cardLink{

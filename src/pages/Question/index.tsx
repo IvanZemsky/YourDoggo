@@ -32,7 +32,7 @@ const Question = () => {
          <Wrapper>
             <div className={styles.content}>
                <QuestionContent id={message._id} {...message}/>
-               <CommentList id={message._id} />
+               <CommentList forumMessageId={message._id} />
             </div>
          </Wrapper>
       )

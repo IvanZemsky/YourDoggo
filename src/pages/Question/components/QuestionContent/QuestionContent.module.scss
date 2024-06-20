@@ -1,6 +1,10 @@
 .wrap{
+   position: relative;
+}
+
+.content{
    position: sticky;
-   top: 0;
+   top: 10px;
    left: 0;
    z-index: 1;
 }
@@ -30,11 +34,13 @@
    margin-bottom: 10px;
 }
 
-@media screen and (max-width: 550px) {
-   h1{
-      font-size: 20px;
+@media screen and (max-width: 1250px) {
+   .header{
+      h1{
+         font-size: 19px;
+      }
    }
-   .published, .desc, .comment{
+   .published, .desc{
       font-size: 18px;
    }
 }

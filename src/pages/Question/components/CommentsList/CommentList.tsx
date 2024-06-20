@@ -4,11 +4,11 @@ import Loading from "@/components/Loading/Loading";
 import Comment from "../Comment/Comment";
 
 interface CommentListProps {
-   id: string;
+   forumMessageId: string;
 }
 
-const CommentList = ({ id }: CommentListProps) => {
-   const { data, isLoading, isFetching, isError } = useFetchForumCommentsByMessageQuery({ id });
+const CommentList = ({ forumMessageId }: CommentListProps) => {
+   const { data, isLoading, isFetching, isError } = useFetchForumCommentsByMessageQuery({ id: forumMessageId });
    
    const comments = data?.data;
    const totalCount = data?.totalCount;
@@ -27,7 +27,7 @@ const CommentList = ({ id }: CommentListProps) => {
       !!comments?.length && (
          <div className={styles.commentList}>
             {comments.map((comment) => (
-               <Comment id={id} {...comment} />
+               <Comment id={comment._id} key={comment._id} {...comment} />
             ))}
          </div>
       )

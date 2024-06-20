@@ -1,0 +1,27 @@
+@import '/src/styles/mixins.scss';
+
+.header{
+   @include flex-center-x;
+   gap: 15px;
+   margin-bottom: 10px;
+
+   a{
+      font-size: 16px;
+   }
+}
+
+.published{
+   align-self: flex-end;
+   font-size: 15px;
+}
+
+.text{
+   font-size: 18px;
+   word-break: break-all;
+}
+
+@media screen and (max-width: 1100px) {
+   .text{
+      font-size: 16px;
+   }
+}

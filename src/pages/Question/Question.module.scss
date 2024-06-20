@@ -1,8 +1,12 @@
 .content{
-   position: relative;
    display: grid;
    grid-template-columns: 1fr 1fr;
-   gap: 20px;
+   gap: 35px;
    padding: 25px 0;
-   z-index: 1;
+}
+
+@media screen and (max-width: 925px) {
+   .content{
+      grid-template-columns: 1fr;
+   }
 }

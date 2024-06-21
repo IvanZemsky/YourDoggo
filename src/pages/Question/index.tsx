@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
 import styles from "./Question.module.scss";
-import { useFetchForumMessageByIdQuery } from "@/services/YourDoggoService";
+import { useFetchForumMessageByIdQuery } from "@/services/forum";
 import Loading from "@/components/Loading/Loading";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { RoutesEnum } from "@/constants/routes";
 import QuestionContent from './components/QuestionContent/QuestionContent';
-import CommentList from './components/CommentsList/CommentList';
+import CommentList from './components/CommentList/CommentList';
 
 const { User } = RoutesEnum;
 

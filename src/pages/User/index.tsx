@@ -3,7 +3,7 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import UserIcon from "@/components/UI/icons/UserIcon";
 import { RoutesEnum } from "@/constants/routes";
 import { useAppSelector } from "@/hooks/redux";
-import { useFetchUserByIdQuery } from "@/services/YourDoggoService";
+import { useFetchUserByIdQuery } from "@/services/user";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import Personal from "./components/Personal/Personal";

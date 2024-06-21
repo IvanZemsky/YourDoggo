@@ -3,7 +3,7 @@ import ProductCard from "@/pages/Shop/components/ProductCard/ProductCard";
 import ProductsSkeleton from "@/pages/Shop/components/ProductsSkeleton/ProductsSkeleton";
 import { Link } from "react-router-dom";
 import styles from "./Similar.module.scss";
-import { useFetchProductsByCategoryQuery } from "@/services/YourDoggoService";
+import { useFetchProductsByCategoryQuery } from "@/services/shop";
 import { categories } from "@/data/categories";
 import { setCategory } from "@/store/slices/shop/productFilterSlice";
 import { useAppDispatch } from "@/hooks/redux";

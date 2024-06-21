@@ -5,7 +5,7 @@ export const useIntersectionObserver = (
    callback: () => void
 ) => {
    const options: IntersectionObserverInit = {
-      threshold: 0.5,
+      threshold: 0.7,
    };
 
    const observer = new IntersectionObserver(

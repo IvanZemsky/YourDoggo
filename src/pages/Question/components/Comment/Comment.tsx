@@ -3,12 +3,13 @@ import styles from './Comment.module.scss'
 import PageLink from "@/components/UI/PageLink/PageLink"
 import { formatDate } from "@/helpers/formatDate"
 import { useUserLink } from "@/hooks/useUserLink"
+import { memo } from "react"
 
 interface CommentProps extends Omit<IForumComment, "_id"> {
    id: string
 }
 
-const Comment = ({id, userId, login, datetime, text}: CommentProps) => {
+const Comment = memo(({id, userId, login, datetime, text}: CommentProps) => {
 
    const date = formatDate(datetime, "date")
    const userLink = useUserLink(userId)
@@ -28,6 +29,6 @@ const Comment = ({id, userId, login, datetime, text}: CommentProps) => {
       </p>
     </div>
   )
-}
+})
 
 export default Comment

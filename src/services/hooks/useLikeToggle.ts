@@ -1,7 +1,6 @@
-import { useToggleLikeMutation } from "@/services/YourDoggoService";
+import { useToggleLikeMutation } from "@/services/likes";
 import { LikeEndpoints } from "@/types/API/ILike";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../hooks/redux";
 
 export const useLikeToggle = (
    likedItemId: string,

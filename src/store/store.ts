@@ -11,6 +11,7 @@ import galleryFilterSlice from "./slices/gallery/galleryFilterSlice";
 import shopSlice from "./slices/shop/shopSlice";
 import articleFilterSlice from "./slices/articles/articleFilterSlice";
 import forumFilterSlice from "./slices/forum/forumFilter";
+import commentFilterSlice from "./slices/forum/commentFilter";
 
 const rootSlice = combineSlices(
    authSlice,
@@ -22,6 +23,7 @@ const rootSlice = combineSlices(
    articleFilterSlice,
    forumFilterSlice,
    shopSlice,
+   commentFilterSlice,
    YourDoggoAPI
 );
 

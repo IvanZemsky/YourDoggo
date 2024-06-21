@@ -1,4 +1,4 @@
-import { useFetchAllArticlesQuery } from "@/services/YourDoggoService";
+import { useFetchAllArticlesQuery } from "@/services/articles";
 import { useAppSelector } from "../../hooks/redux";
 
 export const useArticleFilter = () => {

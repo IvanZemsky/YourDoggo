@@ -1,4 +1,4 @@
-import { useFetchArticleByIdQuery } from "@/services/YourDoggoService";
+import { useFetchArticleByIdQuery } from "@/services/articles";
 import styles from "./Article.module.scss";
 import { useParams } from "react-router";
 import Loading from "./../../components/Loading/Loading";

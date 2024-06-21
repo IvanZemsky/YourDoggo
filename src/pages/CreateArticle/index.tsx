@@ -2,7 +2,7 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./CreateArticle.module.scss";
 import Input from "@/components/UI/Input/Input";
 import Button from "@/components/UI/Button/Button";
-import { useCreateArticleMutation } from "@/services/YourDoggoService";
+import { useCreateArticleMutation } from "@/services/articles";
 import { useAppSelector } from "@/hooks/redux";
 import { RoutesEnum } from "@/constants/routes";
 import { useRedirect } from "@/hooks/useRedirect";

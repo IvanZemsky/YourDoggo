@@ -1,4 +1,4 @@
-import { useFetchAllForumMessagesQuery } from "@/services/YourDoggoService";
+import { useFetchAllForumMessagesQuery } from "@/services/forum";
 import { useAppSelector } from "../../hooks/redux";
 
 export const useForumFilter = () => {

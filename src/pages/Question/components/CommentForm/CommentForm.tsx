@@ -1,7 +1,7 @@
 import Button from "@/components/UI/Button/Button";
 import styles from './CommentForm.module.scss'
 import { FieldValues, useForm } from "react-hook-form";
-import { useCreateForumCommentMutation} from "@/services/YourDoggoService";
+import { useCreateForumCommentMutation} from "@/services/forum";
 
 interface CommentFormProps{
    userId: string | null

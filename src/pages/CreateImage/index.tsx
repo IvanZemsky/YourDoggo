@@ -1,6 +1,6 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./CreateImage.module.scss";
-import { useCreateGalleryImgMutation } from "@/services/YourDoggoService";
+import { useCreateGalleryImgMutation } from "@/services/gallery";
 import Input from "@/components/UI/Input/Input";
 import ItemInput from "./../../components/UI/ItemInput/ItemInput";
 import Button from "@/components/UI/Button/Button";

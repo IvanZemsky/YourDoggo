@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { RoutesEnum } from "@/constants/routes";
 import { useEffect } from "react";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
-import { useFetchUserByIdQuery } from "@/services/YourDoggoService";
+import { useFetchUserByIdQuery } from "@/services/user";
 import Loading from "@/components/Loading/Loading";
 import UserIcon from "@/components/UI/icons/UserIcon";
 import DoggoCard from "./components/DoggoCard/DoggoCard";

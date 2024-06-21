@@ -1,6 +1,6 @@
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Product.module.scss";
-import { useFetchProductByIdQuery } from "@/services/YourDoggoService";
+import { useFetchProductByIdQuery } from "@/services/shop";
 import { useParams } from "react-router";
 import Loading from "@/components/Loading/Loading";
 import ProductInfo from "./components/ProductInfo/ProductInfo";

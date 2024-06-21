@@ -1,4 +1,4 @@
-import { useFetchAllGalleryImagesQuery} from "@/services/YourDoggoService";
+import { useFetchAllGalleryImagesQuery} from "@/services/gallery";
 import styles from "./UserGallery.module.scss";
 import Loading from "@/components/Loading/Loading";
 import PageLink from "@/components/UI/PageLink/PageLink";

@@ -1,11 +1,14 @@
-// usage
-// declare ref of animated element and styles to be applied to it
-// call hook
-// pass ref, styles and optionally delay
-
 import { RefObject, useEffect } from "react";
 
-export const useSetStylesObserver = (ref: RefObject<HTMLElement>, style: string, delay = 0): void => {
+/**
+ * @description
+ * Хук для применения стилей к элементу, если он в пределах области видимости
+ * @param {RefObject<HTMLElement>} ref - ref для анимируемого элемента 
+ * @param {string} style - класс из таблицы стилей для применения 
+ * @param {number} delay - [опциоально] - задержка перед применением стилей
+ */
+
+export const useSetStylesObserver = (ref: RefObject<HTMLElement>, style: string, delay: number = 0): void => {
 
    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry: IntersectionObserverEntry) => {

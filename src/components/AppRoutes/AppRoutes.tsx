@@ -11,12 +11,12 @@ import {
    Cart,
    Article,
    CreateImage,
+   CreateArticle,
    Question,
 } from "@/pages/LazyExports";
 import { Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
 import { RoutesEnum } from "@/constants/routes";
-import CreateArticle from "@/pages/CreateArticle";
 
 const AppRoutes = () => {
    return (

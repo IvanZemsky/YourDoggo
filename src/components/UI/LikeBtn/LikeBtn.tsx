@@ -2,7 +2,7 @@ import Button, { ButtonFullProps } from "@/components/UI/Button/Button";
 import HeartIcon from "@/components/UI/icons/HeartIcon";
 import { MouseEvent } from "react";
 import { useCallback } from "react";
-import { selectStyles } from "@/helpers/selectStyles";
+import { selectStyles } from "@/utils/selectStyles";
 import { useLikeToggle } from "@/services/hooks/useLikeToggle";
 import { LikeEndpoints } from "@/types/API/ILike";
 import { useAppSelector } from "@/hooks/redux";

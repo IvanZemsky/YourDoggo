@@ -1,6 +1,6 @@
 import { IUser } from "@/types/API/IUser";
 import styles from "./Personal.module.scss";
-import { formatDate } from "@/helpers/formatDate";
+import { formatDate } from "@/utils/formatDate";
 
 interface PersonalProps {
    user: IUser

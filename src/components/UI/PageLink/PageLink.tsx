@@ -1,7 +1,7 @@
 import { AnchorHTMLAttributes, PropsWithChildren, ReactNode } from "react";
 import styles from "./PageLink.module.scss";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "@/helpers/scrollToTop";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 interface PageLinkProps {
    to: string;

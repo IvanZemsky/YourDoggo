@@ -4,7 +4,7 @@ import { categories } from "@/data/categories";
 import PriceFilter from './../PriceFilter/PriceFilter';
 import { memo } from "react";
 import { useAppSelector } from "@/hooks/redux";
-import { selectStyles } from "@/helpers/selectStyles";
+import { selectStyles } from "@/utils/selectStyles";
 
 const ShopFilters = memo(() => {
 

@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import PageBtns from "@/components/UI/PageBtns/PageBtns";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/forum/forumFilter";
-import { scrollToTop } from "@/helpers/scrollToTop";
+import { scrollToTop } from "@/utils/scrollToTop";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import { useForumFilter } from "@/services/hooks/useForumFilter";
 

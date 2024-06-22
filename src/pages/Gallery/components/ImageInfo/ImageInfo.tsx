@@ -7,7 +7,7 @@ import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { Link } from "react-router-dom";
 import Button from "@/components/UI/Button/Button";
 import CrossIcon from "@/components/UI/icons/CrossIcon";
-import { formatDate } from "@/helpers/formatDate";
+import { formatDate } from "@/utils/formatDate";
 import { RoutesEnum } from "@/constants/routes";
 import Tags from "../../../../components/UI/Tags/Tags";
 import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
@@ -49,15 +49,12 @@ const ImageInfo = ({
       []
    );
 
-   const handleTagClick =
-      (tag: string) => (event: MouseEvent<HTMLButtonElement>) => {
+   const handleTagClick = (tag: string) => (event: MouseEvent<HTMLButtonElement>) => {
          dispatch(closeModal());
          dispatch(setTextQuery(tag));
       };
 
-   const handleContentClick = (
-      event: MouseEvent<HTMLDivElement | HTMLButtonElement>
-   ) => {
+   const handleContentClick = (event: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
       event.stopPropagation();
    };
 

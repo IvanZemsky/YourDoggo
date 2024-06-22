@@ -1,4 +1,4 @@
-import compareObjects from "@/helpers/compareObjects";
+import compareObjects from "@/utils/compareObjects";
 import {
    IProductData,
    FetchProductFilter,

@@ -1,9 +1,20 @@
 import { useFetchForumCommentsByMessageQuery,} from "@/services/forum";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { resetPage, setForumMessageId } from "@/store/slices/forum/commentFilter";
+import { useEffect } from "react";
 
-export const useForumCommentFilter = (id: string) => {
+export const useForumCommentFilter = (forumMessageId: string) => {
    const filters = useAppSelector(state => state.commentFilter)
-   const data = useFetchForumCommentsByMessageQuery({...filters, id});
+   const dispatch = useAppDispatch()
+
+   useEffect(() => {
+      if (forumMessageId !== filters.forumMessageID) {
+         dispatch(resetPage())
+         dispatch(setForumMessageId(forumMessageId))
+      }
+   }, [])
+
+   const data = useFetchForumCommentsByMessageQuery({...filters, id: forumMessageId});
 
    return data
 };

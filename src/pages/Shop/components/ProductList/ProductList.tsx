@@ -5,7 +5,7 @@ import ProductsSkeleton from "../ProductsSkeleton/ProductsSkeleton";
 import { Fragment } from "react/jsx-runtime";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/shop/productFilterSlice";
-import { scrollToTop } from "@/helpers/scrollToTop";
+import { scrollToTop } from "@/utils/scrollToTop";
 import PageBtns from "../../../../components/UI/PageBtns/PageBtns";
 
 const ProductList = () => {

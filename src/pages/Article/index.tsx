@@ -5,7 +5,7 @@ import Loading from "./../../components/Loading/Loading";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { Link } from "react-router-dom";
 import { useUserLink } from "@/hooks/useUserLink";
-import { formatDate } from "@/helpers/formatDate";
+import { formatDate } from "@/utils/formatDate";
 import LikeBtn from "@/components/UI/LikeBtn/LikeBtn";
 import LikeCounter from "@/components/UI/LikeCounter/LikeCounter";
 import { APIEndpoints } from "@/constants/API";

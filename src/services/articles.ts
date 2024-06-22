@@ -1,6 +1,6 @@
 import { APIEndpoints } from "@/constants/API";
 import { YourDoggoAPI } from "./YourDoggoService";
-import compareObjects from "@/helpers/compareObjects";
+import compareObjects from "@/utils/compareObjects";
 import { IArticleTotal, FetchArticleFilter, IArticle, CreateArticleData } from "@/types/API/IArticle";
 import { FetchBaseQueryMeta } from "@reduxjs/toolkit/query";
 

@@ -4,7 +4,7 @@ import PageLink from "@/components/UI/PageLink/PageLink"
 import { RoutesEnum } from "@/constants/routes"
 import { Link } from "react-router-dom"
 import Button from "@/components/UI/Button/Button"
-import { formatDate } from "@/helpers/formatDate"
+import { formatDate } from "@/utils/formatDate"
 
 const {Forum, User} = RoutesEnum
 

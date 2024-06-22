@@ -1,5 +1,5 @@
 import styles from "./Image.module.scss";
-import { formatDate } from "@/helpers/formatDate";
+import { formatDate } from "@/utils/formatDate";
 import { useCallback, useEffect, useState} from "react";
 import { MouseEvent } from "react";
 import { useAppDispatch} from "@/hooks/redux";

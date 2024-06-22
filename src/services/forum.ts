@@ -1,5 +1,5 @@
 import { APIEndpoints } from "@/constants/API";
-import compareObjects from "@/helpers/compareObjects";
+import compareObjects from "@/utils/compareObjects";
 import {
    IForumCommentTotal,
    FetchForumCommentFilter,

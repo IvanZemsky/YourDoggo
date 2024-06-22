@@ -28,6 +28,7 @@ const onContainerClick = (elementRef: HTMLElement) => (event: MouseEvent): void 
  * @param {RefObject<HTMLElement>} containerRef - ref для контейнера, к которому будет применён эффект
  * @return {void}
  */
+
 export const useRippleEffect = (containerRef: RefObject<HTMLElement>): void => {
    useEffect(() => {
       if (containerRef.current === null) return;

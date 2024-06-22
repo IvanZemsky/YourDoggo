@@ -1,4 +1,4 @@
-import compareObjects from "@/helpers/compareObjects";
+import compareObjects from "@/utils/compareObjects";
 import { IGalleryImgTotal, FetchGalleryFilter, IGalleryImg, CreateGalleryIMGData } from "@/types/API/IGalleryImg";
 import { FetchBaseQueryMeta } from "@reduxjs/toolkit/query";
 import { YourDoggoAPI } from "./YourDoggoService";

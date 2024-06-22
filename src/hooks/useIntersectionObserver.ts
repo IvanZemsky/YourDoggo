@@ -1,8 +1,15 @@
 import { RefObject, useEffect } from "react";
 
+/**
+ * @description
+ * Хук для вызова колбека, если элемент в пределах области видимости
+ * @param {RefObject<HTMLElement>} ref - ref для отслеживаемого элемента
+ * @param callback - функция для выполнения
+ */
+
 export const useIntersectionObserver = (
    ref: RefObject<HTMLElement>,
-   callback: () => void
+   callback: (...args: any) => void
 ) => {
    const options: IntersectionObserverInit = {
       threshold: 0.7,

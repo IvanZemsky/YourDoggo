@@ -6,7 +6,7 @@ import { Fragment } from "react";
 import PageBtns from "@/components/UI/PageBtns/PageBtns";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/articles/articleFilterSlice";
-import { scrollToTop } from "@/helpers/scrollToTop";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 const ArticleList = () => {
    const { data, isLoading, isFetching, isError } = useArticleFilter();

@@ -1,7 +1,7 @@
 import { IArticle } from "@/types/API/IArticle";
 import styles from "./ArticleCard.module.scss";
 import { Link } from "react-router-dom";
-import { formatDate } from "@/helpers/formatDate";
+import { formatDate } from "@/utils/formatDate";
 import LikeBtn from "@/components/UI/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { MouseEvent } from "react";

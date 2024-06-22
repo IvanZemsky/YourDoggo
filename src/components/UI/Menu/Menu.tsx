@@ -2,7 +2,7 @@ import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import { Fade } from "../Transitions/Fade/Fade";
 import styles from "./Menu.module.scss";
-import { selectStyles } from "@/helpers/selectStyles";
+import { selectStyles } from "@/utils/selectStyles";
 import { useEventListener } from "@/hooks/useEventListener";
 
 interface MenuProps {

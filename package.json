@@ -1,12 +1,12 @@
 {
-  "name": "webpack-react-ts-preset-1",
+  "name": "yourdoggo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Сайт для владельцев собак",
   "homepage": "https://IvanZemsky.github.io/YourDoggo",
   "private": true,
   "scripts": {
     "start": "webpack serve --env mode=development",
-    "server": "json-server -w server/db.json -p 3001",
+    "test": "jest --no-cache",
     "build:dev": "webpack --env mode=development",
     "build": "webpack --env mode=production",
     "predeploy": "npm run build",
@@ -18,10 +18,10 @@
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
+    "babel-jest": "^29.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
-    "react-intersection-observer": "^9.10.2",
     "react-redux": "^9.1.1",
     "react-responsive": "^10.0.0",
     "react-router": "^6.22.3",
@@ -29,7 +29,10 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "@jest/globals": "^29.7.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.11.25",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
@@ -47,6 +50,7 @@
     "sass": "^1.69.0",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.4",
+    "ts-jest": "^29.1.5",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2",

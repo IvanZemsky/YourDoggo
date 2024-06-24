@@ -4,10 +4,15 @@
 
 Сайт создан для пользователей-владельцев собак. Он включает магазин товаров, статьи, галерею изображений пользователей и возможность общаться на форуме, оставлять отзывы и комментарии
 
+<picture>
+ <img alt="Скриншот страницы &quot;Home&quot;" src="./readme_img.JPG">
+</picture>
+
 ### Стек технологий:
 + React 18 (TypeScript)
 + Redux Toolkit, RTK Query
-+ SCSS (SCSS modules)
++ SCSS (modules)
++ Jest
 + Express
 + MongoDB (Mongoose)
 + Webpack

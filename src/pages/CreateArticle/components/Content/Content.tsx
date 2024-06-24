@@ -1,12 +1,9 @@
 import Button from "@/components/UI/Button/Button";
 import styles from "./Content.module.scss";
-import { ForwardedRef, ReactNode, RefObject, forwardRef, useEffect, useRef, useState } from "react";
+import { ReactNode,forwardRef, useState } from "react";
 import Text from "../Text/Text";
 import Header from "../Header/Header";
 import Img from "../Img/Img";
-
-interface ContentProps {
-}
 
 const Content = forwardRef<HTMLDivElement>((_, ref) => {
    const [content, setContent] = useState<ReactNode[]>([]);

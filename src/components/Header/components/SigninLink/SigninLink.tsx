@@ -1,14 +1,20 @@
-import Button from "@/components/UI/Button/Button";
-import { Link } from "react-router-dom";
-import styles from './SigninLink.module.scss'
+import { RoutesEnum } from "@/constants/routes";
+import styles from "./SigninLink.module.scss";
+import PageLink from "@/components/UI/PageLink/PageLink";
+
+const {Signin} = RoutesEnum
 
 const SigninLink = () => {
    return (
-      <Link to="/signin">
-         <Button variant="outlined" color="secondary" className={styles.signinBtn}>
-            Войти
-         </Button>
-      </Link>
+      <PageLink
+         to={`/${Signin}`}
+         hasRippleEffect
+         variant="outlined"
+         color="secondary"
+         className={styles.signinBtn}
+      >
+         Войти
+      </PageLink>
    );
 };
 

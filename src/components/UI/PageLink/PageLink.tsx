@@ -1,10 +1,12 @@
-import { AnchorHTMLAttributes, PropsWithChildren, ReactNode } from "react";
+import { AnchorHTMLAttributes, PropsWithChildren, ReactNode, useRef } from "react";
 import styles from "./PageLink.module.scss";
 import { Link } from "react-router-dom";
 import { scrollToTop } from "@/utils/scrollToTop";
+import { useRippleEffect } from "@/hooks/useRippleEffect/useRippleEffect";
 
 interface PageLinkProps {
    to: string;
+   hasRippleEffect?: boolean
    variant?: "outlined" | "filled" | "none";
    color?: string;
    shadow?: boolean;
@@ -17,6 +19,7 @@ type PageLinkFullProps = PropsWithChildren<PageLinkProps> &
    AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const PageLink = ({
+   hasRippleEffect = false,
    variant = "filled",
    color = "primary",
    shadow = true,
@@ -27,6 +30,10 @@ const PageLink = ({
    to,
    ...props
 }: PageLinkFullProps) => {
+   
+   const linkRef = useRef<HTMLAnchorElement>(null);
+
+   useRippleEffect(linkRef, hasRippleEffect)
 
    if (scrollToTop) {
       scrollToTop()
@@ -42,6 +49,7 @@ const PageLink = ({
             shadow && styles["shadow"],
             className,
          ].join(" ")}
+         ref={linkRef}
          {...props}
       >
          {icon}

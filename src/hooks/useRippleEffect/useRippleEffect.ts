@@ -29,8 +29,9 @@ const onContainerClick = (elementRef: HTMLElement) => (event: MouseEvent): void 
  * @return {void}
  */
 
-export const useRippleEffect = (containerRef: RefObject<HTMLElement>): void => {
+export const useRippleEffect = (containerRef: RefObject<HTMLElement>, isOn: boolean = true): void => {
    useEffect(() => {
+      if (!isOn) return;
       if (containerRef.current === null) return;
 
       const elementRef = containerRef.current;

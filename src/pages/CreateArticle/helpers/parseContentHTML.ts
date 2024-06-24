@@ -1,6 +1,8 @@
 import { escapeHTML } from "@/helpers/escapeHTML";
 import { RefObject } from "react";
 
+console.log(escapeHTML("<div>hi</div>"))
+
 export const parseContentHTML = (contentRef: RefObject<HTMLElement>): string => {
    let textContent = "";
    if (contentRef.current) {

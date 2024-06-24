@@ -2,7 +2,6 @@ import {
    ButtonHTMLAttributes,
    PropsWithChildren,
    ReactNode,
-   RefAttributes,
    useRef,
 } from "react";
 import styles from "./Button.module.scss";
@@ -28,7 +27,8 @@ const Button = ({
    children,
    ...props
 }: ButtonFullProps) => {
-   const buttonRef = useRef(null);
+
+   const buttonRef = useRef<HTMLButtonElement>(null);
 
    useRippleEffect(buttonRef);
 

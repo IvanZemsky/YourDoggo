@@ -1,6 +1,6 @@
 
 
-export default function objectsEqual(firstObject: {[key: string]: any}, secondObject: {[key: string]: any}) {
+export default function compareObjects(firstObject: {[key: string]: any}, secondObject: {[key: string]: any}) {
   const entries1 = Object.entries(firstObject);
   const entries2 = Object.entries(secondObject);
 

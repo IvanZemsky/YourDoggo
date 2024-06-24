@@ -22,19 +22,15 @@
    }
 }
 
-.filterBtn,
-.filterBtn:hover {
-
-   &::before {
-      content: none;
-   }
-}
-
 .check {
    label{
       padding: 6px 10px;
       border-radius: 12px;
       transition: 0.15s all linear;
+
+      @include hoverEffect('&') {
+         background-color: var(--primaryMain);
+      }
    }
 
    & > input:checked + label{

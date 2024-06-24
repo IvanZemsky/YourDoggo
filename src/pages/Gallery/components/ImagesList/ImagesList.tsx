@@ -14,7 +14,7 @@ const ImagesList = () => {
    const images = data?.data;
    const totalCount = data?.totalCount!;
    const limit = useAppSelector((state) => state.galleryFilter.limit) || 12;
-   const page = useAppSelector((state) => state.galleryFilter.page)!;
+   const page = useAppSelector((state) => state.galleryFilter.page) || 1;
    const triggerRef = useRef<HTMLDivElement>(null);
 
    const isLoadedAll = Math.ceil(totalCount / limit) <= page;

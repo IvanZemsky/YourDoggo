@@ -4,6 +4,7 @@ import { Configuration } from "webpack";
 import { BuildOptions } from "./types/types";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
+import CopyPlugin from 'copy-webpack-plugin'
 import path from "path";
 import fs  from "fs";
 
@@ -32,6 +33,14 @@ export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
       plugins.push(
          new ReactRefreshWebpackPlugin()
       )
+   }
+
+   if (isProd) {
+      plugins.push(new CopyPlugin({
+         patterns: [
+            {from: path.resolve(options.paths.public, 'icons'), to: path.resolve(options.paths.output, 'icons')}
+         ]
+      }))
    }
 
    return plugins;

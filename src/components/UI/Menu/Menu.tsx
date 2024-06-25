@@ -20,7 +20,7 @@ const Menu = ({
    const [isMenuOpened, setIsMenuOpened] = useState(!isOpen);
    const burgerRef = useRef<HTMLDivElement>(null);
 
-   useEventListener("mousedown", (event: MouseEvent) => {
+   useEventListener(document, "mousedown", (event: MouseEvent) => {
       const isNotBurgerClick = burgerRef.current && !burgerRef.current.contains(event.target as Node);
       if (isNotBurgerClick && isOpen) {
          setIsMenuOpened(false);

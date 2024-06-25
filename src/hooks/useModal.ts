@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useAppSelector } from "./redux"
+import { useEventListener } from "./useEventListener"
 
 /**
  * @description
@@ -18,14 +19,7 @@ export const useModal = (modalContent: string): boolean => {
       scrollTo({top: currentYScroll})
    }
 
-   useEffect(() => {
-      if (isOpened) {
-         window.addEventListener("scroll", preventScroll)
-      }
-
-      return () => window.removeEventListener("scroll", preventScroll)
-         
-   }, [isOpened, modalContent])
+   useEventListener(window, 'scroll', preventScroll, isOpened, [isOpened, modalContent])
 
    return isOpened;
 }

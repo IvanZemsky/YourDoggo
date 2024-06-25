@@ -1,6 +1,5 @@
 /**
  * Прокручивает страницу вверх
- *
  * @param {ScrollBehavior} [behavior='instant'] - Поведение скролла - 'auto', 'smooth', или 'instant'. Изначально 'instant'.
  * @returns {void}
  */

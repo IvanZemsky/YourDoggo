@@ -7,14 +7,15 @@ import { RefObject, useEffect } from "react";
  * @param callback - функция для выполнения
  */
 
+const defaultOptions: IntersectionObserverInit = {
+   threshold: 0.7,
+};
+
 export const useIntersectionObserver = (
    ref: RefObject<HTMLElement>,
-   callback: (...args: any) => void
+   callback: (...args: any) => void,
+   options: IntersectionObserverInit = defaultOptions
 ) => {
-   const options: IntersectionObserverInit = {
-      threshold: 0.7,
-   };
-
    const observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
          entries.forEach((entry: IntersectionObserverEntry) => {

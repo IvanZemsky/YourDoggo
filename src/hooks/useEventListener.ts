@@ -2,17 +2,28 @@ import { useEffect } from "react";
 
 /**
  * @description
- * Создает прослушиватель события для document, при размонитровании компонента удаляет его
- * @param {keyof DocumentEventMap} event - событие
+ * Создает прослушиватель события, при размонитровании компонента удаляет его
+ * @param {HTMLElement | Document | Window} target - цель
+ * @param {keyof HTMLElementEventMap} event - событие
  * @param {Event} handler - обработчик
+ * @param {boolean} condition - условие для установки обработчика
+ * @param {any[]} deps - зависимости
  */
 
-export const useEventListener = (event: keyof DocumentEventMap, handler: (e: Event) => void) => {
+export const useEventListener = (
+   target: HTMLElement | Document | Window,
+   event: keyof HTMLElementEventMap,
+   handler: (e: Event) => void,
+   condition: boolean = true,
+   deps: any[] = []
+): void => {
    useEffect(() => {
-      document.addEventListener(event, handler);
+      if (condition) {
+         target.addEventListener(event, handler);
+      }
 
       return () => {
-         document.removeEventListener(event, handler);
+         target.removeEventListener(event, handler);
       };
-   }, []);
-}
+   }, deps);
+};

@@ -8,6 +8,7 @@ import { categories } from "@/data/categories";
 import { setCategory } from "@/store/slices/shop/productFilterSlice";
 import { useAppDispatch } from "@/hooks/redux";
 import { Category } from "@/types/shop";
+import { scrollToTop } from "@/utils/scrollToTop";
 
 interface SimilarProps {
   id: string
@@ -18,6 +19,10 @@ const Similar = ({id, productCategory}: SimilarProps) => {
    const dispatch = useAppDispatch()
 
    const {data: products, isLoading, isError} = useFetchProductsByCategoryQuery(productCategory)
+
+   const handleCardClick = () => {
+      scrollToTop('smooth')
+   }
 
    const handleMoreClick = () => {
       const currentCategory: Category = categories.find(category => category.name === productCategory)! // TO HELPER
@@ -39,6 +44,7 @@ const Similar = ({id, productCategory}: SimilarProps) => {
                      product._id !== id && (
                         <ProductCard
                            key={product._id}
+                           onClick={handleCardClick}
                            id={product._id}
                            category={product.category}
                            name={product.name}

@@ -24,7 +24,7 @@ const AppRoutes = () => {
          <Route path={RoutesEnum.Home} element={<Layout />}>
             <Route index element={<Home />} />
             <Route path={RoutesEnum.Signin} element={<Signin />} />
-            <Route path={RoutesEnum.Profile} element={<User isCurrentUser={false} />} />
+            <Route path={RoutesEnum.Profile} element={<Profile />} />
             <Route path={RoutesEnum.Articles} element={<Articles />} />
             <Route
                path={RoutesEnum.Articles + "/" + RoutesEnum.Create}
@@ -44,7 +44,7 @@ const AppRoutes = () => {
                path={RoutesEnum.Gallery + "/" + RoutesEnum.Create}
                element={<CreateImage />}
             />
-            <Route path={RoutesEnum.User + "/:userId"} element={<User isCurrentUser={false} />} />
+            <Route path={RoutesEnum.User + "/:userId"} element={<User />} />
          </Route>
       </Routes>
    );

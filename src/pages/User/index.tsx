@@ -11,11 +11,7 @@ import styles from "./User.module.scss";
 
 const { Profile } = RoutesEnum;
 
-interface UserProps {
-   isCurrentUser: boolean
-}
-
-const User = ({isCurrentUser }: UserProps) => {
+const User = () => {
    const navigate = useNavigate();
    const authUserId = useAppSelector((state) => state.auth.userId);
    const { userId } = useParams();
@@ -44,9 +40,10 @@ const User = ({isCurrentUser }: UserProps) => {
       user && (
          <Wrapper>
             <div className={styles.content}>
-               <div className={styles.mainInfo}>
-                  <Personal user={user} isCurrentUser={isCurrentUser} />
-                  <UserGallery userId={userId} isCurrentUser={isCurrentUser}/>
+               <Personal user={user} />
+               
+               <div className={styles.activityInfo}>
+                  <UserGallery userId={userId} />
                </div>
             </div>
          </Wrapper>

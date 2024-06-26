@@ -6,31 +6,33 @@ import DoggoCard from "@/pages/Profile/components/DoggoCard/DoggoCard";
 
 interface PersonalProps {
    user: IUser;
-   isCurrentUser: boolean
 }
 
-const Personal = ({ user, isCurrentUser }: PersonalProps) => {
+const Personal = ({ user }: PersonalProps) => {
    const date = formatDate(user.registrationDate, "text");
 
    return (
-      <div className={styles.userInfoWrap}>
-         <div className={styles.userInfo}>
-            <div className={styles.logoWrap}>
-               <div className={styles.logo}>
-                  <UserIcon />
+      <div className={styles.mainInfo}>
+         <div className={styles.userInfoWrap}>
+            <div className={styles.userInfo}>
+               <div className={styles.logoWrap}>
+                  <div className={styles.logo}>
+                     <UserIcon />
+                  </div>
+               </div>
+               <div className={styles.userPersonalData}>
+                  <p className={styles.name}>
+                     {user.name} {user.surname}
+                  </p>
+                  <p className={styles.personalDataText}>{user.email}</p>
+                  <p className={styles.personalDataText}>{user.phone}</p>
+                  <p className={styles.personalDataText}>
+                     В сообществе с {date}
+                  </p>
                </div>
             </div>
-            <div className={styles.userPersonalData}>
-               <p className={styles.name}>
-                  {user.name} {user.surname}
-               </p>
-               <p className={styles.personalDataText}>{user.email}</p>
-               <p className={styles.personalDataText}>{user.phone}</p>
-               <p className={styles.personalDataText}>В сообществе с {date}</p>
-            </div>
-            {isCurrentUser && <DoggoCard hasCard={user.hasCard}/>}
+            <p className={styles.login}>@{user.login}</p>
          </div>
-         <p className={styles.login}>@{user.login}</p>
       </div>
    );
 };

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import { findProductCategory } from "@/helpers/findProductCategory";
-import { memo } from "react";
+import { AnchorHTMLAttributes, memo } from "react";
 
 interface ProductCardProps {
    id: string;
@@ -12,11 +12,14 @@ interface ProductCardProps {
    price: number;
 }
 
-const ProductCard = memo(({ id, name, category, description, price, img }: ProductCardProps) => {
+type ProductCardFullProps = ProductCardProps &
+AnchorHTMLAttributes<HTMLAnchorElement>;
+
+const ProductCard = memo(({ id, name, category, description, price, img, ...attributes }: ProductCardFullProps) => {
    const categoryValue = findProductCategory(category)
 
    return (
-      <Link to={`/shop/${id}`}>
+      <Link to={`/shop/${id}`} onClick={attributes.onClick}>
          <div className={styles.card}>
             <div className={styles.imgWrap}>
                <p className={styles.category}>{categoryValue}</p>

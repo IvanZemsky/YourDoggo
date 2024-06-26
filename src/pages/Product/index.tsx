@@ -7,7 +7,6 @@ import ProductInfo from "./components/ProductInfo/ProductInfo";
 import { parametersRu } from "@/constants/API";
 import OrderInfo from "./components/OrderInfo/OrderInfo";
 import ProductImg from "./components/ProductImg/ProductImg";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
 import Similar from "./components/Similar/Similar";
 import { useMemo } from "react";
 
@@ -19,8 +18,6 @@ const Product = () => {
       isLoading: isProductLoading,
       isError: isProductError,
    } = useFetchProductByIdQuery(id as string);
-
-   useScrollToTop([product], "smooth");
 
    const parameters: string[][] = useMemo(
       () =>

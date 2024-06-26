@@ -9,3 +9,41 @@
 .name{
    font-weight: 500;
 }
+
+.userInfoWrap{
+   padding-bottom: 25px;
+   margin-bottom: 20px;
+   box-shadow: var(--bottomShadow);
+}
+
+.userInfo{
+   display: flex;
+   gap: 15px;
+   padding: 0 0 0 6px;
+}
+
+.logoWrap{
+   max-width: 140px;
+}
+
+.logo{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+   aspect-ratio: 1 / 1;
+   margin-bottom: 15px;
+   border: 2px solid var(--primaryMain);
+   border-radius: 25px;
+
+   svg{
+      width: 65%;
+      fill: var(--primaryLight);
+   }
+}
+
+.login{
+   padding-left: 21px;
+   font-size: 15px;
+   font-weight: 500;
+}

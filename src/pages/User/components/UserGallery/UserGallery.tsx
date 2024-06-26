@@ -11,9 +11,10 @@ const {Gallery} = RoutesEnum
 
 interface UserGalleryProps {
    userId: string;
+   isCurrentUser: boolean
 }
 
-const UserGallery = ({ userId }: UserGalleryProps) => {
+const UserGallery = ({ userId, isCurrentUser }: UserGalleryProps) => {
    const {
       data,
       isLoading,

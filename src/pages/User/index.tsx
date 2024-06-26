@@ -1,6 +1,5 @@
 import Loading from "@/components/Loading/Loading";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
-import UserIcon from "@/components/UI/icons/UserIcon";
 import { RoutesEnum } from "@/constants/routes";
 import { useAppSelector } from "@/hooks/redux";
 import { useFetchUserByIdQuery } from "@/services/user";
@@ -12,7 +11,11 @@ import styles from "./User.module.scss";
 
 const { Profile } = RoutesEnum;
 
-const User = () => {
+interface UserProps {
+   isCurrentUser: boolean
+}
+
+const User = ({isCurrentUser }: UserProps) => {
    const navigate = useNavigate();
    const authUserId = useAppSelector((state) => state.auth.userId);
    const { userId } = useParams();
@@ -42,20 +45,9 @@ const User = () => {
          <Wrapper>
             <div className={styles.content}>
                <div className={styles.mainInfo}>
-                  <div className={styles.userInfoWrap}>
-                     <div className={styles.userInfo}>
-                        <div className={styles.logoWrap}>
-                           <div className={styles.logo}>
-                              <UserIcon />
-                           </div>
-                        </div>
-                        <Personal user={user} />
-                     </div>
-                     <p className={styles.login}>@{user.login}</p>
-                  </div>
+                  <Personal user={user} isCurrentUser={isCurrentUser} />
+                  <UserGallery userId={userId} isCurrentUser={isCurrentUser}/>
                </div>
-
-               <UserGallery userId={userId} />
             </div>
          </Wrapper>
       )

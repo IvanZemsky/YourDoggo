@@ -10,6 +10,8 @@ import UserIcon from "@/components/UI/icons/UserIcon";
 import DoggoCard from "./components/DoggoCard/DoggoCard";
 import Personal from "./components/Personal/Personal";
 import UserGallery from './components/UserGallery/UserGallery';
+import UserArticle from './components/UserArticles/UserArticles';
+import UserArticles from "./components/UserArticles/UserArticles";
 
 const Profile = () => {
    const navigate = useNavigate();
@@ -43,23 +45,12 @@ const Profile = () => {
       user && (
          <Wrapper>
             <div className={styles.content}>
-               <div className={styles.mainInfo}>
-                  <div className={styles.userInfoWrap}>
-                     <div className={styles.userInfo}>
-                        <div className={styles.logoWrap}>
-                           <div className={styles.logo}>
-                              <UserIcon />
-                           </div>
-                        </div>
-                        <Personal user={user} />
-                     </div>
-                     <p className={styles.login}>@{user.login}</p>
-                  </div>
-                  <DoggoCard hasCard={user.hasCard} />
+               <Personal user={user} />
+               
+               <div className={styles.activityInfo}>
+                  <UserGallery userId={userId} />
+                  <UserArticles userId={userId}/>
                </div>
-
-               <UserGallery userId={userId}/>
-
             </div>
          </Wrapper>
       )

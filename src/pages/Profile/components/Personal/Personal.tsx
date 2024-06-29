@@ -6,9 +6,10 @@ import DoggoCard from './../DoggoCard/DoggoCard';
 
 interface PersonalProps {
    user: IUser;
+   isCurrentUser: boolean
 }
 
-const Personal = ({ user }: PersonalProps) => {
+const Personal = ({ user, isCurrentUser }: PersonalProps) => {
    const date = formatDate(user.registrationDate, "text");
 
    return (
@@ -33,7 +34,7 @@ const Personal = ({ user }: PersonalProps) => {
             </div>
             <p className={styles.login}>@{user.login}</p>
          </div>
-         <DoggoCard hasCard={user.hasCard}/>
+         {isCurrentUser && <DoggoCard hasCard={user.hasCard}/>}
       </div>
    );
 };

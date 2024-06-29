@@ -2,7 +2,7 @@ import {
    Home,
    Signin,
    Articles,
-   User,
+   UserProfile,
    Product,
    Profile,
    Forum,
@@ -44,7 +44,7 @@ const AppRoutes = () => {
                path={RoutesEnum.Gallery + "/" + RoutesEnum.Create}
                element={<CreateImage />}
             />
-            <Route path={RoutesEnum.User + "/:userId"} element={<User />} />
+            <Route path={RoutesEnum.User + "/:userId"} element={<UserProfile />} />
          </Route>
       </Routes>
    );

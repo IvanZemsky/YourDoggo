@@ -7,7 +7,8 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import Personal from "./components/Personal/Personal";
 import UserGallery from "./components/UserGallery/UserGallery";
-import styles from "./User.module.scss";
+import styles from "./Profile.module.scss";
+import UserArticles from "./components/UserArticles/UserArticles";
 
 const { Profile } = RoutesEnum;
 
@@ -40,10 +41,11 @@ const User = () => {
       user && (
          <Wrapper>
             <div className={styles.content}>
-               <Personal user={user} />
+               <Personal user={user} isCurrentUser={false} />
                
                <div className={styles.activityInfo}>
-                  <UserGallery userId={userId} />
+                  <UserGallery userId={userId} isCurrentUser={false}/>
+                  <UserArticles userId={userId} isCurrentUser={false}/>
                </div>
             </div>
          </Wrapper>

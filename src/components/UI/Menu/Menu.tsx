@@ -27,10 +27,6 @@ const Menu = ({
       }
    });
 
-   useEffect(() => {
-      setIsMenuOpened(!isOpen);
-   }, [isOpen]);
-
    const handleOpen = () => {
       setIsMenuOpened((prev) => !prev);
    };

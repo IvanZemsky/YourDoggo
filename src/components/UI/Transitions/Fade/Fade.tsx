@@ -12,9 +12,10 @@ const transitionStyles: { [key in TransitionStatus]: React.CSSProperties } = {
 interface FadeProps {
    in?: boolean,
    duration?: number
+   className?: string
 }
 
-export function Fade({ in: inProp, duration = 300 ,children }: PropsWithChildren<FadeProps>) {
+export function Fade({ in: inProp, duration = 300, className, children }: PropsWithChildren<FadeProps>) {
   const nodeRef = useRef<HTMLDivElement | null>(null);
 
   const defaultStyle = {
@@ -30,8 +31,6 @@ export function Fade({ in: inProp, duration = 300 ,children }: PropsWithChildren
           style={{
               ...defaultStyle,
               ...transitionStyles[state],
-              position: 'relative',
-              zIndex: 700
             }}
           >
            {children}

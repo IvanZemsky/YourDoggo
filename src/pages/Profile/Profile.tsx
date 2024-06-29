@@ -6,11 +6,8 @@ import { useEffect } from "react";
 import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import { useFetchUserByIdQuery } from "@/services/user";
 import Loading from "@/components/Loading/Loading";
-import UserIcon from "@/components/UI/icons/UserIcon";
-import DoggoCard from "./components/DoggoCard/DoggoCard";
 import Personal from "./components/Personal/Personal";
 import UserGallery from './components/UserGallery/UserGallery';
-import UserArticle from './components/UserArticles/UserArticles';
 import UserArticles from "./components/UserArticles/UserArticles";
 
 const Profile = () => {
@@ -45,11 +42,11 @@ const Profile = () => {
       user && (
          <Wrapper>
             <div className={styles.content}>
-               <Personal user={user} />
+               <Personal user={user} isCurrentUser={true} />
                
                <div className={styles.activityInfo}>
-                  <UserGallery userId={userId} />
-                  <UserArticles userId={userId}/>
+                  <UserGallery userId={userId} isCurrentUser={true} />
+                  <UserArticles userId={userId} isCurrentUser={true} />
                </div>
             </div>
          </Wrapper>

@@ -66,7 +66,6 @@ const forumService = YourDoggoAPI.injectEndpoints({
          query: ({ id, page, limit }) => ({
             url: `${FORUM}/${id}${COMMENTS}`,
             params: {
-               sortByDate: true,
                limit,
                page,
                userLogin: true,
@@ -106,6 +105,7 @@ const forumService = YourDoggoAPI.injectEndpoints({
          },
       }),
       createForumMessage: builder.mutation<IForumMessage, CreateForumMessageData>({
+         invalidatesTags: ["ForumMessage"],
          query: (args) => ({
             url: `${FORUM}${CREATE}`,
             method: "POST",

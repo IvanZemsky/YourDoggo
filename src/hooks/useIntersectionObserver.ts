@@ -20,7 +20,6 @@ export const useIntersectionObserver = (
       (entries: IntersectionObserverEntry[]) => {
          entries.forEach((entry: IntersectionObserverEntry) => {
             if (entry.isIntersecting) {
-               console.log("go!!!");
                callback();
             }
          });

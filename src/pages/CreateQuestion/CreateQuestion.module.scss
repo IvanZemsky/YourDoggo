@@ -1,0 +1,26 @@
+.wrapper{
+   max-width: 900px;
+}
+
+.content{
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
+   padding: 25px 0;
+}
+
+.input{
+   padding: 15px;
+   border: 2px solid var(--primaryMain);
+}
+
+textarea{
+   resize: none;
+   height: min-content;
+   min-height: 200px;
+   border-radius: 15px 0 0 15px;
+}
+
+.submitBtn{
+   width: fit-content;
+}

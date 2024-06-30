@@ -13,6 +13,7 @@ import {
    CreateImage,
    CreateArticle,
    Question,
+   CreateQuestion,
 } from "@/pages/LazyExports";
 import { Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
@@ -43,6 +44,10 @@ const AppRoutes = () => {
             <Route
                path={RoutesEnum.Gallery + "/" + RoutesEnum.Create}
                element={<CreateImage />}
+            />
+            <Route
+               path={RoutesEnum.Forum + "/" + RoutesEnum.Create}
+               element={<CreateQuestion />}
             />
             <Route path={RoutesEnum.User + "/:userId"} element={<UserProfile />} />
          </Route>

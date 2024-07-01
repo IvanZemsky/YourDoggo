@@ -29,27 +29,6 @@
    box-shadow: var(--bottomShadow);
 }
 
-.articleWrap{
-   flex: 0 1 250px;
-   border-radius: 10px;
-   overflow: hidden;
-
-   img{
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-   }
-}
-
-.articleItem{
-   border-radius: 15px 15px 0 0;
-   overflow: hidden;
-}
-
-.articleTitle{
-   font-size: 15px;
-}
-
 .allBtn{
    @include flex-center-xy;
    flex-direction: column;

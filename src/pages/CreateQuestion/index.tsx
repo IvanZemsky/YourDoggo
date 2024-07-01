@@ -78,7 +78,7 @@ const index = () => {
                   },
                })}
             ></textarea>
-            <Button className={styles.submitBtn} type="submit">Отправить</Button>
+            <Button className={styles.submitBtn} disabled={isSubmitting} type="submit">Отправить</Button>
          </form>
       </Wrapper>
    );

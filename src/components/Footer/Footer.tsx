@@ -8,7 +8,7 @@ const Footer = () => {
       <footer className={styles.footer}>
          <Wrapper>
             <div className={styles.content}>
-               <Logo />
+               <Logo className={styles.logo}/>
 
                <div className={styles.links}>
                   <Link to="/articles">Статьи</Link>

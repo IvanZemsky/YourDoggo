@@ -9,6 +9,7 @@ import {
    setUserId,
 } from "@/store/slices/articles/articleFilterSlice";
 import { useFetchAllArticlesQuery } from "@/services/articles";
+import ArticleCard from "../ArticleCard/ArticleCard";
 
 const { Articles } = RoutesEnum;
 
@@ -76,14 +77,7 @@ const UserArticles = ({ userId, isCurrentUser }: UserArticlesProps) => {
                </header>
                <div className={styles.articleBlock}>
                   {articles.map((article) => (
-                     <div className={styles.articlesWrap} key={article._id}>
-                        <div className={styles.articleItem}>
-                           <img src={article.imgLink} alt={article.title} />
-                           <p className={styles.articleTitle}>
-                              {article.title}
-                           </p>
-                        </div>
-                     </div>
+                     <ArticleCard key={article._id} {...article}/>
                   ))}
                   <PageLink
                      to={`/${Articles}`}

@@ -16,6 +16,7 @@ const CommentForm = ({userId, forummessageId}: CommentFormProps) => {
       handleSubmit,
       formState: { errors, isSubmitting },
       getValues,
+      reset,
    } = useForm();
 
    const onSubmit = async (formData: FieldValues) => {
@@ -26,6 +27,8 @@ const CommentForm = ({userId, forummessageId}: CommentFormProps) => {
          forummessageId,
          text,
       });
+
+      reset()
    };
 
    if (!userId) {
@@ -41,8 +44,13 @@ const CommentForm = ({userId, forummessageId}: CommentFormProps) => {
          <textarea
             className={styles.comment}
             {...register("text", {
-               minLength: 35,
-            })}
+               required:
+                  "Описание должно быть не менее 35 символов",
+               minLength: {
+                  value: 25,
+                  message:
+                     "Описание должно быть не менее 35 символов",
+               }})}
             placeholder="Комментарий"
          ></textarea>
          <Button disabled={isSubmitting} type="submit">Отправить</Button>

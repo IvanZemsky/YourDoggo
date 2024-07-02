@@ -27,3 +27,20 @@
 + [Leonardo.ai](https://leonardo.ai/) - для создания изображений товаров
 + [Imgur](https://imgur.com/) - для хранения изображений товаров
 
+### Аккаунты
+| Логин         | Пароль        |
+| ------------- |---------------|
+| YellowDog     | 1234567       |
+| Dogg          | 123456        |
+| dogRed        | 654321        |
+| Samoyed       | 1234567       |
+| SnowyDoggo    | 123456        |
+| WhiteDog      | 1234567       |
+
+### Установка
+1. Склонируйте репозиторий:
+```git clone https://github.com/IvanZemsky/YourDoggo.git [директория]```
+2. Выполните установку пакетов:
+```npm install ```
+3. Запустите проект:
+```npm start```

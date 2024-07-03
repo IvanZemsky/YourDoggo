@@ -10,11 +10,13 @@ interface StartModalCardProps {
 
 const StartModalCard = ({link, name, desc, ...props}: StartModalCardProps & HTMLAttributes<HTMLAnchorElement>) => {
   return (
-    <PageLink to={link} variant="outlined" className={styles.card} {...props}>
-      <h3 className={styles.title}>{name}</h3>
-      <p className={styles.desc}>
-        {desc}
-      </p>
+    <PageLink to={link} variant="none" className={styles.card} {...props}>
+      <div className={styles.wrap}>
+        <h3 className={styles.title}>{name}</h3>
+        <p className={styles.desc}>
+          {desc}
+        </p>
+      </div>
     </PageLink>
   )
 }

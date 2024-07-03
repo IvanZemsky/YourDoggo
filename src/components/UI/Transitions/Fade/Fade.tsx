@@ -1,5 +1,6 @@
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { PropsWithChildren, useRef } from 'react';
+import { relative } from "path";
 
 const transitionStyles: { [key in TransitionStatus]: React.CSSProperties } = {
    entering: { opacity: 1 },
@@ -31,6 +32,8 @@ export function Fade({ in: inProp, duration = 300, className, children }: PropsW
           style={{
               ...defaultStyle,
               ...transitionStyles[state],
+              position: 'relative',
+              zIndex: 700,
             }}
           >
            {children}

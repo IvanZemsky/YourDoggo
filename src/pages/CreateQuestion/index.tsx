@@ -10,7 +10,7 @@ import { RoutesEnum } from "@/constants/routes";
 
 const {Forum} = RoutesEnum
 
-const index = () => {
+const CreateQuestion = () => {
    const [create] = useCreateForumMessageMutation();
 
    const navigate = useNavigate()
@@ -84,4 +84,4 @@ const index = () => {
    );
 };
 
-export default index;
+export default CreateQuestion;

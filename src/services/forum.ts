@@ -62,7 +62,6 @@ const forumService = YourDoggoAPI.injectEndpoints({
          }),
       }),
       fetchForumCommentsByMessage: builder.query<IForumCommentTotal, FetchForumCommentFilter>({
-         providesTags: ["ForumComment"],
          query: ({ id, page, limit }) => ({
             url: `${FORUM}/${id}${COMMENTS}`,
             params: {
@@ -113,7 +112,6 @@ const forumService = YourDoggoAPI.injectEndpoints({
          }),
       }),
       createForumComment: builder.mutation<IForumComment, CreateForumCommenteData>({
-         invalidatesTags: ["ForumComment"],
          query: (args) => ({
             url: `${FORUM}${COMMENTS}${CREATE}`,
             method: "POST",

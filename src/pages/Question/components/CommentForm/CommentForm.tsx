@@ -9,7 +9,9 @@ interface CommentFormProps{
 }
 
 const CommentForm = ({userId, forummessageId}: CommentFormProps) => {
-   const [create, data] = useCreateForumCommentMutation()
+   const [create, data] = useCreateForumCommentMutation({
+      fixedCacheKey: 'newComment'
+   })
 
    const {
       register,

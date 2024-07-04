@@ -12,6 +12,7 @@ import ItemInput from "./../../components/UI/ItemInput/ItemInput";
 import Content from "./components/Content/Content";
 import { useRef } from "react";
 import { parseContentHTML } from "./helpers/parseContentHTML";
+import ImgLinkInput from "@/components/UI/ImgLinkInput/ImgLinkInput";
 
 const { Signin, Articles } = RoutesEnum;
 
@@ -28,7 +29,7 @@ const CreateArticle = () => {
    const [create] = useCreateArticleMutation();
    const userId = useAppSelector((state) => state.auth.userId);
 
-   const contentRef = useRef<HTMLDivElement>(null)
+   const contentRef = useRef<HTMLDivElement>(null);
 
    let tagList: string[] = [];
 
@@ -41,7 +42,7 @@ const CreateArticle = () => {
    const onSubmit = async (formData: FieldValues) => {
       const title = getValues("title");
       const imgLink = getValues("imgLink");
-      const text = parseContentHTML(contentRef)
+      const text = parseContentHTML(contentRef);
 
       const newArticle = await create({
          userId: userId as string,
@@ -81,7 +82,9 @@ const CreateArticle = () => {
                <p className={styles.error}>
                   {errors.title && `${errors.title.message}`}
                </p>
-               <Input
+               
+               <ImgLinkInput
+                  imgText="Обложка"
                   placeholder="Картинка превью (ссылка)"
                   className={styles.input}
                   {...register("imgLink", {
@@ -92,9 +95,8 @@ const CreateArticle = () => {
                <p className={styles.error}>
                   {errors.imgLink && `${errors.imgLink.message}`}
                </p>
-               
-               <Content ref={contentRef}/>
-               
+
+               <Content ref={contentRef} />
                <p className={styles.error}>
                   {errors.text && `${errors.text.message}`}
                </p>

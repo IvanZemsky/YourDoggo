@@ -1,7 +1,15 @@
-import styles from "./Img.module.scss";
+import { ChangeEvent, forwardRef, InputHTMLAttributes } from "react";
+import Input from "../Input/Input";
 import { useImgLoad } from "@/hooks/useImgLoad";
+import { useForm } from "react-hook-form";
 
-const Img = () => {
+interface ImgLinkInputProps {
+   imgText: string;
+}
+
+type ImgLinkInputType = ImgLinkInputProps & InputHTMLAttributes<HTMLInputElement>;
+
+const ImgLinkInput = forwardRef(({ imgText, ...attributes }: ImgLinkInputType, ref) => {
    const {
       imgLink,
       isError,
@@ -11,12 +19,13 @@ const Img = () => {
    } = useImgLoad();
 
    return (
-      <div className={styles.img}>
-         <input
+      <div>
+         <Input
             type="text"
             placeholder="Вставьте ссылку на изображение"
-            value={imgLink}
             onChange={handleInputChange}
+            value={imgLink}
+            {...attributes}
          />
          {(imgLink && !isError) && (
             <img
@@ -29,6 +38,6 @@ const Img = () => {
          {isError && <p>Ошибка загрузки изображения. Проверьте ссылку.</p>}
       </div>
    );
-};
+});
 
-export default Img;
+export default ImgLinkInput;

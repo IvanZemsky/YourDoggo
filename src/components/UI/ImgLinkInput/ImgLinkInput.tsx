@@ -1,31 +1,29 @@
-import { ChangeEvent, forwardRef, InputHTMLAttributes } from "react";
+import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from "react";
 import Input from "../Input/Input";
 import { useImgLoad } from "@/hooks/useImgLoad";
-import { useForm } from "react-hook-form";
 
 interface ImgLinkInputProps {
    imgText: string;
+   handleChange: (...args: any[]) => any
 }
 
 type ImgLinkInputType = ImgLinkInputProps & InputHTMLAttributes<HTMLInputElement>;
 
-const ImgLinkInput = forwardRef(({ imgText, ...attributes }: ImgLinkInputType, ref) => {
-   const {
-      imgLink,
-      isError,
-      handleInputChange,
-      handleImageLoad,
-      handleImageError,
-   } = useImgLoad();
+const ImgLinkInput = forwardRef(({ imgText, handleChange, ...attributes }: ImgLinkInputType, ref) => {
+   const {imgLink, isError, debouncedHandler, handleImageLoad, handleImageError} = useImgLoad()
+
+   const handleInputChangeWrapper = (event: ChangeEvent<HTMLInputElement>) => {
+      debouncedHandler(event);
+      handleChange(event.target.value);
+   };
 
    return (
       <div>
          <Input
             type="text"
             placeholder="Вставьте ссылку на изображение"
-            onChange={handleInputChange}
-            value={imgLink}
-            {...attributes}
+            onChange={handleInputChangeWrapper}
+            className={attributes.className}
          />
          {(imgLink && !isError) && (
             <img

@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { useDebounce } from "./useDebounce";
 
 export const useImgLoad = () => {
    const [imgLink, setImgLink] = useState("");
@@ -9,6 +10,8 @@ export const useImgLoad = () => {
       setIsError(false);
    };
 
+   const debouncedHandler = useDebounce(handleInputChange, 500)
+
    const handleImageLoad = () => {
       setIsError(false);
    };
@@ -17,5 +20,5 @@ export const useImgLoad = () => {
       setIsError(true);
    };
 
-   return {imgLink, isError, handleInputChange, handleImageLoad, handleImageError}
+   return {imgLink, isError, debouncedHandler, handleInputChange, handleImageLoad, handleImageError}
 }

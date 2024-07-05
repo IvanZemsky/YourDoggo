@@ -6,7 +6,7 @@ import { useCreateArticleMutation } from "@/services/articles";
 import { useAppSelector } from "@/hooks/redux";
 import { RoutesEnum } from "@/constants/routes";
 import { useRedirect } from "@/hooks/useRedirect";
-import { FieldValues, useForm } from "react-hook-form";
+import { Controller, FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import ItemInput from "./../../components/UI/ItemInput/ItemInput";
 import Content from "./components/Content/Content";
@@ -21,6 +21,7 @@ const CreateArticle = () => {
 
    const {
       register,
+      control,
       handleSubmit,
       formState: { errors, isSubmitting },
       getValues,
@@ -82,15 +83,24 @@ const CreateArticle = () => {
                <p className={styles.error}>
                   {errors.title && `${errors.title.message}`}
                </p>
-               
-               <ImgLinkInput
-                  imgText="Обложка"
-                  placeholder="Картинка превью (ссылка)"
-                  className={styles.input}
-                  {...register("imgLink", {
+
+               <Controller
+                  name="imgLink"
+                  control={control}
+                  defaultValue=""
+                  rules={{
                      required: "Это поле не должно быть пустым",
                      minLength: 1,
-                  })}
+                  }}
+                  render={({ field }) => (
+                  <ImgLinkInput
+                     imgText="Обложка"
+                     placeholder="Картинка превью (ссылка)"
+                     className={styles.input}
+                     handleChange={field.onChange}
+                     {...field}
+                  />
+                  )}
                />
                <p className={styles.error}>
                   {errors.imgLink && `${errors.imgLink.message}`}

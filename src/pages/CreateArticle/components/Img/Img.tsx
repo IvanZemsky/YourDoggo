@@ -1,3 +1,4 @@
+import { ChangeEvent, useRef } from "react";
 import styles from "./Img.module.scss";
 import { useImgLoad } from "@/hooks/useImgLoad";
 
@@ -5,18 +6,20 @@ const Img = () => {
    const {
       imgLink,
       isError,
-      handleInputChange,
+      debouncedHandler,
       handleImageLoad,
       handleImageError,
    } = useImgLoad();
+
+   const inputRef = useRef<HTMLInputElement>(null)
 
    return (
       <div className={styles.img}>
          <input
             type="text"
             placeholder="Вставьте ссылку на изображение"
-            value={imgLink}
-            onChange={handleInputChange}
+            onChange={debouncedHandler}
+            ref={inputRef}
          />
          {(imgLink && !isError) && (
             <img

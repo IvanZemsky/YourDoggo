@@ -19,6 +19,13 @@
    overflow: hidden;
 }
 
+.articleWrap{
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 10px;
+   flex-grow: 1;
+}
+
 .empty{
    display: flex;
    align-items: center;
@@ -46,5 +53,29 @@
    svg{
       width: 25px;
       fill: var(--primaryText);
+   }
+}
+
+@media screen and (max-width: 1300px) {
+   .articleWrap{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media screen and (max-width: 545px) {
+   .articleBlock{
+     flex-direction: column;
+   }
+   .allBtn{
+      flex-direction: row;
+      width: 100%;
+   }
+}
+
+@media screen and (max-width: 390px) {
+   .articleWrap{
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
    }
 }

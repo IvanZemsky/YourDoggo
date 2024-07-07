@@ -1,8 +1,15 @@
+@import '/src/styles/mixins.scss';
+
 .articleWrap{
    color: var(--thirdText);
    flex: 0 1 250px;
    border-radius: 10px;
+   transition: background-color 0.15s linear;
    overflow: hidden;
+
+   @include hoverEffect('&') {
+      background-color: #e5e5e5;
+   }
 }
 
 .imgWrap{
@@ -19,5 +26,6 @@
 }
 
 .articleTitle{
+   padding: 8px;
    font-size: 15px;
 }

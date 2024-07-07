@@ -76,9 +76,11 @@ const UserArticles = ({ userId, isCurrentUser }: UserArticlesProps) => {
                   )}
                </header>
                <div className={styles.articleBlock}>
-                  {articles.map((article) => (
-                     <ArticleCard key={article._id} {...article}/>
-                  ))}
+                  <div className={styles.articleWrap}>
+                     {articles.map((article) => (
+                        <ArticleCard key={article._id} {...article}/>
+                     ))}
+                  </div>
                   <PageLink
                      to={`/${Articles}`}
                      className={styles.allBtn}

@@ -55,3 +55,37 @@
 .name{
    font-weight: 500;
 }
+
+@media screen and (max-width: 925px) {
+   .mainInfo{
+      position: static;
+      display: flex;
+      gap: 20px;
+      box-shadow: var(--bottomShadow);
+   }
+   .userInfoWrap{
+      padding-bottom: 0;
+      margin-bottom: 12px;
+      box-shadow: none;
+   }
+}
+
+@media screen and (max-width: 735px) {
+   .mainInfo{
+      flex-direction: column;
+   }
+}
+
+@media screen and (max-width: 390px) {
+   .userInfo{
+      flex-direction: column;
+      align-items: center;
+   }
+   .userPersonalData{
+      text-align: center;
+   }
+   .login{
+      text-align: center;
+      padding: 0;
+   }
+}

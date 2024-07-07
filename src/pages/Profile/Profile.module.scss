@@ -11,3 +11,9 @@
    flex-direction: column;
    gap: 15px;
 }
+
+@media screen and (max-width: 925px) {
+   .content{
+      grid-template-columns: 1fr;
+   }
+}

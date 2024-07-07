@@ -72,11 +72,13 @@ const UserGallery = ({ userId, isCurrentUser }: UserGalleryProps) => {
                   )}
                </header>
                <div className={styles.galleryBlock}>
-                  {images.map((image) => (
-                     <div className={styles.imgWrap} key={image._id}>
-                        <img src={image.imgLink} alt="Изображение" />
-                     </div>
-                  ))}
+                  <div className={styles.galleryWrap}>
+                     {images.map((image) => (
+                        <div className={styles.imgWrap} key={image._id}>
+                           <img src={image.imgLink} alt="Изображение" />
+                        </div>
+                     ))}
+                  </div>
                   <PageLink
                      to={`/${Gallery}`}
                      className={styles.allBtn}

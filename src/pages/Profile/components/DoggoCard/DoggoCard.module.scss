@@ -29,3 +29,17 @@
    font-size: 16px;
    text-align: center;
 }
+
+@media screen and (max-width: 925px) {
+   .doggoCardWrap{
+      flex-grow: 1;
+   }
+}
+
+@media screen and (max-width: 735px) {
+   .doggoCardWrap{
+      width: 100%;
+      max-width: 375px;
+      align-self: center;
+   }
+}

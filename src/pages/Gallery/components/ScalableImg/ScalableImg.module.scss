@@ -1,0 +1,22 @@
+.imgWrap{
+   height: 600px;
+   margin-bottom: 25px;
+   text-align: center;
+
+   img{
+      object-fit: contain;
+      width: auto;
+      height: 100%;
+      cursor: zoom-in;
+   }
+
+   img.scaled{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      cursor: zoom-out;
+      z-index: 999;
+   }
+}

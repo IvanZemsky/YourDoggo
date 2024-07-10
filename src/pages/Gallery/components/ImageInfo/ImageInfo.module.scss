@@ -108,18 +108,6 @@
    }
 }
 
-.imgWrap{
-   height: 600px;
-   margin-bottom: 25px;
-   text-align: center;
-
-   img{
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-   }
-}
-
 .titleWrap{
    @include flex-spb-y;
    flex-wrap: wrap;

@@ -2,7 +2,39 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   height: 100%;
    font-size: 25px;
    font-weight: 600;
+}
+
+.text{
+   margin-bottom: 15px;
+   text-align: center;
    color: var(--primaryMain);
+}
+
+.desc{
+   margin-bottom: 15px;
+   text-align: center;
+   font-size: 15px;
+   color: #1e1e1e;
+}
+
+.links{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 10px;
+
+   a{
+      font-size: 18px;
+      padding: 5px 15px;
+      border-radius: 15px;
+   }
+}
+
+@media screen and (max-width: 400px) {
+   .text{
+      font-size: 18px;
+   }
 }

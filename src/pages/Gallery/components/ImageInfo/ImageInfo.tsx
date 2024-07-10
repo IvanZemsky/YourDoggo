@@ -15,6 +15,8 @@ import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
 import LikeCounter from "../../../../components/UI/LikeCounter/LikeCounter";
 import { setTextQuery } from "@/store/slices/gallery/galleryFilterSlice";
+import { useUserLink } from "@/hooks/useUserLink";
+import ScalableImg from './../ScalableImg/ScalableImg';
 
 const { GALLERY } = APIEndpoints;
 
@@ -58,6 +60,9 @@ const ImageInfo = ({
       event.stopPropagation();
    };
 
+
+   const userLink = useUserLink(userId)
+
    return (
       <Modal
          modalContent={modalContent}
@@ -68,7 +73,7 @@ const ImageInfo = ({
             <div className={styles.content} onClick={handleContentClick}>
                <div className={styles.imageInfo}>
                   <header className={styles.header}>
-                     <Link to={`/${User}/${userId}`} className={styles.user}>
+                     <Link to={userLink} className={styles.user}>
                         @ {login}
                      </Link>
                      <div className={styles.headerBtns}>
@@ -94,9 +99,9 @@ const ImageInfo = ({
                         />
                      </div>
                   </header>
-                  <div className={styles.imgWrap}>
-                     <img src={imgLink} alt="Изображение" />
-                  </div>
+                  
+                  <ScalableImg imgLink={imgLink}/>
+
                   <div className={styles.desc}>
                      <div className={styles.titleWrap}>
                         {title && <h3 className={styles.title}>{title}</h3>}

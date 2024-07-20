@@ -28,7 +28,7 @@ export const Button = ({
 
    const buttonRef = useRef<HTMLButtonElement>(null);
 
-   
+   useRippleEffect(buttonRef)
 
    return (
       <button

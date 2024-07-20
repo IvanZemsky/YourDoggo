@@ -22,6 +22,7 @@
    height: var(--effect-height);
    background-color: var(--effect-color);
 
+   will-change: transform, opacity;
    border-radius: 50%;
    transform: scale(0);
    z-index: 5;

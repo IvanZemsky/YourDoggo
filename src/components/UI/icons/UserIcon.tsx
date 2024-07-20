@@ -1,4 +1,4 @@
-const UserIcon = () => {
+export const UserIcon = () => {
    return (
       <svg
          viewBox="0 0 37 40"
@@ -14,4 +14,3 @@ const UserIcon = () => {
    );
 };
 
-export default UserIcon;

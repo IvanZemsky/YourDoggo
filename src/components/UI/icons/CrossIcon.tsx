@@ -1,4 +1,4 @@
-const CrossIcon = () => {
+export const CrossIcon = () => {
    return (
       <svg
          viewBox="0 0 38 38"
@@ -13,5 +13,3 @@ const CrossIcon = () => {
       </svg>
    );
 };
-
-export default CrossIcon;

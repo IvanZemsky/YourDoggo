@@ -1,12 +1,12 @@
-import Menu from "@/components/UI/Menu/Menu";
-import PageLink from "@/components/UI/PageLink/PageLink";
-import PlusIcon from "@/components/UI/icons/PlusIcon";
+import {Menu, CheckBtn} from "@/components/UI";
+import {PageLink} from "@/components/UI";
+import {PlusIcon} from "@/components/UI/icons";
 import { useMediaQuery } from "react-responsive";
 import styles from "./ArticleMenu.module.scss";
 import { RoutesEnum } from "@/constants/routes";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { toggleLiked, toggleUserId } from "@/store/slices/articles/articleFilterSlice";
-import CheckBtn from "@/components/UI/CheckBtn/CheckBtn";
+
 import { Fragment } from "react/jsx-runtime";
 
 const { Articles, Create } = RoutesEnum;

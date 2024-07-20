@@ -1,7 +1,7 @@
 import { IUser } from "@/types/API/IUser";
 import styles from "./Personal.module.scss";
 import { formatDate } from "@/utils/formatDate";
-import UserIcon from "@/components/UI/icons/UserIcon";
+import {UserIcon} from "@/components/UI/icons";
 import DoggoCard from './../DoggoCard/DoggoCard';
 
 interface PersonalProps {

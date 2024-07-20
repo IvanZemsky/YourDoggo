@@ -1,6 +1,5 @@
-import Button from "@/components/UI/Button/Button";
+import {Button} from "@/components/UI/Button/Button";
 import { MouseEventHandler } from "react";
-import { Fragment } from "react/jsx-runtime";
 import styles from './PageBtns.module.scss'
 
 interface PageBtnsProps {
@@ -19,7 +18,7 @@ const PageBtns = ({ currentPage, pageAmount, handleClick }: PageBtnsProps) => {
       .join(" ")
 
    return (
-      <Fragment>
+      <>
          {pages.map((page) => (
             <Button
                key={page}
@@ -29,7 +28,7 @@ const PageBtns = ({ currentPage, pageAmount, handleClick }: PageBtnsProps) => {
                {page}
             </Button>
          ))}
-      </Fragment>
+      </>
    );
 };
 

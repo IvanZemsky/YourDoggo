@@ -1,7 +1,7 @@
 import styles from "./CommentList.module.scss";
 import Loading from "@/components/Loading/Loading";
 import Comment from "../Comment/Comment";
-import { Fragment, useCallback, useEffect, useRef } from "react";
+import { Fragment, useCallback, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/forum/commentFilter";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";

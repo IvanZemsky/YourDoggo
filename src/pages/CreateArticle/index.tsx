@@ -1,18 +1,14 @@
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper, Input, Button, ItemInput, ImgLinkInput} from "@/components/UI";
 import styles from "./CreateArticle.module.scss";
-import Input from "@/components/UI/Input/Input";
-import Button from "@/components/UI/Button/Button";
 import { useCreateArticleMutation } from "@/services/articles";
 import { useAppSelector } from "@/hooks/redux";
 import { RoutesEnum } from "@/constants/routes";
 import { useRedirect } from "@/hooks/useRedirect";
 import { Controller, FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import ItemInput from "./../../components/UI/ItemInput/ItemInput";
 import Content from "./components/Content/Content";
 import { useRef } from "react";
 import { parseContentHTML } from "./helpers/parseContentHTML";
-import ImgLinkInput from "@/components/UI/ImgLinkInput/ImgLinkInput";
 
 const { Signin, Articles } = RoutesEnum;
 

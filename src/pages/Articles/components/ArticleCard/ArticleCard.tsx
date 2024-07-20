@@ -2,9 +2,8 @@ import { IArticle } from "@/types/API/IArticle";
 import styles from "./ArticleCard.module.scss";
 import { Link } from "react-router-dom";
 import { formatDate } from "@/utils/formatDate";
-import LikeBtn from "@/components/UI/LikeBtn/LikeBtn";
+import LikeBtn from "@/components/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
-import { MouseEvent } from "react";
 import { useUserLink } from "@/hooks/useUserLink";
 import { RoutesEnum } from "@/constants/routes";
 

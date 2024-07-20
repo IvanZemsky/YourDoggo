@@ -1,10 +1,8 @@
-import Modal from "@/components/UI/Modal/Modal";
+import {Modal, Button, Wrapper} from "@/components/UI";
 import { useAppDispatch } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./StartModal.module.scss";
 import StartModalCard from "./StartModalCard/StartModalCard";
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
-import Button from "@/components/UI/Button/Button";
 
 const cards = [
    {

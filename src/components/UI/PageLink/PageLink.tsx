@@ -18,7 +18,7 @@ interface PageLinkProps {
 type PageLinkFullProps = PropsWithChildren<PageLinkProps> &
    AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const PageLink = ({
+export const PageLink = ({
    hasRippleEffect = false,
    variant = "filled",
    color = "primary",
@@ -57,5 +57,3 @@ const PageLink = ({
       </Link>
    );
 };
-
-export default PageLink;

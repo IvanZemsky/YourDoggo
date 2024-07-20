@@ -1,16 +1,11 @@
 import styles from "./Header.module.scss";
-import Logo from "../UI/Logo/Logo";
-import Wrapper from "../UI/Wrapper/Wrapper";
-import Button from "../UI/Button/Button";
 import PageNavLink from "../UI/PageNavLink/PageNavLink";
-import { Link } from "react-router-dom";
 import { useAppSelector } from "@/hooks/redux";
 import SigninLink from "./components/SigninLink/SigninLink";
 import ProfileLink from "./components/ProfileLink/ProfileLink";
-
 import { RoutesEnum } from "@/constants/routes";
-import Menu from "../UI/Menu/Menu";
 import { useMediaQuery } from "react-responsive";
+import { Menu, Logo, Wrapper } from "../UI";
 
 const { Articles, Shop, Gallery, Forum } = RoutesEnum;
 

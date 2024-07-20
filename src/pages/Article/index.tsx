@@ -2,16 +2,15 @@ import { useFetchArticleByIdQuery } from "@/services/articles";
 import styles from "./Article.module.scss";
 import { useParams } from "react-router";
 import Loading from "./../../components/Loading/Loading";
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper, Tags} from "@/components/UI";
 import { Link } from "react-router-dom";
 import { useUserLink } from "@/hooks/useUserLink";
 import { formatDate } from "@/utils/formatDate";
-import LikeBtn from "@/components/UI/LikeBtn/LikeBtn";
-import LikeCounter from "@/components/UI/LikeCounter/LikeCounter";
+import LikeBtn from "@/components/LikeBtn/LikeBtn";
+import LikeCounter from "@/components/LikeCounter/LikeCounter";
 import { APIEndpoints } from "@/constants/API";
 import { useAppSelector } from "@/hooks/redux";
 import { useEffect, useRef } from "react";
-import Tags from "@/components/UI/Tags/Tags";
 
 const { ARTICLES } = APIEndpoints;
 

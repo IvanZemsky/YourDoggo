@@ -1,4 +1,4 @@
-import ArrowIcon from "@/components/UI/icons/ArrowIcon";
+import {ArrowIcon} from "@/components/UI/icons";
 import ProductCard from "@/pages/Shop/components/ProductCard/ProductCard";
 import ProductsSkeleton from "@/pages/Shop/components/ProductsSkeleton/ProductsSkeleton";
 import { Link } from "react-router-dom";

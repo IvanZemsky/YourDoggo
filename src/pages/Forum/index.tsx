@@ -1,6 +1,6 @@
 import styles from "./Forum.module.scss";
 import QuestionList from "./components/QuestionList/QuestionList";
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper} from "@/components/UI";
 import QuestionHeader from "./components/QuestionHeader/QuestionHeader";
 
 const Forum = () => {

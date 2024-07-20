@@ -1,13 +1,13 @@
-import { HTMLAttributes, PropsWithChildren } from "react";
+import { HTMLAttributes} from "react";
 import styles from "./Wrapper.module.scss";
 
 interface WrapperProps {
    additionalStyles?: string
 }
 
-type WrapperType = PropsWithChildren<WrapperProps> & HTMLAttributes<HTMLDivElement>;
+type WrapperType = WrapperProps & HTMLAttributes<HTMLDivElement>;
 
-const Wrapper = ({ children, additionalStyles, ...attributes }: WrapperType) => {
+export const Wrapper = ({ children, additionalStyles, ...attributes }: WrapperType) => {
    return (
       <div
          className={[styles.wrapper, additionalStyles].join(" ")}
@@ -17,5 +17,3 @@ const Wrapper = ({ children, additionalStyles, ...attributes }: WrapperType) => 
       </div>
    );
 };
-
-export default Wrapper;

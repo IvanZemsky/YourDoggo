@@ -1,7 +1,6 @@
 import styles from "./Modal.module.scss";
-import { Fade } from "../Transitions/Fade/Fade";
 import { createPortal } from "react-dom";
-import { HTMLAttributes, PropsWithChildren } from "react";
+import { HTMLAttributes } from "react";
 import { useModal } from "@/hooks/useModal";
 
 interface ModalProps {
@@ -9,9 +8,9 @@ interface ModalProps {
    className?: string;
 }
 
-type ModalType = PropsWithChildren<ModalProps> & HTMLAttributes<HTMLDivElement>;
+type ModalType = ModalProps & HTMLAttributes<HTMLDivElement>;
 
-const Modal = ({
+export const Modal = ({
    modalContent,
    className,
    children,
@@ -28,5 +27,3 @@ const Modal = ({
       document.getElementById("modal") as HTMLElement
    );
 };
-
-export default Modal;

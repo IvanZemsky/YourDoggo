@@ -1,7 +1,5 @@
-import CheckBtn from "@/components/UI/CheckBtn/CheckBtn";
-import Menu from "@/components/UI/Menu/Menu";
-import PageLink from "@/components/UI/PageLink/PageLink";
-import PlusIcon from "@/components/UI/icons/PlusIcon";
+import {CheckBtn, Menu, PageLink }from "@/components/UI";
+import {PlusIcon} from "@/components/UI/icons";
 import { RoutesEnum } from "@/constants/routes";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {

@@ -1,6 +1,4 @@
-import React from "react";
-
-const CartIcon = () => {
+export const CartIcon = () => {
    return (
       <svg
          version="1.1"
@@ -34,5 +32,3 @@ const CartIcon = () => {
       </svg>
    );
 };
-
-export default CartIcon;

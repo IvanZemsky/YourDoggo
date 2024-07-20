@@ -1,5 +1,5 @@
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
-import Button from "../Button/Button";
+import {Button} from "../Button/Button";
 import { Fade } from "../Transitions/Fade/Fade";
 import styles from "./Menu.module.scss";
 import { selectStyles } from "@/utils/selectStyles";
@@ -11,7 +11,7 @@ interface MenuProps {
    variant?: "outlined" | "filled";
 }
 
-const Menu = ({
+export const Menu = ({
    isOpen,
    burgerColor = "primary",
    variant = "filled",
@@ -62,5 +62,3 @@ const Menu = ({
       </div>
    );
 };
-
-export default Menu;

@@ -7,7 +7,7 @@ interface InputProps {
 
 type InputType = InputProps & InputHTMLAttributes<HTMLInputElement>;
 
-const Input = forwardRef(({ className = "", ...attributes }: InputType, ref) => {
+export const Input = forwardRef(({ className = "", ...attributes }: InputType, ref) => {
 
    const style = ([styles.input, className] as const).join(" ")
 
@@ -20,5 +20,3 @@ const Input = forwardRef(({ className = "", ...attributes }: InputType, ref) => 
       />
    );
 });
-
-export default Input;

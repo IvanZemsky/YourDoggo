@@ -1,6 +1,6 @@
-import { HTMLAttributes, useRef } from 'react'
+import { HTMLAttributes, } from 'react'
 import styles from './StartModalCard.module.scss'
-import PageLink from "@/components/UI/PageLink/PageLink";
+import {PageLink} from "@/components/UI";
 
 interface StartModalCardProps {
    link: string;

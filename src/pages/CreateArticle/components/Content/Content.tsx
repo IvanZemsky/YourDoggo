@@ -1,4 +1,4 @@
-import Button from "@/components/UI/Button/Button";
+import {Button} from "@/components/UI";
 import styles from "./Content.module.scss";
 import { ReactNode,forwardRef, useState } from "react";
 import Text from "../Text/Text";

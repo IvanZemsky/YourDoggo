@@ -1,4 +1,4 @@
-const HeartIcon = () => {
+export const HeartIcon = () => {
    return (
       <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
          <rect fill="none" height="256" width="256" />
@@ -11,5 +11,3 @@ const HeartIcon = () => {
       </svg>
    );
 };
-
-export default HeartIcon;

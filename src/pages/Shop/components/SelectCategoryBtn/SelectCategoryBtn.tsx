@@ -2,7 +2,7 @@ import styles from "./SelectCategoryBtn.module.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setCategory, setTextQuery } from "@/store/slices/shop/productFilterSlice";
 import { Category } from "@/types/shop";
-import RadioBtn from "@/components/UI/RadioBtn/RadioBtn";
+import {RadioBtn} from "@/components/UI";
 
 interface SelectCategoryBtnProps {
    category: Category

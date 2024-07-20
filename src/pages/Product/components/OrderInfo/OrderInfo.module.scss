@@ -45,13 +45,9 @@
    font-size: 18px;
 }
 
-.addBtn, .cartLink{
-   align-items: center;
-   width: 280px;
-   padding: 10px 18px;
-   font-size: 18px;
-   border-radius: 7px;
-   justify-content: center;
+.buttons{
+   display: flex;
+   gap: 10px;
 }
 
 .favouriteBtn{
@@ -75,23 +71,6 @@
       svg:nth-of-type(1){
          fill: var(--secondaryMain);
       }
-   }
-}
-
-.buttons{
-   display: flex;
-   gap: 10px;
-}
-
-.cartLink{
-   display: flex;
-   align-items: center;
-   gap: 15px;
-
-   svg {
-      width: 18px;
-      margin-left: 10px;
-      fill: var(--primaryText);
    }
 }
 
@@ -126,10 +105,5 @@
 @media screen and (max-width: 435px) {
    .deliveryInfo, .deliveryTitle{
       font-size: 20px;
-   }
-   .addBtn, .cartLink {
-      width: auto;
-      flex-grow: 1;
-      font-size: 15px;
    }
 }

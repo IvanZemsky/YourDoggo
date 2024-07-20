@@ -1,4 +1,4 @@
-import Button from "@/components/UI/Button/Button";
+import {Button} from "@/components/UI";
 import styles from "./Tags.module.scss";
 import { MouseEvent } from "react";
 
@@ -9,7 +9,7 @@ interface TagsProps {
    ) => (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Tags = ({ tags, handleTagClick }: TagsProps) => {
+export const Tags = ({ tags, handleTagClick }: TagsProps) => {
    return (
       <>
          {tags.map((tag, index) => (
@@ -25,5 +25,3 @@ const Tags = ({ tags, handleTagClick }: TagsProps) => {
       </>
    );
 };
-
-export default Tags;

@@ -1,19 +1,16 @@
-import Modal from "@/components/UI/Modal/Modal";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
+import {Modal, Wrapper, Button, Tags} from "@/components/UI";
+import { useAppDispatch, } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./ImageInfo.module.scss";
-import { MouseEvent, MouseEventHandler, useCallback } from "react";
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import { MouseEvent, useCallback } from "react";
 import { Link } from "react-router-dom";
-import Button from "@/components/UI/Button/Button";
-import CrossIcon from "@/components/UI/icons/CrossIcon";
+import {CrossIcon} from "@/components/UI/icons";
 import { formatDate } from "@/utils/formatDate";
 import { RoutesEnum } from "@/constants/routes";
-import Tags from "../../../../components/UI/Tags/Tags";
-import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
+import LikeBtn from "@/components/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
-import LikeCounter from "../../../../components/UI/LikeCounter/LikeCounter";
+import LikeCounter from "@/components/LikeCounter/LikeCounter";
 import { setTextQuery } from "@/store/slices/gallery/galleryFilterSlice";
 import { useUserLink } from "@/hooks/useUserLink";
 import ScalableImg from './../ScalableImg/ScalableImg';
@@ -23,8 +20,6 @@ const { GALLERY } = APIEndpoints;
 interface ImageInfoProps extends Omit<IGalleryImg, "_id"> {
    id: string;
 }
-
-const { User } = RoutesEnum;
 
 const ImageInfo = ({
    id,

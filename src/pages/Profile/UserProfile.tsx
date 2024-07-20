@@ -1,5 +1,5 @@
 import Loading from "@/components/Loading/Loading";
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper} from "@/components/UI";
 import { RoutesEnum } from "@/constants/routes";
 import { useAppSelector } from "@/hooks/redux";
 import { useFetchUserByIdQuery } from "@/services/user";

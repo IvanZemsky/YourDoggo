@@ -1,10 +1,10 @@
 import { useMediaQuery } from "react-responsive";
-import PawIcon from "../icons/PawIcon";
+import {PawIcon} from "../icons";
 import styles from './Logo.module.scss'
 import { AnchorHTMLAttributes } from "react";
-import PageLink from "../PageLink/PageLink";
+import {PageLink} from "../PageLink/PageLink";
 
-const Logo = ({...attributes}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const Logo = ({...attributes}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
 
    const is350px = useMediaQuery({maxWidth: 350})
 
@@ -14,5 +14,3 @@ const Logo = ({...attributes}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
       </PageLink>
    );
 };
-
-export default Logo;

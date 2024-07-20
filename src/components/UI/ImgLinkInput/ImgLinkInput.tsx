@@ -1,5 +1,5 @@
-import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from "react";
-import Input from "../Input/Input";
+import { ChangeEvent, forwardRef, InputHTMLAttributes, } from "react";
+import {Input} from "../Input/Input";
 import { useImgLoad } from "@/hooks/useImgLoad";
 
 interface ImgLinkInputProps {
@@ -9,7 +9,7 @@ interface ImgLinkInputProps {
 
 type ImgLinkInputType = ImgLinkInputProps & InputHTMLAttributes<HTMLInputElement>;
 
-const ImgLinkInput = forwardRef(({ imgText, handleChange, ...attributes }: ImgLinkInputType, ref) => {
+export const ImgLinkInput = forwardRef(({ imgText, handleChange, ...attributes }: ImgLinkInputType, ref) => {
    const {imgLink, isError, debouncedHandler, handleImageLoad, handleImageError} = useImgLoad()
 
    const handleInputChangeWrapper = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,5 +37,3 @@ const ImgLinkInput = forwardRef(({ imgText, handleChange, ...attributes }: ImgLi
       </div>
    );
 });
-
-export default ImgLinkInput;

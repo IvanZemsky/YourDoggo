@@ -1,5 +1,6 @@
-import Button, { ButtonFullProps } from "@/components/UI/Button/Button";
-import HeartIcon from "@/components/UI/icons/HeartIcon";
+import { ButtonFullProps } from "@/components/UI/Button/Button";
+import {Button} from '@/components/UI'
+import { HeartIcon } from "../UI/icons";
 import { MouseEvent } from "react";
 import { useCallback } from "react";
 import { selectStyles } from "@/utils/selectStyles";

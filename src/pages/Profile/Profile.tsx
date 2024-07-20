@@ -3,7 +3,7 @@ import styles from "./Profile.module.scss";
 import { useNavigate } from "react-router";
 import { RoutesEnum } from "@/constants/routes";
 import { useEffect } from "react";
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper} from "@/components/UI";
 import { useFetchUserByIdQuery } from "@/services/user";
 import Loading from "@/components/Loading/Loading";
 import Personal from "./components/Personal/Personal";

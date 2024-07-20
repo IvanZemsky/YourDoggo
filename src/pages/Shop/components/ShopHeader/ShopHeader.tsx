@@ -1,10 +1,8 @@
 import PageHeader from "@/components/PageHeader/PageHeader";
-import Button from "@/components/UI/Button/Button";
-import CartIcon from "@/components/UI/icons/CartIcon";
+import {Button, SearchInput, PageLink} from "@/components/UI";
+import {CartIcon} from "@/components/UI/icons/";
 import styles from "./ShopHeader.module.scss";
 import { setTextQuery } from "@/store/slices/shop/productFilterSlice";
-import SearchInput from "@/components/UI/SearchInput/SearchInput";
-import PageLink from "@/components/UI/PageLink/PageLink";
 
 import { RoutesEnum } from "@/constants/routes";
 import { useAppDispatch } from "@/hooks/redux";

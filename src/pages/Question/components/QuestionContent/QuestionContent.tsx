@@ -1,4 +1,4 @@
-import PageLink from "@/components/UI/PageLink/PageLink";
+import {PageLink} from "@/components/UI";
 import styles from "./QuestionContent.module.scss";
 import CommentForm from "../CommentForm/CommentForm";
 import { IForumMessage } from "./../../../../types/API/IForumMessage";

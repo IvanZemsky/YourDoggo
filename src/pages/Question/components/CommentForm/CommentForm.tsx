@@ -1,4 +1,4 @@
-import Button from "@/components/UI/Button/Button";
+import {Button} from "@/components/UI";
 import styles from './CommentForm.module.scss'
 import { FieldValues, useForm } from "react-hook-form";
 import { useCreateForumCommentMutation} from "@/services/forum";

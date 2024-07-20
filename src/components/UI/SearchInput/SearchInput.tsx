@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/hooks/redux";
-import Button from "../Button/Button";
-import SearchIcon from "../icons/SearchIcon";
+import {Button} from "../Button/Button";
+import {SearchIcon} from "../icons";
 import styles from "./SearchInput.module.scss";
 import { ChangeEvent, memo, useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ interface SearchInputProps {
    defaultValue?: string
 }
 
-const SearchInput = memo(({dispatchFunc, defaultValue = ""}: SearchInputProps) => {
+export const SearchInput = memo(({dispatchFunc, defaultValue = ""}: SearchInputProps) => {
    const dispatch = useAppDispatch()
 
    const [searchValue, setSearchValue] = useState<string>(defaultValue);
@@ -44,5 +44,3 @@ const SearchInput = memo(({dispatchFunc, defaultValue = ""}: SearchInputProps) =
       </div>
    );
 });
-
-export default SearchInput;

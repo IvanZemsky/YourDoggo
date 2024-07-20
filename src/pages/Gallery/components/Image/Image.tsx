@@ -1,12 +1,12 @@
 import styles from "./Image.module.scss";
 import { formatDate } from "@/utils/formatDate";
-import { useCallback, useEffect, useState} from "react";
+import { useCallback, useState} from "react";
 import { MouseEvent } from "react";
 import { useAppDispatch} from "@/hooks/redux";
 import { openModal } from "@/store/slices/modalSlice";
 import ImageInfo from "../ImageInfo/ImageInfo";
 import { Link } from "react-router-dom";
-import LikeBtn from "../../../../components/UI/LikeBtn/LikeBtn";
+import LikeBtn from "../../../../components/LikeBtn/LikeBtn";
 import { APIEndpoints } from "@/constants/API";
 import { IGalleryImg } from "@/types/API/IGalleryImg";
 import { useUserLink } from "@/hooks/useUserLink";

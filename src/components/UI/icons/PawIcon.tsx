@@ -1,4 +1,4 @@
-const PawIcon = () => {
+export const PawIcon = () => {
    return (
       <svg
          viewBox="0 0 512 512"
@@ -13,5 +13,3 @@ const PawIcon = () => {
       </svg>
    );
 };
-
-export default PawIcon;

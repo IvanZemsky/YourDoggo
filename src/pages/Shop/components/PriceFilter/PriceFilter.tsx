@@ -2,8 +2,8 @@ import { useAppDispatch } from "@/hooks/redux";
 import styles from "./PriceFilter.module.scss";
 import { setMinMaxPrice } from "@/store/slices/shop/productFilterSlice";
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "@/components/UI/Button/Button";
-import ArrowIcon from './../../../../components/UI/icons/ArrowIcon';
+import {Button} from "@/components/UI";
+import {ArrowIcon} from '@/components/UI/icons';
 
 const PriceFilter = () => {
    const [form, setForm] = useState({

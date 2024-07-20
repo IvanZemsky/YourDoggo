@@ -10,7 +10,7 @@ interface RadioBtnProps {
 
 type RadioBtnType = RadioBtnProps & InputHTMLAttributes<HTMLInputElement>
 
-const CheckBtn = ({text, textStyle, className, handleClick, defaultChecked, ...attributes}: RadioBtnType) => {
+export const CheckBtn = ({text, textStyle, className, handleClick, defaultChecked, ...attributes}: RadioBtnType) => {
    return (
       <div className={[styles.wrap, className].join(" ")}>
          <input
@@ -28,5 +28,3 @@ const CheckBtn = ({text, textStyle, className, handleClick, defaultChecked, ...a
       </div>
    );
 };
-
-export default CheckBtn;

@@ -9,7 +9,7 @@ interface RadioBtnProps {
 
 type RadioBtnType = RadioBtnProps & InputHTMLAttributes<HTMLInputElement>
 
-const RadioBtn = ({text, textStyle, className, ...attributes}: RadioBtnType) => {
+export const RadioBtn = ({text, textStyle, className, ...attributes}: RadioBtnType) => {
    return (
       <div className={[styles.wrap, className].join(" ")}>
          <input
@@ -26,5 +26,3 @@ const RadioBtn = ({text, textStyle, className, ...attributes}: RadioBtnType) => 
       </div>
    );
 };
-
-export default RadioBtn;

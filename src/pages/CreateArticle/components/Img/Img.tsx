@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef } from "react";
+import { useRef } from "react";
 import styles from "./Img.module.scss";
 import { useImgLoad } from "@/hooks/useImgLoad";
 

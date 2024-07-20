@@ -1,16 +1,12 @@
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper, Input, ItemInput, Button, ImgLinkInput,} from "@/components/UI";
 import styles from "./CreateImage.module.scss";
 import { useCreateGalleryImgMutation } from "@/services/gallery";
-import Input from "@/components/UI/Input/Input";
-import ItemInput from "./../../components/UI/ItemInput/ItemInput";
-import Button from "@/components/UI/Button/Button";
 import { useAppSelector } from "@/hooks/redux";
 import { useRedirect } from "@/hooks/useRedirect";
 import { Controller, FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import Signin from "../Signin";
 import { RoutesEnum } from "@/constants/routes";
-import ImgLinkInput from "@/components/UI/ImgLinkInput/ImgLinkInput";
 
 const { Gallery } = RoutesEnum;
 

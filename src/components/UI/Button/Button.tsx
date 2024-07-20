@@ -1,6 +1,5 @@
 import {
    ButtonHTMLAttributes,
-   PropsWithChildren,
    ReactNode,
    useRef,
 } from "react";
@@ -15,10 +14,9 @@ interface ButtonProps {
    className?: string | null;
 }
 
-export type ButtonFullProps = PropsWithChildren<ButtonProps> &
-   ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonFullProps = ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({
+export const Button = ({
    variant = "filled",
    color = "primary",
    shadow = true,
@@ -50,5 +48,3 @@ const Button = ({
       </button>
    );
 };
-
-export default Button;

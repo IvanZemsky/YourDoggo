@@ -1,6 +1,5 @@
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
 import styles from "./Signin.module.scss";
-import Button from "@/components/UI/Button/Button";
+import {Button, Wrapper} from "@/components/UI";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/hooks/redux";
 import { Link, useNavigate } from "react-router-dom";

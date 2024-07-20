@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react'
 import styles from './PageHeader.module.scss'
-import Wrapper from "../UI/Wrapper/Wrapper";
+import {Wrapper} from "../UI";
 
 interface PageHeaderProps {
   input: ReactNode

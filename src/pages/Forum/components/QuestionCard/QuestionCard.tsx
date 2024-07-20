@@ -1,9 +1,7 @@
 import { IForumMessage } from "@/types/API/IForumMessage"
 import styles from './QuestionCard.module.scss'
-import PageLink from "@/components/UI/PageLink/PageLink"
+import {PageLink } from "@/components/UI"
 import { RoutesEnum } from "@/constants/routes"
-import { Link } from "react-router-dom"
-import Button from "@/components/UI/Button/Button"
 import { formatDate } from "@/utils/formatDate"
 
 const {Forum, User} = RoutesEnum

@@ -1,4 +1,4 @@
-const PlusIcon = () => {
+export const PlusIcon = () => {
    return (
       <svg
          viewBox="0 0 68 68"
@@ -14,5 +14,3 @@ const PlusIcon = () => {
       </svg>
    );
 };
-
-export default PlusIcon;

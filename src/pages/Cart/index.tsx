@@ -1,10 +1,9 @@
-import Wrapper from "@/components/UI/Wrapper/Wrapper";
+import {Wrapper} from "@/components/UI";
 import styles from "./Cart.module.scss";
-import { Link } from "react-router-dom";
 import { RoutesEnum } from "@/constants/routes";
 import CartProductList from './components/CartProductList/CartProductList';
 import CartOrder from './components/CartOrder/CartOrder';
-import PageLink from "@/components/UI/PageLink/PageLink";
+import {PageLink} from "@/components/UI/PageLink/PageLink";
 
 const Shop = RoutesEnum.Shop
 

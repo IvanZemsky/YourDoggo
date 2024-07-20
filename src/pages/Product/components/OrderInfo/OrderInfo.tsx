@@ -1,31 +1,20 @@
-import Button from "@/components/UI/Button/Button";
+import {Button} from "@/components/UI";
 import styles from "./OrderInfo.module.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { addProduct } from "@/store/slices/shop/cartSlice";
 import { IProduct } from "@/types/API/IProduct";
-import ArrowIcon from "./../../../../components/UI/icons/ArrowIcon";
-import PageLink from "@/components/UI/PageLink/PageLink";
-import HeartIcon from "@/components/UI/icons/HeartIcon";
 import { toggleFavourites } from "@/store/slices/shop/favouritesSlice";
 import { Link } from "react-router-dom";
+import { HeartIcon } from "@/components/UI/icons";
+import CartButton from './../CartButton/CartButton';
 
 interface AddToCartInfoProps {
    product: IProduct;
 }
 
-const AddToCartInfo = ({ product }: AddToCartInfoProps) => {
+const OrderInfo = ({ product }: AddToCartInfoProps) => {
    const dispatch = useAppDispatch();
 
-   const cartProducts = useAppSelector((state) => state.cart.products);
    const favourites = useAppSelector((state) => state.favourites.favourites);
-
-   const isInCart = cartProducts.some(
-      (cartProduct) => cartProduct._id === product._id
-   );
-
-   const handleAddToCart = () => {
-      dispatch(addProduct(product));
-   };
 
    const handleAddToFavourites = () => {
       dispatch(toggleFavourites(product._id));
@@ -54,21 +43,7 @@ const AddToCartInfo = ({ product }: AddToCartInfoProps) => {
                   <p className={styles.priceWithoutCard}>(Без карты)</p>
                </div>
                <div className={styles.buttons}>
-                  {isInCart ? (
-                     <PageLink to="/shop/cart" className={styles.cartLink}>
-                        В корзине
-                        <ArrowIcon />
-                     </PageLink>
-                  ) : (
-                     <Button
-                        className={styles.addBtn}
-                        color="secondary"
-                        variant="filled"
-                        onClick={handleAddToCart}
-                     >
-                        Добавить в корзину
-                     </Button>
-                  )}
+                  <CartButton product={product}/>
                   <Button
                      className={favouriteBtnStyles}
                      icon={<HeartIcon />}
@@ -89,5 +64,5 @@ const AddToCartInfo = ({ product }: AddToCartInfoProps) => {
    );
 };
 
-export default AddToCartInfo;
+export default OrderInfo;
 

@@ -1,7 +1,7 @@
 import styles from "./UserArticles.module.scss";
 import Loading from "@/components/Loading/Loading";
-import PageLink from "@/components/UI/PageLink/PageLink";
-import ArrowIcon from "@/components/UI/icons/ArrowIcon";
+import {PageLink} from "@/components/UI";
+import {ArrowIcon} from "@/components/UI/icons";
 import { RoutesEnum } from "@/constants/routes";
 import { useAppDispatch } from "@/hooks/redux";
 import {

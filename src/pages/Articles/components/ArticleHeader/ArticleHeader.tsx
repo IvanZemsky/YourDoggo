@@ -1,5 +1,5 @@
 import PageHeader from "@/components/PageHeader/PageHeader";
-import SearchInput from "@/components/UI/SearchInput/SearchInput";
+import {SearchInput} from "@/components/UI";
 import { setTextQuery } from "@/store/slices/articles/articleFilterSlice";
 import ArticleMenu from './../ArticleMenu/ArticleMenu';
 

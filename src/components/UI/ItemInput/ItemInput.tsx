@@ -1,5 +1,5 @@
 import { Fragment } from "react/jsx-runtime";
-import CreatorTag from "../CreatorTag/CreatorTag";
+import {CreatorTag} from "../CreatorTag/CreatorTag";
 import styles from "./ItemInput.module.scss";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ interface ItemInputProps {
    setItemList: (items: string[]) => void
 }
 
-const ItemInput = ({setItemList}: ItemInputProps) => {
+export const ItemInput = ({setItemList}: ItemInputProps) => {
    const { register, getValues, resetField } = useForm();
    const [tags, setTags] = useState<string[]>([]); // ПРОСТО ОБЪЕКТ
 
@@ -56,5 +56,3 @@ const ItemInput = ({setItemList}: ItemInputProps) => {
       </div>
    );
 };
-
-export default ItemInput;

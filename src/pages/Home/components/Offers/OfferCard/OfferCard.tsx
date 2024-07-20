@@ -1,4 +1,4 @@
-import PageLink from "@/components/UI/PageLink/PageLink";
+import {PageLink} from "@/components/UI/PageLink/PageLink";
 import styles from "./OfferCard.module.scss";
 import { RoutesEnum } from "@/constants/routes";
 

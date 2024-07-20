@@ -1,6 +1,4 @@
-
-
-const TrashIcon = () => {
+export const TrashIcon = () => {
    return (
       <svg
          version="1.1"
@@ -13,5 +11,3 @@ const TrashIcon = () => {
       </svg>
    );
 };
-
-export default TrashIcon;

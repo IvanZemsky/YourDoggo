@@ -1,4 +1,4 @@
-import Button from "@/components/UI/Button/Button";
+import {Button} from "@/components/UI";
 import styles from "./CartProduct.module.scss";
 import { useAppDispatch } from "@/hooks/redux";
 import {
@@ -7,7 +7,7 @@ import {
    removeProduct,
 } from "@/store/slices/shop/cartSlice";
 import { memo, useCallback } from "react";
-import TrashIcon from "@/components/UI/icons/TrashIcon";
+import {TrashIcon} from "@/components/UI/icons";
 
 interface CartProductProps {
    id: string;

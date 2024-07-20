@@ -1,6 +1,6 @@
 import { IForumComment } from "@/types/API/IForumComment";
 import styles from "./Comment.module.scss";
-import PageLink from "@/components/UI/PageLink/PageLink";
+import {PageLink} from "@/components/UI";
 import { formatDate } from "@/utils/formatDate";
 import { useUserLink } from "@/hooks/useUserLink";
 import { memo } from "react";

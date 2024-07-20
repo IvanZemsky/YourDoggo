@@ -6,6 +6,7 @@
    position: relative;
    font-weight: 500;
    border-radius: 11px;
+   overflow: hidden;
 
    &.active::after{
       content: '';

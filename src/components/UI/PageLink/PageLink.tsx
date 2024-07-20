@@ -15,7 +15,7 @@ interface PageLinkProps {
    className?: string | null;
 }
 
-type PageLinkFullProps = PropsWithChildren<PageLinkProps> &
+type PageLinkFullProps = PageLinkProps &
    AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const PageLink = ({
@@ -35,7 +35,7 @@ export const PageLink = ({
 
    useRippleEffect(linkRef, hasRippleEffect)
 
-   if (scrollToTop) {
+   if (setTopScroll) {
       scrollToTop()
    }
 

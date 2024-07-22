@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from "react"
 
 /**
  * @description
@@ -7,7 +7,6 @@ import { useEffect } from "react";
  * @param {keyof HTMLElementEventMap} event - событие
  * @param {Event} handler - обработчик
  * @param {boolean} condition - условие для установки обработчика
- * @param {any[]} deps - зависимости
  */
 
 export const useEventListener = (
@@ -15,15 +14,14 @@ export const useEventListener = (
    event: keyof HTMLElementEventMap,
    handler: (e: Event) => void,
    condition: boolean = true,
-   deps: any[] = []
 ): void => {
    useEffect(() => {
       if (condition) {
-         target.addEventListener(event, handler);
+         target.addEventListener(event, handler)
       }
 
       return () => {
-         target.removeEventListener(event, handler);
-      };
-   }, deps);
-};
+         target.removeEventListener(event, handler)
+      }
+   }, [])
+}

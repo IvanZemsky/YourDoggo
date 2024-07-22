@@ -1,21 +1,21 @@
-import { useAppSelector } from "@/hooks/redux";
-import styles from "./CartOrder.module.scss";
-import {Button}from "@/components/UI";
+import { useAppSelector } from "@/hooks/redux"
+import styles from "./CartOrder.module.scss"
+import { Button } from "@/components/UI"
 
 const CartOrder = () => {
-   const cartProducts = useAppSelector((state) => state.cart.products);
+   const cartProducts = useAppSelector((state) => state.cart.products)
    console.log(cartProducts)
 
    const totalPrice = cartProducts.reduce((sum, product) => {
-      return sum + product.amount * product.price;
-   }, 0);
+      return sum + product.amount * product.price
+   }, 0)
 
    const totalAmount = cartProducts.reduce((sum, product) => {
-      return sum + product.amount;
-   }, 0);
+      return sum + product.amount
+   }, 0)
 
    if (!cartProducts.length) {
-      return null;
+      return null
    }
 
    return (
@@ -31,16 +31,12 @@ const CartOrder = () => {
                   <p className={styles.infoText}>{totalPrice} ₽</p>
                </div>
             </div>
-            <Button
-               variant="filled"
-               color="secondary"
-               className={styles.orderBtn}
-            >
+            <Button variant="filled" color="secondary" className={styles.orderBtn}>
                Оформить заказ
             </Button>
          </div>
       </div>
-   );
-};
+   )
+}
 
-export default CartOrder;
+export default CartOrder

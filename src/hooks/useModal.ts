@@ -16,10 +16,18 @@ export const useModal = (modalContent: string): boolean => {
    const currentYScroll = window.scrollY
 
    const preventScroll = () => {
-      scrollTo({top: currentYScroll})
+      scrollTo({ top: currentYScroll })
    }
 
-   useEventListener(window, 'scroll', preventScroll, isOpened, [isOpened, modalContent])
+   useEffect(() => {
+      if (isOpened) {
+         window.addEventListener("scroll", preventScroll)
+      }
 
-   return isOpened;
+      return () => {
+         window.removeEventListener("scroll", preventScroll)
+      }
+   }, [isOpened, modalContent])
+
+   return isOpened
 }

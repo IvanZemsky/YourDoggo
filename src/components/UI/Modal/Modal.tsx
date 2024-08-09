@@ -3,19 +3,16 @@ import { createPortal } from "react-dom";
 import { HTMLAttributes } from "react";
 import { useModal } from "@/hooks/useModal";
 
-interface ModalProps {
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
    modalContent: string;
-   className?: string;
 }
-
-type ModalType = ModalProps & HTMLAttributes<HTMLDivElement>;
 
 export const Modal = ({
    modalContent,
    className,
    children,
    ...attributes
-}: ModalType) => {
+}: ModalProps) => {
    const isOpened = useModal(modalContent);
 
    if (!isOpened) return null;

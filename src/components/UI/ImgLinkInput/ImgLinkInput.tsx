@@ -2,14 +2,12 @@ import { ChangeEvent, forwardRef, InputHTMLAttributes, } from "react";
 import {Input} from "../Input/Input";
 import { useImgLoad } from "@/hooks/useImgLoad";
 
-interface ImgLinkInputProps {
+interface ImgLinkInputProps extends InputHTMLAttributes<HTMLInputElement> {
    imgText: string;
    handleChange: (...args: any[]) => any
 }
 
-type ImgLinkInputType = ImgLinkInputProps & InputHTMLAttributes<HTMLInputElement>;
-
-export const ImgLinkInput = forwardRef(({ imgText, handleChange, ...attributes }: ImgLinkInputType, ref) => {
+export const ImgLinkInput = forwardRef(({ imgText, handleChange, ...attributes }: ImgLinkInputProps, ref) => {
    const {imgLink, isError, debouncedHandler, handleImageLoad, handleImageError} = useImgLoad()
 
    const handleInputChangeWrapper = (event: ChangeEvent<HTMLInputElement>) => {

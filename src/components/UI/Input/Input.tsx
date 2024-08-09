@@ -1,13 +1,10 @@
 import { InputHTMLAttributes, Ref, forwardRef } from "react";
 import styles from "./Input.module.scss";
 
-interface InputProps {
-   className?: string | null;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
-type InputType = InputProps & InputHTMLAttributes<HTMLInputElement>;
-
-export const Input = forwardRef(({ className = "", ...attributes }: InputType, ref) => {
+export const Input = forwardRef(({ className = "", ...attributes }: InputProps, ref) => {
 
    const style = ([styles.input, className] as const).join(" ")
 

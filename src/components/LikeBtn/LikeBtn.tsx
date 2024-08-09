@@ -1,4 +1,4 @@
-import { ButtonFullProps } from "@/components/UI/Button/Button";
+import { ButtonProps } from "@/components/UI/Button/Button";
 import {Button} from '@/components/UI'
 import { HeartIcon } from "../UI/icons";
 import { MouseEvent } from "react";
@@ -8,15 +8,13 @@ import { useLikeToggle } from "@/services/hooks/useLikeToggle";
 import { LikeEndpoints } from "@/types/API/ILike";
 import { useAppSelector } from "@/hooks/redux";
 
-interface LikeBtnProps {
+interface LikeBtnProps extends ButtonProps {
    likedItemId: string;
    isLiked: boolean;
    likedStyles: string;
    unlikedStyles: string;
    endpoint: LikeEndpoints;
 }
-
-type LikeBtnType = LikeBtnProps & ButtonFullProps;
 
 const LikeBtn = ({
    isLiked,
@@ -26,7 +24,7 @@ const LikeBtn = ({
    likedStyles,
    endpoint,
    ...attributes
-}: LikeBtnType) => {
+}: LikeBtnProps) => {
    const currentUserId = useAppSelector((state) => state.auth.userId);
    const { toggleLike, liked } = useLikeToggle(
       likedItemId,

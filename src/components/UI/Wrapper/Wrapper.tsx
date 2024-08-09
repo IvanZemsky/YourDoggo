@@ -1,13 +1,11 @@
 import { HTMLAttributes} from "react";
 import styles from "./Wrapper.module.scss";
 
-interface WrapperProps {
+interface WrapperProps extends HTMLAttributes<HTMLDivElement> {
    additionalStyles?: string
 }
 
-type WrapperType = WrapperProps & HTMLAttributes<HTMLDivElement>;
-
-export const Wrapper = ({ children, additionalStyles, ...attributes }: WrapperType) => {
+export const Wrapper = ({ children, additionalStyles, ...attributes }: WrapperProps) => {
    return (
       <div
          className={[styles.wrapper, additionalStyles].join(" ")}

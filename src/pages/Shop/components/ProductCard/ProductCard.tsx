@@ -3,7 +3,7 @@ import styles from "./ProductCard.module.scss";
 import { findProductCategory } from "@/helpers/findProductCategory";
 import { AnchorHTMLAttributes, memo } from "react";
 
-interface ProductCardProps {
+interface ProductCardProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
    id: string;
    name: string;
    category: string;
@@ -12,10 +12,7 @@ interface ProductCardProps {
    price: number;
 }
 
-type ProductCardFullProps = ProductCardProps &
-AnchorHTMLAttributes<HTMLAnchorElement>;
-
-const ProductCard = memo(({ id, name, category, description, price, img, ...attributes }: ProductCardFullProps) => {
+const ProductCard = memo(({ id, name, category, description, price, img, ...attributes }: ProductCardProps) => {
    const categoryValue = findProductCategory(category)
 
    return (

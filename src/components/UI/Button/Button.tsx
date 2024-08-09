@@ -6,15 +6,12 @@ import {
 import styles from "./Button.module.scss";
 import { useRippleEffect } from "../../../hooks/useRippleEffect/useRippleEffect";
 
-interface ButtonProps {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    variant?: "outlined" | "filled" | "none";
    color?: string
    shadow?: boolean;
    icon?: ReactNode | null;
-   className?: string | null;
 }
-
-export type ButtonFullProps = ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Button = ({
    variant = "filled",
@@ -24,7 +21,7 @@ export const Button = ({
    className = "",
    children,
    ...props
-}: ButtonFullProps) => {
+}: ButtonProps) => {
 
    const buttonRef = useRef<HTMLButtonElement>(null);
 

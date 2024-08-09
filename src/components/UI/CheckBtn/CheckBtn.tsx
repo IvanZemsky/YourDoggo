@@ -1,16 +1,14 @@
 import { InputHTMLAttributes, MouseEventHandler} from "react";
 import styles from "./CheckBtn.module.scss";
 
-interface RadioBtnProps {
+interface RadioBtnProps extends InputHTMLAttributes<HTMLInputElement> {
    text?: string
    textStyle?: string
    className?: string
    handleClick: MouseEventHandler<HTMLLabelElement> | undefined
 }
 
-type RadioBtnType = RadioBtnProps & InputHTMLAttributes<HTMLInputElement>
-
-export const CheckBtn = ({text, textStyle, className, handleClick, defaultChecked, ...attributes}: RadioBtnType) => {
+export const CheckBtn = ({text, textStyle, className, handleClick, defaultChecked, ...attributes}: RadioBtnProps) => {
    return (
       <div className={[styles.wrap, className].join(" ")}>
          <input

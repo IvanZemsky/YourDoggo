@@ -2,11 +2,11 @@ import { PropsWithChildren, ReactNode } from 'react'
 import styles from './PageHeader.module.scss'
 import {Wrapper} from "../UI";
 
-interface PageHeaderProps {
+interface PageHeaderProps extends PropsWithChildren {
   input: ReactNode
 }
 
-const PageHeader = ({input, children}: PropsWithChildren<PageHeaderProps>) => {
+const PageHeader = ({input, children}: PageHeaderProps) => {
   return (
     <header className={styles.header}>
       <Wrapper>

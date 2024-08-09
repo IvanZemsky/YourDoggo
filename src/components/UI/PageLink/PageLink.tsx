@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { scrollToTop } from "@/utils/scrollToTop";
 import { useRippleEffect } from "@/hooks/useRippleEffect/useRippleEffect";
 
-interface PageLinkProps {
+interface PageLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
    to: string;
    hasRippleEffect?: boolean
    variant?: "outlined" | "filled" | "none";
@@ -12,11 +12,7 @@ interface PageLinkProps {
    shadow?: boolean;
    setTopScroll?: boolean
    icon?: ReactNode | null;
-   className?: string | null;
 }
-
-type PageLinkFullProps = PageLinkProps &
-   AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const PageLink = ({
    hasRippleEffect = false,
@@ -29,7 +25,7 @@ export const PageLink = ({
    children,
    to,
    ...props
-}: PageLinkFullProps) => {
+}: PageLinkProps) => {
    
    const linkRef = useRef<HTMLAnchorElement>(null);
 

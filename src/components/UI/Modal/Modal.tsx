@@ -1,9 +1,9 @@
 import styles from "./Modal.module.scss";
 import { createPortal } from "react-dom";
-import { HTMLAttributes } from "react";
+import { ComponentProps } from "react";
 import { useModal } from "@/hooks/useModal";
 
-interface ModalProps extends HTMLAttributes<HTMLDivElement> {
+type Props = ComponentProps<"div"> & {
    modalContent: string;
 }
 
@@ -12,7 +12,7 @@ export const Modal = ({
    className,
    children,
    ...attributes
-}: ModalProps) => {
+}: Props) => {
    const isOpened = useModal(modalContent);
 
    if (!isOpened) return null;

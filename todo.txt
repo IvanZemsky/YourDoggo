@@ -1,0 +1,5 @@
+установить cn
+ref для чекбоксов, ImgLinkInput?
+ref возвращать из useRippleEffect а не передавать в него
+что за "ПРОСТО ОБЪЕКТ" в ItemInput
+пересмотреть SearchInput, PageNavLink и прочие ui компоненты

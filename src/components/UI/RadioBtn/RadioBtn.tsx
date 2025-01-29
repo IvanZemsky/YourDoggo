@@ -1,12 +1,12 @@
-import { InputHTMLAttributes} from "react";
+import { ComponentProps} from "react";
 import styles from "./RadioBtn.module.scss";
 
-interface RadioBtnProps extends InputHTMLAttributes<HTMLInputElement> {
+type Props = ComponentProps<"input"> & {
    text?: string
    textStyle?: string
 }
 
-export const RadioBtn = ({text, textStyle, className, ...attributes}: RadioBtnProps) => {
+export const RadioBtn = ({text, textStyle, className, ...attributes}: Props) => {
    return (
       <div className={[styles.wrap, className].join(" ")}>
          <input

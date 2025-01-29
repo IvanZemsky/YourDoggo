@@ -2,14 +2,14 @@ import {Button} from "@/components/UI";
 import styles from "./Tags.module.scss";
 import { MouseEvent } from "react";
 
-interface TagsProps {
+type Props = {
    tags: string[];
    handleTagClick?: (
       tag: string
    ) => (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const Tags = ({ tags, handleTagClick }: TagsProps) => {
+export const Tags = ({ tags, handleTagClick }: Props) => {
    return (
       <>
          {tags.map((tag, index) => (

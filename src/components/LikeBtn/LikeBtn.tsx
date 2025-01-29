@@ -8,7 +8,7 @@ import { useLikeToggle } from "@/services/hooks/useLikeToggle";
 import { LikeEndpoints } from "@/types/API/ILike";
 import { useAppSelector } from "@/hooks/redux";
 
-interface LikeBtnProps extends ButtonProps {
+type Props = ButtonProps & {
    likedItemId: string;
    isLiked: boolean;
    likedStyles: string;
@@ -24,7 +24,7 @@ const LikeBtn = ({
    likedStyles,
    endpoint,
    ...attributes
-}: LikeBtnProps) => {
+}: Props) => {
    const currentUserId = useAppSelector((state) => state.auth.userId);
    const { toggleLike, liked } = useLikeToggle(
       likedItemId,

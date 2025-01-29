@@ -4,12 +4,12 @@ import {SearchIcon} from "../icons";
 import styles from "./SearchInput.module.scss";
 import { ChangeEvent, memo, useEffect, useState } from "react";
 
-interface SearchInputProps {
+type Props = {
    dispatchFunc: (arg: any) => { type: string, payload: any }
    defaultValue?: string
 }
 
-export const SearchInput = memo(({dispatchFunc, defaultValue = ""}: SearchInputProps) => {
+export const SearchInput = memo(({dispatchFunc, defaultValue = ""}: Props) => {
    const dispatch = useAppDispatch()
 
    const [searchValue, setSearchValue] = useState<string>(defaultValue);

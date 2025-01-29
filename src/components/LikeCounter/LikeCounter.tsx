@@ -2,7 +2,7 @@ import { useAppSelector } from "@/hooks/redux";
 import { useLikeToggle } from "@/services/hooks/useLikeToggle";
 import { LikeEndpoints } from "@/types/API/ILike";
 
-interface LikeCounterProps {
+type Props = {
    id: string;
    likes: number;
    isLiked: boolean;
@@ -10,7 +10,7 @@ interface LikeCounterProps {
    endpoint: LikeEndpoints
 }
 
-const LikeCounter = ({ id, likes, isLiked, endpoint, className }: LikeCounterProps) => {
+const LikeCounter = ({ id, likes, isLiked, endpoint, className }: Props) => {
    const currentUserId = useAppSelector((state) => state.auth.userId);
 
    const { like } = useLikeToggle(

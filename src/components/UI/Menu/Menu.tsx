@@ -5,7 +5,7 @@ import styles from "./Menu.module.scss";
 import { selectStyles } from "@/utils/selectStyles";
 import { useEventListener } from "@/hooks/useEventListener";
 
-interface MenuProps {
+type Props = {
    isOpen: boolean;
    burgerColor?: "primary" | "secondary";
    variant?: "outlined" | "filled";
@@ -16,7 +16,7 @@ export const Menu = ({
    burgerColor = "primary",
    variant = "filled",
    children,
-}: PropsWithChildren<MenuProps>) => {
+}: PropsWithChildren<Props>) => {
    const [isMenuOpened, setIsMenuOpened] = useState(!isOpen);
    const burgerRef = useRef<HTMLDivElement>(null);
 

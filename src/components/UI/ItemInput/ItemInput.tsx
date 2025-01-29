@@ -4,12 +4,12 @@ import styles from "./ItemInput.module.scss";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
-interface ItemInputProps {
+type Props = {
    itemList?: string[]
    setItemList: (items: string[]) => void
 }
 
-export const ItemInput = ({setItemList}: ItemInputProps) => {
+export const ItemInput = ({setItemList}: Props) => {
    const { register, getValues, resetField } = useForm();
    const [tags, setTags] = useState<string[]>([]); // ПРОСТО ОБЪЕКТ
 

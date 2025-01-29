@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./PageNavLink.module.scss";
 
-interface LinkProps {
+type Props = {
    to: string;
 }
 
@@ -10,7 +10,7 @@ interface ISetActive {
    isActive: boolean;
 }
 
-const PageNavLink = ({ to, children }: PropsWithChildren<LinkProps>) => {
+const PageNavLink = ({ to, children }: PropsWithChildren<Props>) => {
    const setActive = ({ isActive }: ISetActive) =>
       [
         styles.link,

@@ -7,6 +7,7 @@ import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 import CopyPlugin from 'copy-webpack-plugin'
 import path from "path";
 import fs  from "fs";
+import Dotenv from "dotenv-webpack";
 
 export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
    const isDev = options.mode === "development";
@@ -23,6 +24,9 @@ export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
       new MiniCssExtractPlugin({
          filename: "css/[name].[contenthash:8].css",
          chunkFilename: "css/[name].[contenthash:8].css",
+      }),
+      new Dotenv({
+         path: "./.env"
       }),
    ]
 

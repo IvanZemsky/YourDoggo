@@ -1,10 +1,10 @@
-import { AnchorHTMLAttributes, PropsWithChildren, ReactNode, useRef } from "react";
+import { ComponentPropsWithoutRef, ReactNode, useRef } from "react";
 import styles from "./PageLink.module.scss";
 import { Link } from "react-router-dom";
 import { scrollToTop } from "@/utils/scrollToTop";
 import { useRippleEffect } from "@/hooks/useRippleEffect/useRippleEffect";
 
-interface PageLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+type Props = ComponentPropsWithoutRef<"a"> & {
    to: string;
    hasRippleEffect?: boolean
    variant?: "outlined" | "filled" | "none";
@@ -25,7 +25,7 @@ export const PageLink = ({
    children,
    to,
    ...props
-}: PageLinkProps) => {
+}: Props) => {
    
    const linkRef = useRef<HTMLAnchorElement>(null);
 

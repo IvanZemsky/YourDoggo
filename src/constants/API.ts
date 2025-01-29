@@ -1,4 +1,4 @@
-export const BASE_URL = "https://yourdoggo-backend.onrender.com";
+export const BASE_URL = process.env.BASE_API_URL!;
 
 export enum APIEndpoints {
    AUTH = "/auth",

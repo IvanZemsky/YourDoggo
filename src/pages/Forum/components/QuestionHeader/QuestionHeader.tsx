@@ -1,6 +1,6 @@
 import PageHeader from "@/components/PageHeader/PageHeader"
-import {Menu, PageLink, SearchInput} from "@/components/UI";
-import {PlusIcon} from "@/components/UI/icons";
+import {Menu, PageLink, SearchInput} from "@/shared/ui";
+import {PlusIcon} from "@/shared/ui/icons";
 import { RoutesEnum } from "@/constants/routes";
 import { setTextQuery } from "@/store/slices/forum/forumFilter"
 import { useMediaQuery } from "react-responsive";

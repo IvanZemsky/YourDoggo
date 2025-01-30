@@ -1,6 +1,6 @@
 import PageHeader from "@/components/PageHeader/PageHeader";
-import {Button, SearchInput, PageLink} from "@/components/UI";
-import {CartIcon} from "@/components/UI/icons/";
+import {Button, SearchInput, PageLink} from "@/shared/ui";
+import {CartIcon} from "@/shared/ui/icons/";
 import styles from "./ShopHeader.module.scss";
 import { setTextQuery } from "@/store/slices/shop/productFilterSlice";
 

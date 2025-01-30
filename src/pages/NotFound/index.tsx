@@ -1,6 +1,6 @@
 import styles from "./NotFound.module.scss";
 import { RoutesEnum } from "@/constants/routes";
-import {Wrapper, PageLink} from "@/components/UI";
+import {Wrapper, PageLink} from "@/shared/ui";
 
 const { Home, Forum, Articles, Gallery, Shop } = RoutesEnum;
 

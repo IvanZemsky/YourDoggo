@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import styles from "./Question.module.scss";
 import { useFetchForumMessageByIdQuery } from "@/services/forum";
 import Loading from "@/components/Loading/Loading";
-import {Wrapper} from "@/components/UI";
+import {Wrapper} from "@/shared/ui";
 import { RoutesEnum } from "@/constants/routes";
 import QuestionContent from './components/QuestionContent/QuestionContent';
 import CommentList from './components/CommentList/CommentList';

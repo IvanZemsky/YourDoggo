@@ -2,7 +2,7 @@ import { useFetchArticleByIdQuery } from "@/services/articles";
 import styles from "./Article.module.scss";
 import { useParams } from "react-router";
 import Loading from "./../../components/Loading/Loading";
-import {Wrapper, Tags} from "@/components/UI";
+import {Wrapper, Tags} from "@/shared/ui";
 import { Link } from "react-router-dom";
 import { useUserLink } from "@/hooks/useUserLink";
 import { formatDate } from "@/utils/formatDate";

@@ -1,10 +1,10 @@
-import {Button} from "@/components/UI";
+import {Button} from "@/shared/ui";
 import styles from "./OrderInfo.module.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { IProduct } from "@/types/API/IProduct";
 import { toggleFavourites } from "@/store/slices/shop/favouritesSlice";
 import { Link } from "react-router-dom";
-import { HeartIcon } from "@/components/UI/icons";
+import { HeartIcon } from "@/shared/ui/icons";
 import CartButton from './../CartButton/CartButton';
 
 interface AddToCartInfoProps {

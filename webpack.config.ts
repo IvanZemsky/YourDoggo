@@ -10,7 +10,7 @@ interface EnvVariables {
 
 export default (env: EnvVariables) => {
    const paths: BuildPaths = {
-      entry: path.resolve(__dirname, "src", "index.tsx"),
+      entry: path.resolve(__dirname, "src", "app", "index.tsx"),
       output: path.resolve(__dirname, "build"),
       html: path.resolve(__dirname, "public", "index.html"),
       public: path.resolve(__dirname, "public"),

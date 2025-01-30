@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/hooks/redux"
 import styles from "./CartOrder.module.scss"
-import { Button } from "@/components/UI"
+import { Button } from "@/shared/ui"
 
 const CartOrder = () => {
    const cartProducts = useAppSelector((state) => state.cart.products)

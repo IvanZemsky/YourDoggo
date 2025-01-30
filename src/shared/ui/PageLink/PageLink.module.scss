@@ -1,65 +1,70 @@
-@import '/src/styles/mixins.scss';
+@import '/src/shared/ui/styles/mixins.scss';
 
-.button {
+.link {
    position: relative;
    display: inline-flex;
    align-items: center;
    flex-shrink: 0;
    gap: 5px;
-   padding: 10px 18px;
    font-size: inherit;
    font-family: inherit;
-   border-radius: 5px;
    border-style: solid;
    outline: none;
    background: none;
    transition: 0.12s box-shadow linear;
    user-select: none;
 
-   svg {
+   svg{
       display: block;
-      width: 20px;
       height: auto;
    }
+
 }
 
-.shadow {
-   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -1px,
-      rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+.shadow{
+   box-shadow:
+   rgba(0, 0, 0, 0.2) 0px 3px 1px -1px,
+   rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+   rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 
    @include hoverEffect('&') {
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px -1px,
+      box-shadow:
+         rgba(0, 0, 0, 0.2) 0px 2px 3px -1px,
          rgba(0, 0, 0, 0.14) 0px 4px 3px 0px,
          rgba(0, 0, 0, 0.12) 0px 3px 5px 0px;
    }
 }
 
-.primary {
+.primary{
    background-color: var(--primaryMain);
    color: var(--primaryText);
    border-color: var(--primaryMain);
 }
 
-.filled {
+.filled{
    border: none;
    background-color: var(--primaryMain);
    color: var(--primaryText);
 }
 
-.secondary {
+.secondary{
    background-color: var(--secondaryMain);
    color: var(--secondaryText);
    border-color: var(--secondaryMain);
 }
 
-.outlined {
-   color: var(--primaryText);
+.outlined{
    border: 2px solid var(--primaryText);
+   color: var(--primaryText);
 }
 
-.none {
+.none{
+   padding: 0;
    border: none;
    background-color: inherit;
-   color: inherit;
-   padding: 0;
+   color: var(--primaryMain);
+
+   &:hover{
+      text-decoration: underline;
+   }
 }

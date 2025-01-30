@@ -1,4 +1,4 @@
-import {Wrapper} from "@/components/UI";
+import {Wrapper} from "@/shared/ui";
 import styles from "./Gallery.module.scss";
 import ImagesList from './components/ImagesList/ImagesList';
 import GalleryHeader from './components/GalleryHeader/GalleryHeader';

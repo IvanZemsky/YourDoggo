@@ -1,6 +1,6 @@
 import { IForumMessage } from "@/types/API/IForumMessage"
 import styles from './QuestionCard.module.scss'
-import {PageLink } from "@/components/UI"
+import {PageLink } from "@/shared/ui"
 import { RoutesEnum } from "@/constants/routes"
 import { formatDate } from "@/utils/formatDate"
 

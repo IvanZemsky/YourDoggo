@@ -1,9 +1,9 @@
-import { Wrapper } from "@/components/UI"
+import { Wrapper } from "@/shared/ui"
 import styles from "./Cart.module.scss"
 import { RoutesEnum } from "@/constants/routes"
 import CartProductList from "./components/CartProductList/CartProductList"
 import CartOrder from "./components/CartOrder/CartOrder"
-import { PageLink } from "@/components/UI/PageLink/PageLink"
+import { PageLink } from "@/shared/ui/PageLink/PageLink"
 
 const Shop = RoutesEnum.Shop
 

@@ -1,4 +1,4 @@
-import {Wrapper} from "@/components/UI";
+import {Wrapper} from "@/shared/ui";
 import styles from "./Product.module.scss";
 import { useFetchProductByIdQuery } from "@/services/shop";
 import { useParams } from "react-router";

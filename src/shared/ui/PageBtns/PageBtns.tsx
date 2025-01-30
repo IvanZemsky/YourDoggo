@@ -1,4 +1,4 @@
-import {Button} from "@/components/UI/Button/Button";
+import {Button} from "@/shared/ui/Button/Button";
 import { MouseEventHandler } from "react";
 import styles from './PageBtns.module.scss'
 
@@ -10,7 +10,7 @@ type Props = {
    ) => MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-const PageBtns = ({ currentPage, pageAmount, handleClick }: Props) => {
+export const PageBtns = ({ currentPage, pageAmount, handleClick }: Props) => {
    const pages = Array.from({length: pageAmount}, ((_, item) => item + 1))
    
    const setBtnStyles = (page: number) => 
@@ -31,5 +31,3 @@ const PageBtns = ({ currentPage, pageAmount, handleClick }: Props) => {
       </>
    );
 };
-
-export default PageBtns;

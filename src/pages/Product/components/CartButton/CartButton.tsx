@@ -1,6 +1,6 @@
-import { PageLink, Button } from "@/components/UI";
+import { PageLink, Button } from "@/shared/ui";
 import styles from "./CartButton.module.scss";
-import { ArrowIcon } from "@/components/UI/icons";
+import { ArrowIcon } from "@/shared/ui/icons";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { addProduct } from "@/store/slices/shop/cartSlice";
 import { IProduct } from "@/types/API/IProduct";

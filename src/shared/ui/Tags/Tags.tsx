@@ -1,4 +1,4 @@
-import {Button} from "@/components/UI";
+import {Button} from "@/shared/ui";
 import styles from "./Tags.module.scss";
 import { MouseEvent } from "react";
 

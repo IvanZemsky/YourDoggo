@@ -1,5 +1,5 @@
 import styles from "./Shop.module.scss";
-import {Wrapper} from "@/components/UI";
+import {Wrapper} from "@/shared/ui";
 import ShopFilters from "./components/ShopFilters/ShopFilters";
 import ShopHeader from "./components/ShopHeader/ShopHeader";
 import ProductList from "./components/ProductList/ProductList";

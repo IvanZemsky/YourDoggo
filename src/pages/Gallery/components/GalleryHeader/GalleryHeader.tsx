@@ -1,5 +1,5 @@
 import PageHeader from "@/components/PageHeader/PageHeader";
-import {SearchInput} from "@/components/UI";
+import {SearchInput} from "@/shared/ui";
 import {
    setTextQuery,
 } from "@/store/slices/gallery/galleryFilterSlice";

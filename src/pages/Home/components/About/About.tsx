@@ -1,4 +1,4 @@
-import {Wrapper}from "@/components/UI";
+import {Wrapper}from "@/shared/ui";
 import styles from "./About.module.scss";
 import corgi from "@/assets/img/welsh-corgi.jpg";
 

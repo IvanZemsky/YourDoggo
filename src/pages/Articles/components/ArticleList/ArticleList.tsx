@@ -3,7 +3,7 @@ import styles from "./ArticleList.module.scss";
 import Loading from "@/components/Loading/Loading";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { Fragment } from "react";
-import PageBtns from "@/components/UI/PageBtns/PageBtns";
+import {PageBtns} from "@/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/articles/articleFilterSlice";
 import { scrollToTop } from "@/utils/scrollToTop";

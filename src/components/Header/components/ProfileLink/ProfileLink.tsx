@@ -1,7 +1,7 @@
-import {PageLink} from "@/components/UI";
+import {PageLink} from "@/shared/ui";
 import { RoutesEnum } from "@/constants/routes";
 import styles from "./ProfileLink.module.scss";
-import {UserIcon} from "@/components/UI/icons";
+import {UserIcon} from "@/shared/ui/icons";
 
 const { Profile } = RoutesEnum;
 

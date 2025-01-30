@@ -1,10 +1,10 @@
-import {Modal, Wrapper, Button, Tags} from "@/components/UI";
+import {Modal, Wrapper, Button, Tags} from "@/shared/ui";
 import { useAppDispatch, } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./ImageInfo.module.scss";
 import { MouseEvent, useCallback } from "react";
 import { Link } from "react-router-dom";
-import {CrossIcon} from "@/components/UI/icons";
+import {CrossIcon} from "@/shared/ui/icons";
 import { formatDate } from "@/utils/formatDate";
 import { RoutesEnum } from "@/constants/routes";
 import LikeBtn from "@/components/LikeBtn/LikeBtn";

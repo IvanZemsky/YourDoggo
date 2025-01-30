@@ -1,4 +1,4 @@
-import {Wrapper, Input, Button, ItemInput, ImgLinkInput} from "@/components/UI";
+import {Wrapper, Input, Button, ItemInput, ImgLinkInput} from "@/shared/ui";
 import styles from "./CreateArticle.module.scss";
 import { useCreateArticleMutation } from "@/services/articles";
 import { useAppSelector } from "@/hooks/redux";

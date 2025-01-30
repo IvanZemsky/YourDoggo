@@ -1,6 +1,6 @@
-import { ButtonProps } from "@/components/UI/Button/Button";
-import {Button} from '@/components/UI'
-import { HeartIcon } from "../UI/icons";
+import { ButtonProps } from "@/shared/ui/Button/Button";
+import {Button} from "@/shared/ui"
+import { HeartIcon } from "@/shared/ui/icons";
 import { MouseEvent } from "react";
 import { useCallback } from "react";
 import { selectStyles } from "@/utils/selectStyles";

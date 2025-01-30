@@ -1,6 +1,6 @@
-import {Menu, CheckBtn} from "@/components/UI";
-import {PageLink} from "@/components/UI";
-import {PlusIcon} from "@/components/UI/icons";
+import {Menu, CheckBtn} from "@/shared/ui";
+import {PageLink} from "@/shared/ui";
+import {PlusIcon} from "@/shared/ui/icons";
 import { useMediaQuery } from "react-responsive";
 import styles from "./ArticleMenu.module.scss";
 import { RoutesEnum } from "@/constants/routes";

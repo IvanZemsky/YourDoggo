@@ -1,4 +1,4 @@
-import {Modal, Button, Wrapper} from "@/components/UI";
+import {Modal, Button, Wrapper} from "@/shared/ui";
 import { useAppDispatch } from "@/hooks/redux";
 import { closeModal } from "@/store/slices/modalSlice";
 import styles from "./StartModal.module.scss";

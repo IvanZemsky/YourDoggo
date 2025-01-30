@@ -1,4 +1,4 @@
-import {Wrapper, Input, ItemInput, Button, ImgLinkInput,} from "@/components/UI";
+import {Wrapper, Input, ItemInput, Button, ImgLinkInput,} from "@/shared/ui";
 import styles from "./CreateImage.module.scss";
 import { useCreateGalleryImgMutation } from "@/services/gallery";
 import { useAppSelector } from "@/hooks/redux";

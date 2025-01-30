@@ -6,7 +6,7 @@ import { Fragment } from "react/jsx-runtime";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { setPage } from "@/store/slices/shop/productFilterSlice";
 import { scrollToTop } from "@/utils/scrollToTop";
-import PageBtns from "../../../../components/UI/PageBtns/PageBtns";
+import {PageBtns} from "@/shared/ui";
 
 const ProductList = () => {
    const dispatch = useAppDispatch();

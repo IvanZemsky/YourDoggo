@@ -1,6 +1,6 @@
 import { RoutesEnum } from "@/constants/routes";
 import styles from "./SigninLink.module.scss";
-import {PageLink} from "@/components/UI/PageLink/PageLink";
+import {PageLink} from "@/shared/ui/PageLink/PageLink";
 
 const {Signin} = RoutesEnum
 

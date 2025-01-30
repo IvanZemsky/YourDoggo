@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react'
 import styles from './PageHeader.module.scss'
-import {Wrapper} from "../UI";
+import {Wrapper} from "@/shared/ui";
 
 type Props = {
   input: ReactNode

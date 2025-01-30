@@ -1,5 +1,5 @@
 import styles from "./Footer.module.scss";
-import {Wrapper, Logo} from "../UI";
+import {Wrapper, Logo} from "@/shared/ui";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

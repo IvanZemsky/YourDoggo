@@ -10,7 +10,7 @@ interface ISetActive {
    isActive: boolean;
 }
 
-const PageNavLink = ({ to, children }: PropsWithChildren<Props>) => {
+export const PageNavLink = ({ to, children }: PropsWithChildren<Props>) => {
    const setActive = ({ isActive }: ISetActive) =>
       [
         styles.link,
@@ -23,5 +23,3 @@ const PageNavLink = ({ to, children }: PropsWithChildren<Props>) => {
       </NavLink>
    );
 };
-
-export default PageNavLink;

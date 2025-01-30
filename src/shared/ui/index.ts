@@ -1,3 +1,4 @@
+export {PageNavLink} from "./PageNavLink/PageNavLink";
 export {Button} from "./Button/Button";
 export {CheckBtn} from "./CheckBtn/CheckBtn";
 export {CreatorTag} from "./CreatorTag/CreatorTag";
@@ -12,3 +13,4 @@ export {Tags} from "./Tags/Tags";
 export {Wrapper} from "./Wrapper/Wrapper";
 export {ItemInput} from "./ItemInput/ItemInput";
 export {PageLink} from "./PageLink/PageLink";
+export {PageBtns} from "./PageBtns/PageBtns";

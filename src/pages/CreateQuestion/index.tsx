@@ -1,6 +1,6 @@
 import { FieldValues, useForm } from "react-hook-form";
 import styles from "./CreateQuestion.module.scss";
-import {Wrapper, Button, Input} from "@/components/UI";
+import {Wrapper, Button, Input} from "@/shared/ui";
 import { useCreateForumMessageMutation } from "@/services/forum";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "@/hooks/redux";

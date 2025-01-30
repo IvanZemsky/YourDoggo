@@ -1,4 +1,4 @@
-import {Wrapper} from "@/components/UI";
+import {Wrapper} from "@/shared/ui";
 import styles from "./Offers.module.scss";
 import { RoutesEnum } from "@/constants/routes";
 import { OfferCard } from "./OfferCard/OfferCard";
